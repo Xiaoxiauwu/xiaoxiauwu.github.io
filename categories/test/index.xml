@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>小夏の个人blog</title>
-    <link>https://example.org/</link>
-    <description>Recent content on 小夏の个人blog</description>
+    <title>test on 小夏の个人blog</title>
+    <link>https://example.org/categories/test/</link>
+    <description>Recent content in test on 小夏の个人blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 18 Jan 2024 04:46:39 +0800</lastBuildDate>
-    <atom:link href="https://example.org/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://example.org/categories/test/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>First blog</title>
       <link>https://example.org/post/first/</link>
