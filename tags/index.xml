@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on 小夏の个人blog</title>
-    <link>https://example.org/tags/</link>
+    <link>https://xiaoxiauwu.github.io/tags/</link>
     <description>Recent content in Tags on 小夏の个人blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 18 Jan 2024 04:46:39 +0800</lastBuildDate>
-    <atom:link href="https://example.org/tags/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://xiaoxiauwu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>git</title>
-      <link>https://example.org/tags/git/</link>
+      <link>https://xiaoxiauwu.github.io/tags/git/</link>
       <pubDate>Thu, 18 Jan 2024 04:46:39 +0800</pubDate>
-      <guid>https://example.org/tags/git/</guid>
+      <guid>https://xiaoxiauwu.github.io/tags/git/</guid>
       <description></description>
     </item>
     <item>
       <title>hugo</title>
-      <link>https://example.org/tags/hugo/</link>
+      <link>https://xiaoxiauwu.github.io/tags/hugo/</link>
       <pubDate>Thu, 18 Jan 2024 04:46:39 +0800</pubDate>
-      <guid>https://example.org/tags/hugo/</guid>
+      <guid>https://xiaoxiauwu.github.io/tags/hugo/</guid>
       <description></description>
     </item>
   </channel>

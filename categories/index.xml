@@ -2,24 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on 小夏の个人blog</title>
-    <link>https://example.org/categories/</link>
+    <link>https://xiaoxiauwu.github.io/categories/</link>
     <description>Recent content in Categories on 小夏の个人blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 18 Jan 2024 04:46:39 +0800</lastBuildDate>
-    <atom:link href="https://example.org/categories/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://xiaoxiauwu.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>just test</title>
-      <link>https://example.org/categories/just-test/</link>
+      <link>https://xiaoxiauwu.github.io/categories/just-test/</link>
       <pubDate>Thu, 18 Jan 2024 04:46:39 +0800</pubDate>
-      <guid>https://example.org/categories/just-test/</guid>
+      <guid>https://xiaoxiauwu.github.io/categories/just-test/</guid>
       <description></description>
     </item>
     <item>
       <title>test</title>
-      <link>https://example.org/categories/test/</link>
+      <link>https://xiaoxiauwu.github.io/categories/test/</link>
       <pubDate>Thu, 18 Jan 2024 04:46:39 +0800</pubDate>
-      <guid>https://example.org/categories/test/</guid>
+      <guid>https://xiaoxiauwu.github.io/categories/test/</guid>
       <description></description>
     </item>
   </channel>
