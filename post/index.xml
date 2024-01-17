@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on 喵喵</title>
+    <link>https://xiaoxiauwu.github.io/post/</link>
+    <description>Recent content in Posts on 喵喵</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 18 Jan 2024 01:06:05 +0800</lastBuildDate>
+    <atom:link href="https://xiaoxiauwu.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Helloblog</title>
+      <link>https://xiaoxiauwu.github.io/post/helloblog/</link>
+      <pubDate>Thu, 18 Jan 2024 01:06:05 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/post/helloblog/</guid>
+      <description>4-19 fhq Treap #include&amp;lt;iostream&amp;gt; #include&amp;lt;queue&amp;gt; #include&amp;lt;ctime&amp;gt; #include&amp;lt;random&amp;gt; #define ET &amp;#39;\n&amp;#39; using namespace std; const int N=100005; struct Treap { const int INF; int Root,cnt; deque&amp;lt;int&amp;gt;del_list; struct Node { int ch[2],v,rnd,siz; }node[N]; int newNode(int x)//申请新节点 { int tmp; if(del_list.empty()) tmp=++cnt; else tmp=del_list.front(),del_list.pop_front(); node[tmp].rnd=rand(),node[tmp].v=x,node[tmp].siz=1,node[tmp].ch[0]=node[tmp].ch[1]=0; return tmp; } void update(int x)//更新信息 { node[x].siz=node[node[x].ch[0]].siz+node[node[x].ch[1]].siz+1; } void vsplit(int pos,int v,int &amp;amp;x,int &amp;amp;y)//按权值分裂 { if(!pos) { x=y=0; return; } if(node[pos].v&amp;lt;=v) x=pos,vsplit(node[pos].ch[1],v,node[pos].ch[1],y); else y=pos,vsplit(node[pos].ch[0],v,x,node[pos].ch[0]); update(pos); } void ssplit(int pos,int k,int &amp;amp;x,int &amp;amp;y)//按size分裂 { if(!</description>
+    </item>
+  </channel>
+</rss>
