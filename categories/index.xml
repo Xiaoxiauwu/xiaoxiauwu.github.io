@@ -6,8 +6,22 @@
     <description>Recent content in Categories on 小夏の个人blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 18 Jan 2024 04:46:39 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 18 Jan 2024 08:26:56 +0800</lastBuildDate>
     <atom:link href="https://xiaoxiauwu.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ACM</title>
+      <link>https://xiaoxiauwu.github.io/categories/acm/</link>
+      <pubDate>Thu, 18 Jan 2024 08:26:56 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/categories/acm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>算法</title>
+      <link>https://xiaoxiauwu.github.io/categories/%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Thu, 18 Jan 2024 08:26:56 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/categories/%E7%AE%97%E6%B3%95/</guid>
+      <description></description>
+    </item>
     <item>
       <title>just test</title>
       <link>https://xiaoxiauwu.github.io/categories/just-test/</link>

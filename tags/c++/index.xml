@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>小夏の个人blog</title>
-    <link>https://xiaoxiauwu.github.io/</link>
-    <description>Recent content on 小夏の个人blog</description>
+    <title>c&#43;&#43; on 小夏の个人blog</title>
+    <link>https://xiaoxiauwu.github.io/tags/c&#43;&#43;/</link>
+    <description>Recent content in c&#43;&#43; on 小夏の个人blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 18 Jan 2024 08:26:56 +0800</lastBuildDate>
-    <atom:link href="https://xiaoxiauwu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://xiaoxiauwu.github.io/tags/c++/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>ACM模版集</title>
       <link>https://xiaoxiauwu.github.io/post/article_01/</link>
       <pubDate>Thu, 18 Jan 2024 08:26:56 +0800</pubDate>
       <guid>https://xiaoxiauwu.github.io/post/article_01/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>First blog</title>
-      <link>https://xiaoxiauwu.github.io/post/first/</link>
-      <pubDate>Thu, 18 Jan 2024 04:46:39 +0800</pubDate>
-      <guid>https://xiaoxiauwu.github.io/post/first/</guid>
       <description></description>
     </item>
   </channel>

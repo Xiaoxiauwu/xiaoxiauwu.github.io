@@ -307,6 +307,7 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#markdown图床：imgse.com</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>hugo new post/xxxx.md
+</span></span><span style="display:flex;"><span><span style="color:#75715e">#不知道为什么，非要用hugo --theme=tranquilpeak --baseURL=&#34;https://xiaoxiauwu.github.io/&#34; --buildDrafts才能同步</span>
 </span></span><span style="display:flex;"><span>hugo
 </span></span><span style="display:flex;"><span>cd public
 </span></span><span style="display:flex;"><span>git add .
@@ -318,146 +319,10 @@
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#git链接，保存为的theme名字</span>
 </span></span><span style="display:flex;"><span>git clone https://github.com/kakawait/hugo-tranquilpeak-theme.git tranquilpeak
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#本地调试网页</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e">#修改主题hugo server -t tranquilpeak --buildDrafts</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># hugo server -t tranquilpeak --buildDrafts</span>
+</span></span><span style="display:flex;"><span>hugo --theme<span style="color:#f92672">=</span>tranquilpeak --baseURL<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;https://xiaoxiauwu.github.io/&#34;</span> --buildDrafts
 </span></span><span style="display:flex;"><span>hugo server --buildDrafts
 </span></span><span style="display:flex;"><span><span style="color:#75715e">#有时间再换吧，搞了一晚上了</span>
-</span></span></code></pre></div><h2 id="4-19-fhq-treap">4-19 fhq Treap</h2>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-cpp" data-lang="cpp"><span style="display:flex;"><span><span style="color:#75715e">#include&lt;iostream&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include&lt;queue&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include&lt;ctime&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#include&lt;random&gt;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e">#define ET &#39;\n&#39;
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">using</span> <span style="color:#66d9ef">namespace</span> std;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> N<span style="color:#f92672">=</span><span style="color:#ae81ff">100005</span>;
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Treap</span>
-</span></span><span style="display:flex;"><span>{
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">const</span> <span style="color:#66d9ef">int</span> INF;
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> Root,cnt;
-</span></span><span style="display:flex;"><span>	deque<span style="color:#f92672">&lt;</span><span style="color:#66d9ef">int</span><span style="color:#f92672">&gt;</span>del_list;
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">struct</span> <span style="color:#a6e22e">Node</span>
-</span></span><span style="display:flex;"><span>	{
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> ch[<span style="color:#ae81ff">2</span>],v,rnd,siz;
-</span></span><span style="display:flex;"><span>	}node[N];
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">newNode</span>(<span style="color:#66d9ef">int</span> x)<span style="color:#75715e">//申请新节点
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	{
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> tmp;
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(del_list.empty()) tmp<span style="color:#f92672">=++</span>cnt;
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span> tmp<span style="color:#f92672">=</span>del_list.front(),del_list.pop_front();
-</span></span><span style="display:flex;"><span>		node[tmp].rnd<span style="color:#f92672">=</span>rand(),node[tmp].v<span style="color:#f92672">=</span>x,node[tmp].siz<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,node[tmp].ch[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">=</span>node[tmp].ch[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> tmp;
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">update</span>(<span style="color:#66d9ef">int</span> x)<span style="color:#75715e">//更新信息
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	{
-</span></span><span style="display:flex;"><span>		node[x].siz<span style="color:#f92672">=</span>node[node[x].ch[<span style="color:#ae81ff">0</span>]].siz<span style="color:#f92672">+</span>node[node[x].ch[<span style="color:#ae81ff">1</span>]].siz<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>;
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">vsplit</span>(<span style="color:#66d9ef">int</span> pos,<span style="color:#66d9ef">int</span> v,<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>x,<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>y)<span style="color:#75715e">//按权值分裂
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	{
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>pos)
-</span></span><span style="display:flex;"><span>		{
-</span></span><span style="display:flex;"><span>			x<span style="color:#f92672">=</span>y<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>		}
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(node[pos].v<span style="color:#f92672">&lt;=</span>v) x<span style="color:#f92672">=</span>pos,vsplit(node[pos].ch[<span style="color:#ae81ff">1</span>],v,node[pos].ch[<span style="color:#ae81ff">1</span>],y);
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span> y<span style="color:#f92672">=</span>pos,vsplit(node[pos].ch[<span style="color:#ae81ff">0</span>],v,x,node[pos].ch[<span style="color:#ae81ff">0</span>]);
-</span></span><span style="display:flex;"><span>		update(pos);
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">ssplit</span>(<span style="color:#66d9ef">int</span> pos,<span style="color:#66d9ef">int</span> k,<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>x,<span style="color:#66d9ef">int</span> <span style="color:#f92672">&amp;</span>y)<span style="color:#75715e">//按size分裂
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	{
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>pos)
-</span></span><span style="display:flex;"><span>		{
-</span></span><span style="display:flex;"><span>			x<span style="color:#f92672">=</span>y<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span>;
-</span></span><span style="display:flex;"><span>		}
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(k<span style="color:#f92672">&gt;</span>node[node[pos].ch[<span style="color:#ae81ff">0</span>]].siz)
-</span></span><span style="display:flex;"><span>			x<span style="color:#f92672">=</span>pos,ssplit(node[pos].ch[<span style="color:#ae81ff">1</span>],k<span style="color:#f92672">-</span>node[node[pos].ch[<span style="color:#ae81ff">0</span>]].siz<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,node[pos].ch[<span style="color:#ae81ff">1</span>],y);
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">else</span> y<span style="color:#f92672">=</span>pos,ssplit(node[pos].ch[<span style="color:#ae81ff">0</span>],k,x,node[pos].ch[<span style="color:#ae81ff">0</span>]);
-</span></span><span style="display:flex;"><span>		update(pos);
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">merge</span>(<span style="color:#66d9ef">int</span> x,<span style="color:#66d9ef">int</span> y)<span style="color:#75715e">//合并
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	{
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(<span style="color:#f92672">!</span>x<span style="color:#f92672">||!</span>y) <span style="color:#66d9ef">return</span> x<span style="color:#f92672">+</span>y;
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">if</span>(node[x].rnd<span style="color:#f92672">&lt;</span>node[y].rnd)
-</span></span><span style="display:flex;"><span>		{
-</span></span><span style="display:flex;"><span>			node[x].ch[<span style="color:#ae81ff">1</span>]<span style="color:#f92672">=</span>merge(node[x].ch[<span style="color:#ae81ff">1</span>],y);
-</span></span><span style="display:flex;"><span>			update(x);
-</span></span><span style="display:flex;"><span>			<span style="color:#66d9ef">return</span> x;
-</span></span><span style="display:flex;"><span>		}
-</span></span><span style="display:flex;"><span>		node[y].ch[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">=</span>merge(x,node[y].ch[<span style="color:#ae81ff">0</span>]);
-</span></span><span style="display:flex;"><span>		update(y);
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> y;
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">insert</span>(<span style="color:#66d9ef">int</span> v)<span style="color:#75715e">//插入
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	{
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> x,y;
-</span></span><span style="display:flex;"><span>		vsplit(Root,v,x,y);
-</span></span><span style="display:flex;"><span>		Root<span style="color:#f92672">=</span>merge(merge(x,newNode(v)),y);
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">void</span> <span style="color:#a6e22e">erase</span>(<span style="color:#66d9ef">int</span> v)<span style="color:#75715e">//删除
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	{
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> x,y,z;
-</span></span><span style="display:flex;"><span>		vsplit(Root,v,x,z);
-</span></span><span style="display:flex;"><span>		vsplit(x,v<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,x,y);
-</span></span><span style="display:flex;"><span>		del_list.push_back(y);
-</span></span><span style="display:flex;"><span>		y<span style="color:#f92672">=</span>merge(node[y].ch[<span style="color:#ae81ff">0</span>],node[y].ch[<span style="color:#ae81ff">1</span>]);
-</span></span><span style="display:flex;"><span>		Root<span style="color:#f92672">=</span>merge(merge(x,y),z);
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">pre</span>(<span style="color:#66d9ef">int</span> v)<span style="color:#75715e">//前驱
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	{
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> x,y,cur;
-</span></span><span style="display:flex;"><span>		vsplit(Root,v<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,x,y);
-</span></span><span style="display:flex;"><span>		cur<span style="color:#f92672">=</span>x;
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span>(node[cur].ch[<span style="color:#ae81ff">1</span>]) cur<span style="color:#f92672">=</span>node[cur].ch[<span style="color:#ae81ff">1</span>];
-</span></span><span style="display:flex;"><span>		merge(x,y);
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> node[cur].v;
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">nxt</span>(<span style="color:#66d9ef">int</span> v)<span style="color:#75715e">//后继
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	{
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> x,y,cur;
-</span></span><span style="display:flex;"><span>		vsplit(Root,v,x,y);
-</span></span><span style="display:flex;"><span>		cur<span style="color:#f92672">=</span>y;
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span>(node[cur].ch[<span style="color:#ae81ff">0</span>]) cur<span style="color:#f92672">=</span>node[cur].ch[<span style="color:#ae81ff">0</span>];
-</span></span><span style="display:flex;"><span>		merge(x,y);
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> node[cur].v;
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">get_rank</span>(<span style="color:#66d9ef">int</span> v)<span style="color:#75715e">//查排名
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	{
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> x,y,ans;
-</span></span><span style="display:flex;"><span>		vsplit(Root,v<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>,x,y);
-</span></span><span style="display:flex;"><span>		ans<span style="color:#f92672">=</span>node[x].siz;
-</span></span><span style="display:flex;"><span>		merge(x,y);
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> ans;
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">kth</span>(<span style="color:#66d9ef">int</span> k)<span style="color:#75715e">//查排名为k的数
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	{
-</span></span><span style="display:flex;"><span>		<span style="color:#f92672">++</span>k;
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">int</span> x,y,cur;
-</span></span><span style="display:flex;"><span>		ssplit(Root,k,x,y);
-</span></span><span style="display:flex;"><span>		cur<span style="color:#f92672">=</span>x;
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">while</span>(node[cur].ch[<span style="color:#ae81ff">1</span>]) cur<span style="color:#f92672">=</span>node[cur].ch[<span style="color:#ae81ff">1</span>];
-</span></span><span style="display:flex;"><span>		merge(x,y);
-</span></span><span style="display:flex;"><span>		<span style="color:#66d9ef">return</span> node[cur].v;
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>	Treap()<span style="color:#f92672">:</span>INF(<span style="color:#ae81ff">2147483647</span>)<span style="color:#75715e">//构造函数初始化
-</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>	{
-</span></span><span style="display:flex;"><span>		Root<span style="color:#f92672">=</span>cnt<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>		insert(<span style="color:#f92672">-</span>INF),insert(INF);
-</span></span><span style="display:flex;"><span>	}
-</span></span><span style="display:flex;"><span>};
-</span></span><span style="display:flex;"><span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>(){
-</span></span><span style="display:flex;"><span>    ios<span style="color:#f92672">::</span>sync_with_stdio(<span style="color:#ae81ff">0</span>);cin.tie(<span style="color:#ae81ff">0</span>);cout.tie(<span style="color:#ae81ff">0</span>);
-</span></span><span style="display:flex;"><span>    Treap T;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">int</span> n,t,x;
-</span></span><span style="display:flex;"><span>    cin<span style="color:#f92672">&gt;&gt;</span>n;
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">while</span>(n<span style="color:#f92672">--</span>){
-</span></span><span style="display:flex;"><span>        cin<span style="color:#f92672">&gt;&gt;</span>t<span style="color:#f92672">&gt;&gt;</span>x;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span>(t<span style="color:#f92672">==</span><span style="color:#ae81ff">1</span>)cout<span style="color:#f92672">&lt;&lt;</span>T.get_rank(x)<span style="color:#f92672">&lt;&lt;</span>ET;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(t<span style="color:#f92672">==</span><span style="color:#ae81ff">2</span>)cout<span style="color:#f92672">&lt;&lt;</span>T.kth(x)<span style="color:#f92672">&lt;&lt;</span>ET;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(t<span style="color:#f92672">==</span><span style="color:#ae81ff">3</span>)cout<span style="color:#f92672">&lt;&lt;</span>T.pre(x)<span style="color:#f92672">&lt;&lt;</span>ET;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> <span style="color:#66d9ef">if</span>(t<span style="color:#f92672">==</span><span style="color:#ae81ff">4</span>)cout<span style="color:#f92672">&lt;&lt;</span>T.nxt(x)<span style="color:#f92672">&lt;&lt;</span>ET;
-</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">else</span> T.insert(x);
-</span></span><span style="display:flex;"><span>    }
-</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
-</span></span><span style="display:flex;"><span>}
 </span></span></code></pre></div>
               
 
@@ -495,7 +360,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/article_01/" data-tooltip="ACM模版集" aria-label="NEXT: ACM模版集">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -584,7 +449,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/article_01/" data-tooltip="ACM模版集" aria-label="NEXT: ACM模版集">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
