@@ -2,33 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.org/categories/</loc>
+    <loc>https://xiaoxiauwu.github.io/categories/</loc>
     <lastmod>2024-01-18T04:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://example.org/post/first/</loc>
+    <loc>https://xiaoxiauwu.github.io/post/first/</loc>
     <lastmod>2024-01-18T04:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/git/</loc>
+    <loc>https://xiaoxiauwu.github.io/tags/git/</loc>
     <lastmod>2024-01-18T04:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/hugo/</loc>
+    <loc>https://xiaoxiauwu.github.io/tags/hugo/</loc>
     <lastmod>2024-01-18T04:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/just-test/</loc>
+    <loc>https://xiaoxiauwu.github.io/categories/just-test/</loc>
     <lastmod>2024-01-18T04:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://example.org/post/</loc>
+    <loc>https://xiaoxiauwu.github.io/post/</loc>
     <lastmod>2024-01-18T04:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://example.org/tags/</loc>
+    <loc>https://xiaoxiauwu.github.io/tags/</loc>
     <lastmod>2024-01-18T04:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://example.org/categories/test/</loc>
+    <loc>https://xiaoxiauwu.github.io/categories/test/</loc>
     <lastmod>2024-01-18T04:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://example.org/</loc>
+    <loc>https://xiaoxiauwu.github.io/</loc>
     <lastmod>2024-01-18T04:46:39+08:00</lastmod>
   </url><url>
-    <loc>https://example.org/archives/</loc>
+    <loc>https://xiaoxiauwu.github.io/archives/</loc>
   </url>
 </urlset>
