@@ -1,6 +1,6 @@
 var stop, staticx;
 var img = new Image();
-img.src = "https://pic.songjiahao.com/img/cherry.png";
+img.src = "images/cherry.png";
 function Sakura(x, y, s, r, fn) {
   this.x = x;
   this.y = y;
