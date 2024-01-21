@@ -72,17 +72,17 @@ var bszCaller, bszTag;
             this.bszssp.map(function (b) {
                 var c = document.getElementById("busuanzi_value_" + b);
                 c &&
-                    (c.innerHTML =  parseInt(a[b]) - 63457403); // init here
+                    (c.innerHTML =  a[b]); // init here
             });
             this.bszssu.map(function (b) {
                 var c = document.getElementById("busuanzi_value_" + b);
                 c &&
-                    (c.innerHTML =  parseInt(a[b]) - 40825391); // init here
+                    (c.innerHTML =  a[b]); // init here
             });
             this.bszspp.map(function (b) {
                 var c = document.getElementById("busuanzi_value_" + b);
                 c &&
-                    (c.innerHTML = parseInt(a[b]) - 26943175); // init here
+                    (c.innerHTML = a[b]); // init here
             })
         },
         hides: function () {
