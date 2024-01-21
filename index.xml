@@ -6,8 +6,15 @@
     <description>Recent content on 夏のBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 Jan 2024 02:12:40 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jan 2024 05:04:37 +0800</lastBuildDate>
     <atom:link href="https://xiaoxiauwu.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>不蒜子Busuanzi页面浏览次数与阅读量数据的重置</title>
+      <link>https://xiaoxiauwu.github.io/post/adduv/</link>
+      <pubDate>Mon, 22 Jan 2024 05:04:37 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/post/adduv/</guid>
+      <description></description>
+    </item>
     <item>
       <title>hugo中使用MathJax在markdown中解析LaTeX公式</title>
       <link>https://xiaoxiauwu.github.io/post/fixmathjax/</link>
