@@ -1,0 +1,1792 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/xiaoxiauwu.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "XiaoXia",
+    
+    "image": "https://xiaoxiauwu.github.io/images/avatar.jpg"
+    
+  },
+  "name":"夏のBLOG",
+  "description":"",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/latex\/",
+  "keywords":"[tech, C\u002b\u002b, python, study]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.121.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="XiaoXia">
+<meta name="keywords" content="tech, C&#43;&#43;, python, study">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LaTeX学习">
+<meta name="twitter:title" content="LaTeX学习">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/latex/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/latex/">
+<meta property="og:site_name" content="夏のBLOG">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2024-01-29T08:24:48">
+  
+  
+    <meta property="article:modified_time" content="2024-01-29T08:24:48">
+  
+  
+  
+    
+      <meta property="article:section" content="Markdown">
+    
+      <meta property="article:section" content="LaTeX">
+    
+  
+  
+    
+      <meta property="article:tag" content="math">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+
+
+
+
+  <meta property="og:image" content="https://s11.ax1x.com/2024/01/29/pFuyeT1.jpg">
+  <meta property="twitter:image" content="https://s11.ax1x.com/2024/01/29/pFuyeT1.jpg">
+
+
+  <meta property="og:image" content="https://s11.ax1x.com/2024/01/29/pFuyeT1.jpg">
+  <meta property="twitter:image" content="https://s11.ax1x.com/2024/01/29/pFuyeT1.jpg">
+
+
+    <title>LaTeX学习</title>
+
+    <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/latex/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiaoxiauwu.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://xiaoxiauwu.github.io/css/codeblock.css">
+      
+    
+
+    
+      
+    
+    
+
+
+<script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202401110101/show_ads_impl_fy2021.js" id="google_shimpl"></script>
+<script>
+      MathJax = {
+         tex: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true,
+            tags: 'ams',
+         },
+      };
+   </script>
+<script type="text/javascript" async="" src="https://wuli.wiki/MathJax3/es5/tex-mml-chtml.js"></script>
+
+<script async src="https://xiaoxiauwu.github.io/js/busuanzi.pure.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade"></head>
+
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiaoxiauwu.github.io/" aria-label="Go to homepage">夏のBLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiaoxiauwu.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+
+
+<div  class="meta-item">&nbsp·&nbsp
+  <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+</div>
+
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiaoxiauwu.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">XiaoXia</h4>
+        
+          <h5 class="sidebar-profile-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Xiaoxiauwu" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('https://s11.ax1x.com/2024/01/29/pFuyeT1.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      LaTeX学习
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2024-01-29T08:24:48&#43;08:00">
+        
+  January 29, 2024
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/markdown">Markdown</a>, 
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/latex">LaTeX</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" id="top">
+          
+            <span class="post-header-cover-caption caption">缝缝补补了一上午</span>
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <!-- raw HTML omitted -->
+<h1 id="latex基本语法">$\LaTeX$基本语法</h1>
+<h2 id="行间与行内公式">行间与行内公式</h2>
+<p>使用两个$以创建一个行内公式：$123$</p>
+<p>使用两个$$以创建行间公式：$$f(x)$$</p>
+<p>p.s:若想在markdown中写出$而不发生转义，应当在每个$符号前加\，比如\$</p>
+<h2 id="转义与形式变换">转义与形式变换</h2>
+<table>
+<thead>
+<tr>
+<th>LaTeX</th>
+<th>Symbol</th>
+<th>LaTeX</th>
+<th>Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\#</td>
+<td>$\#$</td>
+<td>\$</td>
+<td>$\$$</td>
+</tr>
+<tr>
+<td>\%</td>
+<td>$\%$</td>
+<td>\{</td>
+<td>$\{$</td>
+</tr>
+<tr>
+<td>\backslash</td>
+<td>$ \backslash$</td>
+<td>\&amp;</td>
+<td>$\&amp;$</td>
+</tr>
+<tr>
+<td>\}</td>
+<td>$\}$</td>
+<td>\_{i}</td>
+<td>$_{i}$</td>
+</tr>
+<tr>
+<td>\vert</td>
+<td>$\vert$</td>
+<td>\Vert</td>
+<td>$\Vert$</td>
+</tr>
+<tr>
+<td>\langle</td>
+<td>$\langle$</td>
+<td>\rangle</td>
+<td>$\rangle$</td>
+</tr>
+<tr>
+<td>\lfloor</td>
+<td>$\lfloor$</td>
+<td>\rfloor</td>
+<td>$\rfloor$</td>
+</tr>
+<tr>
+<td>\lceil</td>
+<td>$\lceil$</td>
+<td>\rceil</td>
+<td>$\rceil$</td>
+</tr>
+<tr>
+<td>\llcorner</td>
+<td>$\llcorner$</td>
+<td>\lrcorner</td>
+<td>$\lrcorner$</td>
+</tr>
+<tr>
+<td>\ulcorner</td>
+<td>$\ulcorner$</td>
+<td>\urcorner</td>
+<td>$\urcorner$</td>
+</tr>
+<tr>
+<td>\uparrow</td>
+<td>$\uparrow$</td>
+<td>\downarrow</td>
+<td>$\downarrow$</td>
+</tr>
+<tr>
+<td>\Uparrow</td>
+<td>$\Uparrow$</td>
+<td>\Downarrow</td>
+<td>$\Downarrow$</td>
+</tr>
+<tr>
+<td>\alpha</td>
+<td>$\alpha$</td>
+<td>\Alpha</td>
+<td>$\Alpha$</td>
+</tr>
+<tr>
+<td>\beta</td>
+<td>$\beta$</td>
+<td>\Beta</td>
+<td>$\Beta$</td>
+</tr>
+<tr>
+<td>\gamma \digamma</td>
+<td>$\gamma$ $\digamma$</td>
+<td>\Gamma \varGamma</td>
+<td>$\Gamma$ $\varGamma$</td>
+</tr>
+<tr>
+<td>\delta</td>
+<td>$\delta$</td>
+<td>\Delta \varDelta</td>
+<td>$\Delta$ $\varDelta$</td>
+</tr>
+<tr>
+<td>\epsilon \varepsilon</td>
+<td>$\epsilon$ $\varepsilon$</td>
+<td>\Epsilon</td>
+<td>$\Epsilon$</td>
+</tr>
+<tr>
+<td>\zeta</td>
+<td>$\zeta$</td>
+<td>\Zeta</td>
+<td>$\Zeta$</td>
+</tr>
+<tr>
+<td>\theta \vartheta</td>
+<td>$\theta$ $\vartheta$</td>
+<td>\Theta \varTheta</td>
+<td>$\Theta$ $\varTheta$</td>
+</tr>
+<tr>
+<td>\iota</td>
+<td>$\iota$</td>
+<td>\Iota</td>
+<td>$\Iota$</td>
+</tr>
+<tr>
+<td>\kappa \varkappa</td>
+<td>$\kappa$ $\varkappa$</td>
+<td>\Kappa</td>
+<td>$\Kappa$</td>
+</tr>
+<tr>
+<td>\lambda</td>
+<td>$\lambda$</td>
+<td>\Lambda \varLambda</td>
+<td>$\Lambda$ $\varLambda$</td>
+</tr>
+<tr>
+<td>\mu</td>
+<td>$\mu$</td>
+<td>\Mu</td>
+<td>$\Mu$</td>
+</tr>
+<tr>
+<td>\sigma \varsigma</td>
+<td>$\sigma$ $\varsigma$</td>
+<td>\Sigma \varSigma</td>
+<td>$\Sigma$ $\varSigma$</td>
+</tr>
+<tr>
+<td>\omega</td>
+<td>$\omega$</td>
+<td>\Omega \varOmega</td>
+<td>$\Omega$ $\varOmega$</td>
+</tr>
+<tr>
+<td>\phi \varphi</td>
+<td>$\phi$ $\varphi$</td>
+<td>\Phi \varPhi</td>
+<td>$\Phi$ $\varPhi$</td>
+</tr>
+<tr>
+<td>\psi</td>
+<td>$\psi$</td>
+<td>\Psi \varPsi</td>
+<td>$\Psi$ $\varPsi$</td>
+</tr>
+<tr>
+<td>\chi</td>
+<td>$\chi$</td>
+<td>\Chi</td>
+<td>$\Chi$</td>
+</tr>
+<tr>
+<td>\pi \varpi</td>
+<td>$\pi$ $\varpi$</td>
+<td>\Pi \varPi</td>
+<td>$\Pi$ $\varPi$</td>
+</tr>
+<tr>
+<td>\eta</td>
+<td>$\eta$</td>
+<td>\Eta</td>
+<td>$\Eta$</td>
+</tr>
+<tr>
+<td>\rho \varrho</td>
+<td>$\rho$ $\varrho$</td>
+<td>\Rho</td>
+<td>$\Rho$</td>
+</tr>
+<tr>
+<td>\tau</td>
+<td>$\tau$</td>
+<td>\Tau</td>
+<td>$\Tau$</td>
+</tr>
+<tr>
+<td>\xi</td>
+<td>$\xi$</td>
+<td>\Xi \varXi</td>
+<td>$\Xi$ $\varXi$</td>
+</tr>
+<tr>
+<td>\upsilon</td>
+<td>$\upsilon$</td>
+<td>\Upsilon \varUpsilon</td>
+<td>$\Upsilon$ $\varUpsilon$</td>
+</tr>
+<tr>
+<td>\aleph</td>
+<td>$\aleph$</td>
+<td>\beth</td>
+<td>$\beth$</td>
+</tr>
+<tr>
+<td>\daleth</td>
+<td>$\daleth$</td>
+<td>\gimel</td>
+<td>$\gimel$</td>
+</tr>
+<tr>
+<td>\sum</td>
+<td>$\sum$</td>
+<td>\prod</td>
+<td>$\prod$</td>
+</tr>
+<tr>
+<td>\coprod</td>
+<td>$\coprod$</td>
+<td>\biguplus</td>
+<td>$\biguplus$</td>
+</tr>
+<tr>
+<td>\bigcap</td>
+<td>$\bigcap$</td>
+<td>\bigcup</td>
+<td>$\bigcup$</td>
+</tr>
+<tr>
+<td>\int</td>
+<td>$\int$</td>
+<td>\oint</td>
+<td>$\oint$</td>
+</tr>
+<tr>
+<td>\iint</td>
+<td>$\iint$</td>
+<td>\oiint</td>
+<td>$\oiint$</td>
+</tr>
+<tr>
+<td>\iiint</td>
+<td>$\iiint$</td>
+<td>\oiiint</td>
+<td>$\oiiint$</td>
+</tr>
+<tr>
+<td>\bigoplus</td>
+<td>$\bigoplus$</td>
+<td>\bigotimes</td>
+<td>$\bigotimes$</td>
+</tr>
+<tr>
+<td>\bigodot</td>
+<td>$\bigodot$</td>
+<td>\bigvee</td>
+<td>$\bigvee$</td>
+</tr>
+<tr>
+<td>\bigwedge</td>
+<td>$\bigwedge$</td>
+<td>\bigsqcup</td>
+<td>$\bigsqcup$</td>
+</tr>
+<tr>
+<td>\times</td>
+<td>$\times$</td>
+<td>\cdot</td>
+<td>$\cdot$</td>
+</tr>
+<tr>
+<td>\div</td>
+<td>$\div$</td>
+<td>\pm</td>
+<td>$\pm$</td>
+</tr>
+<tr>
+<td>\mp</td>
+<td>$\mp$</td>
+<td>\ge</td>
+<td>$\ge$</td>
+</tr>
+<tr>
+<td>\le</td>
+<td>$\le$</td>
+<td>\gg</td>
+<td>$\gg$</td>
+</tr>
+<tr>
+<td>\ll</td>
+<td>$\ll$</td>
+<td>\ne</td>
+<td>$\ne$</td>
+</tr>
+<tr>
+<td>\approx</td>
+<td>$\approx$</td>
+<td>\equiv</td>
+<td>$\equiv$</td>
+</tr>
+<tr>
+<td>\in</td>
+<td>$\in$</td>
+<td>\notin</td>
+<td>$\notin$</td>
+</tr>
+<tr>
+<td>\subseteq</td>
+<td>$\subseteq$</td>
+<td>\subsetneqq</td>
+<td>$\subsetneqq$</td>
+</tr>
+<tr>
+<td>\varnothing</td>
+<td>$\varnothing$</td>
+<td>\emptyset</td>
+<td>$\emptyset$</td>
+</tr>
+<tr>
+<td>\forall</td>
+<td>$\forall$</td>
+<td>\exists</td>
+<td>$\exists$</td>
+</tr>
+<tr>
+<td>\nexist</td>
+<td>$\nexists$</td>
+<td>\emptyset</td>
+<td>$\emptyset$</td>
+</tr>
+<tr>
+<td>\infty</td>
+<td>$\infty$</td>
+<td>\partial</td>
+<td>$\partial$</td>
+</tr>
+<tr>
+<td>\nabla</td>
+<td>$\nabla$</td>
+<td>1\degree</td>
+<td>$1\degree$</td>
+</tr>
+<tr>
+<td>\propto</td>
+<td>$\propto$</td>
+<td>1^{^\circ}</td>
+<td>$1^{^\circ}$</td>
+</tr>
+<tr>
+<td>\cicr</td>
+<td>$\circ$</td>
+<td>\LaTeX</td>
+<td>$\LaTeX$</td>
+</tr>
+</tbody>
+</table>
+<h3 id="标准函数名">标准函数名</h3>
+<table>
+<thead>
+<tr>
+<th>LaTeX</th>
+<th>Symbol</th>
+<th>LaTeX</th>
+<th>Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\sin</td>
+<td>$\sin$</td>
+<td>\cos</td>
+<td>$\cos$</td>
+</tr>
+<tr>
+<td>\tan</td>
+<td>$\tan$</td>
+<td>\cot</td>
+<td>$\cot$</td>
+</tr>
+<tr>
+<td>\sec</td>
+<td>$\sec$</td>
+<td>\csc</td>
+<td>$\csc$</td>
+</tr>
+<tr>
+<td>\arcsin</td>
+<td>$\arcsin$</td>
+<td>\arccos</td>
+<td>$\arccos$</td>
+</tr>
+<tr>
+<td>\arctan</td>
+<td>$\arctan$</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>\sinh</td>
+<td>$\sinh$</td>
+<td>\cosh</td>
+<td>$\cosh$</td>
+</tr>
+<tr>
+<td>\tanh</td>
+<td>$\tanh$</td>
+<td>\coth</td>
+<td>$\coth$</td>
+</tr>
+<tr>
+<td>\min</td>
+<td>$\min$</td>
+<td>\max</td>
+<td>$\max$</td>
+</tr>
+<tr>
+<td>\arg</td>
+<td>$\arg$</td>
+<td>\deg</td>
+<td>$\deg$</td>
+</tr>
+<tr>
+<td>\det</td>
+<td>$\det$</td>
+<td>\dim</td>
+<td>$\dim$</td>
+</tr>
+<tr>
+<td>\exp</td>
+<td>$\exp$</td>
+<td>\hom</td>
+<td>$\hom$</td>
+</tr>
+<tr>
+<td>\gcd</td>
+<td>$\gcd$</td>
+<td>\ker</td>
+<td>$\ker$</td>
+</tr>
+<tr>
+<td>\lg</td>
+<td>$\lg$</td>
+<td>\ln</td>
+<td>$\ln$</td>
+</tr>
+<tr>
+<td>\inf</td>
+<td>$\inf$</td>
+<td>\sup</td>
+<td>$\sup$</td>
+</tr>
+<tr>
+<td>\lim</td>
+<td>$\lim$</td>
+<td>\liminf</td>
+<td>$\liminf$</td>
+</tr>
+<tr>
+<td>\log</td>
+<td>$\log$</td>
+<td>\limsup</td>
+<td>$\limsup$</td>
+</tr>
+<tr>
+<td>\Pr</td>
+<td>$\Pr$</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>LaTeX</th>
+<th>Symbol</th>
+<th>LaTeX</th>
+<th>Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\~{i}</td>
+<td>$~{i}$</td>
+<td>\^{i}</td>
+<td>$^{i}$</td>
+</tr>
+<tr>
+<td>_i</td>
+<td>$_i$</td>
+<td>^i</td>
+<td>$^i$</td>
+</tr>
+<tr>
+<td>\frac{a}{b}</td>
+<td>$\frac{a}{b}$</td>
+<td>\dfrac{a}{b}</td>
+<td>$\dfrac{a}{b}$</td>
+</tr>
+<tr>
+<td>\sqrt{n}</td>
+<td>$\sqrt{n}$</td>
+<td>\sqrt[n]{a}</td>
+<td>$\sqrt[n]{a}$</td>
+</tr>
+<tr>
+<td>\overline{n}</td>
+<td>$\overline{n}$</td>
+<td>\underline{n}</td>
+<td>$\underline{n}$</td>
+</tr>
+<tr>
+<td>\widehat{n}</td>
+<td>$\widehat{n}$</td>
+<td>\widetilde{n}</td>
+<td>$\widetilde{n}$</td>
+</tr>
+<tr>
+<td>\overrightarrow{n}</td>
+<td>$\overrightarrow{n}$</td>
+<td>\underrightarrow{n}</td>
+<td>$\underrightarrow{n}$</td>
+</tr>
+<tr>
+<td>\overleftarrow{n}</td>
+<td>$\overleftarrow{n}$</td>
+<td>\underleftarrow{n}</td>
+<td>$\underleftarrow{n}$</td>
+</tr>
+<tr>
+<td>\overbrace{abcde}</td>
+<td>$\overbrace{abcde}$</td>
+<td>\underbrace{abcde}</td>
+<td>$\underbrace{abcde}$</td>
+</tr>
+<tr>
+<td>空格：~</td>
+<td>$a~s$</td>
+<td>\prod\limits_{i=0}^{n}</td>
+<td>$\prod\limits_{i=0}^{n}$</td>
+</tr>
+<tr>
+<td>\max\limits_{{1\leq i\leq p}}\{ a_i \}</td>
+<td>$\max\limits_{{1\leq i\leq p}}{ a_i }$</td>
+<td>\underset{x\in \mathbb{R}^n}{min}</td>
+<td>$\underset{x\in \mathbb{R}^n}{min}$</td>
+</tr>
+<tr>
+<td>\varliminf\limits_{n\to\infty}</td>
+<td>$\varliminf\limits_{n\to\infty}$</td>
+<td>\varlimsup\limits_{n\to\infty}</td>
+<td>$\varlimsup\limits_{n\to\infty}$</td>
+</tr>
+<tr>
+<td>\xlongequal[subscript]{superscript}</td>
+<td>$\xlongequal[subscript]{superscript}$</td>
+<td>\lim\limits_{x\to 0}\frac{x}{\sin x}</td>
+<td>$\lim\limits_{x\to 0}\frac{x}{\sin x}$</td>
+</tr>
+<tr>
+<td>\left.\frac{\partial f}{\partial x}\right|_{x=0}</td>
+<td>$\left.\frac{ \partial f}{ \partial x}\right|_{x=0}$</td>
+<td>\lim\limits_{x\to 0}\frac{x}{\sin x}</td>
+<td>$\lim\limits_{x\to 0}\frac{x}{\sin x}$</td>
+</tr>
+</tbody>
+</table>
+<p>$\mathbb{R}^3\backslash{0}$</p>
+<p>我服了，抄不动了，这转义符是真的多，自己看图吧(水印懒得去了)：</p>
+<p><img src="https://img-blog.csdnimg.cn/73778b32b00544328358a5b78b2994f0.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/6c7d1231859b49aba19cc809867852d8.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/141da2abcaca4639b0bea710a2cc8fdf.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/fa2be480490341b1a3deabbca9a6fb8f.png" alt=""></p>
+<p><img src="https://img-blog.csdnimg.cn/323b8ea8aaf445d1a25d974825217208.jpeg" alt=""></p>
+<h3 id="矩阵型">矩阵型</h3>
+<pre><code>$\left(
+    \begin{array}{cc}
+        1 &amp; 2 \\
+        3 &amp; 4
+    \end{array}
+\right)$
+</code></pre>
+<p>$\left(
+\begin{array}{cc}
+1 &amp; 2 \\
+3 &amp; 4
+\end{array}
+\right)$</p>
+<pre><code>$\left(
+    \begin{array}{cc}
+        1 &amp; 2 \\
+        3 &amp; 4
+    \end{array}
+\right)
+\left(
+    \begin{array}{c}
+        x \\
+        y
+    \end{array}
+\right)$
+</code></pre>
+<p>$\left(
+\begin{array}{cc}
+1 &amp; 2 \\
+3 &amp; 4
+\end{array}
+\right)
+\left(
+\begin{array}{c}
+x \\
+y
+\end{array}
+\right)$</p>
+<pre><code>$\left[
+    \begin{array}{cc|c}
+        1 &amp; 2 &amp; 3 \\
+        4 &amp; 5 &amp; 6
+    \end{array}
+\right]$
+</code></pre>
+<p>$\left[
+\begin{array}{cc|c}
+1 &amp; 2 &amp; 3 \\
+4 &amp; 5 &amp; 6
+\end{array}
+\right]$</p>
+<pre><code>$f(x)=\left\{
+    \begin{array}{rcl} 
+        1 &amp; for &amp; x&gt;0 \\
+        0 &amp; for &amp; x=0 \\
+        -1 &amp; for &amp; x&lt;0
+    \end{array}
+\right.$
+</code></pre>
+<p>$f(x)=\left\{\begin{array}{rcl}
+1 &amp; for &amp; x&gt;0 \\
+0 &amp; for &amp; x=0 \\
+-1 &amp; for &amp; x&lt;0
+\end{array}\right.$</p>
+<p>一个快速生成表格的网站：<a href="https://www.tablesgenerator.com/latex_tables">tablesgenerator</a></p>
+<h2 id="多行公式">多行公式</h2>
+<pre><code>%自带编号单行公式
+$\begin{equation}
+  a^2 + b^2 = c^2
+\end{equation}$
+$\begin{equation}
+  a^2 + b^2 = c^2
+\end{equation}$
+</code></pre>
+<p>$\begin{equation}
+a^2 + b^2 = c^2
+\end{equation}$
+$\begin{equation}
+a^2 + b^2 = c^2
+\end{equation}$</p>
+<pre><code>%带对其点的多行公式，对其&amp;
+%\nonumber用于取消标号
+\begin{align}
+  a &amp;= b + c \nonumber\\
+  d &amp;= e + f \nonumber
+\end{align}
+</code></pre>
+<p>$$\begin{align}
+a &amp;= b + c-4 \nonumber\\
+max(d) &amp;= e + f \nonumber
+\end{align}$$</p>
+<pre><code>%居中对齐的多行公式
+\begin{gather}
+  a = b + c \\
+  d = e + f
+\end{gather}
+</code></pre>
+<p>$\begin{gather}
+a = b + c \\
+max(d) = e + f
+\end{gather}$</p>
+<h2 id="关于颜色">关于颜色</h2>
+<p>单公式全局颜色：\color{颜色控制码}</p>
+<p>单公式局部颜色：\textcolor{颜色控制码}{文本}</p>
+<p>$\colorbox{orange}{单公式无框盒子：}$ \colorbox{文字背景颜色码}{文本}</p>
+<p>$\fcolorbox{red}{magenta}{单公式盒子:}$ \fcolorbox{边框颜色码}{文字背景颜色码}{文本}</p>
+<p>颜色控制码自定义：\color{#F4E040}{文字}</p>
+<table>
+<thead>
+<tr>
+<th>颜色控制码</th>
+<th>颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>red</td>
+<td>$\color{red}red$</td>
+</tr>
+<tr>
+<td>green</td>
+<td>$\color{green}green$</td>
+</tr>
+<tr>
+<td>blue</td>
+<td>$\color{blue}blue$</td>
+</tr>
+<tr>
+<td>pink</td>
+<td>$\color{pink}pink$</td>
+</tr>
+<tr>
+<td>lightgreen</td>
+<td>$\color{lightgreen}lightgreen$</td>
+</tr>
+<tr>
+<td>lightblue</td>
+<td>$\color{lightblue}lightblue$</td>
+</tr>
+<tr>
+<td>orange</td>
+<td>$\color{orange}orange$</td>
+</tr>
+<tr>
+<td>cyan</td>
+<td>$\color{cyan}cyan$</td>
+</tr>
+<tr>
+<td>magenta</td>
+<td>$\color{magenta}magenta$</td>
+</tr>
+<tr>
+<td>purple</td>
+<td>$\color{purple}purple$</td>
+</tr>
+<tr>
+<td>brown</td>
+<td>$\color{brown}brown$</td>
+</tr>
+<tr>
+<td>olive</td>
+<td>$\color{olive}olive$</td>
+</tr>
+<tr>
+<td>lime</td>
+<td>$\color{lime}lime$</td>
+</tr>
+<tr>
+<td>teal</td>
+<td>$\color{teal}teal$</td>
+</tr>
+<tr>
+<td>violet</td>
+<td>$\color{violet}voilet$</td>
+</tr>
+<tr>
+<td>black</td>
+<td>$\color{black}black$</td>
+</tr>
+<tr>
+<td>gray</td>
+<td>$\color{gray}gray$</td>
+</tr>
+<tr>
+<td>darkgray</td>
+<td>$\color{darkgray}darkgray$</td>
+</tr>
+<tr>
+<td>lightgray</td>
+<td>$\color{lightgray}lightgray$</td>
+</tr>
+<tr>
+<td>white</td>
+<td>$\color{white}white$</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>颜色控制码</th>
+<th>颜色</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>maroon</td>
+<td>$\color{maroon}maroon$</td>
+</tr>
+<tr>
+<td>crimson</td>
+<td>$\color{crimson}crimson$</td>
+</tr>
+<tr>
+<td>orangered</td>
+<td>$\color{orangered}orangered$</td>
+</tr>
+<tr>
+<td>coral</td>
+<td>$\color{coral}coral$</td>
+</tr>
+<tr>
+<td>salmon</td>
+<td>$\color{salmon}salmon$</td>
+</tr>
+<tr>
+<td>khaki</td>
+<td>$\color{khaki}khaki$</td>
+</tr>
+<tr>
+<td>gold</td>
+<td>$\color{gold}gold$</td>
+</tr>
+<tr>
+<td>goldenrod</td>
+<td>$\color{goldenrod}goldenrod$</td>
+</tr>
+<tr>
+<td>tan</td>
+<td>$\color{tan}tan$</td>
+</tr>
+<tr>
+<td>seagreen</td>
+<td>$\color{seagreen}seagreen$</td>
+</tr>
+<tr>
+<td>forestgreen</td>
+<td>$\color{forestgreen}forestgreen$</td>
+</tr>
+<tr>
+<td>yellowgreen</td>
+<td>$\color{yellowgreen}yellowgreen$</td>
+</tr>
+<tr>
+<td>greenyellow</td>
+<td>$\color{greenyellow}greenyellow$</td>
+</tr>
+<tr>
+<td>limegreen</td>
+<td>$\color{limegreen}limegreen$</td>
+</tr>
+<tr>
+<td>springgreen</td>
+<td>$\color{springgreen}springgreen$</td>
+</tr>
+<tr>
+<td>aquamarine</td>
+<td>$\color{aquamarine}aquamarine$</td>
+</tr>
+<tr>
+<td>turquoise</td>
+<td>$\color{turquoise}turquoise$</td>
+</tr>
+<tr>
+<td>cadetblue</td>
+<td>$\color{cadetblue}cadetblue$</td>
+</tr>
+<tr>
+<td>skyblue</td>
+<td>$\color{skyblue}skyblue$</td>
+</tr>
+<tr>
+<td>cornflowerblue</td>
+<td>$\color{cornflowerblue}cornflowerblue$</td>
+</tr>
+<tr>
+<td>royalblue</td>
+<td>$\color{royalblue}royalblue$</td>
+</tr>
+<tr>
+<td>midnightblue</td>
+<td>$\color{midnightblue}midnightblue$</td>
+</tr>
+<tr>
+<td>navy</td>
+<td>$\color{navy}navy$</td>
+</tr>
+<tr>
+<td>indigo</td>
+<td>$\color{indigo}indigo$</td>
+</tr>
+<tr>
+<td>blueviolet</td>
+<td>$\color{blueviolet}blueviolet$</td>
+</tr>
+<tr>
+<td>darkorchid</td>
+<td>$\color{darkorchid}darkorchid$</td>
+</tr>
+<tr>
+<td>fuchsia</td>
+<td>$\color{fuchsia}fuchsia$</td>
+</tr>
+<tr>
+<td>orchid</td>
+<td>$\color{orchid}orchid$</td>
+</tr>
+<tr>
+<td>plum</td>
+<td>$\color{plum}plum$</td>
+</tr>
+<tr>
+<td>linen</td>
+<td>$\color{linen}linen$</td>
+</tr>
+<tr>
+<td>beige</td>
+<td>$\color{beige}beige$</td>
+</tr>
+</tbody>
+</table>
+<p>$\color{#c0ffee}{\LaTeX}$</p>
+<h2 id="关于字体">关于字体</h2>
+<h3 id="字体大小">字体大小</h3>
+<pre><code>$\displaystyle \int f^{n}(x-x_a)~dx $
+$\textstyle \int f^{n}(x-x_a)~dx $
+$\scriptstyle \int f^{n}(x-x_a)~dx $
+$\scriptscriptstyle \int f^{n}(x-x_a)~dx $
+</code></pre>
+<p>$\displaystyle \int f^{n}(x-x_a)~dx $</p>
+<p>$\textstyle \int f^{n}(x-x_a)~dx $</p>
+<p>$\scriptstyle \int f^{n}(x-x_a)~dx $</p>
+<p>$\scriptscriptstyle \int f^{n}(x-x_a)~dx $</p>
+<pre><code>$\Huge A$ $\huge B$ $\LARGE C$ $\Large D$  $\large E$ $\pmb F$ $\normalsize F$ $\small G$ $\footnotesize H$ $\scriptsize I$ $\tiny J$
+</code></pre>
+<p>$\Huge A$ $\huge B$ $\LARGE C$ $\Large D$  $\large E$ $\pmb F$ $\normalsize F$ $\small G$ $\footnotesize H$ $\scriptsize I$ $\tiny J$</p>
+<h3 id="字体">字体</h3>
+<table>
+<thead>
+<tr>
+<th>LaTeX</th>
+<th>Symbol</th>
+<th>LaTeX</th>
+<th>Symbol</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>\mathbb{R}</td>
+<td>$\mathbb{R}$</td>
+<td>\mathsf{R}</td>
+<td>$\mathsf{R}$</td>
+</tr>
+<tr>
+<td>\mathtt{R}</td>
+<td>$\mathtt{R}$</td>
+<td>\mathit{R}</td>
+<td>$\mathit{R}$</td>
+</tr>
+<tr>
+<td>\mathcal{R}</td>
+<td>$\mathcal{R}$</td>
+<td>\mathrm{R}</td>
+<td>$\mathrm{R}$</td>
+</tr>
+<tr>
+<td>\mathbf{R}</td>
+<td>$\mathbf{R}$</td>
+<td>\mathop{R}</td>
+<td>$\mathop{R}$</td>
+</tr>
+<tr>
+<td>\mathfrak{R}</td>
+<td>$\mathfrak{R}$</td>
+<td>\mathscr{R}</td>
+<td>$\mathscr{R}$</td>
+</tr>
+<tr>
+<td>\boldsymbol{R}</td>
+<td>$\boldsymbol{R}$</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>$\mathbb{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+$\mathsf{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+$\mathtt{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+$\mathit{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+$\mathcal{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+$\mathrm{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+$\mathbf{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+$\mathop{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+$\mathscr{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$
+$\boldsymbol{ABCDEFGHIJKLMNOPQRSTUVWXYZ}$</p>
+<h2 id="附录">附录</h2>
+<h3 id="关于markdown编辑latex出现错误的解决">关于Markdown编辑LaTeX出现错误的解决</h3>
+<p>使用markdown编辑好blog再发布时，有时候会出现公式报错现象，比如</p>
+<p>$\color{red}\rm Missing~or~unrecognized~delimiter~for ~\backslash left$</p>
+<p>$\color{red}\rm Misplaced~\backslash hdashline$</p>
+<p>$\color{red}\rm Misplaced~\backslash hline$</p>
+<p>出现Missing or unrecognized delimiter for \left，Misplaced \hdashline和Misplaced \hline的原因一般是因为在markdown文件转html时用掉了LaTeX的\转义，导致实际在网页浏览LaTeX时，因为\的缺失出现公式报错。</p>
+<p>解决方法非常简单，只需要在原LaTeX公式上的\处再加一个\即可，比如\\\。这样处理后就不用担心markdown转html时把\全转义完了。(如果原公式处是\\\，也应改为\\\\\\\)</p>
+<h3 id="一些规范">一些规范</h3>
+<pre><code>不能使用$sin(x)$
+应当使用标准化的函数名$\sin(x)$
+</code></pre>
+<p>$sin(x)$</p>
+<p>$\sin(x)$</p>
+<pre><code>英文字母只有在表示变量（或单一字符的函数名称）时才使用斜体，其余情况（如输入输出，常量）都应该使用罗马体（直立体）
+$\rm ij$ \rm是范围变罗马体
+$\text ij$ \text是单字符变罗马体
+可使用$\text{ij}$扩展/限定范围
+</code></pre>
+<p>$x_i$，$i$表示变量$i=0,1,&hellip;$</p>
+<p>$x_{\rm i}$，$\rm i$表示$\rm input$</p>
+<h3 id="一些例子">一些例子</h3>
+<pre><code>$\def\mathbi#1{\textbf{#1}}$
+$\mathbi{A}$
+</code></pre>
+<p>$\def\mathbi#1{\textbf{#1}}$
+$\mathbi{A}$</p>
+<pre><code>$\mathbb{R}^3\backslash\{0\}$
+</code></pre>
+<p>$\mathbb{R}^3\backslash{0}$</p>
+<pre><code>$f(x)=\frac 1 {\sqrt {2\pi} \sigma }{\rm e}^{-\frac {(x-\mu)}{2\sigma^2}}$
+</code></pre>
+<p>$f(x)=\frac 1 {\sqrt {2\pi} \sigma }{\rm e}^{-\frac {(x-\mu)}{2\sigma^2}}$</p>
+<pre><code>$$\sum_{n=1}^\infty \frac{1}{n^2} \to
+      \textstyle \sum_{n=1}^\infty \frac{1}{n^2} \to
+      \displaystyle \sum_{n=1}^\infty \frac{1}{n^2}$$
+</code></pre>
+<p>$$\sum_{n=1}^\infty \frac{1}{n^2} \to
+\textstyle \sum_{n=1}^\infty \frac{1}{n^2} \to
+\displaystyle \sum_{n=1}^\infty \frac{1}{n^2}$$</p>
+<pre><code>Compare $\displaystyle \lim_{t \to 0} \int_t^1 f(t)\, dt$
+versus $\lim_{t \to 0} \int_t^1 f(t)\, dt$.
+</code></pre>
+<p>Compare $\displaystyle \lim_{t \to 0} \int_t^1 f(t), dt$
+versus $\lim_{t \to 0} \int_t^1 f(t), dt$.</p>
+<pre><code>$\underset{j=1}{\overset{\infty}{\LARGE\mathrm K}}
+\frac{a_j}{b_j}=
+\cfrac{a_1}{
+    b_1+\cfrac{a_2}{
+        b_2+\cfrac{a_3}{
+            b_3+\ddots}
+        }
+    }
+$
+</code></pre>
+<p>$\underset{j=1}{\overset{\infty}{\LARGE\mathrm K}}\frac{a_j}{b_j}=\cfrac{a_1}{b_1+\cfrac{a_2}{b_2+\cfrac{a_3}{b_3+\ddots}}}$</p>
+<pre><code>$$
+f\left(
+   \left[ 
+ \frac{
+   1+\left\{x,y\right\}
+ }{
+   \left(
+      \frac{x}{y}+\frac{y}{x}
+   \right)
+   \left(u+1\right)
+ }+a
+   \right]^{3/2}
+\right)
+$$
+</code></pre>
+<p>$$
+f\left(
+\left[
+\frac{
+1+\left\{x,y\right\}
+}{
+\left(
+\frac{x}{y}+\frac{y}{x}
+\right)
+\left(u+1\right)
+}+a
+\right]^{3/2}
+\right)
+$$</p>
+<pre><code>$$
+\begin{aligned}
+a=&amp;\left(1+2+3+  \cdots \right. \\
+&amp; \cdots+ \left. \infty-2+\infty-1+\infty\right)
+\end{aligned}
+$$
+</code></pre>
+<p>$$
+\begin{aligned}
+a=&amp;\left(1+2+3+  \cdots \right. \\
+&amp; \cdots+ \left. \infty-2+\infty-1+\infty\right)
+\end{aligned}
+$$</p>
+<pre><code>$ cost(\theta)=\begin{equation}
+\left\{
+    \begin{array}{lr}
+        -log(h_\theta(x))&amp;y =1 \\
+        -log(1-h_\theta(x))&amp;y=0
+    \end{array}
+\right.
+\end{equation}$
+</code></pre>
+<p>$ cost(\theta)=\begin{equation} \left\{ \begin{array}{lr} -log(h_\theta(x))&amp;y =1 \\ -log(1-h_\theta(x))&amp;y=0 \end{array} \right. \end{equation}$</p>
+<pre><code>$$
+\left\langle  
+  q
+\middle\|
+  \frac{\frac{x}{y}}{\frac{u}{v}}
+\middle| 
+   p 
+\right\rangle
+$$
+</code></pre>
+<p>$$
+\left\langle<br>
+q
+\middle|
+\frac{\frac{x}{y}}{\frac{u}{v}}
+\middle|
+p
+\right\rangle
+$$</p>
+<pre><code>$$\Bigg(\bigg(\Big(\big((x)\big)\Big)\bigg)\Bigg)$$
+</code></pre>
+<p>$$\Bigg(\bigg(\Big(\big((x)\big)\Big)\bigg)\Bigg)$$</p>
+<pre><code>$$\begin{array}{c|rrrr}
+    &amp; x^3 &amp; x^2 &amp; x^1 &amp;  x^0\\
+    &amp; 1 &amp; -6 &amp; 11 &amp; -6\\
+    {\color{red}1} &amp; \downarrow &amp; 1 &amp; -5 &amp; 6\\
+    \hline &amp; 1 &amp; -5 &amp; 6 &amp; |\phantom{-} {\color{blue}0}
+\end{array}
+$$
+</code></pre>
+<p>$$\begin{array}{c|rrrr}&amp; x^3 &amp; x^2 &amp; x^1 &amp;  x^0\\ &amp; 1 &amp; -6 &amp; 11 &amp; -6\\ {\color{red}1} &amp; \downarrow &amp; 1 &amp; -5 &amp; 6\\ \hline &amp; 1 &amp; -5 &amp; 6 &amp; |\phantom{-} {\color{blue}0} \end{array}
+$$</p>
+<pre><code>$$\begin{array}{rrrr|ll}
+     x^3 &amp;           -6x^2 &amp;  +11x &amp;   -6 &amp;      x-1 \\
+    -x^3 &amp;            +x^2 &amp;       &amp;      &amp; x^2-5x+6 \\ \hline
+         &amp;           -5x^2 &amp; +11x  &amp;   -6            \\
+         &amp; \phantom{-}5x^2 &amp; -5x   &amp;      &amp;       &amp;&amp; \\ \hline
+         &amp;                 &amp; +6x   &amp;   -6            \\
+         &amp;                 &amp; -6x   &amp;   +6            \\ \hline
+         &amp;                 &amp;  0    &amp;    0
+\end{array}$$
+</code></pre>
+<p>$$\begin{array}{rrrr|ll}
+x^3 &amp;           -6x^2 &amp;  +11x &amp;   -6 &amp;      x-1 \\
+-x^3 &amp;            +x^2 &amp;       &amp;      &amp; x^2-5x+6 \\ \hline
+&amp;           -5x^2 &amp; +11x  &amp;   -6            \\
+&amp; \phantom{-}5x^2 &amp; -5x   &amp;      &amp;       &amp;&amp; \\ \hline
+&amp;                 &amp; +6x   &amp;   -6            \\
+&amp;                 &amp; -6x   &amp;   +6            \\ \hline
+&amp;                 &amp;  0    &amp;    0
+\end{array}$$</p>
+<pre><code>$$\begin{array}{rrrrrrr|rr}
+      &amp; x_1 &amp; x_2 &amp; s_1 &amp; s_2 &amp; s_3 &amp;  w &amp;    &amp; \text{ratio} \\ \hline
+  s_1 &amp;   0 &amp;   1 &amp;   1 &amp;   0 &amp;   0 &amp;  0 &amp;  8 &amp;            - \\
+    w &amp; 1^* &amp;  -1 &amp;   0 &amp;  -1 &amp;   0 &amp;  1 &amp;  4 &amp;            4 \\
+  s_3 &amp;   1 &amp;   1 &amp;   0 &amp;   0 &amp;   1 &amp;  0 &amp; 12 &amp;           12 \\ \hdashline
+      &amp;   1 &amp;  -1 &amp;   0 &amp;  -1 &amp;   0 &amp;  0 &amp;  4 &amp;              \\ \hline
+  s_1 &amp;   0 &amp;   1 &amp;   1 &amp;   0 &amp;   0 &amp;  0 &amp;  8 &amp;              \\
+  x_1 &amp;   1 &amp;  -1 &amp;   0 &amp;  -1 &amp;   0 &amp;  1 &amp;  4 &amp;              \\
+  s_3 &amp;   0 &amp;   2 &amp;   0 &amp;   2 &amp;   1 &amp; -1 &amp;  8 &amp;              \\ \hdashline
+      &amp;   0 &amp;   0 &amp;   0 &amp;   0 &amp;   0 &amp; -1 &amp;  0 &amp;
+\end{array}$$
+</code></pre>
+<p>$$\begin{array}{rrrrrrr|rr}
+&amp; x_1 &amp; x_2 &amp; s_1 &amp; s_2 &amp; s_3 &amp;  w &amp;    &amp; \text{ratio} \\ \hline
+s_1 &amp;   0 &amp;   1 &amp;   1 &amp;   0 &amp;   0 &amp;  0 &amp;  8 &amp;            - \\
+w &amp; 1^* &amp;  -1 &amp;   0 &amp;  -1 &amp;   0 &amp;  1 &amp;  4 &amp;            4 \\
+s_3 &amp;   1 &amp;   1 &amp;   0 &amp;   0 &amp;   1 &amp;  0 &amp; 12 &amp;           12 \\ \hdashline
+&amp;   1 &amp;  -1 &amp;   0 &amp;  -1 &amp;   0 &amp;  0 &amp;  4 &amp;              \\ \hline
+s_1 &amp;   0 &amp;   1 &amp;   1 &amp;   0 &amp;   0 &amp;  0 &amp;  8 &amp;              \\
+x_1 &amp;   1 &amp;  -1 &amp;   0 &amp;  -1 &amp;   0 &amp;  1 &amp;  4 &amp;              \\
+s_3 &amp;   0 &amp;   2 &amp;   0 &amp;   2 &amp;   1 &amp; -1 &amp;  8 &amp;              \\ \hdashline
+&amp;   0 &amp;   0 &amp;   0 &amp;   0 &amp;   0 &amp; -1 &amp;  0 &amp;
+\end{array}$$</p>
+<pre><code>$\begin{array}{|c|c|}\hline
+自变量/因变量&amp;          标量y           &amp;             向量 y           &amp;            矩阵Y               \\ \hline
+标量x  &amp; \frac{\partial y}{\partial x} &amp; \frac{\partial y}{\partial x}&amp;\frac{\partial Y}{\partial x}  \\ \hline
+向量x  &amp; \frac{\partial y}{\partial x} &amp; \frac{\partial y}{\partial x}&amp;\frac{\partial Y}{\partial x}  \\ \hline
+矩阵X  &amp; \frac{\partial y}{\partial X} &amp; \frac{\partial y}{\partial X}&amp;\frac{\partial Y}{\partial X}  \\ \hline
+\end{array}$
+</code></pre>
+<p>$$\begin{array}{|c|c|}\hline
+自变量/因变量 &amp; 标量y&amp; 向量 y&amp;矩阵Y\\  \hline
+标量x  &amp; \frac{\partial y}{\partial x} &amp; \frac{\partial y}{\partial x}&amp;\frac{\partial Y}{\partial x}  \\ \hline
+向量x  &amp; \frac{\partial y}{\partial x} &amp; \frac{\partial y}{\partial x}&amp;\frac{\partial Y}{\partial x}  \\ \hline
+矩阵X  &amp; \frac{\partial y}{\partial X} &amp; \frac{\partial y}{\partial X}&amp;\frac{\partial Y}{\partial X}  \\ \hline
+\end{array}$$</p>
+<p>更多例子请前往：<a href="https://math.meta.stackexchange.com/questions/5020/mathjax-basic-tutorial-and-quick-reference">mathjax-basic-tutorial-and-quick-reference</a>查看</p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/math/">math</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/adduv/" data-tooltip="不蒜子Busuanzi页面浏览次数与阅读量数据的重置" aria-label="PREVIOUS: 不蒜子Busuanzi页面浏览次数与阅读量数据的重置">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/latex\/';
+        
+          this.page.identifier = '\/post\/latex\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 XiaoXia. All Rights Reserved
+  </span>
+
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/adduv/" data-tooltip="不蒜子Busuanzi页面浏览次数与阅读量数据的重置" aria-label="PREVIOUS: 不蒜子Busuanzi页面浏览次数与阅读量数据的重置">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">XiaoXia</h4>
+    
+      <div id="about-card-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        华南理工大学
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://xiaoxiauwu.github.io/images/cover_.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiaoxiauwu.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/click.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/sakura.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/cp.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
