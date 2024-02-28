@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>算法 on 夏のBLOG</title>
+    <link>https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/</link>
+    <description>Recent content in 算法 on 夏のBLOG</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 28 Feb 2024 20:01:21 +0800</lastBuildDate>
+    <atom:link href="https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ACM模版集（个人自用，随缘更新中）</title>
+      <link>https://xiaoxiauwu.github.io/post/acm/</link>
+      <pubDate>Wed, 28 Feb 2024 20:01:21 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/post/acm/</guid>
+      <description></description>
+    </item>
+  </channel>
+</rss>

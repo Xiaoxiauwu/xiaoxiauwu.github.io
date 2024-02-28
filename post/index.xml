@@ -6,8 +6,15 @@
     <description>Recent content in Posts on 夏のBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Feb 2024 16:19:39 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 28 Feb 2024 20:01:21 +0800</lastBuildDate>
     <atom:link href="https://xiaoxiauwu.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ACM模版集（个人自用，随缘更新中）</title>
+      <link>https://xiaoxiauwu.github.io/post/acm/</link>
+      <pubDate>Wed, 28 Feb 2024 20:01:21 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/post/acm/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Python</title>
       <link>https://xiaoxiauwu.github.io/post/python/</link>
@@ -37,7 +44,7 @@
       <description></description>
     </item>
     <item>
-      <title>ACM模版集</title>
+      <title>ACM模版集（来自cpgg）</title>
       <link>https://xiaoxiauwu.github.io/post/article_01/</link>
       <pubDate>Thu, 18 Jan 2024 08:26:56 +0800</pubDate>
       <guid>https://xiaoxiauwu.github.io/post/article_01/</guid>

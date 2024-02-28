@@ -6,20 +6,27 @@
     <description>Recent content in Tags on 夏のBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Feb 2024 16:19:39 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 28 Feb 2024 20:01:21 +0800</lastBuildDate>
     <atom:link href="https://xiaoxiauwu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>tag1</title>
-      <link>https://xiaoxiauwu.github.io/tags/tag1/</link>
-      <pubDate>Fri, 09 Feb 2024 16:19:39 +0800</pubDate>
-      <guid>https://xiaoxiauwu.github.io/tags/tag1/</guid>
+      <title>ACM</title>
+      <link>https://xiaoxiauwu.github.io/tags/acm/</link>
+      <pubDate>Wed, 28 Feb 2024 20:01:21 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/tags/acm/</guid>
       <description></description>
     </item>
     <item>
-      <title>tag2</title>
-      <link>https://xiaoxiauwu.github.io/tags/tag2/</link>
+      <title>算法</title>
+      <link>https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Wed, 28 Feb 2024 20:01:21 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>教程</title>
+      <link>https://xiaoxiauwu.github.io/tags/%E6%95%99%E7%A8%8B/</link>
       <pubDate>Fri, 09 Feb 2024 16:19:39 +0800</pubDate>
-      <guid>https://xiaoxiauwu.github.io/tags/tag2/</guid>
+      <guid>https://xiaoxiauwu.github.io/tags/%E6%95%99%E7%A8%8B/</guid>
       <description></description>
     </item>
     <item>

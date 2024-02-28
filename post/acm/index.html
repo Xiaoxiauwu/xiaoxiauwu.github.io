@@ -1,0 +1,1016 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/xiaoxiauwu.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "XiaoXia",
+    
+    "image": "https://xiaoxiauwu.github.io/images/avatar.jpg"
+    
+  },
+  "name":"夏のBLOG",
+  "description":"",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/acm\/",
+  "keywords":"[tech, C\u002b\u002b, python, study]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.121.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="XiaoXia">
+<meta name="keywords" content="tech, C&#43;&#43;, python, study">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ACM模版集（个人自用，随缘更新中）">
+<meta name="twitter:title" content="ACM模版集（个人自用，随缘更新中）">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/acm/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/acm/">
+<meta property="og:site_name" content="夏のBLOG">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2024-02-28T20:01:21">
+  
+  
+    <meta property="article:modified_time" content="2024-02-28T20:01:21">
+  
+  
+  
+    
+      <meta property="article:section" content="c&#43;&#43;">
+    
+      <meta property="article:section" content="模版">
+    
+  
+  
+    
+      <meta property="article:tag" content="ACM">
+    
+      <meta property="article:tag" content="算法">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+
+
+
+
+  <meta property="og:image" content="https://imgse.com/i/pFwZK4f">
+  <meta property="twitter:image" content="https://imgse.com/i/pFwZK4f">
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+
+
+    <title>ACM模版集（个人自用，随缘更新中）</title>
+
+    <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/acm/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiaoxiauwu.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://xiaoxiauwu.github.io/css/codeblock.css">
+      
+    
+
+    
+      
+    
+    
+
+
+<script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202401110101/show_ads_impl_fy2021.js" id="google_shimpl"></script>
+<script>
+      MathJax = {
+         tex: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true,
+            tags: 'ams',
+         },
+      };
+   </script>
+<script type="text/javascript" async="" src="https://wuli.wiki/MathJax3/es5/tex-mml-chtml.js"></script>
+
+<script async src="https://xiaoxiauwu.github.io/js/busuanzi.pure.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade"></head>
+
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiaoxiauwu.github.io/" aria-label="Go to homepage">夏のBLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiaoxiauwu.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+
+
+<div  class="meta-item">&nbsp·&nbsp
+  <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+</div>
+
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiaoxiauwu.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">XiaoXia</h4>
+        
+          <h5 class="sidebar-profile-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Xiaoxiauwu" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.totorocatcat.to" target="_blank" rel="noopener" title="Totoroの小窝">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-link" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Totoroの小窝</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('https://imgse.com/i/pFwZK4f')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      ACM模版集（个人自用，随缘更新中）
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2024-02-28T20:01:21&#43;08:00">
+        
+  February 28, 2024
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/c&#43;&#43;">c&#43;&#43;</a>, 
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/%e6%a8%a1%e7%89%88">模版</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" id="top">
+          
+            <span class="post-header-cover-caption caption">#include&lt;bits/stdc++.h&gt;</span>
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <!-- raw HTML omitted -->
+<h1 id="acm模版集随缘更新中">ACM模版集（随缘更新中）</h1>
+<h2 id="基础板子">基础板子</h2>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using ll=long long;
+using namespace std;
+#define ET '\n'
+#define FOR(i,a,b) for(ll i=(a);i&lt;=(b);i++)
+#define rFOR(i,a,b) for(ll i=(a);i&gt;=(b);i--)
+#define CIN(a) ll a;cin&gt;&gt;a
+#define cY cout&lt;&lt;&quot;Yes\n&quot;
+#define cN cout&lt;&lt;&quot;No\n&quot;
+string ANS[2]={&quot;No\n&quot;,&quot;Yes\n&quot;};
+
+void solve(){
+   
+}
+
+int main(){
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    CIN(t);
+    //int t=1;
+    while(t--)solve();
+    return 0;
+}
+</code></pre>
+<h2 id="算法">算法</h2>
+<h3 id="并查集">并查集</h3>
+<pre><code class="language-cpp">int f[N];
+int find(int x){//溯源
+	while(x!=f[x])x=f[x]=f[f[x]];//路径压缩
+	return x;
+}
+void join(int u,int v){//连边
+	int a1=find(u),a2=find(v);
+	if(a1!=a2)f[a1]=a2;
+}
+</code></pre>
+<h3 id="kruskal">Kruskal</h3>
+<pre><code class="language-cpp">struct node{//点类
+	int u,v,w;
+    bool operator&lt;(const &amp;node a){
+        return a.w&lt;b.w;
+    }
+}edge[200005];
+
+int f[5005];
+int find(int x){
+	while(x!=f[x])x=f[x]=f[f[x]];
+	return x;
+}//并查集与路径压缩
+
+void kruskal(){
+	sort(edge,edge+m);
+	int cnt=0;
+	for(int i=0;i&lt;m;i++){//多理解一下
+		int u=find(edge[i].u),v=find(edge[i].v);
+		if(u==v)continue;
+		ans+=edge[i].w;
+		f[v]=u;
+		if(++cnt==n-1)break;
+	}
+}
+</code></pre>
+<h3 id="极简二分板子from-jiangly">极简二分板子（FROM jiangly）</h3>
+<p>若数列已经按某规则划分成了左右两组，则该STL可快速返回其分界点（右边那组最靠左的元素）。</p>
+<p>注意事项：若ck函数在给定范围内均成立，则返回的是r+1的值，如果有必要，这点记得特判一下。</p>
+<pre><code class="language-cpp">//所需库：algorithm，ranges
+//返回第一个使ck(x)为假的x
+//（l,r+1）因为是左开右闭，所以右端应+1
+int ans = *ranges::partition_point(ranges::iota_view(l, r+1),
+    [&amp;](int v) {
+        return ck(v);
+    });
+
+//使用例：
+#define PP(r,l,CK) *ranges::partition_point(ranges::iota_view(l, r+1),CK)
+
+ll ans=PP(1,n,[&amp;](int x){
+    ...
+    return 1;
+    ...
+    return 0;//ck函数直接写这里就行
+});
+</code></pre>
+<p>最基础的两个线性二分STL：</p>
+<pre><code class="language-cpp">//返回指向第一个大于v的元素的迭代器
+auto mid=upper_bound(a.begin(),a.end(),v);
+if(mid==a.end())//此时数组中不存在满足条件的数
+else int ans=mid-a.begin();
+
+//返回指向第一个小于v的元素的迭代器
+auto mid=lower_bound(a.begin(),a.end(),v);
+</code></pre>
+<h3 id="单调队列">单调队列</h3>
+<pre><code class="language-cpp">struct P{
+    ll i,v;
+    bool operator&lt;(const P&amp;a)const{
+        return v&lt;a.v;//排序方式
+    }
+}t;
+priority_queue&lt;P&gt; q;
+FOR(i,1,n){
+    cin&gt;&gt;a[i];
+}
+FOR(i,1,n){
+    t.i=i;t.v=a[i];
+    q.push(t);/*滑动窗口的条件↓，窗口大小为m*/
+    while(!q.empty()&amp;&amp;q.top().i&lt;i-m+1)q.pop();//理解一下
+    if(i&gt;=m)cout&lt;&lt;q.top().v&lt;&lt;&quot; &quot;;
+}
+</code></pre>
+<h2 id="数据结构">数据结构</h2>
+<h3 id="树状数组">树状数组</h3>
+<p>实现单点修改，区间求和</p>
+<pre><code class="language-cpp">template&lt;typename T&gt;class BIT{
+public:
+    T tree[N];//开到最大
+    inline ll lowbit(ll x){return x&amp;-x;}
+    void add(ll x,ll v){//第x个数加上v
+        for(ll i=x;i&lt;=n;i+=lowbit(i))tree[i]+=v;
+    }
+    T sum(ll x){//求前x个数的和
+        T ans=0;
+        for(ll i=x;i;i-=lowbit(i))ans+=tree[i];
+        return ans;
+    }
+}
+</code></pre>
+<h3 id="线段树">线段树</h3>
+<p>区间修改$O(logN)$，区间查询$O(logN)$。</p>
+<pre><code class="language-cpp">class SGT{
+public:
+    ll M;ll* tree;ll* tag;
+    SGT(int n,ll M_){
+        M=M_;
+        tree=new ll[(n&lt;&lt;2)+5];
+        tag=new ll[(n&lt;&lt;2)+5];
+    }
+    //线代树所维护的函数
+    void modify(int p,int l,int r,ll k){//当符合枚举区间时对区间的操作
+            tree[p]=k;
+            //常用的还有（记得最后取模）:
+            //tree[p]+=(r-l+1)*k;//区间加
+            //add[p]+=k;//lazytag更新，如果有的话
+
+            //tree[p]*=k;//区间乘
+            //mul[p]*=k;
+
+            //tree[p]=(tree[p]*km+(r-l+1)*ka)%M;//区间加和乘(要对lazytag先乘后加)
+            //mul[p]*=km;mul[p]%=M;//对乘tag直接乘即可
+            //add[p]*=km;add[p]%=M;//对加tag要先乘
+            //add[p]+=ka'add[p]%=M;//再加
+
+            //tree[p]=k;//区间替换
+            //tag[p]=k;
+    }
+    void collect(int p){//向上传递子节点的结果，这里用的是区间最大值的模版
+        tree[p]=max(tree[p&lt;&lt;1],tree[p&lt;&lt;1|1]);
+        //常用的传递还有：
+        //tree[p]=tree[p&lt;&lt;1]+tree[p&lt;&lt;1|1];//区间和
+        //tree[p]=tree[p&lt;&lt;1]^tree[p&lt;&lt;1|1];//区间异或
+    }
+    
+    ll *base;
+    void init(int p,int l,int r){//build建树，可省（？存疑）
+        tag[p]=0;//lazytag重置
+        if(l==r){tree[p]=base[p];return;}
+        int mid=((l+r)&gt;&gt;1);
+        init(p&lt;&lt;1,l,mid);
+        init(p&lt;&lt;1|1,mid+1,r);
+        collect(p);
+    }
+
+    int L,R;
+    void range(int L_,int R_){L=L_;R=R_;}
+
+    //===================================LZ=====================================//
+    void clear(int p,int l,int r){//清空区间lazytag，如果有lazytag就需要这个函数
+        int mid=((l+r)&gt;&gt;1);
+        modify(p&lt;&lt;1,l,mid,tag[p]);
+        modify(p&lt;&lt;1|1,mid+1,r,tag[p]);
+        tag[p]=0;//lazytag重置
+    }//===================================LZ=====================================//
+
+    void update(int p,int l,int r,ll k){
+        if(L&lt;=l&amp;&amp;r&lt;=R){
+            modify(int p,int l,int r,ll k);
+            return;
+        }
+        //clear(p,l,r);//如果有lazytag，就得加这句，没有lazytag就不用
+        ll mid=((l+r)&gt;&gt;1);
+        if(L&lt;=mid)update(p&lt;&lt;1,l,mid,k);
+        if(mid&lt;R)update(p&lt;&lt;1|1,mid+1,r,k);
+        collect(p);
+    }
+    ll query(int p,int l,int r){
+        if(L&lt;=l&amp;&amp;r&lt;=R)return tree[p];
+        int mid=((l+r)&gt;&gt;1);
+        ll a=-inf,b=-inf;//这里视情况而定，设为和lazytag一样的默认值
+        if(L&lt;=mid)a=query(p&lt;&lt;1,l,mid);
+        if(mid&lt;R)b=query(p&lt;&lt;1|1,mid+1,r);
+        return max(a,b);//一般是(a+b)%M，(a^b)%M这种
+    }
+};
+
+//使用例：
+...//定义线段树类
+int main(){
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    CIN(m);CIN(M);ll _=m;
+
+    int cnt=0;ll t=0;
+    SGT sgt={200000,M};//以大小和模数声明一个线段树对象
+    while(_--){
+        char op;cin&gt;&gt;op;
+        CIN(x);
+        if(op=='A'){
+            sgt.range(cnt+1,cnt+1);//设定操作范围
+            sgt.update(1,1,m,(x+t)%M);//对设定好的操作范围进行更新
+            cnt++;
+            //cout&lt;&lt;cnt&lt;&lt;&quot;]&quot;;
+        }else{
+            sgt.range(cnt-x+1,cnt);
+            //FOR(i,0,cnt)cout&lt;&lt;sgt.tree[i]&lt;&lt;&quot;]]&quot;;
+            t=sgt.query(1,1,m);
+            cout&lt;&lt;t&lt;&lt;ET;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="fhq-treap">FHQ Treap</h3>
+<p>快速求数在数组的前驱，后继，排名（第几大），以及数组中第k大的数。同时可随意添加元素。</p>
+<pre><code class="language-cpp">const int N=100005;
+struct Treap
+{
+	const int INF;
+	int Root,cnt;
+	deque&lt;int&gt;del_list;
+	struct Node
+	{
+		int ch[2],v,rnd,siz;
+	}node[N];
+	int newNode(int x)//申请新节点
+	{
+		int tmp;
+		if(del_list.empty()) tmp=++cnt;
+		else tmp=del_list.front(),del_list.pop_front();
+		node[tmp].rnd=rand(),node[tmp].v=x,node[tmp].siz=1,node[tmp].ch[0]=node[tmp].ch[1]=0;
+		return tmp;
+	}
+	void update(int x)//更新信息
+	{
+		node[x].siz=node[node[x].ch[0]].siz+node[node[x].ch[1]].siz+1;
+	}
+	void vsplit(int pos,int v,int &amp;x,int &amp;y)//按权值分裂
+	{
+		if(!pos)
+		{
+			x=y=0;
+			return;
+		}
+		if(node[pos].v&lt;=v) x=pos,vsplit(node[pos].ch[1],v,node[pos].ch[1],y);
+		else y=pos,vsplit(node[pos].ch[0],v,x,node[pos].ch[0]);
+		update(pos);
+	}
+	void ssplit(int pos,int k,int &amp;x,int &amp;y)//按size分裂
+	{
+		if(!pos)
+		{
+			x=y=0;
+			return;
+		}
+		if(k&gt;node[node[pos].ch[0]].siz)
+			x=pos,ssplit(node[pos].ch[1],k-node[node[pos].ch[0]].siz-1,node[pos].ch[1],y);
+		else y=pos,ssplit(node[pos].ch[0],k,x,node[pos].ch[0]);
+		update(pos);
+	}
+	int merge(int x,int y)//合并
+	{
+		if(!x||!y) return x+y;
+		if(node[x].rnd&lt;node[y].rnd)
+		{
+			node[x].ch[1]=merge(node[x].ch[1],y);
+			update(x);
+			return x;
+		}
+		node[y].ch[0]=merge(x,node[y].ch[0]);
+		update(y);
+		return y;
+	}
+	void insert(int v)//插入
+	{
+		int x,y;
+		vsplit(Root,v,x,y);
+		Root=merge(merge(x,newNode(v)),y);
+	}
+	void erase(int v)//删除
+	{
+		int x,y,z;
+		vsplit(Root,v,x,z);
+		vsplit(x,v-1,x,y);
+		del_list.push_back(y);
+		y=merge(node[y].ch[0],node[y].ch[1]);
+		Root=merge(merge(x,y),z);
+	}
+	int pre(int v)//前驱
+	{
+		int x,y,cur;
+		vsplit(Root,v-1,x,y);
+		cur=x;
+		while(node[cur].ch[1]) cur=node[cur].ch[1];
+		merge(x,y);
+		return node[cur].v;
+	}
+	int nxt(int v)//后继
+	{
+		int x,y,cur;
+		vsplit(Root,v,x,y);
+		cur=y;
+		while(node[cur].ch[0]) cur=node[cur].ch[0];
+		merge(x,y);
+		return node[cur].v;
+	}
+	int get_rank(int v)//查排名
+	{
+		int x,y,ans;
+		vsplit(Root,v-1,x,y);
+		ans=node[x].siz;
+		merge(x,y);
+		return ans;
+	}
+	int kth(int k)//查排名为k的数
+	{
+		++k;
+		int x,y,cur;
+		ssplit(Root,k,x,y);
+		cur=x;
+		while(node[cur].ch[1]) cur=node[cur].ch[1];
+		merge(x,y);
+		return node[cur].v;
+	}
+	Treap():INF(2147483647)//构造函数初始化
+	{
+		Root=cnt=0;
+		insert(-INF),insert(INF);
+	}
+};
+//使用例：
+int main(){
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    Treap T;//声明对象
+    int n,t,x;
+    cin&gt;&gt;n;
+    while(n--){
+        cin&gt;&gt;t&gt;&gt;x;
+        if(t==1)cout&lt;&lt;T.get_rank(x)&lt;&lt;ET;//排名
+        else if(t==2)cout&lt;&lt;T.kth(x)&lt;&lt;ET;//第x大的数
+        else if(t==3)cout&lt;&lt;T.pre(x)&lt;&lt;ET;//前驱
+        else if(t==4)cout&lt;&lt;T.nxt(x)&lt;&lt;ET;//后继
+        else T.insert(x);//插入
+    }
+    return 0;
+}
+</code></pre>
+<h3 id="归并排序">归并排序</h3>
+<p>排序，求逆序数</p>
+<pre><code class="language-cpp">template&lt;typename T&gt;class MSORT{
+public:
+    ll nxs=0;//逆序数
+    vector&lt;T&gt; r;//排序结果
+    void reset(){
+        nxs=0;
+    }
+    void sort(T* a,int s,int e){
+        r.resize(e+1);
+        msort(a,s,e);
+    }
+    void msort(T* a,int s,int e){
+        if(s&gt;=e)return;
+        int mid=((s+e)&gt;&gt;1);
+        msort(a,s,mid);msort(a,mid+1,e);
+        int i=s,j=mid+1,k=s;
+        while(i&lt;=mid&amp;&amp;j&lt;=e){
+            if(a[i]&lt;=a[j]){
+                r[k]=a[i];k++;i++;
+            }else{
+                r[k]=a[j];k++;j++;
+                nxs+=mid-i+1;
+            }
+        }
+        while(i&lt;=mid)r[k++]=a[i++];
+        while(j&lt;=e)r[k++]=a[j++];
+        for(int i=s;i&lt;=e;i++)a[i]=r[i];
+    }
+};
+//使用例：
+int a[100000];
+...//对a数组完成输入
+MSORT&lt;int&gt; S;
+S.sort(a,1,n);
+cout&lt;&lt;S.nxs&lt;&lt;ET;//输出逆序数
+for(int &amp;i:S.r)cout&lt;&lt;i&lt;&lt;&quot; &quot;;//输出排序结果
+</code></pre>
+<h2 id="stl">STL</h2>
+<p>这里记录收集到的一些小技巧（大部分和STL相关）。</p>
+<pre><code>前面的区域以后再来探索吧！
+</code></pre>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/acm/">ACM</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/python/" data-tooltip="Python" aria-label="PREVIOUS: Python">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/acm\/';
+        
+          this.page.identifier = '\/post\/acm\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 XiaoXia. All Rights Reserved
+  </span>
+
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/python/" data-tooltip="Python" aria-label="PREVIOUS: Python">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">XiaoXia</h4>
+    
+      <div id="about-card-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        华南理工大学
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://xiaoxiauwu.github.io/images/cover_.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiaoxiauwu.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/click.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/sakura.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/cp.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

@@ -33,8 +33,8 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="ACM模版集">
-<meta name="twitter:title" content="ACM模版集">
+<meta property="og:title" content="ACM模版集（来自cpgg）">
+<meta name="twitter:title" content="ACM模版集（来自cpgg）">
 <meta property="og:url" content="https://xiaoxiauwu.github.io/post/article_01/">
 <meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/article_01/">
 <meta property="og:site_name" content="夏のBLOG">
@@ -87,7 +87,7 @@
   <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
 
 
-    <title>ACM模版集</title>
+    <title>ACM模版集（来自cpgg）</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
@@ -239,6 +239,16 @@
     </a>
   </li>
 
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.totorocatcat.to" target="_blank" rel="noopener" title="Totoroの小窝">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-link" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Totoroの小窝</span>
+    </a>
+  </li>
+
 
     </ul>
     <ul class="sidebar-buttons">
@@ -258,7 +268,7 @@
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      ACM模版集
+      ACM模版集（来自cpgg）
     </h1>
   
   
@@ -2232,144 +2242,6 @@ struct cpHash {
         return val[tot] = 0;
     }
 } mp;
-</code></pre>
-<h2 id="4-19-fhq-treap">4-19 fhq Treap</h2>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;queue&gt;
-#include&lt;ctime&gt;
-#include&lt;random&gt;
-#define ET '\n'
-using namespace std;
-const int N=100005;
-struct Treap
-{
-	const int INF;
-	int Root,cnt;
-	deque&lt;int&gt;del_list;
-	struct Node
-	{
-		int ch[2],v,rnd,siz;
-	}node[N];
-	int newNode(int x)//申请新节点
-	{
-		int tmp;
-		if(del_list.empty()) tmp=++cnt;
-		else tmp=del_list.front(),del_list.pop_front();
-		node[tmp].rnd=rand(),node[tmp].v=x,node[tmp].siz=1,node[tmp].ch[0]=node[tmp].ch[1]=0;
-		return tmp;
-	}
-	void update(int x)//更新信息
-	{
-		node[x].siz=node[node[x].ch[0]].siz+node[node[x].ch[1]].siz+1;
-	}
-	void vsplit(int pos,int v,int &amp;x,int &amp;y)//按权值分裂
-	{
-		if(!pos)
-		{
-			x=y=0;
-			return;
-		}
-		if(node[pos].v&lt;=v) x=pos,vsplit(node[pos].ch[1],v,node[pos].ch[1],y);
-		else y=pos,vsplit(node[pos].ch[0],v,x,node[pos].ch[0]);
-		update(pos);
-	}
-	void ssplit(int pos,int k,int &amp;x,int &amp;y)//按size分裂
-	{
-		if(!pos)
-		{
-			x=y=0;
-			return;
-		}
-		if(k&gt;node[node[pos].ch[0]].siz)
-			x=pos,ssplit(node[pos].ch[1],k-node[node[pos].ch[0]].siz-1,node[pos].ch[1],y);
-		else y=pos,ssplit(node[pos].ch[0],k,x,node[pos].ch[0]);
-		update(pos);
-	}
-	int merge(int x,int y)//合并
-	{
-		if(!x||!y) return x+y;
-		if(node[x].rnd&lt;node[y].rnd)
-		{
-			node[x].ch[1]=merge(node[x].ch[1],y);
-			update(x);
-			return x;
-		}
-		node[y].ch[0]=merge(x,node[y].ch[0]);
-		update(y);
-		return y;
-	}
-	void insert(int v)//插入
-	{
-		int x,y;
-		vsplit(Root,v,x,y);
-		Root=merge(merge(x,newNode(v)),y);
-	}
-	void erase(int v)//删除
-	{
-		int x,y,z;
-		vsplit(Root,v,x,z);
-		vsplit(x,v-1,x,y);
-		del_list.push_back(y);
-		y=merge(node[y].ch[0],node[y].ch[1]);
-		Root=merge(merge(x,y),z);
-	}
-	int pre(int v)//前驱
-	{
-		int x,y,cur;
-		vsplit(Root,v-1,x,y);
-		cur=x;
-		while(node[cur].ch[1]) cur=node[cur].ch[1];
-		merge(x,y);
-		return node[cur].v;
-	}
-	int nxt(int v)//后继
-	{
-		int x,y,cur;
-		vsplit(Root,v,x,y);
-		cur=y;
-		while(node[cur].ch[0]) cur=node[cur].ch[0];
-		merge(x,y);
-		return node[cur].v;
-	}
-	int get_rank(int v)//查排名
-	{
-		int x,y,ans;
-		vsplit(Root,v-1,x,y);
-		ans=node[x].siz;
-		merge(x,y);
-		return ans;
-	}
-	int kth(int k)//查排名为k的数
-	{
-		++k;
-		int x,y,cur;
-		ssplit(Root,k,x,y);
-		cur=x;
-		while(node[cur].ch[1]) cur=node[cur].ch[1];
-		merge(x,y);
-		return node[cur].v;
-	}
-	Treap():INF(2147483647)//构造函数初始化
-	{
-		Root=cnt=0;
-		insert(-INF),insert(INF);
-	}
-};
-int main(){
-    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-    Treap T;
-    int n,t,x;
-    cin&gt;&gt;n;
-    while(n--){
-        cin&gt;&gt;t&gt;&gt;x;
-        if(t==1)cout&lt;&lt;T.get_rank(x)&lt;&lt;ET;
-        else if(t==2)cout&lt;&lt;T.kth(x)&lt;&lt;ET;
-        else if(t==3)cout&lt;&lt;T.pre(x)&lt;&lt;ET;
-        else if(t==4)cout&lt;&lt;T.nxt(x)&lt;&lt;ET;
-        else T.insert(x);
-    }
-    return 0;
-}
 </code></pre>
 <h1 id="5-树论">5, 树论</h1>
 <h2 id="5-1-树上启发式合并">5-1 树上启发式合并</h2>
