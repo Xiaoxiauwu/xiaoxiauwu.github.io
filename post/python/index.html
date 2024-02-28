@@ -1,0 +1,1219 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/xiaoxiauwu.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "XiaoXia",
+    
+    "image": "https://xiaoxiauwu.github.io/images/avatar.jpg"
+    
+  },
+  "name":"夏のBLOG",
+  "description":"",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/python\/",
+  "keywords":"[tech, C\u002b\u002b, python, study]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.121.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="XiaoXia">
+<meta name="keywords" content="tech, C&#43;&#43;, python, study">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Python">
+<meta name="twitter:title" content="Python">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/python/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/python/">
+<meta property="og:site_name" content="夏のBLOG">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2024-02-09T16:19:39">
+  
+  
+    <meta property="article:modified_time" content="2024-02-09T16:19:39">
+  
+  
+  
+    
+      <meta property="article:section" content="category">
+    
+      <meta property="article:section" content="subcategory">
+    
+  
+  
+    
+      <meta property="article:tag" content="tag1">
+    
+      <meta property="article:tag" content="tag2">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+
+
+    <title>Python</title>
+
+    <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/python/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiaoxiauwu.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://xiaoxiauwu.github.io/css/codeblock.css">
+      
+    
+
+    
+      
+    
+    
+
+
+<script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202401110101/show_ads_impl_fy2021.js" id="google_shimpl"></script>
+<script>
+      MathJax = {
+         tex: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true,
+            tags: 'ams',
+         },
+      };
+   </script>
+<script type="text/javascript" async="" src="https://wuli.wiki/MathJax3/es5/tex-mml-chtml.js"></script>
+
+<script async src="https://xiaoxiauwu.github.io/js/busuanzi.pure.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade"></head>
+
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiaoxiauwu.github.io/" aria-label="Go to homepage">夏のBLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiaoxiauwu.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+
+
+<div  class="meta-item">&nbsp·&nbsp
+  <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+</div>
+
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiaoxiauwu.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">XiaoXia</h4>
+        
+          <h5 class="sidebar-profile-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Xiaoxiauwu" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('/images/cover.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      Python
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2024-02-09T16:19:39&#43;08:00">
+        
+  February 9, 2024
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/category">category</a>, 
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/subcategory">subcategory</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" id="top">
+          
+            <span class="post-header-cover-caption caption">文章cover图片描述</span>
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <!-- raw HTML omitted -->
+<h1 id="python学习复习日记">Python学习/复习日记</h1>
+<h2 id="前言">前言</h2>
+<p>为什么要写这个呢，原因是暑假从同学那借来了一本python教程书，然而借来的东西总是要还的，总不可能一个字没看又还回去了吧。。所以现在让我们试试一天速成python基础吧。</p>
+<h2 id="基础部分">基础部分</h2>
+<h3 id="变量与基础数据类型">变量与基础数据类型</h3>
+<p>Python 不需要像 c语言 那样写变量类型声明，直接赋值即可</p>
+<pre><code class="language-Python">#声明一个整型变量
+a=123
+#声明一个浮点型变量
+b=1.23
+#声明一个字符串
+c=&quot;hello world&quot;
+c='hello world'
+c='''使用三单引号
+可以快速声明多行字符串
+就像这样
+'''
+#python中的变量是可以重定义类型的，比如：
+a=123
+a=&quot;234&quot;#a本来是整型，到这里重新赋值成了一个字符串
+#顺带说明，python里#代表单行注释
+#多行注释可以用三单引号'''括起来
+c=r&quot;使用r前缀（Raw Text）可以禁止所有的\转义，同样一个字符串，用r前缀写可以省不少事，比如：&quot;
+c=&quot;http:\\\\img.hongyoubizhi.com\\picture\\pages\\original\\2023\\10\\25\\15\\115565344_p0.jpg&quot;
+c=r&quot;http:\\img.hongyoubizhi.com\picture\pages\original\2023\10\25\15\115565344_p0.jpg&quot;
+</code></pre>
+<p>变量名命名规则，这方面与c差不多，不允许短横线，不允许空格，不允许数字开头，不允许特殊字符，不允许关键字（存疑）</p>
+<table>
+<thead>
+<tr>
+<th>有效的</th>
+<th>无效的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>now_time</td>
+<td>now-time</td>
+</tr>
+<tr>
+<td>nowTime</td>
+<td>now Time</td>
+</tr>
+<tr>
+<td>sun3</td>
+<td>3sun</td>
+</tr>
+<tr>
+<td>_123</td>
+<td>123_</td>
+</tr>
+<tr>
+<td>cost</td>
+<td>cost$</td>
+</tr>
+</tbody>
+</table>
+<p>关于关键字，虽然语法上确实可以使用比如int，float之类的自带函数作为变量名，但是像import，for，while，as，with，del之类的是没法作为变量名使用的</p>
+<pre><code class="language-python">int=123#虽然可以这样用，但是int的函数功能就被覆写了
+print(int)
+a=int(123.3)#会报错：'int' object is not callable
+#解决方法是使用del删除一次int的定义，才能正常调用int
+del int
+a=int(123.3)
+</code></pre>
+<h3 id="基础运算">基础运算</h3>
+<p>整型与浮点型之间可以进行如下运算：</p>
+<pre><code class="language-Python">#整型与整型
+1+1
+2-1
+2*2
+5/2
+5//2
+5%2
+5**2
+4^92#异或
+3|1234#并
+2431&amp;1213#与
+#整型与浮点型
+1+1.1
+2-1.1
+2*1.1
+5/2.0
+5**0.5
+#浮点与浮点
+1.2+2.5
+2.4-1.2
+2.3*3.5
+1.4/3.4
+1.3**0.5
+#字符串与字符串
+&quot;123&quot;+&quot;456&quot;
+#字符串与整型
+&quot;123&quot;*2
+#值得注意的是，上述运算方式全可以用&lt;运算符&gt;=的方式实现变量自操作
+#比如：
+a=1
+a+=1
+a-=2
+a*=3
+a/=4
+a//=5
+a=9
+a%=6
+a**=2#没错，幂运算也能这样自操作
+a^=6
+a|=7
+a&amp;=10
+s=&quot;123&quot;
+s+=&quot;122&quot;
+s*=2
+</code></pre>
+<h3 id="类型转换">类型转换</h3>
+<p>python中的类型转换与c差不多，但是只能以函数的方式转换：</p>
+<pre><code class="language-python">#整型、浮点型转字符串
+a=str(123)
+a=str(1.23)
+#字符串转整型
+a=int(&quot;123&quot;)
+#字符串转浮点
+a=float(&quot;1.23&quot;)
+#浮点型转整型（“向0”取整（去小数部分），正数时和floor()表现一样
+a=int(1.23)#-&gt;1
+a=int(-1.23)#-&gt;1
+</code></pre>
+<h3 id="hello-world">Hello world</h3>
+<p>print()函数：每次输出一个字符串后换行</p>
+<pre><code class="language-python">print(123)
+print(124.6789)
+print(&quot;Hello world&quot;)
+</code></pre>
+<p>input()函数：接受用户一次输入（按用户的回车计，复制粘贴的回车也算一次，以字符串形式返回</p>
+<pre><code class="language-python">a=input()#里面也可以写上字符串作为输入提示的信息
+print(a)
+b=input(&quot;请输入一个整数&quot;)
+print(int(b)+123)
+</code></pre>
+<p>关于print还有更多参数可以使用，这里留到后面的函数章节来讲</p>
+<h3 id="字符串">字符串</h3>
+<p>字符串长度获取：len()</p>
+<pre><code class="language-python">print(len(&quot;abcdef&quot;))#-&gt;6
+</code></pre>
+<p>字符串下标引用：</p>
+<p>下标从0开始，s[2]表示字符串下标为2的字符；下标可以为负数，s[-1]表示字符串倒数第1个字符</p>
+<p>字符串切片：</p>
+<p>基本形式：s[start:end]</p>
+<p>左闭右开，返回一个从下标start到下标end（不包含end对应的字符）的子串</p>
+<p>带步长的形式：s[start:end:step]</p>
+<p>也是左闭右开，返回从下标start开始，每次取完一个字符后，当前下标加上step，一直取到刚好等于end为止（不包含end对应的字符），比如a[1:10:2]</p>
+<p>为什么要用这么冗长的定义解释？因为步长也可以是负数，比如a[10:1:-1]</p>
+<pre><code class="language-python">a=&quot;hello 2024&quot;
+#&quot;hello 2024&quot;
+# 0123456789
+#  1 3
+print(a[1:3])#-&gt;'el'
+#&quot;hello 2024&quot;
+# 0123456789
+#  e l   0  
+print(a[1:9:2])#-&gt;'el 0'
+#&quot;hello 2024&quot;
+# 0123456789
+#   llo 2024
+print(a[9:1:-1])#-&gt;'4202 oll'
+#需要注意的是，&quot;:&quot;左右是可选的参数，也就是说，你可以使用a[:]表示a的一个拷贝
+#也可以使用a[::-1]表示a的反转字符串
+#a[3:]代表从下标3开始往后一直截取
+#a[:5]代表截取到下标5的上一个下标为止
+</code></pre>
+<h3 id="列表-list或者叫数组">列表 (list或者叫数组)</h3>
+<h4 id="列表的声明">列表的声明</h4>
+<pre><code class="language-python">#直接使用[]声明
+a=[1,2,3]
+print(a)
+#使用list()构造
+a=list()
+print(a)
+#使用*构造（关于这种构造要慎用，后面进阶篇会提到注意事项）
+a=[0]*10
+print(a)
+#使用for构造
+a=[i for i in range(0,10)]
+print(a)
+#列表内元素的类型不一定都相同，可以是整型，浮点型，字符串甚至是一个列表
+a=[1,2,3.4,&quot;5&quot;,[6,7]]
+print(a)
+</code></pre>
+<h4 id="列表的访问插入与删除">列表的访问，插入与删除</h4>
+<pre><code class="language-python">#========直接在变量名后加&quot;[下标]&quot;即可访问列表的该下标的数
+a=[2*i for i in range(0,10)]
+a[2]=-2
+print(a)
+print(a[3])
+#=======可以是负数下标
+a=[1,2,3,4,5,6,7,8]
+print(a[-1])#倒数第一个元素
+print(a[-3])#倒数第三个元素
+
+#===========使用append()一次添加一个元素
+a=[2]
+a.append(12)
+a.append(22)
+print(a)
+#===========使用extend()一次添加多个元素
+a=[1]
+a.extend([1,2,3])
+print(a)
+a.extend([1])
+a.extend([])#可以为空
+print(a)
+a.extend((1,2,3))#*或者是一个元组
+a.extend({1,2,3})#*一个set集合
+a.extend({1:2,3:4})#*一个字典
+#理论上只要是带有iterable属性的变量，就可以丢到这个extend里
+#至于iterable，留到后面进阶篇
+print(a)
+#============使用+运算符进行列表拼接
+a=[3]
+a=a+[4]
+a+=[7]
+a+=[1,2,3]
+print(a)
+#============使用insert()向指定下标处插入一个值
+a=[0,1,2,3,4,5,6]
+a.insert(2,99)
+print(a)#-&gt;[0,1,99,2,3,4,5,6]
+
+#===========使用del关键字进行删除
+a=[0,1,2,3,4,5,6]
+del a[4]
+print(a)
+#===========使用pop()按下标进行删除
+a=[0,1,2,3,4,5,6,7,8,9]
+a.pop()#删除列表尾元素
+print(a)
+print(a.pop())#pop()会返回所删除元素的值
+a.pop(2)#指定下标删除
+print(a)
+#===========使用remove按值删除
+a=[0,1,2,3,1,4,5,7]
+a.remove(1)#删除第一个出现的1
+print(a)
+</code></pre>
+<h3 id="库">库</h3>
+<h4 id="库的引用">库的引用</h4>
+<pre><code class="language-python">#使用import关键字进行库的引用
+import math
+print(math.ceil(1.1))#上取整
+
+#加上as关键字更换引用库函数时的名称
+import math as m
+print(m.floor(1.9))#下取整
+
+#引用库时省略库名称的方法
+import math as *
+print(sin(6))
+
+#只引用库里面的某个函数
+from math import exp
+print(exp(4))#取指数
+
+#引用库时省略库名称的方法2
+from math import *
+print(pi)#圆周率
+
+#引用多个库
+import math,random
+print(random.randint(1,100))#[1,100]中的一个随机数
+#或者直接列
+import math
+import random
+import sys
+print(123)
+sys.exit()#提前结束程序，后面的456不会被打印
+print(456)
+</code></pre>
+<h4 id="第三方库的安装">第三方库的安装</h4>
+<p>有时候上网复制的代码运行后会出现：</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;E:\Desktop\Blank.py&quot;, line 1, in &lt;module&gt;
+    import xxx
+ModuleNotFoundError: No module named 'xxx'
+</code></pre>
+<p>这种报错一般是没有安装第三方库造成的，解决方法是用pip手动安装，安装分为在线安装和离线安装。</p>
+<p>在线安装：在线win+r键打开cmd窗口，然后用pip install &lt;目标模块名&gt;即可</p>
+<p>离线安装：去下载符合当前系统版本对应的离线包xxx，放到pip所在的文件夹，然后用pip install xxx即可（也可以不放到pip所在文件夹，直接pip install &lt;完整路径&gt;即可</p>
+<p>安装完之后就可以直接import xxx导入了</p>
+<h3 id="逻辑控制流语句">逻辑控制流语句</h3>
+<p>和c很像，但是删了switch-case语句</p>
+<p>python中的布尔值：True，False（注意，python对大小写敏感，这意味着你不能使用true，false作为替代品</p>
+<p>比较操作符：</p>
+<table>
+<thead>
+<tr>
+<th>操作符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>==</td>
+<td>等于</td>
+</tr>
+<tr>
+<td>!=</td>
+<td>不等于</td>
+</tr>
+<tr>
+<td>&lt;</td>
+<td>小于</td>
+</tr>
+<tr>
+<td>&gt;</td>
+<td>大于</td>
+</tr>
+<tr>
+<td>&lt;=</td>
+<td>小于等于</td>
+</tr>
+<tr>
+<td>&gt;=</td>
+<td>大于等于</td>
+</tr>
+</tbody>
+</table>
+<p>通过比较操作符可以比较两个变量，并返回一个布尔值</p>
+<p>tips: 可以使用in和not in关键字来判断列表中是否有某元素</p>
+<pre><code class="language-python">a=[1,2,3]
+print(1 in a)
+print(4 in a)
+print(5 not in a)
+print(2 not in a)
+</code></pre>
+<p>布尔值运算：</p>
+<pre><code class="language-python">(a&gt;1) and (a&lt;10)#逻辑与 也可以用&amp;
+(a&lt;1) or (a&gt;10)#逻辑或 也可以用|
+not (a&gt;1)#逻辑取反
+(a&gt;1)^(b&gt;1)#逻辑异或
+</code></pre>
+<h4 id="if-判断语句">if 判断语句：</h4>
+<p>python对代码缩进有严格要求，因为它就是靠着缩进来划分代码块（作用域）的，每个控制流语句都有自己负责的代码块（作用域）</p>
+<pre><code class="language-Python">#if &lt;条件&gt;:
+#    &lt;执行语句&gt;
+if a==b:
+    print(&quot;a等于b&quot;)
+#if &lt;条件&gt;:
+#   &lt;执行语句1&gt;
+#else:
+#   &lt;执行语句2&gt;
+if a&gt;b:
+    print(&quot;a大于b&quot;)
+else:
+    print(&quot;a小于等于b&quot;)
+#if &lt;条件1&gt;:
+#   &lt;执行语句1&gt;
+#elif &lt;条件2&gt;:
+#   &lt;执行语句2&gt;
+#else:#这个else是可选的
+#   &lt;执行语句3&gt;
+if (a&gt;10) and (a&lt;100):
+    print(&quot;a在10到100之间&quot;)
+elif a&gt;b:
+    print(&quot;a大于b&quot;)
+#当然也可以用下面的方式表示范围
+#这在c中是无法达到预期目的的，但是python对此做了优化
+if 10&lt;a&lt;100:
+    print(&quot;a在10到100之间&quot;)
+</code></pre>
+<h4 id="while-循环语句">while 循环语句：</h4>
+<pre><code class="language-python">#while &lt;条件&gt;:
+#   &lt;执行语句&gt;
+a=10
+while a&gt;1:
+    print(a)
+</code></pre>
+<h4 id="for-循环语句">for 循环语句</h4>
+<pre><code class="language-python">#for &lt;变量名&gt; in &lt;范围&gt;:
+#   &lt;执行语句&gt;
+#其中范围可以使用range(1,10)生成，表示，从1到10（左闭右开）
+#range(n)表示从0到n（左闭右开）
+#range(10,1,-1)表示从10到1
+#range范围和字符串切片很像
+for i in range(1,9):
+    print(i)
+
+#范围也可以是列表或元组
+a=[1,2,3,6,8,4,8,3]
+for i in a:
+    print(i)
+for j in (6,&quot;we&quot;,6,1,9,6,2):
+    print(j)
+</code></pre>
+<h4 id="break与continue">break与continue</h4>
+<pre><code class="language-python">#break是跳出for和while循环用的
+#continue是提前结束当前for，while循环用的，将程序重新导向下一次循环开始的条件判断部分
+a=123
+while True:
+    if a==0:
+        break
+    a+=1
+
+for i in range(1,100):
+    if i%2==0:
+        continue
+    print(i)
+</code></pre>
+<h3 id="函数">函数</h3>
+<h4 id="函数的声明与调用">函数的声明与调用：</h4>
+<pre><code class="language-python">#def &lt;函数名&gt;(&lt;参数列表(选填)&gt;):
+#   &lt;执行语句&gt;
+#...
+#&lt;函数名&gt;(参数列表)#在某处调用
+def myfunc():
+    print(&quot;This is a instance for function call.&quot;)
+    print(&quot;You can achieve almost anything with it.&quot;)
+myfunc()
+#传参
+def myfunc(value):#python的变量可以是任何类型，所以不需要为形参声明类型
+    print(&quot;You put a &quot;,value,&quot; in!&quot;)
+myfunc(123)
+myfunc(&quot;cat&quot;)
+#多个参数
+def myfunc(a,b,c):
+    print(c,b,a)
+myfunc(1,2.3,&quot;4&quot;)
+#默认参数的设置
+def myfunc(a,b=123):
+    print(a,b)
+myfunc(&quot;传参时传入了b的值，默认参数值123未被使用，b=&quot;,&quot;22&quot;)
+myfunc(&quot;传参时默认参数值被使用,，b=&quot;)
+#指定默认参数
+def myfunc(a,b=123,c=345,d=567):
+    print(a,b,c,d)
+myfunc(33,c=99)#在调用时使用 &lt;形参名&gt;=&lt;值&gt; 即可指定更改默认参数
+</code></pre>
+<p>上面是无返回值函数，下面来介绍有返回值函数</p>
+<pre><code class="language-python">#和无返回值函数差不多，只是多了一句return以返回一个值或多个值
+def myfunc():
+    return 123
+a=myfunc()
+print(a)
+print(myfunc())
+#可以返回多个值
+def myfunc():
+    return 1,2.2,&quot;3&quot;
+a,b,c=myfunc()
+print(c,b,a)
+print(myfunc())
+print(myfunc()[1])
+#若试图使用变量接收无返回值函数的值，返回值为None
+def myfunc():
+    print(1+2)
+a=myfunc()
+print(a==None)
+</code></pre>
+<h4 id="函数的作用域">函数的作用域：</h4>
+<pre><code class="language-python">#在函数最外面（全局作用域）声明的变量统称为全局变量，这些变量可在任意位置调用
+#在函数内部（局部作用域）声明的变量统一叫局部变量，这些变量只能在函数内部使用
+
+a=234#全局变量
+def f():
+    b=123#局部变量
+
+#变量的引用：父作用域无法用任何方式调用子作用域和其他同级作用域的变量
+#但子作用域可以获得父作用域的变量，但无法修改
+a=123
+def g():
+    print(a)#子作用域获得父作用域的变量
+    b=12
+g()
+print()#父作用域无法调用子作用域的变量
+
+def f():
+    def g():
+        a=123
+    g()
+    def h():
+        print(a)#h与g同级，h获取不了g的变量a
+    h()
+f()
+#在任意作用域中使用global关键字可将变量声明在全局作用域
+def f():
+    global a
+    a=123
+f()
+print(a)
+
+#一般来说，在不使用global的情况下，重名的变量在作用域中有着“就近原则”
+x=123
+def f():
+    x=456
+    print(x)#-&gt;456#x在作用域内重新声明，用作用域内的x
+print(x)#-&gt;123
+</code></pre>
+<h4 id="函数的递归">函数的递归</h4>
+<pre><code class="language-python">#直接在函数内部调用函数本身称为递归，注意设置终止条件，不要超过递归上限
+a=[0]*11
+def f(x):
+    if(x==0 or x==1):#终止条件
+        a[x]=1
+        return 1
+    a[x]=f(x-1)+f(x-2)#递归调用
+    return f(x-1)+f(x-2)
+f(10)
+print(a)
+</code></pre>
+<h4 id="一些默认函数的用法">一些默认函数的用法：</h4>
+<pre><code class="language-python">print(1,2,3,4,5,sep=&quot;-&quot;)#-&gt;1-2-3-4-5
+print(&quot;text&quot;,end=&quot;&quot;)#-&gt;text（无换行）
+print(&quot;123&quot;,file=&quot;tmp.txt&quot;)#将输出导向tmp.txt文件
+print(&quot;456&quot;,flush=True)#每次print后清空缓存区（暂时不知道用处
+int(&quot;123&quot;)#字符串/浮点转整型
+float(&quot;1.2&quot;)#整型/字符串转浮点
+str(123)#整型/浮点转字符串
+bin(123)#-&gt;'0b1111011'#整型转二进制表示(返回字符串)
+hex(123)#-&gt;'0x7b'#整型转十六进制表示
+chr(67)#-&gt;'C'#Unicode编码转字符
+</code></pre>
+<h2 id="异常处理">异常处理</h2>
+<pre><code class="language-python">#使用try,except关键字可以处理各种异常,而不是直接结束程序
+a=0
+try:
+    print(123/a)
+except:
+    print(&quot;something wrong&quot;)
+print(&quot;go on&quot;)
+
+#在except后面跟上错误类型即可对不同错误分类处理
+import sys
+print(&quot;除法计算器v0.0.1，按Ctrl+C退出&quot;)
+while True:
+    try:
+        a=int(input(&quot;输入被除数：&quot;))
+        print(a/int(input(&quot;输入除数：&quot;)))
+    except ZeroDivisionError:#除0错误
+        print(&quot;-+&quot;[a&gt;=0]+&quot;inf&quot;)
+    except ValueError:#值错误(如果用户输入含有非数字，那么int()那会报这个错)
+        print(&quot;输入格式有误，请重试！&quot;)
+        continue
+    except KeyboardInterrupt:#键盘输入被干扰（用户在输入时按下Ctrl+C会发生这个错误）
+        print(&quot;感谢你的使用！&quot;)
+        sys.exit()
+</code></pre>
+<h3 id="异常的获取">异常的获取：</h3>
+<p>每条错误信息的最后一行开头就是错误类型</p>
+<pre><code>Traceback (most recent call last):
+  File &quot;&lt;pyshell#1&gt;&quot;, line 1, in &lt;module&gt;
+    int(&quot;a&quot;)
+ValueError: invalid literal for int() with base 10: 'a'
+</code></pre>
+<p>通过大量地尝试各种输入，记录所有错误信息的种类并写出处理方法，即可写出较为完善的程序</p>
+<h2 id="进阶篇">进阶篇</h2>
+<h3 id="列表再引入">列表再引入</h3>
+<h4 id="列表的其他操作">列表的其他操作</h4>
+<pre><code class="language-python">#len()函数获取列表长度
+a=[1,2,3,4,5,123]
+print(len(a))
+
+#clear()用于清空列表
+a=[1,2,3,4,5]
+a.clear()
+print(a)
+
+#copy()返回列表的一个拷贝
+#这个等下讲
+
+#count()统计列表中的元素出现次数
+a=[1,1,4,5,1,4]
+print(a.count(1))
+
+#index()返回列表中某元素第一次出现的下标
+a=[1,2,3,4,5,6,2,3,4]
+print(a.index(2))
+
+#reverse()使列表反转
+a=[1,2,3,4,5]
+a.reverse()
+print(a)
+
+#sort()列表排序（升序）
+a=[1,5,2,4,3]
+a.sort()
+print(a)
+#用reverse使其降序
+a=[1,5,2,4,3]
+a.sort(reverse=True)
+print(a)
+#*传入一个函数使其按指定规则排序
+def f(z):
+    return z[1]
+a=[[1,2],[9,1],[5,3]]
+a.sort(key=f)#这里使用key=f将函数方法f传入，因此a列表在排序时会先将每个元素z映射为f(z)，再排序
+print(a)
+#*传入一个lambda函数使其按指定规则排序
+a=[[1,2],[9,1],[5,3]]
+a.sort(key=lambda x:(x[1],x[0]))#先按下标1排序，再按下标0排序
+print(a)
+
+#列表解包，多个变量用逗号连接，可一次性为这些变量赋值
+#============你可能在用这种===========#
+a=[&quot;alice&quot;,&quot;bob&quot;,&quot;candy&quot;]
+x=a[0]
+y=a[1]
+z=a[2]
+#============但其实可以这样===========#
+a=[&quot;alice&quot;,&quot;bob&quot;,&quot;candy&quot;]
+x,y,z=a
+
+#通过enumerate()函数返回索引与元素
+a=[&quot;alice&quot;,&quot;bob&quot;,&quot;candy&quot;]
+for index,person in enumerate(a):
+    print(&quot;The &quot;+str(index)+&quot;th person is &quot;+person)
+
+#引入random库后，可使用choice()和shuffle对列表进行随机操作
+import random
+a=[&quot;alice&quot;,&quot;bob&quot;,&quot;candy&quot;]
+print(random.choice(a))#随机选取一个元素
+random.shuffle(a)#打乱列表，随机排序
+</code></pre>
+<h4 id="序列数据类型">序列数据类型</h4>
+<p>按序列表示值的数据类型除了列表，还有字符串，range()生成的范围对象，元组。对列表进行的大多操作均可用在这些类型上，比如按索引取值，切片，for循环，len()函数取长度，用于in和not in</p>
+<p>姑且先放这么多，剩下的下次接着更新</p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/tag1/">tag1</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/tag2/">tag2</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/latex/" data-tooltip="LaTeX学习" aria-label="PREVIOUS: LaTeX学习">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/python\/';
+        
+          this.page.identifier = '\/post\/python\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 XiaoXia. All Rights Reserved
+  </span>
+
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/latex/" data-tooltip="LaTeX学习" aria-label="PREVIOUS: LaTeX学习">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">XiaoXia</h4>
+    
+      <div id="about-card-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        华南理工大学
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://xiaoxiauwu.github.io/images/cover_.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiaoxiauwu.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/click.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/sakura.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/cp.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
