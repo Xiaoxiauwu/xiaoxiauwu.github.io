@@ -393,6 +393,9 @@ ll ans=PP(1,n,[&amp;](int x){
     ...
     return 0;//ck函数直接写这里就行
 });
+//注意，如果你使用#define的调用方法，那么CK块里面不能出现逗号
+//不然会报错。如果你真的需要在ck函数里写逗号，请auto ck=[&amp;](int x){...};
+//再PP(1,n,ck);
 </code></pre>
 <p>最基础的两个线性二分STL：</p>
 <pre><code class="language-cpp">//返回指向第一个大于v的元素的迭代器
@@ -714,8 +717,26 @@ S.sort(a,1,n);
 cout&lt;&lt;S.nxs&lt;&lt;ET;//输出逆序数
 for(int &amp;i:S.r)cout&lt;&lt;i&lt;&lt;&quot; &quot;;//输出排序结果
 </code></pre>
-<h2 id="stl">STL</h2>
-<p>这里记录收集到的一些小技巧（大部分和STL相关）。</p>
+<h2 id="tipswa">TIPS&amp;WA</h2>
+<p>这里记录收集到的一些小技巧和注意事项（大部分和STL相关）。</p>
+<h3 id="tip-获取一个整数二进制位数">[TIP] 获取一个整数二进制位数</h3>
+<p>正常做法是写循环位运算，但是如果直接用log2函数，写法上会更简洁更快</p>
+<pre><code class="language-cpp">int msb(ll x){//获取二进制位数（记得#include&lt;cmath&gt;）
+    return x&gt;0?log2l(x)+1:0;
+}
+//log这里不需要写int，因为返回值自动设为int了
+</code></pre>
+<h3 id="tipwa-位运算相关">[TIP/WA] 位运算相关</h3>
+<p>按位左移，正数负数最左边补符号位（除开符号位的最左边）；按位右移，正数负数最右边都补0；无符号数当正数处理；</p>
+<p>含有对高达$10^{18}$的数进行位运算的题，在对表达式进行左移时记得开ll，比如</p>
+<pre><code class="language-cpp">1ll&lt;&lt;n
+</code></pre>
+<p>使用~进行按位取反操作，包括符号位。</p>
+<h3 id="tipwa-获取带空格的整行输入">[TIP/WA] 获取带空格的整行输入</h3>
+<p>洛谷的字符串题总是喜欢带一堆连续空格，还要求你不能忽略这些空格，这时候就需要用到$$getline(cin,t)$$了。
+(什么？不喜欢iostream？那去这里选一个你喜欢的款式：<a href="https://blog.csdn.net/CSDNFANSO/article/details/111824139">C/C++如何整行输入</a>，我就不一一列举了)</p>
+<h3 id="wa-sort函数与string数组">[WA] sort函数与string数组</h3>
+<p>两个string之间的比较也是要花时间的，若数组大小为 $n$，string长度为 $m$，则sort(a,a+n)的时间复杂的是 $O(nmlogn)$</p>
 <pre><code>前面的区域以后再来探索吧！
 </code></pre>
               
@@ -992,6 +1013,10 @@ for(int &amp;i:S.r)cout&lt;&lt;i&lt;&lt;&quot; &quot;;//输出排序结果
 
   
     <script src="https://xiaoxiauwu.github.io/js/cp.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/nest.js"></script>
   
 
 
