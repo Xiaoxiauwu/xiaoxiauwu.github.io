@@ -6,8 +6,22 @@
     <description>Recent content in Categories on 夏のBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Feb 2024 20:01:21 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 08 Mar 2024 03:07:53 +0800</lastBuildDate>
     <atom:link href="https://xiaoxiauwu.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>STM32</title>
+      <link>https://xiaoxiauwu.github.io/categories/stm32/</link>
+      <pubDate>Fri, 08 Mar 2024 03:07:53 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/categories/stm32/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>硬件</title>
+      <link>https://xiaoxiauwu.github.io/categories/%E7%A1%AC%E4%BB%B6/</link>
+      <pubDate>Fri, 08 Mar 2024 03:07:53 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/categories/%E7%A1%AC%E4%BB%B6/</guid>
+      <description></description>
+    </item>
     <item>
       <title>c&#43;&#43;</title>
       <link>https://xiaoxiauwu.github.io/categories/c&#43;&#43;/</link>

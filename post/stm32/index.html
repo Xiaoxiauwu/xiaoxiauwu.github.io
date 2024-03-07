@@ -1,0 +1,1093 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/xiaoxiauwu.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "XiaoXia",
+    
+    "image": "https://xiaoxiauwu.github.io/images/avatar.jpg"
+    
+  },
+  "name":"夏のBLOG",
+  "description":"",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/stm32\/",
+  "keywords":"[tech, C\u002b\u002b, python, study]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.121.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="XiaoXia">
+<meta name="keywords" content="tech, C&#43;&#43;, python, study">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[正在填坑] STM32学习随记">
+<meta name="twitter:title" content="[正在填坑] STM32学习随记">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/stm32/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/stm32/">
+<meta property="og:site_name" content="夏のBLOG">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2024-03-08T03:07:53">
+  
+  
+    <meta property="article:modified_time" content="2024-03-08T03:07:53">
+  
+  
+  
+    
+      <meta property="article:section" content="STM32">
+    
+      <meta property="article:section" content="硬件">
+    
+  
+  
+    
+      <meta property="article:tag" content="汇编">
+    
+      <meta property="article:tag" content="c&#43;&#43;">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+
+
+
+
+  <meta property="og:image" content="https://s21.ax1x.com/2024/03/08/pFsV5FA.jpg">
+  <meta property="twitter:image" content="https://s21.ax1x.com/2024/03/08/pFsV5FA.jpg">
+
+
+  <meta property="og:image" content="https://s21.ax1x.com/2024/03/08/pFsV5FA.jpg">
+  <meta property="twitter:image" content="https://s21.ax1x.com/2024/03/08/pFsV5FA.jpg">
+
+
+    <title>[正在填坑] STM32学习随记</title>
+
+    <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/stm32/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiaoxiauwu.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://xiaoxiauwu.github.io/css/codeblock.css">
+      
+    
+
+    
+      
+    
+    
+
+
+<script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202401110101/show_ads_impl_fy2021.js" id="google_shimpl"></script>
+<script>
+      MathJax = {
+         tex: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true,
+            tags: 'ams',
+         },
+      };
+   </script>
+<script type="text/javascript" async="" src="https://wuli.wiki/MathJax3/es5/tex-mml-chtml.js"></script>
+
+<script async src="https://xiaoxiauwu.github.io/js/busuanzi.pure.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade"></head>
+
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiaoxiauwu.github.io/" aria-label="Go to homepage">夏のBLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiaoxiauwu.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+
+
+<div  class="meta-item">&nbsp·&nbsp
+  <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+</div>
+
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiaoxiauwu.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">XiaoXia</h4>
+        
+          <h5 class="sidebar-profile-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Xiaoxiauwu" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.totorocatcat.top" target="_blank" rel="noopener" title="Totoroの小窝">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-link" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Totoroの小窝</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('https://s21.ax1x.com/2024/03/08/pFsV5FA.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      [正在填坑] STM32学习随记
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2024-03-08T03:07:53&#43;08:00">
+        
+  March 8, 2024
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/stm32">STM32</a>, 
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/%e7%a1%ac%e4%bb%b6">硬件</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" id="top">
+          
+            <span class="post-header-cover-caption caption">各种款式的寄存器任你挑选！</span>
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <!-- raw HTML omitted -->
+<h1 id="stm32">STM32</h1>
+<h2 id="寄存器">寄存器</h2>
+<p>在STM32中一个寄存器有32个位，每个位有它自己的功能，这里我们查表即可知道每个位的功能</p>
+<h3 id="寄存器的设置">寄存器的设置</h3>
+<p>在c/cpp中写：寄存器范类-&gt;指定寄存器(细化)=0x00000000 即可设置寄存器的值，其中0x00000000是你想要设置的状态，具体看实际情况设置。</p>
+<pre><code class="language-cpp">RCC-&gt;AHB2ENR=0x00000010
+</code></pre>
+<h3 id="rcc寄存器重置与时钟控制寄存器reset-and-clock-control">RCC寄存器（重置与时钟控制寄存器（Reset and Clock Control））</h3>
+<h4 id="ahb2enr寄存器外设时钟启用寄存器ahb2-peripheral-clock-enable-register">AHB2ENR寄存器（外设时钟启用寄存器（AHB2 Peripheral Clock Enable Register））</h4>
+<p>STM32的时钟系统通过一系列的时钟控制寄存器来管理不同总线上外设的时钟，其中包括AHB、APB1和APB2三条总线。AHB2ENR 属于AHB总线的二级复用器（AHB2）部分，它控制着连接到AHB2总线上的外设的时钟线是否激活。通过设置或清除这个寄存器中的相应位，可以启用或禁用特定外设的时钟，从而控制外设的功能和功耗。</p>
+<p>例：</p>
+<pre><code class="language-cpp">RCC-&gt;AHB2ENR=0x00000010;//将IOPCEN置1
+</code></pre>
+<p><img src="https://s21.ax1x.com/2024/03/08/pFsZPyT.png" alt="">
+如图，在二进制下寄存器的位每4个一组，将IOPCEN置1则需将第二组的状态设置成0001，十六进制下就是1。其他位都设成0000，十六进制下是0，组合起来就是0x00000010.</p>
+<h3 id="gpio寄存器通用输入输出寄存器general-purpose-input-output">GPIO寄存器（通用输入输出寄存器（General Purpose Input Output））</h3>
+<p>从硬件层面上讲，它是芯片上的一组引脚，用于收/发信号，由于不是为任何特定目的而设计的，所以称之为“通用”IO。</p>
+<p>关于难推难挽和开漏输出，下面这篇文章有详细介绍，这里就暂时只用知道难推难挽既可以输出高电平，也可以输出低电平，直接驱动一些耗电量相对较小的器件就行了。</p>
+<p>参考资料：<a href="https://zhuanlan.zhihu.com/p/532628463?utm_id=0">STM32 GPIO口的推挽输出与开漏输出</a></p>
+<h4 id="gpio的crl与crh寄存器端口配置高寄存器configuration-register-lowconfiguration-register-high">GPIO的CRL与CRH寄存器（端口配置高寄存器（Configuration Register Low&amp;Configuration Register High））</h4>
+<p>低寄存器管理PC0~7，高寄存器管理PC8~15</p>
+<pre><code class="language-cpp">GPIOC-&gt;CRH=0x00300000;
+</code></pre>
+<p>寄存器相关信息如下：
+<img src="https://s21.ax1x.com/2024/03/08/pFsZSWq.png" alt="">
+这里将PC13口启用为通用难推难挽输出模式的输出口，则需置CNF13为00，MODE13为1其他口不变</p>
+<h4 id="gpio的odr寄存器端口输出数据寄存器-output-data-register">GPIO的ODR寄存器（端口输出数据寄存器 （Output Data Register））</h4>
+<pre><code>GPIOC-&gt;ODR=0x00002000
+</code></pre>
+<p>寄存器相关信息如下：
+<img src="https://s21.ax1x.com/2024/03/08/pFsZClV.png" alt="">
+这里将ODR13口置高电平，则需设其为1，其余设为低电平0.</p>
+<h2 id="端口相关">端口相关</h2>
+<p>以下端口标绿的优先使用；标红的强烈建议别使用，因为它们是用来下载程序的，如果被占用就烧不进程序了：</p>
+<p>端口表：</p>
+<table>
+<thead>
+<tr>
+<th>引脚号</th>
+<th>端口</th>
+<th>类型</th>
+<th>I/O口电平</th>
+<th>主功能</th>
+<th>默认复用功能</th>
+<th>重定义功能</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>VBAT</td>
+<td>S</td>
+<td></td>
+<td>VBAT</td>
+<td>*暂时不想抄*</td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td>PC13</td>
+<td>I/O</td>
+<td></td>
+<td>TAMPER-RTC</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td>PC14</td>
+<td>I/O</td>
+<td></td>
+<td>OSC32_IN</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>4</td>
+<td>PC15</td>
+<td>I/O</td>
+<td></td>
+<td>OSC32_OUT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td>OSC_IN</td>
+<td>I</td>
+<td></td>
+<td>OSC_IN</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td>OSC_OUT</td>
+<td>O</td>
+<td></td>
+<td>OSC_OUT</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>7</td>
+<td>NRST</td>
+<td>I/O</td>
+<td></td>
+<td>NRST</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td>VSSA</td>
+<td>S</td>
+<td></td>
+<td>VSSA</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td>VDDA</td>
+<td>S</td>
+<td></td>
+<td>VDDA</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>10</td>
+<td>$\color{#00ff00}{\text{PA0}}$</td>
+<td>I/O</td>
+<td></td>
+<td>PA0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>11</td>
+<td>$\color{#00ff00}{\text{PA1}}$</td>
+<td>I/O</td>
+<td></td>
+<td>PA1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>12</td>
+<td>$\color{#00ff00}{\text{PA2}}$</td>
+<td>I/O</td>
+<td></td>
+<td>PA2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>13</td>
+<td>$\color{#00ff00}{\text{PA3}}$</td>
+<td>I/O</td>
+<td></td>
+<td>PA3</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>14</td>
+<td>$\color{#00ff00}{\text{PA4}}$</td>
+<td>I/O</td>
+<td></td>
+<td>PA4</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>15</td>
+<td>$\color{#00ff00}{\text{PA5}}$</td>
+<td>I/O</td>
+<td></td>
+<td>PA5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>16</td>
+<td>$\color{#00ff00}{\text{PA6}}$</td>
+<td>I/O</td>
+<td></td>
+<td>PA6</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>17</td>
+<td>$\color{#00ff00}{\text{PA7}}$</td>
+<td>I/O</td>
+<td></td>
+<td>PA7</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>18</td>
+<td>$\color{#00ff00}{\text{PB0}}$</td>
+<td>I/O</td>
+<td></td>
+<td>PB0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>19</td>
+<td>$\color{#00ff00}{\text{PB1}}$</td>
+<td>I/O</td>
+<td></td>
+<td>PB1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>20</td>
+<td>PB2</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PB2/BOOT1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>21</td>
+<td>$\color{#00ff00}{\text{PB10}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PB10</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>22</td>
+<td>$\color{#00ff00}{\text{PB11}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PB11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>23</td>
+<td>VSS_1</td>
+<td>S</td>
+<td></td>
+<td>VSS_1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>24</td>
+<td>VDD_1</td>
+<td>S</td>
+<td></td>
+<td>VDD_1</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>25</td>
+<td>$\color{#00ff00}{\text{PB12}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PB12</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>26</td>
+<td>$\color{#00ff00}{\text{PB13}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PB13</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>27</td>
+<td>$\color{#00ff00}{\text{PB14}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PB14</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>28</td>
+<td>$\color{#00ff00}{\text{PB15}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PB15</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>29</td>
+<td>$\color{#00ff00}{\text{PA8}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PA8</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>30</td>
+<td>$\color{#00ff00}{\text{PA9}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PA9</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>31</td>
+<td>$\color{#00ff00}{\text{PA10}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PA10</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>32</td>
+<td>$\color{#00ff00}{\text{PA11}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PA11</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>33</td>
+<td>$\color{#00ff00}{\text{PA12}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PA12</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>34</td>
+<td>$\color{#00ff00}{\text{PA13}}$</td>
+<td>I/O</td>
+<td></td>
+<td>JTMS/SWDIO</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>35</td>
+<td>VSS_2</td>
+<td>S</td>
+<td></td>
+<td>VSS_2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>36</td>
+<td>VDD_2</td>
+<td>S</td>
+<td></td>
+<td>VDD_2</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>37</td>
+<td>$\color{#ff0000}{\text{PA14}}$</td>
+<td>I/O</td>
+<td></td>
+<td>JTCK/SWCLK</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>38</td>
+<td>$\color{#ff0000}{\text{PA15}}$</td>
+<td>I/O</td>
+<td></td>
+<td>JTDI</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>39</td>
+<td>$\color{#ff0000}{\text{PB3}}$</td>
+<td>I/O</td>
+<td></td>
+<td>JTDO</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>40</td>
+<td>$\color{#ff0000}{\text{PB4}}$</td>
+<td>I/O</td>
+<td></td>
+<td>NJTRST</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>41</td>
+<td>$\color{#00ff00}{\text{PB5}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PB5</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>42</td>
+<td>$\color{#00ff00}{\text{PB6}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PB6</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>43</td>
+<td>$\color{#00ff00}{\text{PB7}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PB7</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>44</td>
+<td>BOOT0</td>
+<td>I</td>
+<td></td>
+<td>BOOT0</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>45</td>
+<td>$\color{#00ff00}{\text{PB8}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PB8</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>46</td>
+<td>$\color{#00ff00}{\text{PB9}}$</td>
+<td>I/O</td>
+<td>FT</td>
+<td>PB9</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>47</td>
+<td>VSS_3</td>
+<td>S</td>
+<td></td>
+<td>VSS_3</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>48</td>
+<td>VDD_3</td>
+<td>S</td>
+<td></td>
+<td>VDD_3</td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>其中I/O即输入输出，S代表电源，FT代表能接受5V电压。</p>
+<h2 id="杂项">杂项</h2>
+<p>为什么不推荐使用cpp？因为cpp的模板类太大了，stm32f1的flash最多只能存64k的程序，你随便写个vector什么的都要动辄300多k。</p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E6%B1%87%E7%BC%96/">汇编</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/c&#43;&#43;/">c&#43;&#43;</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/acm/" data-tooltip="[正在填坑] ACM模版集（个人自用，随缘更新中）" aria-label="PREVIOUS: [正在填坑] ACM模版集（个人自用，随缘更新中）">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/stm32\/';
+        
+          this.page.identifier = '\/post\/stm32\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 XiaoXia. All Rights Reserved
+  </span>
+
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/acm/" data-tooltip="[正在填坑] ACM模版集（个人自用，随缘更新中）" aria-label="PREVIOUS: [正在填坑] ACM模版集（个人自用，随缘更新中）">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">XiaoXia</h4>
+    
+      <div id="about-card-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        华南理工大学
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://xiaoxiauwu.github.io/images/cover_.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiaoxiauwu.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/click.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/sakura.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/cp.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
