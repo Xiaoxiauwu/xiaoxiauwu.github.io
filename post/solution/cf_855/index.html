@@ -507,61 +507,23 @@ int main(){
 <p><img src="https://s21.ax1x.com/2024/03/08/pFsZ8TH.png" alt=""></p>
 <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
 using ll=long long;
-using ld=long double;
 using namespace std;
 #define ET '\n'
-#define FOR(i,a,b) for(ll i=(a);i&lt;=(b);i++)
-#define rFOR(i,a,b) for(ll i=(a);i&gt;=(b);i--)
 #define CIN(a) ll a;cin&gt;&gt;a;
-#define DCIN(a) ld a;cin&gt;&gt;a;
-#define PP(l,r,CK) *ranges::partition_point(ranges::iota_view((l),(r)+1),(CK))
-string ANS[2]={&quot;No\n&quot;,&quot;Yes\n&quot;};
+string ANS[2]={&quot;NO&quot;,&quot;YES&quot;};
 
 void solve(){
     CIN(n);CIN(k);
-    string s1,s2;
+    string s1,s2,s1_,s2_;
     cin&gt;&gt;s1&gt;&gt;s2;
-
-    string s1_=s1,s2_=s2;
+    //特判
+    if(s1==s2){cout&lt;&lt;&quot;YES&quot;&lt;&lt;ET;return;}
+    s1_=s1,s2_=s2;
     sort(s1_.begin(),s1_.end());sort(s2_.begin(),s2_.end());
-
-    if(s1==s2){
-        cout&lt;&lt;&quot;YES&quot;&lt;&lt;ET;
-        return;
-    }
-    if(s1_!=s2_){
-        cout&lt;&lt;&quot;NO&quot;&lt;&lt;ET;
-        return;
-    }
-    if(k&gt;n){
-        cout&lt;&lt;&quot;NO&quot;&lt;&lt;ET;
-        return;
-    }
-    if(k==1){
-        cout&lt;&lt;&quot;YES&quot;&lt;&lt;ET;
-        return;
-    }
-
-    if(2*k&gt;n){
-        string l1=s1.substr(0,n-k)+s1.substr(k,n-k);
-        string l2=s2.substr(0,n-k)+s2.substr(k,n-k);
-        
-        string q1=s1.substr(n-k,2*k-n);
-        string q2=s2.substr(n-k,2*k-n);
-        //cout&lt;&lt;l1&lt;&lt;&quot; &quot;&lt;&lt;l2&lt;&lt;&quot;,&quot;&lt;&lt;q1&lt;&lt;&quot; &quot;&lt;&lt;q2;
-        sort(l1.begin(),l1.end());sort(l2.begin(),l2.end());
-        //sort(q1.begin(),q1.end());sort(q2.begin(),q2.end());
-        
-        if(l1==l2&amp;&amp;q1==q2){
-            cout&lt;&lt;&quot;YES&quot;&lt;&lt;ET;
-        }else{
-            cout&lt;&lt;&quot;NO&quot;&lt;&lt;ET;
-        }
-    }else{
-        cout&lt;&lt;&quot;YES&quot;&lt;&lt;ET;
-        return;
-    }
-
+    if(s1_!=s2_){cout&lt;&lt;&quot;NO&quot;&lt;&lt;ET;return;}
+    if(k&gt;n){cout&lt;&lt;&quot;NO&quot;&lt;&lt;ET;return;}
+    //中间串判断
+    cout&lt;&lt;ANS[2*k&lt;=n||(s1.substr(n-k,2*k-n)==s2.substr(n-k,2*k-n))]&lt;&lt;ET;
 }
 
 int main(){
@@ -570,6 +532,8 @@ int main(){
     return 0;
 }
 </code></pre>
+<h2 id="f和g">F和G</h2>
+<p>有时间写写</p>
               
 
 
