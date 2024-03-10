@@ -351,9 +351,9 @@
 }
 </code></pre>
 <h1 id="d-古希腊掌管原神的神">D 古希腊掌管原神的神</h1>
-<p><strong>唯 · 一 · 真 · 神</strong>
-<!-- raw HTML omitted -->(恭喜原神成为过题数最少的水题，我的评价是CF脑筋急转弯)
-<!-- raw HTML omitted -->我个人用了大量的分类讨论，但是其实只需要知道几个关键讨论即可：</p>
+<p><strong>唯 · 一 · 真 · 神</strong></p>
+<p>(恭喜原神成为过题数最少的水题，我的评价是CF脑筋急转弯)</p>
+<p>我个人用了大量的分类讨论，但是其实只需要知道几个关键讨论即可：</p>
 <ul>
 <li>总房间数为1，必然可以，输出0</li>
 <li>真神人数大于假神和变化之神的人数时，必然也可以，输出 $2\times (假神与变化之神之和)+1$ 即可。一直问他们原神在哪个房间就行了。</li>
@@ -400,9 +400,10 @@
 }
 </code></pre>
 <h1 id="e-字母匹配">E 字母匹配</h1>
-<p>刚好最近vp cf的时候见到过，所以秒了<!-- raw HTML omitted -->
-直接记录所有字母出现次数，然后
-$ans=\sum \min (cnt_i,~CNT_i)·sgn(cnt_i·CNT_i) +\min (\sum \lfloor \frac{abs(cnt_i-CNT_i)}{2} \rfloor,~k)$就过了</p>
+<p>刚好最近vp cf的时候见到过，所以秒了</p>
+<p>直接记录所有字母出现次数，然后</p>
+<p>$ans=\sum \min (cnt_i,~CNT_i) +\min (\sum \lfloor \frac{abs(cnt_i-CNT_i)}{2} \rfloor,~k)$</p>
+<p>就过了</p>
 <pre><code class="language-cpp">int a[300];
 void solve(){
     CIN(n);CIN(k);
@@ -412,8 +413,8 @@ void solve(){
     }
     ll ans=0,un=0;
     for(char c='a';c&lt;='z';c++){
-        ans+=min(a[c],a[c+'A'-'a'])*(a[c]&gt;0&amp;&amp;a[c+'A'-'a']&gt;0);
-        un+=((max(a[c],a[c+'A'-'a'])-min(a[c],a[c+'A'-'a']))&gt;&gt;1);
+        ans+=min(a[c],a[c+'A'-'a']);
+        un+=(abs(a[c]-a[c+'A'-'a'])&gt;&gt;1);
     }
     cout&lt;&lt;ans+min(k,un);
 }
@@ -448,8 +449,8 @@ void solve(){
 }
 </code></pre>
 <h1 id="g-旗鼓相当的对手">G 旗鼓相当的对手</h1>
-<p>01背包问题，尽可能填满 $\frac{\sum w_i}{2}$ 这个背包即可，此时相差最小。<!-- raw HTML omitted -->
-(一开始忘一维优化了，被卡掉内存了)</p>
+<p>01背包问题，尽可能填满 $\frac{\sum w_i}{2}$ 这个背包即可，此时相差最小。</p>
+<p>(一开始忘一维优化了，被卡掉内存了)</p>
 <pre><code class="language-cpp">int arra[301];
 int n;
 int dp[100001];
@@ -510,8 +511,8 @@ void solve(){
 }
 </code></pre>
 <h1 id="附录">附录：</h1>
-<p>为了能更好的让读者抓住阅读重点，这里特意将头文件和main函数与solve()函数分离，一般来说这些部分都是万年不变的：</p>
-<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;//如果编译器不能这个，你自己看着缺啥补啥吧
+<p>为了能更好的让读者抓住阅读重点，这里特意将代码头部和main函数与solve()函数分离，一般来说这些部分都是万年不变的：</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;//如果编译器不能用这个，你自己看着缺啥补啥吧
 #define ll long long
 #define ld long double
 using namespace std;
