@@ -6,20 +6,34 @@
     <description>Recent content in Tags on 夏のBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 08 Mar 2024 03:46:48 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 11 Mar 2024 05:33:12 +0800</lastBuildDate>
     <atom:link href="https://xiaoxiauwu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>CF</title>
-      <link>https://xiaoxiauwu.github.io/tags/cf/</link>
-      <pubDate>Fri, 08 Mar 2024 03:46:48 +0800</pubDate>
-      <guid>https://xiaoxiauwu.github.io/tags/cf/</guid>
+      <title>blog</title>
+      <link>https://xiaoxiauwu.github.io/tags/blog/</link>
+      <pubDate>Mon, 11 Mar 2024 05:33:12 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/tags/blog/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>牛客</title>
+      <link>https://xiaoxiauwu.github.io/tags/%E7%89%9B%E5%AE%A2/</link>
+      <pubDate>Mon, 11 Mar 2024 03:17:10 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/tags/%E7%89%9B%E5%AE%A2/</guid>
       <description></description>
     </item>
     <item>
       <title>题解</title>
       <link>https://xiaoxiauwu.github.io/tags/%E9%A2%98%E8%A7%A3/</link>
-      <pubDate>Fri, 08 Mar 2024 03:46:48 +0800</pubDate>
+      <pubDate>Mon, 11 Mar 2024 03:17:10 +0800</pubDate>
       <guid>https://xiaoxiauwu.github.io/tags/%E9%A2%98%E8%A7%A3/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>CF</title>
+      <link>https://xiaoxiauwu.github.io/tags/cf/</link>
+      <pubDate>Fri, 08 Mar 2024 03:46:48 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/tags/cf/</guid>
       <description></description>
     </item>
     <item>
@@ -62,13 +76,6 @@
       <link>https://xiaoxiauwu.github.io/tags/math/</link>
       <pubDate>Mon, 29 Jan 2024 08:24:48 +0800</pubDate>
       <guid>https://xiaoxiauwu.github.io/tags/math/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>blog</title>
-      <link>https://xiaoxiauwu.github.io/tags/blog/</link>
-      <pubDate>Mon, 22 Jan 2024 05:04:37 +0800</pubDate>
-      <guid>https://xiaoxiauwu.github.io/tags/blog/</guid>
       <description></description>
     </item>
     <item>

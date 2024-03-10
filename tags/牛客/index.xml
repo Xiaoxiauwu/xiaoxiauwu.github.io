@@ -1,25 +1,18 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>题解 on 夏のBLOG</title>
-    <link>https://xiaoxiauwu.github.io/categories/%E9%A2%98%E8%A7%A3/</link>
-    <description>Recent content in 题解 on 夏のBLOG</description>
+    <title>牛客 on 夏のBLOG</title>
+    <link>https://xiaoxiauwu.github.io/tags/%E7%89%9B%E5%AE%A2/</link>
+    <description>Recent content in 牛客 on 夏のBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 11 Mar 2024 03:17:10 +0800</lastBuildDate>
-    <atom:link href="https://xiaoxiauwu.github.io/categories/%E9%A2%98%E8%A7%A3/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://xiaoxiauwu.github.io/tags/%E7%89%9B%E5%AE%A2/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>第十一届&#34;图灵杯&#34;NEUQ-ACM程序设计竞赛</title>
       <link>https://xiaoxiauwu.github.io/post/solution/neuq-acm/</link>
       <pubDate>Mon, 11 Mar 2024 03:17:10 +0800</pubDate>
       <guid>https://xiaoxiauwu.github.io/post/solution/neuq-acm/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Codeforces Round 855 (Div. 3)</title>
-      <link>https://xiaoxiauwu.github.io/post/solution/cf_855/</link>
-      <pubDate>Fri, 08 Mar 2024 03:46:48 +0800</pubDate>
-      <guid>https://xiaoxiauwu.github.io/post/solution/cf_855/</guid>
       <description></description>
     </item>
   </channel>
