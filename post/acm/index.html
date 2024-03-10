@@ -718,9 +718,36 @@ cout&lt;&lt;S.nxs&lt;&lt;ET;//输出逆序数
 for(int &amp;i:S.r)cout&lt;&lt;i&lt;&lt;&quot; &quot;;//输出排序结果
 </code></pre>
 <h2 id="数论">数论</h2>
+<h3 id="分解质因数">分解质因数</h3>
+<pre><code class="language-cpp">vector&lt;ll&gt; d;
+ll tmp=n;
+for(ll i=2;i*i&lt;=n;i++){
+    if(tmp%i==0){
+        d.push_back(i);
+        while(tmp%i==0)tmp/=i;
+    }
+}
+if(tmp&gt;1)d.push_back(tmp);//别忘了判一下剩的tmp，通常情况下其不为1
+</code></pre>
+<h3 id="容斥定理">容斥定理</h3>
+<p>非常简单的概念，集合学过吧，$A\bigcup B\bigcup C=A+B+C-(A\bigcap B)-(B\bigcap C)-(A\bigcap C)+(A\bigcap B\bigcap C)$，差不多就是这样的原理。</p>
+<p>常用位运算进行集合操作，下面给出的是利用容斥定理求n以内与n不互质的数的个数的算法。$O(2^n)$（$n$ 为质因数个数）</p>
+<pre><code class="language-cpp">ll cnt=d.size();//分解质因数的结果，不含1
+ll ans=0;
+for(ll i=1;i&lt;(1&lt;&lt;cnt);i++){//
+    ll mul=1,num=0;
+    FOR(j,0,cnt-1){//
+        if(i&amp;(1&lt;&lt;j)){//
+            num++;mul*=d[j];
+        }
+    }
+    if(num&amp;1)ans+=n/mul;//
+    else ans-=n/mul;//
+}
+</code></pre>
 <h3 id="快速幂">快速幂</h3>
 <pre><code class="language-cpp">ll INF = (((ull)~0)&gt;&gt;2);
-ll qpow(ll a,ll n,ll M=INF){
+ll powp(ll a,ll n,ll M=INF){
     ll ans=1;
     while(n){
         if(n&amp;1)ans*=a;ans%=M;
@@ -728,6 +755,16 @@ ll qpow(ll a,ll n,ll M=INF){
         n&gt;&gt;=1;
     }
     return ans;
+}
+</code></pre>
+<h3 id="模p运算">模p运算</h3>
+<p>$(a+b)mod~p=(a~mod~p+b~mod~p)~mod~p$</p>
+<p>$(a-b)mod~p=(a~mod~p-b~mod~p+p)~mod~p$（特别注意要保证结果不为负数</p>
+<p>$(a<em>b)mod~p=((a~mod~p)</em>(b~mod~p))mod~p$</p>
+<p>$(a/b)mod~p=(a*\textrm{inv}(b))mod~p$
+其中 $\textrm{inv}(b)$ 为 $b$ 在模 $p$ 运算下的乘法逆元。</p>
+<pre><code class="language-cpp">ll inv(ll x){//利用费马小定理求逆元，注意，模数p不是质数的话就不存在逆元了
+    return powp(b,p-2);
 }
 </code></pre>
 <h3 id="矩阵快速幂">矩阵快速幂</h3>
