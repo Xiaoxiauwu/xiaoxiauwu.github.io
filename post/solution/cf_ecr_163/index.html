@@ -17,7 +17,7 @@
   },
   "name":"夏のBLOG",
   "description":"",
-  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_933\/",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_ecr_163\/",
   "keywords":"[tech, C\u002b\u002b, python, study]"
 }
 
@@ -33,20 +33,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces Round 933 (Div. 3)">
-<meta name="twitter:title" content="Codeforces Round 933 (Div. 3)">
-<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cf_933/">
-<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cf_933/">
+<meta property="og:title" content="Educational Codeforces Round 163">
+<meta name="twitter:title" content="Educational Codeforces Round 163">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cf_ecr_163/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cf_ecr_163/">
 <meta property="og:site_name" content="夏のBLOG">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-03-12T02:01:05">
+    <meta property="article:published_time" content="2024-03-16T13:54:02">
   
   
-    <meta property="article:modified_time" content="2024-03-12T02:01:05">
+    <meta property="article:modified_time" content="2024-03-16T13:54:02">
   
   
   
@@ -87,14 +87,14 @@
   <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
 
 
-    <title>Codeforces Round 933 (Div. 3)</title>
+    <title>Educational Codeforces Round 163</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cf_933/">
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cf_ecr_163/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -268,15 +268,15 @@
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      Codeforces Round 933 (Div. 3)
+      Educational Codeforces Round 163
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-03-12T02:01:05&#43;08:00">
+      <time datetime="2024-03-16T13:54:02&#43;08:00">
         
-  March 12, 2024
+  March 16, 2024
 
       </time>
     
@@ -304,183 +304,168 @@
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">谁懂没看到连续的感受啊，难的有思路的一场</span>
+            <span class="post-header-cover-caption caption">感觉ECR场虽然rated for div2，但是难度定位应该是div3（至少前几道是这样的）</span>
           
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<h1 id="codeforces-round-855-div-3-ae">Codeforces Round 855 (Div. 3) A~E</h1>
-<h2 id="a---rudolf-and-the-ticket">A - Rudolf and the Ticket</h2>
-<p>鲁道夫要去拜访伯纳德，他决定乘坐地铁去找他。车票可以在接受两个硬币的机器上购买，这两个硬币的总和不超过 $k$ 。</p>
-<p>鲁道夫有两个装硬币的口袋。左边口袋里有 $n$ 枚面值为 $b_1, b_2, \dots, b_n$ 的硬币。右边口袋里有 $m$ 枚面值为 $c_1, c_2, \dots, c_m$ 的硬币。他想从左边口袋和右边口袋各取出一枚硬币（共两枚）。</p>
-<p>请帮助鲁道夫判断有多少种方法可以选择指数 $f$ 和 $s$ ，从而使 $b_f + c_s \le k$ .</p>
-<hr>
-<p>水题，对任意一个口袋的硬币排序后直接遍历另一个口袋，upper_bound收集答案即可。</p>
-<pre><code class="language-cpp">void solve(){
-    CIN(n);CIN(m);CIN(k);
-    vector&lt;int&gt; a,b;
-    FOR(i,1,n){
-        CIN(tmp);a.push_back(tmp);
-    }
-    FOR(i,1,m){
-        CIN(tmp);b.push_back(tmp);
-    }
-    sort(b.begin(),b.end());
-    ll ans=0;
-    for(auto i:a){
-        ans+=upper_bound(b.begin(),b.end(),k-i)-b.begin();
-    }
-    cout&lt;&lt;ans&lt;&lt;ET;
-}
-</code></pre>
-<h2 id="b---rudolf-and-121">B - Rudolf and 121</h2>
-<p>Rudolf 有一个由 $n$ 个整数组成的数组 $a$ ，元素的编号从 $1$ 到 $n$ 。</p>
-<p>在一次操作中，他可以选择索引 $i$ ( $2 \le i \le n - 1$ ) 并赋值：</p>
-<ul>
-<li>$a_{i - 1} = a_{i - 1} - 1$</li>
-<li>$a_i = a_i - 2$</li>
-<li>$a_{i + 1} = a_{i + 1} - 1$</li>
-</ul>
-<p>鲁道夫可以任意多次使用这个运算。任何索引 $i$ 都可以使用 0 次或更多次。</p>
-<p>他能用这个运算使数组中的所有元素都等于零吗？</p>
-<hr>
-<p>还是水题，贪心即可。注意不合法的判断。</p>
+<h1 id="educational-codeforces-round-163">Educational Codeforces Round 163</h1>
+<h2 id="a---special-characters">A - Special Characters</h2>
+<p>签到题，循环输出AABB即可（有人输出AAB，我觉得也行）</p>
 <pre><code class="language-cpp">void solve(){
     CIN(n);
-    vector&lt;int&gt; a;a.push_back(0);
-    FOR(i,1,n){
-        CIN(tmp);a.push_back(tmp);
-    }
-    FOR(i,2,n-1){//一开始只写了a[i]&lt;0，被卡了
-        if(a[i-1]&lt;0||a[i]&lt;0||a[i+1]&lt;0){cout&lt;&lt;&quot;NO&quot;&lt;&lt;ET;return;}
-        a[i+1]-=a[i-1];
-        a[i]-=2*a[i-1];
-        a[i-1]=0;
-    }
-    FOR(i,1,n){
-        if(a[i]!=0){cout&lt;&lt;&quot;NO&quot;&lt;&lt;ET;return;}
-    }
-    cout&lt;&lt;&quot;Yes&quot;&lt;&lt;ET;
-}
-</code></pre>
-<h2 id="c---rudolf-and-the-ugly-string">C - Rudolf and the Ugly String</h2>
-<p>题意：最少删除几次可以把map和pie全删掉？</p>
-<p>暴力就能过。</p>
-<pre><code class="language-cpp">void solve(){
-    CIN(n);
-    string s;cin&gt;&gt;s;s=&quot; &quot;+s;
-    if(n&lt;3){
-        cout&lt;&lt;0&lt;&lt;ET;return;
-    }
-    ll mapc=0,piec=0,mapie=0;
-    FOR(i,3,n){
-        if(s[i-2]=='m'&amp;&amp;s[i-1]=='a'&amp;&amp;s[i]=='p')mapc++;
-        if(s[i-2]=='p'&amp;&amp;s[i-1]=='i'&amp;&amp;s[i]=='e')piec++;
-    }
-    FOR(i,5,n){
-        if(s[i-4]=='m'&amp;&amp;s[i-3]=='a'&amp;&amp;s[i-2]=='p'&amp;&amp;s[i-1]=='i'&amp;&amp;s[i]=='e')mapie++;
-    }
-    cout&lt;&lt;mapc+piec-mapie&lt;&lt;ET;
-}
-</code></pre>
-<p>翻到的别人的代码(按自己的马蜂抄了一遍)：</p>
-<pre><code class="language-cpp">void solve(){
-    CIN(n);
-    string s;cin&gt;&gt;s;s=&quot; &quot;+s;
-    if(n&lt;3){cout&lt;&lt;0&lt;&lt;ET;return;}
-    ll ans=0;
-    FOR(i,1,n-2)
-        if(s.substr(i,3)==&quot;map&quot;||s.substr(i,3)==&quot;pie&quot;){ans++;i+=2;}
-    cout&lt;&lt;ans&lt;&lt;ET;
-}
-</code></pre>
-<h2 id="d---rudolf-and-the-ball-game">D - Rudolf and the Ball Game</h2>
-<p>超级阅读题，看懂了就知道其实很简单，因为记不清方向，只记得传递间隔，问你最后这个球可能在哪些人手上，显然在每次忘记时分裂成两个方向，分开统计就行。自然而然就是DFS（写BFS应该也行）。<strong>有枝你不剪？记得剪枝</strong>。</p>
-<pre><code class="language-cpp">bool vis[1002][1002];
-void solve(){
-    CIN(n);CIN(m);CIN(i);
-    map&lt;int,bool&gt; could;
-    vector&lt;pair&lt;int,char&gt;&gt; a;
-    FOR(i,1,m){
-        CIN(tmp);char c;cin&gt;&gt;c;
-        a.push_back({tmp,c});
-    }
-    memset(vis,0,sizeof vis);
-    auto dfs=[&amp;](auto dfs,int now,int cnt){
-        now--;
-        now=(now%n+n)%n;//经典二连取模，保证now非负且在0到n内
-        now++;
-        if(vis[cnt][now])return;
-        vis[cnt][now]=1;
-        if(cnt==0){
-            could[now]=1;
-            return;
+    if(n%2==0){
+        CY;
+        FOR(i,1,n/2){//感觉还是AAB更优雅一点
+            cout&lt;&lt;&quot;AB&quot;[i%2]&lt;&lt;&quot;AB&quot;[i%2];
         }
-        if(a[m-cnt].second=='0'){
-            dfs(dfs,(now+a[m-cnt].first-1)%n+1,cnt-1);
-        }else if(a[m-cnt].second=='1'){
-            dfs(dfs,(now-a[m-cnt].first-1)%n+1,cnt-1);
+        cout&lt;&lt;ET;
+    }else{
+        CN;
+    }
+}
+</code></pre>
+<h2 id="b---array-fix">B - Array Fix</h2>
+<p>贪心题，倒序遍历一遍，如果找到首次不合法则特判这个不合法能不能通过拆分解决，如果不能直接返回，如果能，后面继续遍历时所有数都得拆。</p>
+<pre><code class="language-cpp">void solve(){
+    CIN(n);
+    vector&lt;ll&gt; a;a.push_back(0);
+    FOR(i,1,n){
+        CIN(now);a.push_back(now);
+    }
+    ll MIN_MAX=a[n];
+    bool flag=0;
+    rFOR(i,n,2){
+        if(!flag){
+            if(a[i]&lt;a[i-1]){
+                if(a[i-1]&lt;10){CN;return;}
+                if(a[i-1]%10&lt;a[i-1]/10){CN;return;}
+                if(a[i-1]%10&gt;a[i]){CN;return;}
+                flag=1;
+            }
         }else{
-            dfs(dfs,(now+a[m-cnt].first-1)%n+1,cnt-1);
-            dfs(dfs,(now-a[m-cnt].first-1)%n+1,cnt-1);
+            if(a[i]%10&lt;a[i]/10){CN;return;}
+            if(a[i-1]%10&lt;a[i-1]/10){CN;return;}           
+            if(a[i]&gt;=10){
+                if(a[i-1]%10&gt;a[i]/10){CN;return;}
+            }else{
+                if(a[i-1]%10&gt;a[i]){CN;return;}   
+            }
         }
-    };
-    dfs(dfs,i,m);
-    cout&lt;&lt;could.size()&lt;&lt;ET;
-    //for(auto &amp;[i,v]:could)cout&lt;&lt;i&lt;&lt;&quot;]&quot;;
-    FOR(i,1,n){
-        if(could.count(i))cout&lt;&lt;i&lt;&lt;' ';
     }
+    CY;return;
+}
+</code></pre>
+<h2 id="c---arrow-path">C - Arrow Path</h2>
+<p>数据量略有点小，直接无脑上BFS即可，推导一下也行，但是脑子不够快的话就不要把时间花在推式子上了。$\text{\color{#ff0000}{写BFS和DFS记得剪枝！！！！}}$</p>
+<pre><code class="language-cpp">bool vis[3][200005];
+void solve(){
+    CIN(n);
+    string a[3];
+    cin&gt;&gt;a[1]&gt;&gt;a[2];
+    a[1]=&quot; &quot;+a[1];
+    a[2]=&quot; &quot;+a[2];
+    map&lt;char,int&gt; move;
+    move['&lt;']=-1;move['&gt;']=1;
+ 
+    memset(vis,0,sizeof vis);
+ 
+    queue&lt;pair&lt;int,int&gt;&gt; q;
+    q.push({1,1});
+    while(!q.empty()){
+        auto &amp;[y,x]=q.front();q.pop();
+        if((y==2&amp;&amp;x==n)||(y==1&amp;&amp;x==n)||(y==2&amp;&amp;x==n-1)){CY;return;}
+        if(vis[y][x])continue;
+        vis[y][x]=1;
+        if(x&gt;=3&amp;&amp;move[a[y][x-1]]!=1&amp;&amp;!vis[y][x-2])q.push({y,x-2});
+        if(x&lt;=n-2&amp;&amp;move[a[y][x+1]]!=-1&amp;&amp;!vis[y][x+2])q.push({y,x+2});
+        if(y==1&amp;&amp;!vis[2][x+move[a[2][x]]])q.push({2,x+move[a[2][x]]});
+        if(y==2&amp;&amp;!vis[1][x+move[a[1][x]]])q.push({1,x+move[a[1][x]]});
+    }
+    CN;return;
+}
+</code></pre>
+<h2 id="d---tandem-repeats">D - Tandem Repeats?</h2>
+<p>暴力即可，但是记得别暴力过头了，$n=3000$ 的数据不是给你开 $O(n^3)$ 的算法用的。记得优化一下。</p>
+<pre><code class="language-cpp">void solve(){
+    string s;cin&gt;&gt;s;s=&quot; &quot;+s;
+    int n=s.length()-1;
+    int ans=0;
+    rFOR(offset,n/2,1){
+        int tmp=0;
+        FOR(i,1,n-offset+1){//利用tmp++，并在不符合时重新计数来记忆当前遍历的最大连续长度
+            if(tmp&gt;=offset){cout&lt;&lt;offset*2&lt;&lt;ET;return;}
+            if(!(s[i+offset]=='?')&amp;&amp;!(s[i]=='?')&amp;&amp;(s[i]!=s[i+offset]))tmp=0;
+            else tmp++;
+        }
+        if(tmp&gt;=offset){cout&lt;&lt;offset*2&lt;&lt;ET;return;}
+    }
+    cout&lt;&lt;0&lt;&lt;ET;
+}
+</code></pre>
+<h2 id="e---clique-partition">E - Clique Partition</h2>
+<p>RF神说是道水题</p>
+<ul>
+<li>“我搞不懂为什么这题的n和k这么小，它完全可以再大一点的”</li>
+<li>“我觉得D是大于E的，E唯一的难点就在于它是E，你看不到它”</li>
+</ul>
+<p>题意是给定 $n$ 和 $k$ ，要求构造一个排列，使完全联通块数量尽可能少，也就是要求<strong>尽可能连边</strong></p>
+<p>分析核心式子 $|i - j| + |a_i - a_j| \le k$，考虑 $1$ 到 $k+1$， $k+1$ 和 $1$ 已经在下标上相差 $k$ 了，再加上数值上的相差，必然不可能连边，所以每个联通块最大为 $k$。因此分组关系的答案应该是 $k$ 个 $1$，$k$ 个 $2$，&hellip;，$k$ 个 $n$，$k&rsquo;$ 个 $n+1$ 的形式（其中 $k&rsquo;\le k$）</p>
+<p>再来考虑如何构造每个组，对于一个组，他的序号是没法改的，所以要使每个组的成员均两两满足式子，先考查 $|i-j|$ 的规律，取极限情况，首项和尾项，得到差值为 $k-1$，然后一步步往中间跳，差值会逐渐缩小。因此 $a_i$ 的选取应当满足：取首项和尾项时相差最小，往中间一步步跳的时候，差值逐渐增大。</p>
+<p>所以每个组(偶数情况)，构造：$\frac{n}{2},\frac{n}{2}-1,\frac{n}{2}-2,\dots,1,n,n-1,\dots,\frac{n}{2}+1$ 即可。</p>
+<p>当然你反过来构造：$\frac{n}{2},\frac{n}{2}+1,\frac{n}{2}+2,\dots,n,1,2,\dots,\frac{n}{2}-1$ 也行。</p>
+<p>考虑奇数情况，易知如上构造也符合题意，让正中间的元素最大即可。</p>
+<pre><code class="language-cpp">void solve(){
+    CIN(n);CIN(k);
+    vector&lt;int&gt; a(n+1),GROUP(n+1);
+    int cnt=0;
+    auto f=[&amp;](auto f,int l,int gruop){
+        if(l&gt;n)return;
+        cnt=gruop;
+        int num=min(n-l+1,k);//判断剩下的能不能凑一个长度为k的组
+        int now=l;
+        //rFOR(j,l+num/2-1,l){a[j]=now++;GROUP[j]=i;}//构造方案1
+        //rFOR(j,l+num-1,l+num/2){a[j]=now++;GROUP[j]=i;}
+        FOR(j,l+num/2,l+num-1){a[j]=now++;GROUP[j]=gruop;}//构造方案2
+        FOR(j,l,l+num/2-1){a[j]=now++;GROUP[j]=gruop;}
+        f(f,l+num,gruop+1);
+    };
+    f(f,1,1);
+    FOR(i,1,n)cout&lt;&lt;a[i]&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;ET&lt;&lt;cnt&lt;&lt;ET;
+    FOR(i,1,n)cout&lt;&lt;GROUP[i]&lt;&lt;&quot; &quot;;
     cout&lt;&lt;ET;
 }
 </code></pre>
-<h2 id="e---rudolf-and-k-bridges">E - Rudolf and k Bridges</h2>
-<p>伯纳德喜欢拜访鲁道夫，但他总是迟到。问题是伯纳德必须乘渡船过河。鲁道夫决定帮助他的朋友解决这个问题。</p>
-<p>这条河是由 $n$ 行和 $m$ 列组成的网格。第 $i$ 行和第 $j$ 列的交点包含数字 $a_{i,j}$ &ndash;相应单元格的深度。第一<strong>列和最后</strong>列中的所有单元格都与河岸相对应，因此它们的深度为 $0$ 。</p>
-<p><img src="https://s21.ax1x.com/2024/03/12/pF66N8g.png" alt=""> 河流可能是这样的。</p>
-<p>鲁道夫可以选择第 $(i,1), (i,2), \ldots, (i,m)$ 行，并在上面建造一座桥。在该行的每个单元格中，他都可以为桥安装一个支架。在第 $(i,j)$ 格安装支架的成本为 $a_{i,j}+1$ 。安装支架必须满足以下条件：</p>
-<ol>
-<li>必须在单元格 $(i,1)$ 中安装一个支架；</li>
-<li>单元格 $(i,m)$ 中必须安装一个支架；</li>
-<li>任何一对相邻支架之间的距离不得大于** $d$ 。支架 $(i, j_1)$ 和 $(i, j_2)$ 之间的距离为 $|j_1 - j_2| - 1$ 。</li>
-</ol>
-<p>只建一座桥是很无聊的。因此，鲁道夫决定在河上<strong>连续</strong>行建造 $k$ 座桥，即选择一些 $i$ （ $1 \le i \le n - k + 1$ ），独立建造 $k$ 座桥。( $1 \le i \le n - k + 1$ ) 并分别在每一行的 $i, i + 1, \ldots, i + k - 1$ 上建一座桥。帮助鲁道夫<strong>最小化</strong>安装支架的总成本。</p>
-<hr>
-<p>阅读题，读懂了就知道直接对每行都跑一次单调队列优化DP，再前缀和查最小答案就行了。(<em><strong>特别注意那个连续</strong></em>，要是我注意到了，估计这场就能过5题了，可惜了，最气人的一场。)</p>
-<pre><code class="language-cpp">struct P{
-    ll i,v;
-    bool operator&lt;(const P &amp;b)const{
-        if(v==b.v)return i&lt;b.i;
-        return v&gt;b.v;
-    }
-}t;
-void solve(){
-    CIN(n);CIN(m);CIN(d);CIN(k);
-    vector&lt;ll&gt; ans;ans.push_back(0);
-    FOR(i,1,n){
-        vector&lt;ll&gt; a;a.push_back(0);
-        FOR(j,1,m){
-            CIN(tmp);
-            a.push_back(tmp);
-        }
-        priority_queue&lt;P&gt; q;
-        q.push({1,1});
-        FOR(i,2,m){
-            while(!q.empty()&amp;&amp;k&lt;i-q.top().i-1)q.pop();
-            //cout&lt;&lt;q.top().v&lt;&lt;&quot;]&quot;;
-            if(i!=m)q.push({i,a[i]+1+q.top().v});
-            else ans.push_back(a[i]+1+q.top().v);
-        }
-        //cout&lt;&lt;ET;
-    }
-    ll anss=1e18;
-    vector&lt;ll&gt; pre;pre.push_back(0);
-    FOR(i,1,n)pre.push_back(pre[i-1]+ans[i]);
-    FOR(i,d,n)anss=min(anss,pre[i]-pre[i-d]);
-    //sort(ans.begin(),ans.end());//reverse(ans.begin(),ans.end());
-    //FOR(i,0,d-1)anss+=ans[i];
-    cout&lt;&lt;anss&lt;&lt;ET;
+<h1 id="附录">附录</h1>
+<p>这里贴上头部定义和main函数部分：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;bits\stdc++.h&gt;
+#define ll long long
+#define ld long double
+using namespace std;
+#define ET '\n'
+#define FOR(i,a,b) for(ll i=(a);i&lt;=(b);i++)
+#define rFOR(i,a,b) for(ll i=(a);i&gt;=(b);i--)
+#define CIN(a) ll a;cin&gt;&gt;a
+#define DCIN(a) ld a;cin&gt;&gt;a
+#define CA cout&lt;&lt;ans&lt;&lt;ET
+#define CY cout&lt;&lt;&quot;YES&quot;&lt;&lt;ET
+#define CN cout&lt;&lt;&quot;NO&quot;&lt;&lt;ET
+//没有C++20就不能用ranges了
+//#define PP(l,r,CK) *ranges::partition_point(ranges::iota_view((l),(r)+1),(CK))
+string ANS[2]={&quot;No\n&quot;,&quot;Yes\n&quot;};
+
+//solve函数代码
+
+int main(){
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    //pre();
+    CIN(t);while(t--)
+    solve();
+    return 0;
 }
 </code></pre>
               
@@ -511,7 +496,7 @@ void solve(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/picture/" data-tooltip="公共随机图床" aria-label="PREVIOUS: 公共随机图床">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_933/" data-tooltip="Codeforces Round 933 (Div. 3)" aria-label="PREVIOUS: Codeforces Round 933 (Div. 3)">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -519,7 +504,7 @@ void solve(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_ecr_163/" data-tooltip="Educational Codeforces Round 163" aria-label="NEXT: Educational Codeforces Round 163">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_345/" data-tooltip="AtCoder Beginner Contest 345" aria-label="NEXT: AtCoder Beginner Contest 345">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -562,9 +547,9 @@ void solve(){
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_933\/';
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_ecr_163\/';
         
-          this.page.identifier = '\/post\/solution\/cf_933\/'
+          this.page.identifier = '\/post\/solution\/cf_ecr_163\/'
         
       };
       (function() {
@@ -608,7 +593,7 @@ void solve(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/picture/" data-tooltip="公共随机图床" aria-label="PREVIOUS: 公共随机图床">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_933/" data-tooltip="Codeforces Round 933 (Div. 3)" aria-label="PREVIOUS: Codeforces Round 933 (Div. 3)">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -616,7 +601,7 @@ void solve(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_ecr_163/" data-tooltip="Educational Codeforces Round 163" aria-label="NEXT: Educational Codeforces Round 163">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_345/" data-tooltip="AtCoder Beginner Contest 345" aria-label="NEXT: AtCoder Beginner Contest 345">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>

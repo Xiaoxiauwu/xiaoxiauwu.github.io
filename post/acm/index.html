@@ -424,6 +424,22 @@ FOR(i,1,n){
     if(i&gt;=m)cout&lt;&lt;q.top().v&lt;&lt;&quot; &quot;;
 }
 </code></pre>
+<h2 id="字符串">字符串</h2>
+<h3 id="manacher算法">Manacher算法</h3>
+<p>给定一个字符串，该算法可以在 $O(n)$ 的复杂度下处理出该字符串每点的最大回文半径。</p>
+<pre><code class="language-cpp">vector&lt;int&gt; manacher(string s) {//返回的R数组每项减1才是答案
+    string t=&quot;#&quot;;
+    for(auto c:s){t+=c;t+='#';}
+    int n=t.size();
+    vector&lt;int&gt; r(n);
+    for(int i=0,j=0;i&lt;n;i++){
+        if(2*j-i&gt;=0&amp;&amp;j+r[j]&gt;i)r[i]=min(r[2*j-i],j+r[j]-i);
+        while(i-r[i]&gt;=0&amp;&amp;i+r[i]&lt;n&amp;&amp;t[i-r[i]]==t[i+r[i]])r[i]+=1;
+        if(i+r[i]&gt;j+r[j])j=i;
+    }
+    return r;
+}
+</code></pre>
 <h2 id="数据结构">数据结构</h2>
 <h3 id="树状数组">树状数组</h3>
 <p>实现单点修改，区间求和</p>
