@@ -483,6 +483,36 @@ void solve(){
     cout&lt;&lt;anss&lt;&lt;ET;
 }
 </code></pre>
+<h1 id="附录">附录</h1>
+<p>这里贴上头部定义和main函数部分：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;bits\stdc++.h&gt;
+#define ll long long
+#define ld long double
+using namespace std;
+#define ET '\n'
+#define FOR(i,a,b) for(ll i=(a);i&lt;=(b);i++)
+#define rFOR(i,a,b) for(ll i=(a);i&gt;=(b);i--)
+#define CIN(a) ll a;cin&gt;&gt;a
+#define DCIN(a) ld a;cin&gt;&gt;a
+#define CA cout&lt;&lt;ans&lt;&lt;ET
+#define CY cout&lt;&lt;&quot;YES&quot;&lt;&lt;ET
+#define CN cout&lt;&lt;&quot;NO&quot;&lt;&lt;ET
+//没有C++20就不能用ranges了
+//#define PP(l,r,CK) *ranges::partition_point(ranges::iota_view((l),(r)+1),(CK))
+string ANS[2]={&quot;No\n&quot;,&quot;Yes\n&quot;};
+
+//solve函数代码
+
+int main(){
+    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+    //pre();
+    CIN(t);while(t--)
+    solve();
+    return 0;
+}
+</code></pre>
               
 
 

@@ -376,7 +376,7 @@ void kruskal(){
 <h3 id="极简二分板子from-jiangly">极简二分板子（FROM jiangly）</h3>
 <p>若数列已经按某规则划分成了左右两组，则该STL可快速返回其分界点（右边那组最靠左的元素）。</p>
 <p>注意事项：若ck函数在给定范围内均成立，则返回的是r+1的值，如果有必要，这点记得特判一下。</p>
-<pre><code class="language-cpp">//所需库：algorithm，ranges
+<pre><code class="language-cpp">//所需库：algorithm，ranges（C++20才有的，还是得记一下标准二分板子，这个只是偷懒用的）
 //返回第一个使ck(x)为假的x
 //（l,r+1）因为是左开右闭，所以右端应+1
 int ans = *ranges::partition_point(ranges::iota_view(l, r+1),
