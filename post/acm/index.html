@@ -335,6 +335,26 @@ int main(){
     return 0;
 }
 </code></pre>
+<h2 id="stl">STL</h2>
+<h3 id="multiset">multiset</h3>
+<p>好用的东西，可以用来写大顶堆或小顶堆，其可O(logn)查询，删除，插入元素</p>
+<pre><code class="language-cpp">#include&lt;set&gt;
+multiset&lt;ll,greater&lt;ll&gt;&gt; a;//大顶堆
+multiset&lt;ll,less&lt;ll&gt;&gt; b;//小顶堆
+
+a.size();//返回集合大小
+a.empty();//判断集合是否为空
+a.begin();//指向堆顶的迭代器
+a.end();//指向正向迭代的最后一个元素下一个位置
+a.rbegin();//指向堆底
+a.rend();//指向逆向迭代的最后一个元素的下一个元素
+a.insert(123);//插入元素，会自动排序
+a.find(1234);//返回一个迭代器，指向第一个被查询的元素，如果没有，则指向end()
+//a.find()!=a.end()//判断集合内是否存在元素
+a.count(143);//统计元素数量
+a.erase(it);//按迭代器删除元素，常用搭配：a.erase(a.find(x));//注意得先判断集合内有该元素
+
+</code></pre>
 <h2 id="算法">算法</h2>
 <h3 id="并查集">并查集</h3>
 <pre><code class="language-cpp">int f[N];
@@ -766,7 +786,7 @@ for(ll i=1;i&lt;(1&lt;&lt;cnt);i++){//
 ll powp(ll a,ll n,ll M=INF){
     ll ans=1;
     while(n){
-        if(n&amp;1)ans*=a;ans%=M;
+        if(n&amp;1){ans*=a;ans%=M;}
         a*=a;a%=M;
         n&gt;&gt;=1;
     }
