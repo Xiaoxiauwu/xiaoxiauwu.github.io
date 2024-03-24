@@ -6,8 +6,36 @@
     <description>Recent content in 算法 on 夏のBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Feb 2024 20:01:21 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 24 Mar 2024 17:26:37 +0800</lastBuildDate>
     <atom:link href="https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>To Do List</title>
+      <link>https://xiaoxiauwu.github.io/post/todolist/</link>
+      <pubDate>Sun, 24 Mar 2024 17:26:37 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/post/todolist/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>莫队（未整理完）</title>
+      <link>https://xiaoxiauwu.github.io/post/algorithm/md/</link>
+      <pubDate>Sun, 24 Mar 2024 15:18:43 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/post/algorithm/md/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>最大子段和</title>
+      <link>https://xiaoxiauwu.github.io/post/algorithm/maxsubsum/</link>
+      <pubDate>Sun, 24 Mar 2024 03:01:23 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/post/algorithm/maxsubsum/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>位运算</title>
+      <link>https://xiaoxiauwu.github.io/post/bitcompute/</link>
+      <pubDate>Sun, 24 Mar 2024 01:38:28 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/post/bitcompute/</guid>
+      <description></description>
+    </item>
     <item>
       <title>[正在填坑] ACM模版集（个人自用，随缘更新中）</title>
       <link>https://xiaoxiauwu.github.io/post/acm/</link>
