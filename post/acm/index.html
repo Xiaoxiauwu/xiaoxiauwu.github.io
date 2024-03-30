@@ -946,6 +946,41 @@ S.sort(a,1,n);
 cout&lt;&lt;S.nxs&lt;&lt;ET;//输出逆序数
 for(int &amp;i:S.r)cout&lt;&lt;i&lt;&lt;&quot; &quot;;//输出排序结果
 </code></pre>
+<h3 id="高精">高精</h3>
+<pre><code class="language-cpp">struct BINT{
+    int len=0;
+    int w[5000];//最大开到多少位
+    BINT(){}
+    BINT(ll base){
+        while(base){
+            w[++len]=base%10;
+            base/=10;
+        }
+    }
+    void jw(){//处理进位
+        FOR(i,1,len){
+            if(w[i]&gt;=10){
+                w[i+1]+=w[i]/10;
+                w[i]%=10;
+                if(w[len+1])len++;
+            }
+        }
+    }
+    BINT operator+(BINT b){//高精加法
+        FOR(i,1,max(len,b.len)){
+            b.w[i]+=w[i];
+        }
+        b.jw();
+        return b;
+    }
+};
+ostream&amp; operator&lt;&lt;(ostream &amp;COUT,BINT a){
+    rFOR(i,a.len,1){
+        COUT&lt;&lt;a.w[i];
+    }
+    return COUT;
+}
+</code></pre>
 <h2 id="数论">数论</h2>
 <h3 id="分解质因数">分解质因数</h3>
 <pre><code class="language-cpp">vector&lt;ll&gt; d;
@@ -957,6 +992,18 @@ for(ll i=2;i*i&lt;=n;i++){
     }
 }
 if(tmp&gt;1)d.push_back(tmp);//别忘了判一下剩的tmp，通常情况下其不为1
+</code></pre>
+<h3 id="获取约数">获取约数</h3>
+<pre><code class="language-cpp">vector&lt;int&gt; d(int n){
+    vector&lt;int&gt; out;
+    FOR(i,1,n){
+        if(n%i){
+            out.push_back(i);
+            if(n/i!=i)out.push_back(n/i);
+        }
+    }
+    return n;
+}
 </code></pre>
 <h3 id="容斥定理">容斥定理</h3>
 <p>非常简单的概念，集合学过吧，$A\bigcup B\bigcup C=A+B+C-(A\bigcap B)-(B\bigcap C)-(A\bigcap C)+(A\bigcap B\bigcap C)$，差不多就是这样的原理。</p>
@@ -1114,14 +1161,40 @@ void pre(){
     }
 }
 </code></pre>
+<h3 id="catalan数">Catalan数</h3>
+<p>$Catalan$ 数经常出现在组合计数的问题中，本质上和栈操作有关</p>
+<p>下面直接放出 $Catalan$ 数的4个公式：</p>
+<p>基本定义式：
+$$CTL_n=\sum_{i=1}^{n}CTL_i\cdot CTL_{n-i}$$
+递推式：
+$$CTL_n=\frac{(4n-2)CTL_{n-1}}{n+1}$$
+组合通项式：
+$$CTL_n=\frac{\textrm{C}<em>{2n}^n}{n+1}$$
+组合通项式2:：
+$$CTL_n=\textrm{C}</em>{2n}^n-\textrm{C}_{2n}^{n-1}$$</p>
+<p>为什么要记这么多式子？当然是推式子化简需要。</p>
 <h2 id="tipswa">TIPS&amp;WA</h2>
 <p>这里记录收集到的一些小技巧和注意事项（大部分和STL相关）。</p>
 <h3 id="tip-获取一个整数二进制位数">[TIP] 获取一个整数二进制位数</h3>
-<p>正常做法是写循环位运算，但是如果直接用log2函数，写法上会更简洁更快</p>
-<pre><code class="language-cpp">int msb(ll x){//获取二进制位数（记得#include&lt;cmath&gt;）
+<p>正常做法是写循环位运算，</p>
+<pre><code class="language-cpp">int cnt=0;
+while(x){x&gt;&gt;=1;cnt++;}
+</code></pre>
+<p>但是如果直接用log2函数，写法上会更简洁更快（注意，测了一下，x小于1ll&laquo;16时，循环位移运算会快一点）</p>
+<pre><code class="language-cpp">inline int len(ll x){//获取二进制位数（记得#include&lt;cmath&gt;）
     return x&gt;0?log2l(x)+1:0;
 }
 //log这里不需要写int，因为返回值自动设为int了
+
+如果你要卡常，试试下面的写法：
+inline int len(ll x){
+    if(x&lt;=(1ll&lt;&lt;16)){
+        int cnt=0;
+        while(x){x&gt;&gt;=1;cnt++;}
+    }
+    return x&gt;0?log2l(x)+1:0;
+}
+
 </code></pre>
 <h3 id="tipwa-位运算相关">[TIP/WA] 位运算相关</h3>
 <ul>
@@ -1138,6 +1211,9 @@ void pre(){
 <p>可以用~构造INF：</p>
 <pre><code class="language-cpp">ll INF=(((ull)~0)&gt;&gt;1);
 </code></pre>
+</li>
+<li>
+<p>使用__builtin_popcount()获取一个数二进制下1的个数</p>
 </li>
 </ul>
 <h3 id="tipwa-获取带空格的整行输入">[TIP/WA] 获取带空格的整行输入</h3>
@@ -1163,6 +1239,14 @@ cout&lt;&lt;(((pre[n]-(ans&gt;0)*ans)%M+(ans&gt;0)*((ans%M)*powp(2,k)%M)%M)%M+M)
 cout&lt;&lt;MO(MO(pre[n]-(ans&gt;0)*ans)+(ans&gt;0)*MO(MO(ans)*MO(powp(2,k))))&lt;&lt;ET;
 //虽然看着好像差不了多少的样子，但是起码不用再受到%M+M)%M的折磨了
 </code></pre>
+<h3 id="wa-python-的高精度问题">[WA] Python 的高精度问题</h3>
+<p>有些高精度的题，如果想用python来水的话，要特别注意除法的环节，python在除法时，会把结果转成float，而float型是不支持高精度运算的。所以这时候我们就需要整除。</p>
+<h3 id="wa-map的遍历问题">[WA] map的遍历问题</h3>
+<p>用for(auto &amp;[key,v]:mp){}即可</p>
+<p>但是不知道为什么，上次写了个for(auto &amp;[key1,v1]:mp)for(auto &amp;[key2,v2]:mp)结果TLE了，还以为自己写的不是正解。</p>
+<p>破案了，map的下标访问是 $O(logn)$ 的，所以TLE了</p>
+<h3 id="wa-forll-i0ini问题">[WA] for(ll i=0;i&lt;n;i++)问题</h3>
+<p>非必要别用ll写for循环，ll的运算比int运算慢了一倍，小心被卡常卡掉。</p>
 <pre><code>前面的区域以后再来探索吧！
 </code></pre>
               

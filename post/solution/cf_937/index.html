@@ -17,7 +17,7 @@
   },
   "name":"夏のBLOG",
   "description":"",
-  "url":"https:\/\/xiaoxiauwu.github.io\/post\/todolist\/",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_937\/",
   "keywords":"[tech, C\u002b\u002b, python, study]"
 }
 
@@ -33,32 +33,34 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="To Do List">
-<meta name="twitter:title" content="To Do List">
-<meta property="og:url" content="https://xiaoxiauwu.github.io/post/todolist/">
-<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/todolist/">
+<meta property="og:title" content="Codeforces Round 937 (Div. 4)">
+<meta name="twitter:title" content="Codeforces Round 937 (Div. 4)">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cf_937/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cf_937/">
 <meta property="og:site_name" content="夏のBLOG">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-03-24T17:26:37">
+    <meta property="article:published_time" content="2024-03-30T15:36:12">
   
   
-    <meta property="article:modified_time" content="2024-03-24T17:26:37">
+    <meta property="article:modified_time" content="2024-03-30T15:36:12">
   
-  
-  
-    
-      <meta property="article:section" content="c&#43;&#43;">
-    
   
   
     
-      <meta property="article:tag" content="ACM">
+      <meta property="article:section" content="题解">
     
-      <meta property="article:tag" content="算法">
+      <meta property="article:section" content="ACM">
+    
+  
+  
+    
+      <meta property="article:tag" content="题解">
+    
+      <meta property="article:tag" content="CF">
     
   
 
@@ -77,22 +79,22 @@
 
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/sleep.webp">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/sleep.webp">
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/sleep.webp">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/sleep.webp">
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
 
 
-    <title>To Do List</title>
+    <title>Codeforces Round 937 (Div. 4)</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/todolist/">
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cf_937/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -260,21 +262,21 @@
   <div class="post-header-cover
               text-center
               post-header-cover--full"
-       style="background-image:url('/images/sleep.webp')"
+       style="background-image:url('/images/cover.jpg')"
        data-behavior="5">
     
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      To Do List
+      Codeforces Round 937 (Div. 4)
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-03-24T17:26:37&#43;08:00">
+      <time datetime="2024-03-30T15:36:12&#43;08:00">
         
-  March 24, 2024
+  March 30, 2024
 
       </time>
     
@@ -283,7 +285,9 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/c&#43;&#43;">c&#43;&#43;</a>
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/%e9%a2%98%e8%a7%a3">题解</a>, 
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/acm">ACM</a>
     
   
 
@@ -300,115 +304,177 @@
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">&ldquo;憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧&rdquo; - Toge</span>
+            <span class="post-header-cover-caption caption">AK失败，状压DP是什么</span>
           
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<h1 id="to-do-list">To Do List</h1>
-<p>这里主要写一些待完成的任务。</p>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>完成状态</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>cpp实训项目</td>
-<td>进行中</td>
-<td>设计UI，事件控制，随机生成地图的逻辑中</td>
-</tr>
-<tr>
-<td>洛谷基础题单补完</td>
-<td>未完成</td>
-<td>不是，P3612是什么东西，看不懂了</td>
-</tr>
-<tr>
-<td>CodeForce 936 补题</td>
-<td>差一题</td>
-<td>扫描线，莫队，先去学一手再回来看看</td>
-</tr>
-<tr>
-<td>广大校赛补题</td>
-<td>差一半</td>
-<td>区间MEX学习，解同余方程</td>
-</tr>
-<tr>
-<td>ABC补题</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>CPgg的题单</td>
-<td>未开始</td>
-<td>CF1795C CF1203D2 CF1793D CF1200D CF1795E CF1202C</td>
-</tr>
-<tr>
-<td>莫队整理</td>
-<td>未完成</td>
-<td></td>
-</tr>
-<tr>
-<td>集训队VJ补题</td>
-<td>未完成</td>
-<td>三分，数学，概率DP，“简单DP”</td>
-</tr>
-<tr>
-<td>区间回文串统计</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>数位DP学习</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>图论巩固</td>
-<td>未开始</td>
-<td>建图方式的熟悉，并查集，LCA，DFS序，欧拉序，多源最短路，树形DP</td>
-</tr>
-<tr>
-<td>树论巩固</td>
-<td>未开始</td>
-<td>熟悉线段树板子，主席树，权值线段树</td>
-</tr>
-<tr>
-<td>基本群论</td>
-<td>未开始</td>
-<td>Burnside定理，Polya定理</td>
-</tr>
-<tr>
-<td>组合数学</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>字符串相关知识</td>
-<td>未开始</td>
-<td>AC自动机，KMP，回文自动机</td>
-</tr>
-<tr>
-<td>莫反与欧反</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>CDQ分治</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>FFT</td>
-<td>未开始</td>
-<td></td>
-</tr>
-</tbody>
-</table>
+<h1 id="a---stair-peak-or-neither">A - Stair, Peak, or Neither?</h1>
+<p>水中之水题</p>
+<pre><code class="language-cpp">void solve(){
+    CIN(a);CIN(b);CIN(c);
+    if(a&lt;b&amp;&amp;b&lt;c)cout&lt;&lt;&quot;STAIR\n&quot;;
+    else if(b&gt;a&amp;&amp;b&gt;c)cout&lt;&lt;&quot;PEAK\n&quot;;
+    else cout&lt;&lt;&quot;NONE\n&quot;;
+}
+</code></pre>
+<h1 id="b---upscaling">B - Upscaling</h1>
+<p>制表题，水题</p>
+<pre><code class="language-cpp">string ANS[2]={&quot;##&quot;,&quot;..&quot;};
+
+void solve(){
+    CIN(n);
+    FOR(i,1,2*n){
+        FOR(j,1,n){
+            cout&lt;&lt;ANS[(((i-1)/2+1)+j)%2];
+        }
+        cout&lt;&lt;ET;
+    }
+}
+</code></pre>
+<h1 id="c---clock-conversion">C - Clock Conversion</h1>
+<p>格式转换，水题</p>
+<pre><code class="language-cpp">void solve(){
+    SCIN(s);
+    int h=stoi(s.substr(0,2));
+    if(h&lt;12){
+        if(h==0)cout&lt;&lt;&quot;12&quot;&lt;&lt;s.substr(2)&lt;&lt;&quot; AM\n&quot;;
+        else cout&lt;&lt;s&lt;&lt;&quot; AM\n&quot;;
+    }else{
+        if(h&gt;12)h-=12;
+        if(h&gt;=10)cout&lt;&lt;h&lt;&lt;s.substr(2)&lt;&lt;&quot; PM\n&quot;;
+        else cout&lt;&lt;0&lt;&lt;h&lt;&lt;s.substr(2)&lt;&lt;&quot; PM\n&quot;;
+    }
+}
+</code></pre>
+<h1 id="d---product-of-binary-decimals">D - Product of Binary Decimals</h1>
+<h2 id="大概思路">大概思路</h2>
+<p>暴力打表判断即可</p>
+<h2 id="参考代码">参考代码</h2>
+<pre><code class="language-cpp">bool ans[100005];
+int lst[]={10,11,101,111,1001,1011,
+            1101,1111,10001,10011,10101,
+            11001,10111,11011,11101,11111};
+void pre(){
+    sort(lst,lst+16);
+}
+ 
+void solve(){
+    CIN(n);
+    while(n&gt;=10){
+        bool cg=1;
+        rFOR(i,15,0){
+            if(n%lst[i]==0){
+                n/=lst[i];
+                cg=0;
+            }
+        }
+        if(cg)break;
+    }
+    cout&lt;&lt;ANS[n==1];
+}
+</code></pre>
+<h1 id="e---nearly-shortest-repeating-substring">E - Nearly Shortest Repeating Substring</h1>
+<h2 id="大概思路-1">大概思路</h2>
+<p>分解质因数，对第一段和第二段跑两遍模拟</p>
+<h2 id="参考代码-1">参考代码</h2>
+<pre><code class="language-cpp">vector&lt;int&gt; d(int x) {//可以这样分解质因数，然后for(auto&amp; i:dn)遍历，也可以直接FOR(i,1,n)，然后if(n%i)continue;
+    vector&lt;int&gt; ans;
+    for (int i = 1; i * i &lt;= x; i++) {
+        if (x % i == 0) {
+            ans.push_back(i);
+            if (x / i != i)ans.push_back(x / i);
+        }
+    }
+    sort(ans.begin(), ans.end());
+    return ans;
+}
+
+void solve() {
+    CIN(n); SCIN(s);
+    FOR(i,1,n) {
+        if (n % i)continue;
+        int cnt = 0;
+        FOR(j, 0, n - 1) {
+            cnt += (s[j] != s[j % i]);
+            if (cnt &gt; 1) break;
+        }
+        if (cnt &lt;= 1) { cout &lt;&lt; i &lt;&lt; ET; return; }
+        cnt = 0;
+        FOR(j, 0, n - 1) {
+            cnt += (s[j] != s[j % i + i]);
+            if (cnt &gt; 1) break;
+        }
+        if (cnt &lt;= 1) { cout &lt;&lt; i &lt;&lt; ET; return; }
+    }
+}
+</code></pre>
+<h1 id="f---0-1-2-tree">F - 0, 1, 2, Tree!</h1>
+<h2 id="大概思路-2">大概思路</h2>
+<p>实际上是算术题，先让子树数为2的节点按满二叉树尽可能排满，然后最后一排没排满的节点填上子树数为1的节点，判断最底层节点数是否等于题目提供的“子树数为0的节点个数”，再输出层数即可。</p>
+<h2 id="参考代码-2">参考代码</h2>
+<pre><code class="language-cpp">int len(int x){return x&gt;0?log2l(x)+1:0;}
+
+void solve(){
+    CIN(a);CIN(b);CIN(c);
+    if(a==0){
+        if(c!=1){cout&lt;&lt;-1&lt;&lt;ET;return;}
+        cout&lt;&lt;b&lt;&lt;ET;return;
+    }
+    int al=len(a);//获得二叉树层数
+    int am=(a-(1ll&lt;&lt;(al-1))+1);//获得尽可能填满的二叉树最后一层有多少个“子树数为2”的节点数量
+    int br=((1ll&lt;&lt;(al-1))-am);//获得最后一层剩多少个空位
+    if(c!=br+am*2){cout&lt;&lt;-1&lt;&lt;ET;return;}//判断子树数为0的节点数量是否满足题意
+    if(b&lt;=br){cout&lt;&lt;al&lt;&lt;ET;return;}//如果最后一层填不满，直接输出答案
+    b-=br;
+    cout&lt;&lt;al+b/(br+am*2)+(b%(br+am*2)!=0)&lt;&lt;ET;//如果能填满，就输出还要加多少层才能填满
+}
+</code></pre>
+<h1 id="g---shuffling-songs">G - Shuffling Songs</h1>
+<p>状压DP，可行性DP</p>
+<h2 id="大概思路-3">大概思路</h2>
+<p>设dp[i][j]为“已选歌曲状态为i，最后一首为j，这种情况下是否可行”
+然后写递推即可</p>
+<h2 id="参考代码-3">参考代码</h2>
+<pre><code class="language-cpp">bool dp[1&lt;&lt;16][16];
+string a[16],b[16];
+vector&lt;int&gt; e[16];
+ 
+void dfs(int state,int now){
+    dp[state][now]=1;
+    for(auto &amp;i:e[now]){
+        if((state&amp;(1&lt;&lt;i))||dp[state|(1&lt;&lt;i)][i])continue;
+        dfs(state|(1&lt;&lt;i),i);
+    }
+}
+ 
+void solve(){
+    CIN(n);
+    FOR(i,1,(1&lt;&lt;n))FOR(j,0,n){
+        dp[i][j]=0;
+    }
+    FOR(i,0,n-1)e[i].clear();
+    FOR(i,0,n-1)cin&gt;&gt;a[i]&gt;&gt;b[i];
+ 
+    FOR(i,0,n-1)FOR(j,0,n-1){//建图优化字符串比较
+        if(a[i]==a[j]||b[i]==b[j]){
+            e[i].push_back(j);
+            e[j].push_back(i);
+        }
+    }
+ 
+    FOR(i,0,n-1){
+        dfs(1&lt;&lt;i,i);
+    }
+ 
+    int mx=0;
+    FOR(i,1,(1&lt;&lt;n))FOR(j,0,n){//收集答案
+        if(dp[i][j])mx=max(mx,__builtin_popcount(i));
+    }
+    cout&lt;&lt;n-mx&lt;&lt;ET;
+}
+</code></pre>
               
 
 
@@ -422,9 +488,9 @@
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/acm/">ACM</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E9%A2%98%E8%A7%A3/">题解</a>
 
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/cf/">CF</a>
 
                   </div>
                 
@@ -437,7 +503,7 @@
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/md/" data-tooltip="莫队（未整理完）" aria-label="PREVIOUS: 莫队（未整理完）">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/gzhuacm2024/" data-tooltip="广州大学第十八届ACM大学生程序设计竞赛" aria-label="PREVIOUS: 广州大学第十八届ACM大学生程序设计竞赛">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -445,7 +511,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_936/" data-tooltip="Codeforces Round 936 (Div. 2)" aria-label="NEXT: Codeforces Round 936 (Div. 2)">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -488,9 +554,9 @@
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/todolist\/';
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_937\/';
         
-          this.page.identifier = '\/post\/todolist\/'
+          this.page.identifier = '\/post\/solution\/cf_937\/'
         
       };
       (function() {
@@ -534,7 +600,7 @@
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/md/" data-tooltip="莫队（未整理完）" aria-label="PREVIOUS: 莫队（未整理完）">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/gzhuacm2024/" data-tooltip="广州大学第十八届ACM大学生程序设计竞赛" aria-label="PREVIOUS: 广州大学第十八届ACM大学生程序设计竞赛">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -542,7 +608,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_936/" data-tooltip="Codeforces Round 936 (Div. 2)" aria-label="NEXT: Codeforces Round 936 (Div. 2)">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
