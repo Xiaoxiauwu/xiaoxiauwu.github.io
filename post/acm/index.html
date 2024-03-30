@@ -1221,8 +1221,12 @@ inline int len(ll x){
 (什么？不喜欢iostream？那去这里选一个你喜欢的款式：<a href="https://blog.csdn.net/CSDNFANSO/article/details/111824139">C/C++如何整行输入</a>，我就不一一列举了)</p>
 <h3 id="wa-sort函数与string数组">[WA] sort函数与string数组</h3>
 <p>两个string之间的比较也是要花时间的，若数组大小为 $n$，string长度为 $m$，则sort(a,a+n)的时间复杂的是 $O(nmlogn)$</p>
-<h3 id="wa-forauto-ia问题">[WA] for(auto &amp;i:a)问题</h3>
+<h3 id="tipwa-forauto-ia问题">[TIP/WA] for(auto &amp;i:a)问题</h3>
 <p>在for(auto &amp;i:a)循环体中对i修改直接反映于原迭代体a，但是不能在这种循环体中往a继续添加元素，不然会报错。</p>
+<p>初始化vector数组时可以利用这个特性减少代码量：</p>
+<pre><code class="language-cpp">vector&lt;int&gt; a(n);
+for(auto&amp; i:a)cin&gt;&gt;i;
+</code></pre>
 <h3 id="tip-nth_element与sort">[TIP] nth_element()与sort()</h3>
 <p>二者都可以求数组中第 $k$ 大，sort得先对数据进行 $O(n\log n)$ 的排序，再a[k]调用，而nth_element()则只需花 $O(n)$ 的时间进行部分排序，即可使得数组中第 $k$ 大的数就位，且其左边的数都比它小，右边的数都比它大</p>
 <h3 id="tip-和python类似的多行字符串输入">[TIP] 和python类似的多行字符串输入</h3>
