@@ -17,7 +17,7 @@
   },
   "name":"夏のBLOG",
   "description":"",
-  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_937\/",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/ctr_8\/",
   "keywords":"[tech, C\u002b\u002b, python, study]"
 }
 
@@ -33,20 +33,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces Round 937 (Div. 4)">
-<meta name="twitter:title" content="Codeforces Round 937 (Div. 4)">
-<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cf_937/">
-<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cf_937/">
+<meta property="og:title" content="CodeTON Round 8 (Div. 1 &#43; Div. 2）">
+<meta name="twitter:title" content="CodeTON Round 8 (Div. 1 &#43; Div. 2）">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/ctr_8/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/ctr_8/">
 <meta property="og:site_name" content="夏のBLOG">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-03-30T15:36:12">
+    <meta property="article:published_time" content="2024-03-31T02:35:16">
   
   
-    <meta property="article:modified_time" content="2024-03-30T15:36:12">
+    <meta property="article:modified_time" content="2024-03-31T02:35:16">
   
   
   
@@ -87,14 +87,14 @@
   <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
 
 
-    <title>Codeforces Round 937 (Div. 4)</title>
+    <title>CodeTON Round 8 (Div. 1 &#43; Div. 2）</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cf_937/">
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/ctr_8/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -268,15 +268,15 @@
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      Codeforces Round 937 (Div. 4)
+      CodeTON Round 8 (Div. 1 &#43; Div. 2）
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-03-30T15:36:12&#43;08:00">
+      <time datetime="2024-03-31T02:35:16&#43;08:00">
         
-  March 30, 2024
+  March 31, 2024
 
       </time>
     
@@ -304,176 +304,105 @@
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">AK失败，状压DP是什么</span>
+            <span class="post-header-cover-caption caption">还以为会把div4拿的分掉完，没想到能AC到C2</span>
           
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<h1 id="a---stair-peak-or-neither">A - Stair, Peak, or Neither?</h1>
-<p>水中之水题</p>
-<pre><code class="language-cpp">void solve(){
-    CIN(a);CIN(b);CIN(c);
-    if(a&lt;b&amp;&amp;b&lt;c)cout&lt;&lt;&quot;STAIR\n&quot;;
-    else if(b&gt;a&amp;&amp;b&gt;c)cout&lt;&lt;&quot;PEAK\n&quot;;
-    else cout&lt;&lt;&quot;NONE\n&quot;;
-}
-</code></pre>
-<h1 id="b---upscaling">B - Upscaling</h1>
-<p>制表题，水题</p>
-<pre><code class="language-cpp">string ANS[2]={&quot;##&quot;,&quot;..&quot;};
-
-void solve(){
-    CIN(n);
-    FOR(i,1,2*n){
-        FOR(j,1,n){
-            cout&lt;&lt;ANS[(((i-1)/2+1)+j)%2];
-        }
-        cout&lt;&lt;ET;
-    }
-}
-</code></pre>
-<h1 id="c---clock-conversion">C - Clock Conversion</h1>
-<p>格式转换，水题</p>
-<pre><code class="language-cpp">void solve(){
-    SCIN(s);
-    int h=stoi(s.substr(0,2));
-    if(h&lt;12){
-        if(h==0)cout&lt;&lt;&quot;12&quot;&lt;&lt;s.substr(2)&lt;&lt;&quot; AM\n&quot;;
-        else cout&lt;&lt;s&lt;&lt;&quot; AM\n&quot;;
-    }else{
-        if(h&gt;12)h-=12;
-        if(h&gt;=10)cout&lt;&lt;h&lt;&lt;s.substr(2)&lt;&lt;&quot; PM\n&quot;;
-        else cout&lt;&lt;0&lt;&lt;h&lt;&lt;s.substr(2)&lt;&lt;&quot; PM\n&quot;;
-    }
-}
-</code></pre>
-<h1 id="d---product-of-binary-decimals">D - Product of Binary Decimals</h1>
+<h1 id="a---farmer-johns-challenge">A - Farmer John&rsquo;s Challenge</h1>
+<p>构造</p>
 <h2 id="大概思路">大概思路</h2>
-<p>暴力打表判断即可</p>
+<p>可以证明， $k$ 要么为 $1$，要么为 $n$，不然无解。</p>
 <h2 id="参考代码">参考代码</h2>
-<pre><code class="language-cpp">bool ans[100005];
-int lst[]={10,11,101,111,1001,1011,
-            1101,1111,10001,10011,10101,
-            11001,10111,11011,11101,11111};
-void pre(){
-    sort(lst,lst+16);
-}
- 
-void solve(){
-    CIN(n);
-    while(n&gt;=10){
-        bool cg=1;
-        rFOR(i,15,0){
-            if(n%lst[i]==0){
-                n/=lst[i];
-                cg=0;
-            }
-        }
-        if(cg)break;
+<pre><code class="language-cpp">void solve(){
+    CIN(n);CIN(k);
+    if(k!=1&amp;&amp;k!=n){cout&lt;&lt;-1&lt;&lt;ET;return;}
+    if(k==1){
+        cout&lt;&lt;1&lt;&lt;&quot; &quot;;
+        n--;
+        while(n--)cout&lt;&lt;2&lt;&lt;&quot; &quot;;
+    }else{
+        while(n--)cout&lt;&lt;1&lt;&lt;&quot; &quot;;
     }
-    cout&lt;&lt;ANS[n==1];
+    cout&lt;&lt;ET;
 }
 </code></pre>
-<h1 id="e---nearly-shortest-repeating-substring">E - Nearly Shortest Repeating Substring</h1>
+<h1 id="b---bessie-and-mex">B - Bessie and MEX</h1>
+<p>模拟</p>
 <h2 id="大概思路-1">大概思路</h2>
-<p>分解质因数，对第一段和第二段跑两遍模拟</p>
+<p>正着模拟，如果当前收到的值大于等于 $1$，说明mex在这里发生了更新，让 $mex$ 自增 $1$ 后更新 $mex$ 的值，然后记录当前出现的数，输出当前出现的数即可。</p>
 <h2 id="参考代码-1">参考代码</h2>
-<pre><code class="language-cpp">vector&lt;int&gt; d(int x) {//可以这样分解质因数，然后for(auto&amp; i:dn)遍历，也可以直接FOR(i,1,n)，然后if(n%i)continue;
-    vector&lt;int&gt; ans;
-    for (int i = 1; i * i &lt;= x; i++) {
-        if (x % i == 0) {
-            ans.push_back(i);
-            if (x / i != i)ans.push_back(x / i);
-        }
-    }
-    sort(ans.begin(), ans.end());
-    return ans;
-}
-
-void solve() {
-    CIN(n); SCIN(s);
-    FOR(i,1,n) {
-        if (n % i)continue;
-        int cnt = 0;
-        FOR(j, 0, n - 1) {
-            cnt += (s[j] != s[j % i]);
-            if (cnt &gt; 1) break;
-        }
-        if (cnt &lt;= 1) { cout &lt;&lt; i &lt;&lt; ET; return; }
-        cnt = 0;
-        FOR(j, 0, n - 1) {
-            cnt += (s[j] != s[j % i + i]);
-            if (cnt &gt; 1) break;
-        }
-        if (cnt &lt;= 1) { cout &lt;&lt; i &lt;&lt; ET; return; }
-    }
-}
-</code></pre>
-<h1 id="f---0-1-2-tree">F - 0, 1, 2, Tree!</h1>
-<h2 id="大概思路-2">大概思路</h2>
-<p>实际上是算术题，先让子树数为2的节点按满二叉树尽可能排满，然后最后一排没排满的节点填上子树数为1的节点，判断最底层节点数是否等于题目提供的“子树数为0的节点个数”，再输出层数即可。</p>
-<h2 id="参考代码-2">参考代码</h2>
-<pre><code class="language-cpp">int len(int x){return x&gt;0?log2l(x)+1:0;}
-
-void solve(){
-    CIN(a);CIN(b);CIN(c);
-    if(a==0){
-        if(c!=1){cout&lt;&lt;-1&lt;&lt;ET;return;}
-        cout&lt;&lt;b&lt;&lt;ET;return;
-    }
-    int al=len(a);//获得二叉树层数
-    int am=(a-(1ll&lt;&lt;(al-1))+1);//获得尽可能填满的二叉树最后一层有多少个“子树数为2”的节点数量
-    int br=((1ll&lt;&lt;(al-1))-am);//获得最后一层剩多少个空位
-    if(c!=br+am*2){cout&lt;&lt;-1&lt;&lt;ET;return;}//判断子树数为0的节点数量是否满足题意
-    if(b&lt;=br){cout&lt;&lt;al&lt;&lt;ET;return;}//如果最后一层填不满，直接输出答案
-    b-=br;
-    cout&lt;&lt;al+b/(br+am*2)+(b%(br+am*2)!=0)&lt;&lt;ET;//如果能填满，就输出还要加多少层才能填满
-}
-</code></pre>
-<h1 id="g---shuffling-songs">G - Shuffling Songs</h1>
-<p>状压DP，可行性DP</p>
-<h2 id="大概思路-3">大概思路</h2>
-<p>设dp[i][j]为“已选歌曲状态为i，最后一首为j，这种情况下是否可行”
-然后写递推即可。</p>
-<h2 id="参考代码-3">参考代码</h2>
-<pre><code class="language-cpp">bool dp[1&lt;&lt;16][16];
-string a[16],b[16];
-vector&lt;int&gt; e[16];
- 
-void dfs(int state,int now){
-    dp[state][now]=1;
-    for(auto &amp;i:e[now]){
-        if((state&amp;(1&lt;&lt;i))||dp[state|(1&lt;&lt;i)][i])continue;
-        dfs(state|(1&lt;&lt;i),i);
-    }
-}
- 
-void solve(){
+<pre><code class="language-cpp">void solve(){
     CIN(n);
-    FOR(i,1,(1&lt;&lt;n))FOR(j,0,n){
-        dp[i][j]=0;
+    vector&lt;bool&gt; a(n+2,0);
+    int mex=0;
+    FOR(i,1,n){
+        CIN(tmp);
+        if(tmp&gt;=1)mex++;
+        while(a[mex]&amp;&amp;mex&lt;n)mex++;
+        a[mex-tmp]=1;
+        //cout&lt;&lt;mex&lt;&lt;&quot;[&quot;;
+        cout&lt;&lt;mex-tmp&lt;&lt;&quot; &quot;;
     }
-    FOR(i,0,n-1)e[i].clear();
-    FOR(i,0,n-1)cin&gt;&gt;a[i]&gt;&gt;b[i];
- 
-    FOR(i,0,n-1)FOR(j,0,n-1){//建图优化字符串比较
-        if(a[i]==a[j]||b[i]==b[j]){
-            e[i].push_back(j);
-            e[j].push_back(i);
+    cout&lt;&lt;ET;
+}
+</code></pre>
+<h1 id="c1---bessies-birthday-cake-easy-version">C1 - Bessie&rsquo;s Birthday Cake (Easy Version)</h1>
+<h2 id="大概思路-2">大概思路</h2>
+<p>$y$ 为 $0$，也就是说不能自己加点，考虑已经围成的多边形，内部最多可产生 $x-2$ 个三角形，然后再统计一下外部不小心构造的三角形有几个，加上就行。</p>
+<h2 id="参考代码-2">参考代码</h2>
+<pre><code class="language-cpp">void solve(){
+    CIN(n);CIN(x);CIN(y);
+    vector&lt;int&gt; a(x);
+    FOR(i,0,x-1)cin&gt;&gt;a[i];
+    sort(a.begin(),a.end());
+    ll cnt=0;
+    FOR(i,1,x-1){
+        if(a[i]-a[i-1]==2)cnt++;
+    }
+    if(a[0]+n-a[x-1]==2)cnt++;
+    cout&lt;&lt;cnt+x-2&lt;&lt;ET;
+}
+</code></pre>
+<h1 id="c2---bessies-birthday-cake-hard-version">C2 - Bessie&rsquo;s Birthday Cake (Hard Version)</h1>
+<p>排序</p>
+<h2 id="大概思路-3">大概思路</h2>
+<p>和上题一样，多一步收集相邻两点间距大于2的距离，然后按照 $(1.0<em>a/(a&raquo;1))&gt;(1.0</em>b/(b&raquo;1))$ 的方式 $sort$ 一遍 （即每加一点，平均能获得的三角形数量（一般来说，每加一个点能获得两个三角形，但是奇数情况在最后能获得三个，比如4和5同样是加2个点，一个能获得4个三角形，另一个却能获得5个三角形，贪心时肯定优先选5；然后对于5和999，它们在最后都能获得3个三角形，但显然我们选5的话，到达“产生3个三角形”的状态所消耗的y值显然更少，所以按这里我们按 $1.0*a/(a&raquo;1)$（贡献度）的值sort的话，可以达到既避免了奇偶讨论，又能准确识别出最小的奇数的目的（奇数越小，每加一个点获得的三角形数量的期望更大）））。跑一边贪心收集答案即可。</p>
+<h2 id="参考代码-3">参考代码</h2>
+<pre><code class="language-cpp">void solve(){
+    CIN(n);CIN(x);CIN(y);
+    vector&lt;int&gt; a(x);
+    FOR(i,0,x-1)cin&gt;&gt;a[i];
+    sort(a.begin(),a.end());
+    ll cnt=0;
+    vector&lt;int&gt; can;
+    FOR(i,1,x-1){
+        if(a[i]-a[i-1]==2)cnt++;
+        if(a[i]-a[i-1]&gt;2)can.push_back(a[i]-a[i-1]-1);
+    }
+    if(a[0]+n-a[x-1]==2)cnt++;
+    if(a[0]+n-a[x-1]&gt;2)can.push_back(a[0]+n-a[x-1]-1);
+    sort(can.begin(),can.end(),[&amp;](int a,int b){
+        return (1.0*a/(a&gt;&gt;1))&gt;(1.0*b/(b&gt;&gt;1));
+    });
+    for(auto &amp;res:can){
+        //cout&lt;&lt;res&lt;&lt;&quot;]&quot;;
+        if(y&gt;=res/2){
+            cnt+=res;
+            y-=res/2;
+        }else{
+            cnt+=y*2;
+            break;
         }
     }
- 
-    FOR(i,0,n-1){
-        dfs(1&lt;&lt;i,i);
-    }
- 
-    int mx=0;
-    FOR(i,1,(1&lt;&lt;n))FOR(j,0,n){//收集答案
-        if(dp[i][j])mx=max(mx,__builtin_popcount(i));
-    }
-    cout&lt;&lt;n-mx&lt;&lt;ET;
+    cout&lt;&lt;cnt+x-2&lt;&lt;ET;
 }
+</code></pre>
+<h1 id="pre附录">pre附录</h1>
+<p>翻别人代码看到的奇怪写法。</p>
+<pre><code class="language-cpp">vector&lt;int&gt; a(x);
+for(auto&amp; i:a)cin&gt;&gt;i;
 </code></pre>
 <h1 id="附录">附录</h1>
 <p>这里贴上用到的头部和main函数(有更新，for循环没事别开long long，常数大)：</p>
@@ -543,7 +472,7 @@ int main(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/gzhuacm2024/" data-tooltip="广州大学第十八届ACM大学生程序设计竞赛" aria-label="PREVIOUS: 广州大学第十八届ACM大学生程序设计竞赛">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_347/" data-tooltip="AtCoder Beginner Contest 347" aria-label="PREVIOUS: AtCoder Beginner Contest 347">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -551,7 +480,7 @@ int main(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_347/" data-tooltip="AtCoder Beginner Contest 347" aria-label="NEXT: AtCoder Beginner Contest 347">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -594,9 +523,9 @@ int main(){
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_937\/';
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/ctr_8\/';
         
-          this.page.identifier = '\/post\/solution\/cf_937\/'
+          this.page.identifier = '\/post\/solution\/ctr_8\/'
         
       };
       (function() {
@@ -640,7 +569,7 @@ int main(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/gzhuacm2024/" data-tooltip="广州大学第十八届ACM大学生程序设计竞赛" aria-label="PREVIOUS: 广州大学第十八届ACM大学生程序设计竞赛">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_347/" data-tooltip="AtCoder Beginner Contest 347" aria-label="PREVIOUS: AtCoder Beginner Contest 347">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -648,7 +577,7 @@ int main(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_347/" data-tooltip="AtCoder Beginner Contest 347" aria-label="NEXT: AtCoder Beginner Contest 347">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
