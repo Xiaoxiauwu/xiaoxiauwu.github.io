@@ -399,6 +399,45 @@
     cout&lt;&lt;cnt+x-2&lt;&lt;ET;
 }
 </code></pre>
+<h1 id="d">D</h1>
+<p>优先队列优化DP</p>
+<h2 id="大概思路-4">大概思路</h2>
+<p>直接按列优先队列DP，设 $dp[i]$ 为前 $i$ 列的前 $k$ 大数组，然后按列进行状态转移即可。每次转移时按列 $j$ 收集 $dp[j-2]$ 的最大项，加到当前 $dp[i]$，收集完一列的值后截断 $dp[i]$ 的前 $k$ 大，进入下一列的 $dp$ 即可。关于状态的转移，可以自己画图理解：
+<a href="https://imgse.com/i/pF7imWV"><img src="https://s21.ax1x.com/2024/03/31/pF7imWV.png" alt="pF7imWV.png"></a></p>
+<h2 id="参考代码-4">参考代码</h2>
+<pre><code class="language-cpp">struct P{
+    int v,j_,x;//保存的值，所属列下标，第几大的数
+    bool operator&lt;(const P b)const{
+        return v&lt;b.v;
+    }
+};
+
+void solve(){
+    CIN(n);CIN(k);
+    vector&lt;vector&lt;int&gt;&gt; dp(n+1),a(n+1,vector&lt;int&gt;(n+1,0));//小心爆空间，题目的范围不会超过int型
+    FOR(i,1,n)FOR(j,i,n)cin&gt;&gt;a[i][j];
+    dp[0].push_back(0);
+    //dp状态：dp[j][i]表示前j列的第i大的答案（实际上是dp[i]，表示前i列的前k大数组）
+    FOR(j,1,n){//按列dp
+        priority_queue&lt;P&gt; q;
+        FOR(j_,1,j){//把这一列的最大值收集完，整理到优先队列里面暂存
+        //这里可能要点理解，我放个图出来
+            q.push(P(a[j_][j]+(j_-2==-1?0:dp[j_-2][0]),j_-2,0));//收集前j_-2列的答案，可以证明，任意大于j_-2列的答案均无法递推到第j_行
+        }
+        dp[j]=dp[j-1];//复制上一列的结果
+        FOR(u,1,k){//最多收集k个就行
+            if(q.empty())break;//或者q被倒空了，就退出
+            auto [v,j_,x]=q.top();q.pop();
+            dp[j].push_back(v);
+            if(j_&gt;=0&amp;&amp;x+1&lt;dp[j_].size())q.push(P(v-dp[j_][x]+dp[j_][x+1],j_,x+1));//尽可能把q里的东西倒光，如果第x个倒出来，那么第x+1个就可以加进去继续倒
+        }
+        sort(dp[j].begin(),dp[j].end(),greater&lt;int&gt;());//排序，掐断dp[i]，限制为k大小的数组
+        if(dp[j].size()&gt;k)dp[j].erase(dp[j].begin()+k,dp[j].end());
+    }
+    for(auto&amp; i:dp[n])cout&lt;&lt;i&lt;&lt;&quot; &quot;;
+    cout&lt;&lt;ET;
+}
+</code></pre>
 <h1 id="pre附录">pre附录</h1>
 <p>翻别人代码看到的奇怪写法。</p>
 <pre><code class="language-cpp">vector&lt;int&gt; a(x);

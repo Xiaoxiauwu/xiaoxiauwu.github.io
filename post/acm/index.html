@@ -1173,6 +1173,37 @@ $$CTL_n=\frac{\textrm{C}<em>{2n}^n}{n+1}$$
 组合通项式2:：
 $$CTL_n=\textrm{C}</em>{2n}^n-\textrm{C}_{2n}^{n-1}$$</p>
 <p>为什么要记这么多式子？当然是推式子化简需要。</p>
+<h2 id="其他">其他</h2>
+<h3 id="优先队列维护前k大的数">优先队列维护前k大的数</h3>
+<p>这里封成struct了，当然，你直接用主要逻辑也行，不封装也行。</p>
+<pre><code class="language-cpp">template&lt;typename T&gt; struct BUCKET{
+    int k;
+    priority_queue&lt;T,vector&lt;T&gt;,greater&lt;T&gt;&gt; q;//前k大（改成less即为前k小）
+    BUCKET(int k_){k=k_;}
+    void push(T x){
+        if(q.size()&gt;=k){
+            if(q.top()&lt;x){q.pop();q.push(x);}//前k大（改成&gt;即为前k小）
+        }else q.push(x);
+    }
+    vector&lt;T&gt; get(){
+        vector&lt;T&gt; out;
+        while(!q.empty()){out.push_back(q.top());q.pop();}
+        reverse(out.begin(),out.end());
+        return out;
+    }
+};
+//使用方法：
+BUCKET&lt;int&gt; buk(k);//创建一个大小为k的桶（我也不知道算不算桶，把它理解成那种往里面加东西，加到桶的容量上限时会溢出来的效果就行）
+buk.push(x);//往桶里装东西
+auto vec=buk.get();//把桶里的东西倒出来
+
+//特别注意，如果你要用封装的话，T的类型要保证支持
+//operator&lt;(T a,T b)
+//operator&gt;(T a,T b)
+//operator&lt;(const T a,T b)
+//operator&gt;(const T a,T b)
+//不然会报错
+</code></pre>
 <h2 id="tipswa">TIPS&amp;WA</h2>
 <p>这里记录收集到的一些小技巧和注意事项（大部分和STL相关）。</p>
 <h3 id="tip-获取一个整数二进制位数">[TIP] 获取一个整数二进制位数</h3>
