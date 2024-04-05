@@ -377,12 +377,14 @@ a.erase(it);//按迭代器删除元素，常用搭配：a.erase(a.find(x));//注
 <h3 id="并查集">并查集</h3>
 <pre><code class="language-cpp">int f[N];
 int find(int x){//溯源
-	while(x!=f[x])x=f[x]=f[f[x]];//路径压缩
-	return x;
+	//while(x!=f[x])x=f[x]=f[f[x]];//路径压缩
+	//return x;
+    return x==f[x]?x:f[x]=find(f[x]);//这样写比while快
 }
 void join(int u,int v){//连边
-	int a1=find(u),a2=find(v);
-	if(a1!=a2)f[a1]=a2;
+	//int a1=find(u),a2=find(v);
+	//if(a1!=a2)f[a1]=a2;
+    f[find(u)]=find(v);//别管那么多，直接连
 }
 </code></pre>
 <h3 id="kruskal">Kruskal</h3>
@@ -441,7 +443,7 @@ auto mid=upper_bound(a.begin(),a.end(),v);
 if(mid==a.end())//此时数组中不存在满足条件的数
 else int ans=mid-a.begin();
 
-//返回指向第一个小于v的元素的迭代器
+//返回指向第一个大于等于v的元素的迭代器
 auto mid=lower_bound(a.begin(),a.end(),v);
 </code></pre>
 <h3 id="单调队列">单调队列</h3>
@@ -1282,6 +1284,12 @@ cout&lt;&lt;MO(MO(pre[n]-(ans&gt;0)*ans)+(ans&gt;0)*MO(MO(ans)*MO(powp(2,k))))&l
 <p>破案了，map的下标访问是 $O(logn)$ 的，所以TLE了</p>
 <h3 id="wa-forll-i0ini问题">[WA] for(ll i=0;i&lt;n;i++)问题</h3>
 <p>非必要别用ll写for循环，ll的运算比int运算慢了一倍，小心被卡常卡掉。</p>
+<h3 id="wa-lower_bound问题">[WA] lower_bound()问题</h3>
+<p>这个不是“返回指向第一个小于v的元素的迭代器”的意思，而是“返回指向第一个大于等于v的元素的迭代器”的意思，要想返回第一个小于等于的元素，我建议自己手写一个二分吧。</p>
+<h3 id="wa-素数筛问题">[WA] 素数筛问题</h3>
+<p>p数组别开小了，素数只是少，不代表它小，你100000的数据，开2024大小的数组跑素数筛是想WA几次？（Luogu P1621 集合）</p>
+<h3 id="tip-处理倍数的一个技巧">[TIP] 处理倍数的一个技巧</h3>
+<p>使用 (a+k-1)/k*k 可以得到大于等于a的第一个k的倍数。</p>
 <pre><code>前面的区域以后再来探索吧！
 </code></pre>
               

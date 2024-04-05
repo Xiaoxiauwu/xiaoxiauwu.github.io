@@ -17,7 +17,7 @@
   },
   "name":"夏のBLOG",
   "description":"",
-  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/ctr_8\/",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/algorithm\/bcj\/",
   "keywords":"[tech, C\u002b\u002b, python, study]"
 }
 
@@ -33,34 +33,32 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="CodeTON Round 8 (Div. 1 &#43; Div. 2）">
-<meta name="twitter:title" content="CodeTON Round 8 (Div. 1 &#43; Div. 2）">
-<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/ctr_8/">
-<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/ctr_8/">
+<meta property="og:title" content="并查集">
+<meta name="twitter:title" content="并查集">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/algorithm/bcj/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/algorithm/bcj/">
 <meta property="og:site_name" content="夏のBLOG">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-03-31T02:35:16">
+    <meta property="article:published_time" content="2024-04-06T03:34:40">
   
   
-    <meta property="article:modified_time" content="2024-03-31T02:35:16">
+    <meta property="article:modified_time" content="2024-04-06T03:34:40">
   
   
   
     
-      <meta property="article:section" content="题解">
-    
-      <meta property="article:section" content="ACM">
+      <meta property="article:section" content="c&#43;&#43;">
     
   
   
     
-      <meta property="article:tag" content="题解">
+      <meta property="article:tag" content="ACM">
     
-      <meta property="article:tag" content="CF">
+      <meta property="article:tag" content="算法">
     
   
 
@@ -79,22 +77,22 @@
 
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
 
 
-    <title>CodeTON Round 8 (Div. 1 &#43; Div. 2）</title>
+    <title>并查集</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/ctr_8/">
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/algorithm/bcj/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -262,21 +260,21 @@
   <div class="post-header-cover
               text-center
               post-header-cover--full"
-       style="background-image:url('/images/cover.jpg')"
+       style="background-image:url('/images/AG.webp')"
        data-behavior="5">
     
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      CodeTON Round 8 (Div. 1 &#43; Div. 2）
+      并查集
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-03-31T02:35:16&#43;08:00">
+      <time datetime="2024-04-06T03:34:40&#43;08:00">
         
-  March 31, 2024
+  April 6, 2024
 
       </time>
     
@@ -285,9 +283,7 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/%e9%a2%98%e8%a7%a3">题解</a>, 
-    
-      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/acm">ACM</a>
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/c&#43;&#43;">c&#43;&#43;</a>
     
   
 
@@ -304,183 +300,310 @@
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">还以为会把div4拿的分掉完，没想到能AC到C2</span>
+            <span class="post-header-cover-caption caption">Luogu题单补完计划之冰茶几</span>
           
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<h1 id="a---farmer-johns-challenge">A - Farmer John&rsquo;s Challenge</h1>
-<p>构造</p>
-<h2 id="大概思路">大概思路</h2>
-<p>可以证明， $k$ 要么为 $1$，要么为 $n$，不然无解。</p>
-<h2 id="参考代码">参考代码</h2>
-<pre><code class="language-cpp">void solve(){
-    CIN(n);CIN(k);
-    if(k!=1&amp;&amp;k!=n){cout&lt;&lt;-1&lt;&lt;ET;return;}
-    if(k==1){
-        cout&lt;&lt;1&lt;&lt;&quot; &quot;;
-        n--;
-        while(n--)cout&lt;&lt;2&lt;&lt;&quot; &quot;;
-    }else{
-        while(n--)cout&lt;&lt;1&lt;&lt;&quot; &quot;;
-    }
-    cout&lt;&lt;ET;
+<h1 id="并查集">并查集</h1>
+<h2 id="基本的并查集">基本的并查集</h2>
+<p>并查集一般用于涉及到集合合并的题。其最简板子如下：</p>
+<pre><code class="language-cpp">const int N=100005;
+int F[N];
+int find(int x){//查询，自带路径压缩
+    return x==F[x]?x:F[x]=find(F[x]);
+}
+void join(int x,int y){//合并集合
+    F[find(x)]=find(y);
 }
 </code></pre>
-<h1 id="b---bessie-and-mex">B - Bessie and MEX</h1>
-<p>模拟</p>
-<h2 id="大概思路-1">大概思路</h2>
-<p>正着模拟，如果当前收到的值大于等于 $1$，说明mex在这里发生了更新，让 $mex$ 自增 $1$ 后更新 $mex$ 的值，然后记录当前出现的数，输出当前出现的数即可。</p>
-<h2 id="参考代码-1">参考代码</h2>
-<pre><code class="language-cpp">void solve(){
-    CIN(n);
-    vector&lt;bool&gt; a(n+2,0);
-    int mex=0;
-    FOR(i,1,n){
-        CIN(tmp);
-        if(tmp&gt;=1)mex++;
-        while(a[mex]&amp;&amp;mex&lt;n)mex++;
-        a[mex-tmp]=1;
-        //cout&lt;&lt;mex&lt;&lt;&quot;[&quot;;
-        cout&lt;&lt;mex-tmp&lt;&lt;&quot; &quot;;
+<p>一般板子(未压行版本，可以做出许多变形)：</p>
+<pre><code class="language-cpp">const int N=100005;
+int F[N];
+int find(int x){
+    if(F[x]!=x){
+        F[x]=find(F[x]);
     }
-    cout&lt;&lt;ET;
+    return F[x];
+}
+void join(int x,int y){
+    int Fx=find(x),Fy=find(y);
+    if(Fx!=Fy){
+        F[Fx]=Fy;
+    }
 }
 </code></pre>
-<h1 id="c1---bessies-birthday-cake-easy-version">C1 - Bessie&rsquo;s Birthday Cake (Easy Version)</h1>
-<h2 id="大概思路-2">大概思路</h2>
-<p>$y$ 为 $0$，也就是说不能自己加点，考虑已经围成的多边形，内部最多可产生 $x-2$ 个三角形，然后再统计一下外部不小心构造的三角形有几个，加上就行。</p>
-<h2 id="参考代码-2">参考代码</h2>
-<pre><code class="language-cpp">void solve(){
-    CIN(n);CIN(x);CIN(y);
-    vector&lt;int&gt; a(x);
-    FOR(i,0,x-1)cin&gt;&gt;a[i];
-    sort(a.begin(),a.end());
-    ll cnt=0;
-    FOR(i,1,x-1){
-        if(a[i]-a[i-1]==2)cnt++;
+<p>更一般更通用的并查集：
+(其实你不一定需要封装成类，可以直接拿到外面正常用，这里只是告诉你对于非整数型间的并查集（比如string）该如何存储关系罢了)</p>
+<pre><code class="language-cpp">template&lt;typename T&gt;
+struct BCJ{
+    map&lt;T,T&gt; F;//使用map储存集合关系
+    BCJ(){}
+    void reset(){F.clear();}//重置，进行下一回合操作
+    void init(T x){mp[x]=x;}//需要自己手动初始化
+    T find(T x){//溯源
+        if(F[x]!=x){
+            F[x]=find(F[x]);
+        }
+        return F[x];
     }
-    if(a[0]+n-a[x-1]==2)cnt++;
-    cout&lt;&lt;cnt+x-2&lt;&lt;ET;
-}
-</code></pre>
-<h1 id="c2---bessies-birthday-cake-hard-version">C2 - Bessie&rsquo;s Birthday Cake (Hard Version)</h1>
-<p>排序</p>
-<h2 id="大概思路-3">大概思路</h2>
-<p>和上题一样，多一步收集相邻两点间距大于2的距离，然后按照 $(1.0 * a / (a&raquo;1))&gt;(1.0 * b/(b&raquo;1))$ 的方式排序一遍（即每加一点，能获得的三角形数量的期望（一般来说，每加一个点能获得两个三角形，但是奇数情况在最后能获得三个，比如4和5同样是加2个点，一个能获得4个三角形，另一个却能获得5个三角形，贪心时肯定优先选5；然后对于5和999，它们在最后都能获得3个三角形，但显然我们选5的话，到达“产生3个三角形”的状态所消耗的y值显然更少，所以按这里我们按 $1.0*a/(a&raquo;1)$ （贡献度）的值排序的话，可以达到既避免了奇偶讨论，又能准确识别出最小的奇数的目的（奇数越小，每加一个点获得的三角形数量的期望更大）））。跑一边贪心收集答案即可。</p>
-<h2 id="参考代码-3">参考代码</h2>
-<pre><code class="language-cpp">void solve(){
-    CIN(n);CIN(x);CIN(y);
-    vector&lt;int&gt; a(x);
-    FOR(i,0,x-1)cin&gt;&gt;a[i];
-    sort(a.begin(),a.end());
-    ll cnt=0;
-    vector&lt;int&gt; can;
-    FOR(i,1,x-1){
-        if(a[i]-a[i-1]==2)cnt++;
-        if(a[i]-a[i-1]&gt;2)can.push_back(a[i]-a[i-1]-1);
-    }
-    if(a[0]+n-a[x-1]==2)cnt++;
-    if(a[0]+n-a[x-1]&gt;2)can.push_back(a[0]+n-a[x-1]-1);
-    sort(can.begin(),can.end(),[&amp;](int a,int b){
-        return (1.0*a/(a&gt;&gt;1))&gt;(1.0*b/(b&gt;&gt;1));
-    });
-    for(auto &amp;res:can){
-        //cout&lt;&lt;res&lt;&lt;&quot;]&quot;;
-        if(y&gt;=res/2){
-            cnt+=res;
-            y-=res/2;
-        }else{
-            cnt+=y*2;
-            break;
+    void join(T x,T y){//合并集合
+        T Fx=find(x),Fy=find(y);
+        if(Fx!=Fy){
+            F[Fx]=Fy;
         }
     }
-    cout&lt;&lt;cnt+x-2&lt;&lt;ET;
+};
+</code></pre>
+<h3 id="例题">例题</h3>
+<p><a href="https://www.luogu.com.cn/problem/P1536">P1536 村村通</a></p>
+<p>并查集裸题，直接按题意合并，统计自己是自己亲戚的节点个数即可</p>
+<p>参考代码：</p>
+<pre><code class="language-cpp">int F[1003];
+void reset(int n){
+    rep(i,1,n)F[i]=i;//初始化
+}
+int find(int x){
+    return F[x]==x?x:F[x]=find(F[x]);
+}
+void join(int x,int y){
+    F[find(x)]=find(y);
+}
+
+void solve(){
+	while(true){
+        cin(n);if(n==0)return;
+        reset(n);
+        cin(m);
+        while(m--){
+            cin(x);cin(y);
+            join(x,y);
+        }
+        int ans=-1;
+        rep(i,1,n){
+            ans+=(F[i]==i);
+        }
+        cout&lt;&lt;ans&lt;&lt;et;
+    }
 }
 </code></pre>
-<h1 id="d">D</h1>
-<p>优先队列优化DP</p>
-<h2 id="大概思路-4">大概思路</h2>
-<p>直接按列优先队列DP，设 $dp[i]$ 为前 $i$ 列的前 $k$ 大数组，然后按列进行状态转移即可。每次转移时按列 $j$ 收集 $dp[j-2]$ 的最大项，加到当前 $dp[i]$，收集完一列的值后截断 $dp[i]$ 的前 $k$ 大，进入下一列的 $dp$ 即可。关于状态的转移，可以自己画图理解：
-<a href="https://imgse.com/i/pF7imWV"><img src="https://s21.ax1x.com/2024/03/31/pF7imWV.png" alt="pF7imWV.png"></a></p>
-<h2 id="参考代码-4">参考代码</h2>
-<pre><code class="language-cpp">struct P{
-    int v,j_,x;//保存的值，所属列下标，第几大的数
-    bool operator&lt;(const P b)const{
-        return v&lt;b.v;
+<p><a href="https://www.luogu.com.cn/problem/P2814">P2814 家谱</a></p>
+<p>还是并查集裸题，由于询问的是字符串间的关系，所以并查集初始化要点技巧，这里先把操作全部离线下来，初始化完并查集后再处理集合的合并、查询操作。</p>
+<pre><code class="language-cpp">map&lt;string,string&gt; F;
+
+string find(string s){
+    return s==F[s]?s:F[s]=find(F[s]);
+}
+void join(string x,string y){
+    F[find(x)]=find(y);
+}
+
+void solve() {
+    string f;
+    vector&lt;string&gt; list;
+    while(true){
+        scin(s);
+        if(s[0]=='$')break;
+        list.push_back(s);//将操作全部离线
+        F[s.substr(1)]=s.substr(1);//记录操作的同时进行并查集初始化
+    }
+    for(auto &amp;s:list){//然后就是正常的并查集合并的操作了
+        if(s[0]=='#')f=s.substr(1);
+        else if(s[0]=='+')join(s.substr(1),f);
+        else cout&lt;&lt;s.substr(1)&lt;&lt;&quot; &quot;&lt;&lt;find(s.substr(1))&lt;&lt;et;
+    }
+}
+</code></pre>
+<p>封装一下也行，只是写法上有点麻烦了：</p>
+<pre><code class="language-cpp">template&lt;typename T&gt;
+struct BCJ{
+    map&lt;T,T&gt; F;
+    BCJ(){}
+    void reset(){F.clear();}
+    void init(T x){F[x]=x;}
+    T find(T x){//这里没有压行，压行了后码量和不封装的极简板子差不多
+        if(F[x]!=x){
+            F[x]=find(F[x]);
+        }
+        return F[x];
+    }
+    void join(T x,T y){
+        T Fx=find(x),Fy=find(y);
+        if(Fx!=Fy){
+            F[Fx]=Fy;
+        }
     }
 };
 
-void solve(){
-    CIN(n);CIN(k);
-    vector&lt;vector&lt;int&gt;&gt; dp(n+1),a(n+1,vector&lt;int&gt;(n+1,0));//小心爆空间，题目的范围不会超过int型
-    FOR(i,1,n)FOR(j,i,n)cin&gt;&gt;a[i][j];
-    dp[0].push_back(0);
-    //dp状态：dp[j][i]表示前j列的第i大的答案（实际上是dp[i]，表示前i列的前k大数组）
-    FOR(j,1,n){//按列dp
-        priority_queue&lt;P&gt; q;
-        FOR(j_,1,j){//把这一列的最大值收集完，整理到优先队列里面暂存
-        //这里可能要点理解，我放个图出来
-            q.push(P(a[j_][j]+(j_-2==-1?0:dp[j_-2][0]),j_-2,0));//收集前j_-2列的答案，可以证明，任意大于j_-2列的答案均无法递推到第j_行
-        }
-        dp[j]=dp[j-1];//复制上一列的结果
-        FOR(u,1,k){//最多收集k个就行
-            if(q.empty())break;//或者q被倒空了，就退出
-            auto [v,j_,x]=q.top();q.pop();
-            dp[j].push_back(v);
-            if(j_&gt;=0&amp;&amp;x+1&lt;dp[j_].size())q.push(P(v-dp[j_][x]+dp[j_][x+1],j_,x+1));//尽可能把q里的东西倒光，如果第x个倒出来，那么第x+1个就可以加进去继续倒
-        }
-        sort(dp[j].begin(),dp[j].end(),greater&lt;int&gt;());//排序，掐断dp[i]，限制为k大小的数组
-        if(dp[j].size()&gt;k)dp[j].erase(dp[j].begin()+k,dp[j].end());
+void solve() {
+    BCJ&lt;string&gt; bcj;//存储string的并查集
+    string f;
+    vector&lt;string&gt; list;
+    while(true){
+        scin(s);
+        if(s[0]=='$')break;
+        list.push_back(s);
+        bcj.init(s.substr(1));//初始化并查集
     }
-    for(auto&amp; i:dp[n])cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-    cout&lt;&lt;ET;
+    for(auto &amp;s:list){
+        if(s[0]=='#')f=s.substr(1);
+        else if(s[0]=='+')bcj.join(s.substr(1),f);
+        else cout&lt;&lt;s.substr(1)&lt;&lt;&quot; &quot;&lt;&lt;bcj.find(s.substr(1))&lt;&lt;et;
+    }
 }
 </code></pre>
-<h1 id="pre附录">pre附录</h1>
-<p>翻别人代码看到的奇怪写法。</p>
-<pre><code class="language-cpp">vector&lt;int&gt; a(x);
-for(auto&amp; i:a)cin&gt;&gt;i;
+<h2 id="扩展域并查集">扩展域并查集</h2>
+<p>也称种类并查集，用于维护有多种关系的集合间合并操作，基本板子：</p>
+<pre><code class="language-cpp">int F[20004*2];//扩展成两倍
+int find(int x){
+    return x==F[x]?x:F[x]=find(F[x]);
+}
+void join(int x,int y){
+    F[find(x)]=find(y);
+}
 </code></pre>
-<h1 id="附录">附录</h1>
-<p>这里贴上用到的头部和main函数(有更新，for循环没事别开long long，常数大)：</p>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;vector&gt;
-#include&lt;cmath&gt;
-#include&lt;bits/stdc++.h&gt;
-#define ll long long
-#define ld long double
-using namespace std;
-#define ET '\n'
-#define FOR(i,a,b) for(int i=(a);i&lt;=(b);i++)
-#define rFOR(i,a,b) for(int i=(a);i&gt;=(b);i--)
-//双向for循环
-#define rep(i,a,b) for(int i=(a);i!=(b)+2*(a&lt;b)-1;i+=2*(a&lt;b)-1)
-#define CIN(a) ll a;cin&gt;&gt;a
-#define DCIN(a) ld a;cin&gt;&gt;a
-#define SCIN(a) string a;cin&gt;&gt;a
-#define CA cout&lt;&lt;ans&lt;&lt;ET
-#define CY cout&lt;&lt;&quot;YES&quot;&lt;&lt;ET
-#define CN cout&lt;&lt;&quot;NO&quot;&lt;&lt;ET
-#define max(a,b) ((a&gt;b)?(a):(b))
-#define min(a,b) ((a&lt;b)?(a):(b))
-//没有C++20就不能用ranges了
-//#define PP(l,r,CK) *ranges::partition_point(ranges::iota_view((l),(r)+1),(CK))
-//string ANS[2]={&quot;No\n&quot;,&quot;Yes\n&quot;};
-int M=1e9+7;
-inline ll MO(ll x){return (x%M+M)%M;}
-
-void solve(){
-
+<p>可以看到，扩展域并查集和常规并查集代码几乎一致，只是记录元素间关系的F[]数量被扩展了一个倍数（一般来说，有多少种集合，就扩展成多少倍）。</p>
+<p>此时F[i]和F[n+i]记录的是数i在两个不同的集合的亲戚。</p>
+<p>整数型元素的扩展域并查集可以简单的直接“扩展”其F[]大小得到，但是对于非整数型，就只能老实的多建几个不同名字的map来保存同一元素在不同集合的亲戚关系了（或者说，你建一个map数组，数组大小就是不同种类的集合的数量），此时find函数与join函数都得重新设计，比如用join(int x,int i,int y,int j);将x在第i种集合中的亲戚合并到y在第j种集合中的亲戚中去。</p>
+<h3 id="例题-1">例题</h3>
+<p><a href="https://www.luogu.com.cn/problem/P1525">P1525 [NOIP2010 提高组] 关押罪犯</a></p>
+<p>非常典的题，学并查集必经之路。按照贪心的思想，把输入离线下来，从大到小排序，再按照“敌人的敌人就是自己的朋友”的逻辑分配罪犯，如果分配过程中发现了“敌人的敌人还是自己的敌人”的现象，直接输出仇恨值即可。</p>
+<pre><code class="language-cpp">int F[20004&lt;&lt;1];//扩展一次
+int find(int x){
+    return x==F[x]?x:F[x]=find(F[x]);
+}
+void join(int x,int y){
+    F[find(x)]=find(y);
 }
 
-int main(){
-    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-    //pre();
-    CIN(t);while(t--)
-    solve();
+struct P{
+    int i,j,w;
+    bool operator&lt;(const P&amp; b){
+        return w&gt;b.w;
+    }
+}ask[100005];
+
+void solve() {
+    cin(n);cin(m);
+    rep(i,1,n)F[i]=i;
+    rep(i,1,m){//离线操作
+        cin&gt;&gt;ask[i].i&gt;&gt;ask[i].j&gt;&gt;ask[i].w;
+    }
+    sort(ask+1,ask+1+m);
+    rep(i,1,m+1){
+        if(find(ask[i].i)==find(ask[i].j)){//两人已经被分配到同一间监狱了，冲突不可避免，直接输出
+            cout&lt;&lt;ask[i].w;
+            return;
+        }else{
+            //如果i还没有树敌，那就给他树个j作为敌人，不然就把i的敌人与j合并
+            if(!F[ask[i].i+n])F[ask[i].i+n]=ask[i].j;
+            else join(ask[i].i+n,ask[i].j);
+            //同理
+            if(!F[ask[i].j+n])F[ask[i].j+n]=ask[i].i;
+            else join(ask[i].j+n,ask[i].i);
+        }
+    }
+}
+</code></pre>
+<p>还有一种二分图染色的方法，不过还没了解，到时候再补</p>
+<p><a href="https://www.luogu.com.cn/problem/P2024">P2024 [NOI2001] 食物链</a></p>
+<p>有点麻烦，要维护三种关系，同类，天敌，食物（我的食物能吃我的天敌（？））。</p>
+<pre><code class="language-cpp">int F[300005];//[同类][天敌+n][食物+2*n]//咋分配意义看自己喜欢，别自己看不懂就行
+int find(int x){if(F[x]!=x)F[x]=find(F[x]);return F[x];}
+void join(int x,int y){F[find(x)]=find(y);}
+int main(){//远古码风，不改了
+    int n,k,t,x,y,ans=0;cin&gt;&gt;n&gt;&gt;k;
+    for(int i=1;i&lt;=3*n;i++)F[i]=i;
+    while(k--){
+        cin&gt;&gt;t&gt;&gt;x&gt;&gt;y;
+        if(x&gt;n||y&gt;n){ans++;continue;}
+        if(t==1){
+            if(find(x+n)==find(y)||find(x+2*n)==find(y)){ans++;continue;}
+            else{
+                join(x,y);
+                join(x+n,y+n);
+                join(x+2*n,y+2*n);
+            }
+        }else{
+            if(x==y||find(x)==find(y)||find(x+2*n)==find(y)){ans++;continue;}
+            else{
+                join(x,y+2*n);
+                join(x+n,y);
+                join(x+2*n,y+n);
+            }
+        }
+    }
+    cout&lt;&lt;ans;
     return 0;
+}
+</code></pre>
+<h2 id="带权并查集">带权并查集</h2>
+<p>不管是普通并查集还是扩展域并查集都只能维护元素间的亲戚关系，无法维护元素间的权值关系，这时候就需要用到带权并查集，基本板子如下：</p>
+<pre><code class="language-cpp">const int N=100005;
+int F[N],val[N];
+int find(int x){
+    if(F[x]!=x){
+        int t=F[x];//暂存其亲戚
+        F[x]=find(F[x]);
+        val[x]+=val[t];
+        //合并之前是val[x]=x-&gt;t，val[t]=t-&gt;Ft
+        //所以合并后val[x]应+=val[t]（要让x直接连到Ft那边，权值自然得加上val[t]
+        //不一定是相加。还要看具体的题目，有些题目甚至要求你不止维护一种权值
+    }
+    return F[x];
+}
+void join(int x,int y,int v){
+    int Fx=find(x),Fy=find(y);
+    if(Fx!=Fy){
+        F[Fx]=Fy;
+        val[Fx]=v+val[y]-val[x];
+        //理解成向量加减法，假设x和y的亲戚均不为自己，那么有如下关系：
+        //y-&gt;Fy
+        //↑  ↑
+        //x-&gt;Fx
+        //由向量加法知：x-&gt;y-&gt;ry路径上的“权值和”等于x-&gt;rx-&gt;ry上的“权值和”
+        //所以val[Fx]应等于v+val[y]-val[x]
+        //不一定是简单加减，只是举个例子方便理解，实际还得具体题目具体分析
+    }
+}
+</code></pre>
+<h3 id="例题-2">例题</h3>
+<p><a href="https://www.luogu.com.cn/problem/P1196">P1196 [NOI2002] 银河英雄传说</a>
+设一个权值用于维护当前集合中，该元素是第几个，再设一个值用于维护各个集合大小，把权值转移的关系推出来即可。</p>
+<pre><code class="language-cpp">int F[30004],rnk[30004],siz[30004];
+int find(int x){
+    if(x!=F[x]){
+        int t=F[x];
+        F[x]=find(F[x]);
+        rnk[x]+=rnk[t]-1;//排名为k的元素前面有k-1个元素
+    }
+    return F[x];
+}
+void join(int x,int y,int v){//x移到y后面
+    int Fx=find(x),Fy=find(y);
+    if(Fx!=Fy){
+        F[Fx]=Fy;
+        rnk[Fx]+=siz[Fy];//排名向后移动siz个单位，毕竟前面插了一整个队
+        siz[Fy]+=siz[Fx];//把原队首管理的元素数更新到新队首管理的元素数那
+    }
+}
+
+void solve() {
+    rep(i,1,30000){
+        F[i]=i;
+        rnk[i]=siz[i]=1;
+    }
+    cin(q);
+    while(q--){
+        scin(tp);cin(i);cin(j);
+        if(tp==&quot;M&quot;){
+            join(i,j,1);
+        }else{
+            if(find(i)!=find(j))cout&lt;&lt;-1&lt;&lt;et;
+            else cout&lt;&lt;abs(rnk[i]-rnk[j])-1&lt;&lt;et;
+        }
+    }
 }
 </code></pre>
               
@@ -496,9 +619,9 @@ int main(){
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/acm/">ACM</a>
 
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/cf/">CF</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a>
 
                   </div>
                 
@@ -511,7 +634,7 @@ int main(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_347/" data-tooltip="AtCoder Beginner Contest 347" aria-label="PREVIOUS: AtCoder Beginner Contest 347">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/ctr_8/" data-tooltip="CodeTON Round 8 (Div. 1 &#43; Div. 2）" aria-label="PREVIOUS: CodeTON Round 8 (Div. 1 &#43; Div. 2）">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -519,7 +642,7 @@ int main(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/bcj/" data-tooltip="并查集" aria-label="NEXT: 并查集">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -562,9 +685,9 @@ int main(){
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/ctr_8\/';
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/algorithm\/bcj\/';
         
-          this.page.identifier = '\/post\/solution\/ctr_8\/'
+          this.page.identifier = '\/post\/algorithm\/bcj\/'
         
       };
       (function() {
@@ -608,7 +731,7 @@ int main(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_347/" data-tooltip="AtCoder Beginner Contest 347" aria-label="PREVIOUS: AtCoder Beginner Contest 347">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/ctr_8/" data-tooltip="CodeTON Round 8 (Div. 1 &#43; Div. 2）" aria-label="PREVIOUS: CodeTON Round 8 (Div. 1 &#43; Div. 2）">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -616,7 +739,7 @@ int main(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/bcj/" data-tooltip="并查集" aria-label="NEXT: 并查集">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
