@@ -17,7 +17,7 @@
   },
   "name":"夏のBLOG",
   "description":"",
-  "url":"https:\/\/xiaoxiauwu.github.io\/post\/algorithm\/bcj\/",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cgr_25\/",
   "keywords":"[tech, C\u002b\u002b, python, study]"
 }
 
@@ -33,32 +33,34 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="并查集">
-<meta name="twitter:title" content="并查集">
-<meta property="og:url" content="https://xiaoxiauwu.github.io/post/algorithm/bcj/">
-<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/algorithm/bcj/">
+<meta property="og:title" content="Codeforces Global Round 25">
+<meta name="twitter:title" content="Codeforces Global Round 25">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cgr_25/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cgr_25/">
 <meta property="og:site_name" content="夏のBLOG">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-04-06T03:34:40">
+    <meta property="article:published_time" content="2024-04-07T02:04:04">
   
   
-    <meta property="article:modified_time" content="2024-04-06T03:34:40">
+    <meta property="article:modified_time" content="2024-04-07T02:04:04">
   
-  
-  
-    
-      <meta property="article:section" content="c&#43;&#43;">
-    
   
   
     
-      <meta property="article:tag" content="ACM">
+      <meta property="article:section" content="题解">
     
-      <meta property="article:tag" content="算法">
+      <meta property="article:section" content="ACM">
+    
+  
+  
+    
+      <meta property="article:tag" content="题解">
+    
+      <meta property="article:tag" content="CF">
     
   
 
@@ -77,22 +79,22 @@
 
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
 
 
-    <title>并查集</title>
+    <title>Codeforces Global Round 25</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/algorithm/bcj/">
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cgr_25/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -260,21 +262,21 @@
   <div class="post-header-cover
               text-center
               post-header-cover--full"
-       style="background-image:url('/images/AG.webp')"
+       style="background-image:url('/images/cover.jpg')"
        data-behavior="5">
     
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      并查集
+      Codeforces Global Round 25
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-04-06T03:34:40&#43;08:00">
+      <time datetime="2024-04-07T02:04:04&#43;08:00">
         
-  April 6, 2024
+  April 7, 2024
 
       </time>
     
@@ -283,7 +285,9 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/c&#43;&#43;">c&#43;&#43;</a>
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/%e9%a2%98%e8%a7%a3">题解</a>, 
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/acm">ACM</a>
     
   
 
@@ -300,310 +304,202 @@
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">Luogu题单补完计划之冰茶几</span>
+            <span class="post-header-cover-caption caption">最气人的一集，难得E题想出来了，结果判子串回文写挂了，服了</span>
           
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<h1 id="并查集">并查集</h1>
-<h2 id="基本的并查集">基本的并查集</h2>
-<p>并查集一般用于涉及到集合合并的题。其最简板子如下：</p>
-<pre><code class="language-cpp">const int N=100005;
-int F[N];
-int find(int x){//查询，自带路径压缩
-    return x==F[x]?x:F[x]=find(F[x]);
-}
-void join(int x,int y){//合并集合
-    F[find(x)]=find(y);
-}
-</code></pre>
-<p>一般板子(未压行版本，可以做出许多变形)：</p>
-<pre><code class="language-cpp">const int N=100005;
-int F[N];
-int find(int x){
-    if(F[x]!=x){
-        F[x]=find(F[x]);
-    }
-    return F[x];
-}
-void join(int x,int y){
-    int Fx=find(x),Fy=find(y);
-    if(Fx!=Fy){
-        F[Fx]=Fy;
-    }
-}
-</code></pre>
-<p>更一般更通用的并查集：
-(其实你不一定需要封装成类，可以直接拿到外面正常用，这里只是告诉你对于非整数型间的并查集（比如string）该如何存储关系罢了)</p>
-<pre><code class="language-cpp">template&lt;typename T&gt;
-struct BCJ{
-    map&lt;T,T&gt; F;//使用map储存集合关系
-    BCJ(){}
-    void reset(){F.clear();}//重置，进行下一回合操作
-    void init(T x){mp[x]=x;}//需要自己手动初始化
-    T find(T x){//溯源
-        if(F[x]!=x){
-            F[x]=find(F[x]);
-        }
-        return F[x];
-    }
-    void join(T x,T y){//合并集合
-        T Fx=find(x),Fy=find(y);
-        if(Fx!=Fy){
-            F[Fx]=Fy;
+<h1 id="a-dual-trigger">A. Dual Trigger</h1>
+<p>贪心</p>
+<h2 id="大概思路">大概思路</h2>
+<p>如果是奇数个1，那么免谈；如果是偶数个1，只需要两边从最外侧往内一个个开就行</p>
+<p>注意：
+当1的个数等于2时，要注意这两个1是不是相邻的，是的话就没办法了，输出NO；
+当1的个数大于2时，考虑个数为4的情况，这时候就算它们四个都挤在一起，也有解：按照13、24这样打开就行；当个数大于4时，显然可以多次操作，回到个数为4的情况，依然可解。</p>
+<p>因此当1的个数为2时比较特殊，需要特判。</p>
+<h2 id="参考代码">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    cin(n);
+    scin(s);
+    ll cnt=0;
+    for(auto &amp;c:s)cnt+=(c=='1');
+    bool NO=0;
+    if(cnt==2)rep(i,0,n-2){
+        if(s[i]=='1'&amp;&amp;s[i+1]=='1'){
+            NO=1;break;
         }
     }
-};
-</code></pre>
-<h3 id="例题">例题</h3>
-<p><a href="https://www.luogu.com.cn/problem/P1536">P1536 村村通</a></p>
-<p>并查集裸题，直接按题意合并，统计自己是自己亲戚的节点个数即可</p>
-<p>参考代码：</p>
-<pre><code class="language-cpp">int F[1003];
-void reset(int n){
-    rep(i,1,n)F[i]=i;//初始化
-}
-int find(int x){
-    return F[x]==x?x:F[x]=find(F[x]);
-}
-void join(int x,int y){
-    F[find(x)]=find(y);
-}
-
-void solve(){
-	while(true){
-        cin(n);if(n==0)return;
-        reset(n);
-        cin(m);
-        while(m--){
-            cin(x);cin(y);
-            join(x,y);
-        }
-        int ans=-1;
-        rep(i,1,n){
-            ans+=(F[i]==i);
-        }
-        cout&lt;&lt;ans&lt;&lt;et;
-    }
+    if(NO){CN;return;}
+    cout&lt;&lt;ANS[cnt%2==0];
 }
 </code></pre>
-<p><a href="https://www.luogu.com.cn/problem/P2814">P2814 家谱</a></p>
-<p>还是并查集裸题，由于询问的是字符串间的关系，所以并查集初始化要点技巧，这里先把操作全部离线下来，初始化完并查集后再处理集合的合并、查询操作。</p>
-<pre><code class="language-cpp">map&lt;string,string&gt; F;
-
-string find(string s){
-    return s==F[s]?s:F[s]=find(F[s]);
-}
-void join(string x,string y){
-    F[find(x)]=find(y);
-}
-
-void solve() {
-    string f;
-    vector&lt;string&gt; list;
-    while(true){
-        scin(s);
-        if(s[0]=='$')break;
-        list.push_back(s);//将操作全部离线
-        F[s.substr(1)]=s.substr(1);//记录操作的同时进行并查集初始化
-    }
-    for(auto &amp;s:list){//然后就是正常的并查集合并的操作了
-        if(s[0]=='#')f=s.substr(1);
-        else if(s[0]=='+')join(s.substr(1),f);
-        else cout&lt;&lt;s.substr(1)&lt;&lt;&quot; &quot;&lt;&lt;find(s.substr(1))&lt;&lt;et;
-    }
-}
-</code></pre>
-<p>封装一下也行，只是写法上有点麻烦了：</p>
-<pre><code class="language-cpp">template&lt;typename T&gt;
-struct BCJ{
-    map&lt;T,T&gt; F;
-    BCJ(){}
-    void reset(){F.clear();}
-    void init(T x){F[x]=x;}
-    T find(T x){//这里没有压行，压行了后码量和不封装的极简板子差不多
-        if(F[x]!=x){
-            F[x]=find(F[x]);
-        }
-        return F[x];
-    }
-    void join(T x,T y){
-        T Fx=find(x),Fy=find(y);
-        if(Fx!=Fy){
-            F[Fx]=Fy;
-        }
-    }
-};
-
-void solve() {
-    BCJ&lt;string&gt; bcj;//存储string的并查集
-    string f;
-    vector&lt;string&gt; list;
-    while(true){
-        scin(s);
-        if(s[0]=='$')break;
-        list.push_back(s);
-        bcj.init(s.substr(1));//初始化并查集
-    }
-    for(auto &amp;s:list){
-        if(s[0]=='#')f=s.substr(1);
-        else if(s[0]=='+')bcj.join(s.substr(1),f);
-        else cout&lt;&lt;s.substr(1)&lt;&lt;&quot; &quot;&lt;&lt;bcj.find(s.substr(1))&lt;&lt;et;
-    }
-}
-</code></pre>
-<h2 id="扩展域并查集">扩展域并查集</h2>
-<p>也称种类并查集，用于维护有多种关系的集合间合并操作，基本板子：</p>
-<pre><code class="language-cpp">int F[20004*2];//扩展成两倍
-int find(int x){
-    return x==F[x]?x:F[x]=find(F[x]);
-}
-void join(int x,int y){
-    F[find(x)]=find(y);
-}
-</code></pre>
-<p>可以看到，扩展域并查集和常规并查集代码几乎一致，只是记录元素间关系的F[]数量被扩展了一个倍数（一般来说，有多少种集合，就扩展成多少倍）。</p>
-<p>此时F[i]和F[n+i]记录的是数i在两个不同的集合的亲戚。</p>
-<p>整数型元素的扩展域并查集可以简单的直接“扩展”其F[]大小得到，但是对于非整数型，就只能老实的多建几个不同名字的map来保存同一元素在不同集合的亲戚关系了（或者说，你建一个map数组，数组大小就是不同种类的集合的数量），此时find函数与join函数都得重新设计，比如用join(int x,int i,int y,int j);将x在第i种集合中的亲戚合并到y在第j种集合中的亲戚中去。</p>
-<h3 id="例题-1">例题</h3>
-<p><a href="https://www.luogu.com.cn/problem/P1525">P1525 [NOIP2010 提高组] 关押罪犯</a></p>
-<p>非常典的题，学并查集必经之路。按照贪心的思想，把输入离线下来，从大到小排序，再按照“敌人的敌人就是自己的朋友”的逻辑分配罪犯，如果分配过程中发现了“敌人的敌人还是自己的敌人”的现象，直接输出仇恨值即可。</p>
-<pre><code class="language-cpp">int F[20004&lt;&lt;1];//扩展一次
-int find(int x){
-    return x==F[x]?x:F[x]=find(F[x]);
-}
-void join(int x,int y){
-    F[find(x)]=find(y);
-}
-
-struct P{
-    int i,j,w;
-    bool operator&lt;(const P&amp; b){
-        return w&gt;b.w;
-    }
-}ask[100005];
-
-void solve() {
+<h1 id="b-battle-cows">B. Battle Cows</h1>
+<p>贪心，模拟</p>
+<h2 id="大概思路-1">大概思路</h2>
+<p>思路挺清晰的，就是分类讨论比较麻烦。</p>
+<p>当前面没有牛比自己rating大时，直接和第一头牛swap。</p>
+<p>当位置k的前面只有一头rating比自己大的牛存在时，显然一把都赢不了，所以这时候你有两个选择</p>
+<ul>
+<li>让自己和从左到右第一头rating比自己大的牛换位置</li>
+<li>让自己和第一头牛换位置</li>
+</ul>
+<p>然后往后欺负rating小于自己的牛，直到遇到任何一头rating大于自己的牛。</p>
+<p>这时候就要权衡选哪个的收益会更高了，设那头牛位置为 $j$，这里我们直接比较 $j-1$ 和 $m-j$ 即可。</p>
+<p>当位置k的前面有两头及以上的牛比自己rating大时，也有同样的两个选择，不过这时候权衡的式子要调整，设两头牛位置分别为 $i,j(i&lt;j)$，只需要比较 $i-1$ 和 $j-i$ 即可。</p>
+<h2 id="参考代码-1">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
     cin(n);cin(m);
-    rep(i,1,n)F[i]=i;
-    rep(i,1,m){//离线操作
-        cin&gt;&gt;ask[i].i&gt;&gt;ask[i].j&gt;&gt;ask[i].w;
-    }
-    sort(ask+1,ask+1+m);
-    rep(i,1,m+1){
-        if(find(ask[i].i)==find(ask[i].j)){//两人已经被分配到同一间监狱了，冲突不可避免，直接输出
-            cout&lt;&lt;ask[i].w;
-            return;
-        }else{
-            //如果i还没有树敌，那就给他树个j作为敌人，不然就把i的敌人与j合并
-            if(!F[ask[i].i+n])F[ask[i].i+n]=ask[i].j;
-            else join(ask[i].i+n,ask[i].j);
-            //同理
-            if(!F[ask[i].j+n])F[ask[i].j+n]=ask[i].i;
-            else join(ask[i].j+n,ask[i].i);
+    vector&lt;int&gt; a(n+1);
+    rep(i,1,n)cin&gt;&gt;a[i];
+
+    int flag[2]={-1,-1};
+    rep(i,1,m-1){
+        if(flag[0]==-1&amp;&amp;a[i]&gt;a[m]){
+            flag[0]=i;
+        }else if(flag[0]!=-1&amp;&amp;a[i]&gt;a[m]){
+            flag[1]=i;
+            break;
         }
     }
-}
-</code></pre>
-<p>还有一种二分图染色的方法，不过还没了解，到时候再补</p>
-<p><a href="https://www.luogu.com.cn/problem/P2024">P2024 [NOI2001] 食物链</a></p>
-<p>有点麻烦，要维护三种关系，同类，天敌，食物（我的食物能吃我的天敌（？））。</p>
-<pre><code class="language-cpp">int F[300005];//[同类][天敌+n][食物+2*n]//咋分配意义看自己喜欢，别自己看不懂就行
-int find(int x){if(F[x]!=x)F[x]=find(F[x]);return F[x];}
-void join(int x,int y){F[find(x)]=find(y);}
-int main(){//远古码风，不改了
-    int n,k,t,x,y,ans=0;cin&gt;&gt;n&gt;&gt;k;
-    for(int i=1;i&lt;=3*n;i++)F[i]=i;
-    while(k--){
-        cin&gt;&gt;t&gt;&gt;x&gt;&gt;y;
-        if(x&gt;n||y&gt;n){ans++;continue;}
-        if(t==1){
-            if(find(x+n)==find(y)||find(x+2*n)==find(y)){ans++;continue;}
-            else{
-                join(x,y);
-                join(x+n,y+n);
-                join(x+2*n,y+2*n);
-            }
+    if(flag[0]==-1){
+        swap(a[1],a[m]);
+        m=1;
+    }else if(flag[1]==-1){
+        if(flag[0]-1&gt;m-flag[0]){
+            swap(a[1],a[m]);
+            m=1;
         }else{
-            if(x==y||find(x)==find(y)||find(x+2*n)==find(y)){ans++;continue;}
-            else{
-                join(x,y+2*n);
-                join(x+n,y);
-                join(x+2*n,y+n);
-            }
+            swap(a[flag[0]],a[m]);
+            m=flag[0];
+        }
+    }else{
+        if(flag[0]-1&gt;flag[1]-flag[0]){
+            swap(a[1],a[m]);
+            m=1;
+        }else{
+            swap(a[flag[0]],a[m]);
+            m=flag[0];
         }
     }
-    cout&lt;&lt;ans;
-    return 0;
+    ll cnt=0;
+    rep(i,max(1,m-1),n){
+        //cout&lt;&lt;i&lt;&lt;&quot;]&quot;;
+        if(a[i]&gt;a[m])break;
+        if(a[i]&lt;a[m])cnt++;
+    }
+    cout&lt;&lt;cnt&lt;&lt;et;
 }
 </code></pre>
-<h2 id="带权并查集">带权并查集</h2>
-<p>不管是普通并查集还是扩展域并查集都只能维护元素间的亲戚关系，无法维护元素间的权值关系，这时候就需要用到带权并查集，基本板子如下：</p>
-<pre><code class="language-cpp">const int N=100005;
-int F[N],val[N];
-int find(int x){
-    if(F[x]!=x){
-        int t=F[x];//暂存其亲戚
-        F[x]=find(F[x]);
-        val[x]+=val[t];
-        //合并之前是val[x]=x-&gt;t，val[t]=t-&gt;Ft
-        //所以合并后val[x]应+=val[t]（要让x直接连到Ft那边，权值自然得加上val[t]
-        //不一定是相加。还要看具体的题目，有些题目甚至要求你不止维护一种权值
-    }
-    return F[x];
-}
-void join(int x,int y,int v){
-    int Fx=find(x),Fy=find(y);
-    if(Fx!=Fy){
-        F[Fx]=Fy;
-        val[Fx]=v+val[y]-val[x];
-        //理解成向量加减法，假设x和y的亲戚均不为自己，那么有如下关系：
-        //y-&gt;Fy
-        //↑  ↑
-        //x-&gt;Fx
-        //由向量加法知：x-&gt;y-&gt;ry路径上的“权值和”等于x-&gt;rx-&gt;ry上的“权值和”
-        //所以val[Fx]应等于v+val[y]-val[x]
-        //不一定是简单加减，只是举个例子方便理解，实际还得具体题目具体分析
-    }
-}
-</code></pre>
-<h3 id="例题-2">例题</h3>
-<p><a href="https://www.luogu.com.cn/problem/P1196">P1196 [NOI2002] 银河英雄传说</a>
-设一个权值用于维护当前集合中，该元素是第几个，再设一个值用于维护各个集合大小，把权值转移的关系推出来即可。</p>
-<pre><code class="language-cpp">int F[30004],rnk[30004],siz[30004];
-int find(int x){
-    if(x!=F[x]){
-        int t=F[x];
-        F[x]=find(F[x]);
-        rnk[x]+=rnk[t]-1;//排名为k的元素前面有k-1个元素
-    }
-    return F[x];
-}
-void join(int x,int y,int v){//x移到y后面
-    int Fx=find(x),Fy=find(y);
-    if(Fx!=Fy){
-        F[Fx]=Fy;
-        rnk[Fx]+=siz[Fy];//排名向后移动siz个单位，毕竟前面插了一整个队
-        siz[Fy]+=siz[Fx];//把原队首管理的元素数更新到新队首管理的元素数那
-    }
-}
+<h1 id="c---ticket-hoarding">C - Ticket Hoarding</h1>
+<p>排序，贪心，模拟</p>
+<h2 id="大概思路-2">大概思路</h2>
+<p>从小到大分配每天购买的票数，然后跑模拟即可。</p>
+<h2 id="参考代码-2">参考代码</h2>
+<pre><code class="language-cpp">struct P{
+    int v,i,rnk;
+};
 
 void solve() {
-    rep(i,1,30000){
-        F[i]=i;
-        rnk[i]=siz[i]=1;
-    }
-    cin(q);
-    while(q--){
-        scin(tp);cin(i);cin(j);
-        if(tp==&quot;M&quot;){
-            join(i,j,1);
-        }else{
-            if(find(i)!=find(j))cout&lt;&lt;-1&lt;&lt;et;
-            else cout&lt;&lt;abs(rnk[i]-rnk[j])-1&lt;&lt;et;
+    cin(n);cin(m);cin(k);
+    int have=0;
+    vector&lt;P&gt; a(n+1);
+    rep(i,1,n){cin&gt;&gt;a[i].v;a[i].i=i;}
+
+    sort(a.begin()+1,a.end(),[&amp;](P a,P b){//按值大小排序
+        return a.v&lt;b.v;
+    });
+    rep(i,1,n)a[i].rnk=i;//标记rank
+    sort(a.begin()+1,a.end(),[&amp;](P a,P b){//按原下标排序回去
+        return a.i&lt;b.i;
+    });
+
+    ll cost=0;//开始模拟
+    rep(i,1,n){
+        if(a[i].rnk&lt;=k/m){
+            cost+=(a[i].v+have)*m;
+            have+=m;
+        }
+        if(k%m&amp;&amp;a[i].rnk==k/m+1){
+            cost+=(a[i].v+have)*(k%m);
+            have+=(k%m);
         }
     }
+    cout&lt;&lt;cost&lt;&lt;et;
+}
+</code></pre>
+<h1 id="d---buying-jewels">D - Buying Jewels</h1>
+<p>贪心，数学，找规律</p>
+<h2 id="大概思路-3">大概思路</h2>
+<p>你手画一个表格，穷举一下 $n,k\in(1,9)$ 的情况，结合一下常识就会发现结论：</p>
+<ul>
+<li>当 $n=k$ 时，显然可行，设单价为 $1$ 就行了</li>
+<li>当 $\lfloor \frac{n+1}{2} \rfloor \ge k$ 时，也可行，开两家商铺，第一家单价为 $n-k+1$，让她只买到一个，剩 $k-1$ 元，然后第二家单价为 $1$ 即可。</li>
+<li>当 $k&gt;n$ 时，显然不行，你单价设成 $1$ 都不够她买的。</li>
+<li>当 $k&lt;n$ 且 $k&gt;\lfloor \frac{n+1}{2} \rfloor$ 时，不可行，因为如果第一家单价为 $1$，那么她显然会买超了；如果单价为 $2$，那么也不行，因为此时你的最大购买力就是 $\lfloor \frac{n+1}{2} \rfloor$，购买力赶不上 $k$ 值，显然不够买；如果单价为 $3$ 或者更多，显然也是不够买的（不用算都知道单价开的越高，同样的钱买到的东西数越少）</li>
+</ul>
+<p>综上，只需要特判出 $n=k$ 和 $\lfloor \frac{n+1}{2} \rfloor \ge k$ 剩下的直接输出NO就行了</p>
+<h2 id="参考代码-3">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    cin(n);cin(k);
+    if(n==k){
+        CY;
+        cout&lt;&lt;1&lt;&lt;et&lt;&lt;1&lt;&lt;et;
+        return;
+    }
+    if(((n+1)&gt;&gt;1)&gt;=k){
+        CY;
+        cout&lt;&lt;2&lt;&lt;et&lt;&lt;n-k+1&lt;&lt;&quot; &quot;&lt;&lt;1&lt;&lt;et;
+        return;
+    }
+    CN;
+}
+</code></pre>
+<h1 id="e---no-palindromes">E - No Palindromes</h1>
+<p>马拉车，暴力</p>
+<h2 id="大概思路-4">大概思路</h2>
+<p>直接上马拉车预处理出回文半径（用于快速判断字符串子串是否为回文串），如果其本身已经是回文，直接输出即可；如果不是，就暴力遍历该往哪切一刀，使得两个串均为非回文串即可。</p>
+<p>（要被自己蠢si了，最后10分钟放弃debug了，赛后发现是子串判回文写笨了，果然只了解板子是没用的，还要多练，写熟了，下次比赛中才不会去调细节）</p>
+<h2 id="参考代码-4">参考代码</h2>
+<pre><code class="language-cpp">vector&lt;int&gt; manacher(string s) {
+    string t = &quot;#&quot;;
+    for (auto c : s) {
+        t += c;
+        t += '#';
+    }
+    int n = t.size();
+    vector&lt;int&gt; r(n);
+    for (int i = 0, j = 0; i &lt; n; i++) {
+        if (2 * j - i &gt;= 0 &amp;&amp; j + r[j] &gt; i) {
+            r[i] = min(r[2 * j - i], j + r[j] - i);
+        }
+        while (i - r[i] &gt;= 0 &amp;&amp; i + r[i] &lt; n &amp;&amp; t[i - r[i]] == t[i + r[i]]) {
+            r[i] += 1;
+        }
+        if (i + r[i] &gt; j + r[j]) {
+            j = i;
+        }
+    }
+    return r;
+}
+void solve() {
+    scin(s);
+    vector&lt;int&gt; R = manacher(s);
+    if(R[s.length()]-1!= s.length()){
+        CY;
+        cout&lt;&lt;1&lt;&lt;et&lt;&lt;s&lt;&lt;et;
+        return;
+    }
+    rep(i,1,s.length()){
+        //int l=i/2+1,r=i+(s.length()-i)/2+1;
+        if(R[i]-1!=i&amp;&amp;R[i+s.length()] - 1 != s.length() - i) {
+            CY;
+            //cout &lt;&lt; R[2 * l - 1] - 1 &lt;&lt;&quot; &quot; &lt;&lt; i &lt;&lt;&quot; &quot; &lt;&lt; l &lt;&lt; &quot;]&quot;;
+            cout&lt;&lt;2&lt;&lt;et&lt;&lt;s.substr(0,i)&lt;&lt;&quot; &quot;&lt;&lt;s.substr(i)&lt;&lt;et;
+            return;
+        }
+    }
+    CN;
 }
 </code></pre>
 <h1 id="附录">附录</h1>
@@ -659,9 +555,9 @@ int main(){
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/acm/">ACM</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E9%A2%98%E8%A7%A3/">题解</a>
 
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/cf/">CF</a>
 
                   </div>
                 
@@ -674,7 +570,7 @@ int main(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/ctr_8/" data-tooltip="CodeTON Round 8 (Div. 1 &#43; Div. 2）" aria-label="PREVIOUS: CodeTON Round 8 (Div. 1 &#43; Div. 2）">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/bcj/" data-tooltip="并查集" aria-label="PREVIOUS: 并查集">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -682,7 +578,7 @@ int main(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cgr_25/" data-tooltip="Codeforces Global Round 25" aria-label="NEXT: Codeforces Global Round 25">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -725,9 +621,9 @@ int main(){
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/algorithm\/bcj\/';
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cgr_25\/';
         
-          this.page.identifier = '\/post\/algorithm\/bcj\/'
+          this.page.identifier = '\/post\/solution\/cgr_25\/'
         
       };
       (function() {
@@ -771,7 +667,7 @@ int main(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/ctr_8/" data-tooltip="CodeTON Round 8 (Div. 1 &#43; Div. 2）" aria-label="PREVIOUS: CodeTON Round 8 (Div. 1 &#43; Div. 2）">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/bcj/" data-tooltip="并查集" aria-label="PREVIOUS: 并查集">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -779,7 +675,7 @@ int main(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cgr_25/" data-tooltip="Codeforces Global Round 25" aria-label="NEXT: Codeforces Global Round 25">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
