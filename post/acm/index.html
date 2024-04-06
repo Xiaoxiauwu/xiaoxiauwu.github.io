@@ -1290,6 +1290,14 @@ cout&lt;&lt;MO(MO(pre[n]-(ans&gt;0)*ans)+(ans&gt;0)*MO(MO(ans)*MO(powp(2,k))))&l
 <p>p数组别开小了，素数只是少，不代表它小，你100000的数据，开2024大小的数组跑素数筛是想WA几次？（Luogu P1621 集合）</p>
 <h3 id="tip-处理倍数的一个技巧">[TIP] 处理倍数的一个技巧</h3>
 <p>使用 (a+k-1)/k*k 可以得到大于等于a的第一个k的倍数。</p>
+<h3 id="wa-马拉车的r查回文子串">[WA] 马拉车的R[]查回文子串</h3>
+<p>菜就多练，别背个板子，抄了还不会用。如果很不太会写怎么验字符串子串是不是回文串，那就直接封装个函数，然后就只需要调这个函数就行了。你问常数？我的建议是，如果你题都没法AC，那怕被卡常而省运行时间又有何用？</p>
+<pre><code class="language-cpp">vector&lt;int&gt; PR;
+inline bool PAL(int l,int r){
+    return PR[r+l-1]-1==(r-l+1);
+}
+</code></pre>
+<p>(Codeforce Global Round 25 E)</p>
 <pre><code>前面的区域以后再来探索吧！
 </code></pre>
               

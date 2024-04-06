@@ -344,7 +344,6 @@
 <li>让自己和从左到右第一头rating比自己大的牛换位置</li>
 <li>让自己和第一头牛换位置</li>
 </ul>
-<p>然后往后欺负rating小于自己的牛，直到遇到任何一头rating大于自己的牛。</p>
 <p>这时候就要权衡选哪个的收益会更高了，设那头牛位置为 $j$，这里我们直接比较 $j-1$ 和 $m-j$ 即可。</p>
 <p>当位置k的前面有两头及以上的牛比自己rating大时，也有同样的两个选择，不过这时候权衡的式子要调整，设两头牛位置分别为 $i,j(i&lt;j)$，只需要比较 $i-1$ 和 $j-i$ 即可。</p>
 <h2 id="参考代码-1">参考代码</h2>
@@ -482,19 +481,21 @@ void solve() {
     }
     return r;
 }
+vector&lt;int&gt; PR;
+inline bool PAL(int l,int r){
+    return PR[r+l-1]-1==(r-l+1);//就这玩意让我调了半天没过
+}
 void solve() {
     scin(s);
-    vector&lt;int&gt; R = manacher(s);
-    if(R[s.length()]-1!= s.length()){
+    PR = manacher(s);
+    if(!PAL(1,s.length())){
         CY;
         cout&lt;&lt;1&lt;&lt;et&lt;&lt;s&lt;&lt;et;
         return;
     }
-    rep(i,1,s.length()){
-        //int l=i/2+1,r=i+(s.length()-i)/2+1;
-        if(R[i]-1!=i&amp;&amp;R[i+s.length()] - 1 != s.length() - i) {
+    rep(i,2,s.length()-1){
+        if(!PAL(1,i)&amp;&amp;!PAL(i+1, s.length())) {
             CY;
-            //cout &lt;&lt; R[2 * l - 1] - 1 &lt;&lt;&quot; &quot; &lt;&lt; i &lt;&lt;&quot; &quot; &lt;&lt; l &lt;&lt; &quot;]&quot;;
             cout&lt;&lt;2&lt;&lt;et&lt;&lt;s.substr(0,i)&lt;&lt;&quot; &quot;&lt;&lt;s.substr(i)&lt;&lt;et;
             return;
         }
