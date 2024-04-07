@@ -17,7 +17,7 @@
   },
   "name":"夏のBLOG",
   "description":"",
-  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cgr_25\/",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/nk_zs_39\/",
   "keywords":"[tech, C\u002b\u002b, python, study]"
 }
 
@@ -33,20 +33,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces Global Round 25">
-<meta name="twitter:title" content="Codeforces Global Round 25">
-<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cgr_25/">
-<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cgr_25/">
+<meta property="og:title" content="牛客周赛 Round 39">
+<meta name="twitter:title" content="牛客周赛 Round 39">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/nk_zs_39/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/nk_zs_39/">
 <meta property="og:site_name" content="夏のBLOG">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-04-07T02:04:04">
+    <meta property="article:published_time" content="2024-04-08T00:43:29">
   
   
-    <meta property="article:modified_time" content="2024-04-07T02:04:04">
+    <meta property="article:modified_time" content="2024-04-08T00:43:29">
   
   
   
@@ -60,7 +60,7 @@
     
       <meta property="article:tag" content="题解">
     
-      <meta property="article:tag" content="CF">
+      <meta property="article:tag" content="牛客">
     
   
 
@@ -79,22 +79,22 @@
 
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
+  <meta property="twitter:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
+  <meta property="twitter:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
 
 
-    <title>Codeforces Global Round 25</title>
+    <title>牛客周赛 Round 39</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cgr_25/">
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_39/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -262,21 +262,21 @@
   <div class="post-header-cover
               text-center
               post-header-cover--full"
-       style="background-image:url('/images/cover.jpg')"
+       style="background-image:url('https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg')"
        data-behavior="5">
     
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      Codeforces Global Round 25
+      牛客周赛 Round 39
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-04-07T02:04:04&#43;08:00">
+      <time datetime="2024-04-08T00:43:29&#43;08:00">
         
-  April 7, 2024
+  April 8, 2024
 
       </time>
     
@@ -304,217 +304,205 @@
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">最气人的一集，难得E题想出来了，结果判子串回文写挂了，服了</span>
+            <span class="post-header-cover-caption caption">怎么有人写暴力切了F题啊，D题什么怪DP，没见过</span>
           
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<h1 id="a-dual-trigger">A. Dual Trigger</h1>
-<p>贪心</p>
-<h2 id="大概思路">大概思路</h2>
-<p>如果是奇数个1，那么免谈；如果是偶数个1，只需要两边从最外侧往内一个个开就行</p>
-<p>注意：
-当1的个数等于2时，要注意这两个1是不是相邻的，是的话就没办法了，输出NO；
-当1的个数大于2时，考虑个数为4的情况，这时候就算它们四个都挤在一起，也有解：按照13、24这样打开就行；当个数大于4时，显然可以多次操作，回到个数为4的情况，依然可解。</p>
-<p>因此当1的个数为2时比较特殊，需要特判。</p>
+<p>只A了ABCE场后的F暴力切了，但是复杂度应该是不妥的，D和G找时间补补吧</p>
+<h1 id="a-小红不想做炸鸡块粉丝粉丝题">A. 小红不想做炸鸡块粉丝粉丝题</h1>
+<p>水题</p>
 <h2 id="参考代码">参考代码</h2>
 <pre><code class="language-cpp">void solve() {
-    cin(n);
-    scin(s);
-    ll cnt=0;
-    for(auto &amp;c:s)cnt+=(c=='1');
-    bool NO=0;
-    if(cnt==2)rep(i,0,n-2){
-        if(s[i]=='1'&amp;&amp;s[i+1]=='1'){
-            NO=1;break;
-        }
+    cin(a);
+    ll sum=a;
+    rep(i,2,6){
+        cin(tmp);
+        sum+=tmp;
     }
-    if(NO){CN;return;}
-    cout&lt;&lt;ANS[cnt%2==0];
+    cout&lt;&lt;ANS[a&lt;1.0*sum/30];
 }
 </code></pre>
-<h1 id="b-battle-cows">B. Battle Cows</h1>
-<p>贪心，模拟</p>
-<h2 id="大概思路-1">大概思路</h2>
-<p>思路挺清晰的，就是分类讨论比较麻烦。</p>
-<p>当前面没有牛比自己rating大时，直接和第一头牛swap。</p>
-<p>当位置k的前面只有一头rating比自己大的牛存在时，显然一把都赢不了，所以这时候你有两个选择</p>
-<ul>
-<li>让自己和从左到右第一头rating比自己大的牛换位置</li>
-<li>让自己和第一头牛换位置</li>
-</ul>
-<p>这时候就要权衡选哪个的收益会更高了，设那头牛位置为 $j$，这里我们直接比较 $j-1$ 和 $m-j$ 即可。</p>
-<p>当位置k的前面有两头及以上的牛比自己rating大时，也有同样的两个选择，不过这时候权衡的式子要调整，设两头牛位置分别为 $i,j(i&lt;j)$，只需要比较 $i-1$ 和 $j-i$ 即可。</p>
+<h1 id="b-小红不想做鸽巢原理">B. 小红不想做鸽巢原理</h1>
+<p>贪心</p>
+<h2 id="大概思路">大概思路</h2>
+<p>直接按数量从小到大排序，然后跑贪心，维护当前记录颜色数和当前小球数和，尽可能把数量少的颜色合并到一堆，当小球个数超过k个时，颜色计数置 0/1，小球数模k。</p>
 <h2 id="参考代码-1">参考代码</h2>
 <pre><code class="language-cpp">void solve() {
-    cin(n);cin(m);
-    vector&lt;int&gt; a(n+1);
-    rep(i,1,n)cin&gt;&gt;a[i];
-
-    int flag[2]={-1,-1};
-    rep(i,1,m-1){
-        if(flag[0]==-1&amp;&amp;a[i]&gt;a[m]){
-            flag[0]=i;
-        }else if(flag[0]!=-1&amp;&amp;a[i]&gt;a[m]){
-            flag[1]=i;
-            break;
+    cin(n);cin(k);
+    vector&lt;int&gt; a(n);
+    for(auto &amp;i:a){
+        cin&gt;&gt;i;
+        i%=k;//读入的时候就先拿一遍
+    }
+    sort(a.begin(),a.end());
+    int cnt=0;
+    int now=0;
+    rep(i,0,n-1){
+        now+=a[i];
+        cnt+=(a[i]!=0);//颜色种类计数
+        if(now&gt;=k){//溢出的时候重置一下计数器
+            now%=k;
+            cnt=(now%k!=0);
         }
     }
-    if(flag[0]==-1){
-        swap(a[1],a[m]);
-        m=1;
-    }else if(flag[1]==-1){
-        if(flag[0]-1&gt;m-flag[0]){
-            swap(a[1],a[m]);
-            m=1;
-        }else{
-            swap(a[flag[0]],a[m]);
-            m=flag[0];
-        }
-    }else{
-        if(flag[0]-1&gt;flag[1]-flag[0]){
-            swap(a[1],a[m]);
-            m=1;
-        }else{
-            swap(a[flag[0]],a[m]);
-            m=flag[0];
-        }
-    }
-    ll cnt=0;
-    rep(i,max(1,m-1),n){
-        //cout&lt;&lt;i&lt;&lt;&quot;]&quot;;
-        if(a[i]&gt;a[m])break;
-        if(a[i]&lt;a[m])cnt++;
-    }
-    cout&lt;&lt;cnt&lt;&lt;et;
+    cout&lt;&lt;cnt;
 }
 </code></pre>
-<h1 id="c---ticket-hoarding">C - Ticket Hoarding</h1>
-<p>排序，贪心，模拟</p>
-<h2 id="大概思路-2">大概思路</h2>
-<p>从小到大分配每天购买的票数，然后跑模拟即可。</p>
+<h1 id="c-小红不想做完全背包easy">C. 小红不想做完全背包（easy）</h1>
+<p>暴力</p>
+<h2 id="大概思路-1">大概思路</h2>
+<p>易知答案的范围是1到3，取初始答案为3，然后暴力遍历可选数，当遍历到的数是k的倍数时，取答案为1，直接输出；当遍历到的数和集合中另一个数（可以是本身）相加为3的倍数时，取答案为2，继续遍历看看有没有可能使答案为1；当遍历完了都不符合时，只能输出3.</p>
 <h2 id="参考代码-2">参考代码</h2>
-<pre><code class="language-cpp">struct P{
-    int v,i,rnk;
-};
-
-void solve() {
-    cin(n);cin(m);cin(k);
-    int have=0;
-    vector&lt;P&gt; a(n+1);
-    rep(i,1,n){cin&gt;&gt;a[i].v;a[i].i=i;}
-
-    sort(a.begin()+1,a.end(),[&amp;](P a,P b){//按值大小排序
-        return a.v&lt;b.v;
-    });
-    rep(i,1,n)a[i].rnk=i;//标记rank
-    sort(a.begin()+1,a.end(),[&amp;](P a,P b){//按原下标排序回去
-        return a.i&lt;b.i;
-    });
-
-    ll cost=0;//开始模拟
+<pre><code class="language-cpp">void solve() {
+    cin(n);cin(k);
+    set&lt;int&gt;s;
     rep(i,1,n){
-        if(a[i].rnk&lt;=k/m){
-            cost+=(a[i].v+have)*m;
-            have+=m;
-        }
-        if(k%m&amp;&amp;a[i].rnk==k/m+1){
-            cost+=(a[i].v+have)*(k%m);
-            have+=(k%m);
+        cin(tmp);
+        s.insert(tmp);
+    }
+    int ans=3;
+    bool o=0;
+    for(auto &amp;i:s){
+        if(i%3==0){ans=1;break;}
+        if(!o)for(auto j:s){
+            if((i+j)%3==0){ans=min(ans,2);o=1;break;}
         }
     }
-    cout&lt;&lt;cost&lt;&lt;et;
+    CA;
 }
 </code></pre>
-<h1 id="d---buying-jewels">D - Buying Jewels</h1>
-<p>贪心，数学，找规律</p>
-<h2 id="大概思路-3">大概思路</h2>
-<p>你手画一个表格，穷举一下 $n,k\in(1,9)$ 的情况，结合一下常识就会发现结论：</p>
-<ul>
-<li>当 $n=k$ 时，显然可行，设单价为 $1$ 就行了</li>
-<li>当 $\lfloor \frac{n+1}{2} \rfloor \ge k$ 时，也可行，开两家商铺，第一家单价为 $n-k+1$，让她只买到一个，剩 $k-1$ 元，然后第二家单价为 $1$ 即可。</li>
-<li>当 $k&gt;n$ 时，显然不行，你单价设成 $1$ 都不够她买的。</li>
-<li>当 $k&lt;n$ 且 $k&gt;\lfloor \frac{n+1}{2} \rfloor$ 时，不可行，因为如果第一家单价为 $1$，那么她显然会买超了；如果单价为 $2$，那么也不行，因为此时你的最大购买力就是 $\lfloor \frac{n+1}{2} \rfloor$，购买力赶不上 $k$ 值，显然不够买；如果单价为 $3$ 或者更多，显然也是不够买的（不用算都知道单价开的越高，同样的钱买到的东西数越少）</li>
-</ul>
-<p>综上，只需要特判出 $n=k$ 和 $\lfloor \frac{n+1}{2} \rfloor \ge k$ 剩下的直接输出NO就行了</p>
+<h1 id="d-小红不想做完全背包hard">D. 小红不想做完全背包（hard）</h1>
+<p>数学，DP，最短路</p>
+<h2 id="大概思路-2">大概思路</h2>
+<p>设dp[i]状态为取模后到达数字 $i$ 最少需要几步，易知 $dp[i]+1$ 可以转移到 $dp[(i+a[j])%k]$，直接枚举数组的每个元素，内层再枚举数字 $i$ 即可。</p>
+<p>（听别人说其实是最短路问题？）</p>
 <h2 id="参考代码-3">参考代码</h2>
 <pre><code class="language-cpp">void solve() {
     cin(n);cin(k);
-    if(n==k){
-        CY;
-        cout&lt;&lt;1&lt;&lt;et&lt;&lt;1&lt;&lt;et;
-        return;
+    vector&lt;ll&gt;dp(k,k);
+    vector&lt;int&gt;a(n);
+    for(auto &amp;i:a){cin&gt;&gt;i;i%=k;dp[i]=1;}
+    for(auto i:a){
+        auto dp_=dp;
+        rep(j,0,k-1)dp[(i+j)%k]=min(dp[(i+j)%k],dp_[j]+1);
     }
-    if(((n+1)&gt;&gt;1)&gt;=k){
-        CY;
-        cout&lt;&lt;2&lt;&lt;et&lt;&lt;n-k+1&lt;&lt;&quot; &quot;&lt;&lt;1&lt;&lt;et;
-        return;
-    }
-    CN;
+    cout&lt;&lt;dp[0];
 }
 </code></pre>
-<h1 id="e---no-palindromes">E - No Palindromes</h1>
-<p>马拉车，暴力</p>
-<h2 id="大概思路-4">大概思路</h2>
-<p>直接上马拉车预处理出回文半径（用于快速判断字符串子串是否为回文串），如果其本身已经是回文，直接输出即可；如果不是，就暴力遍历该往哪切一刀，使得两个串均为非回文串即可。</p>
-<p>（要被自己蠢si了，最后10分钟放弃debug了，赛后发现是子串判回文写笨了，果然只了解板子是没用的，还要多练，写熟了，下次比赛中才不会去调细节）</p>
+<h1 id="e-小红不想做莫比乌斯反演杜教筛求因子和的前缀和">E. 小红不想做莫比乌斯反演杜教筛求因子和的前缀和</h1>
+<p>暴力</p>
+<h2 id="大概思路-3">大概思路</h2>
+<p>水题，直接枚举长和宽，然后判断算出来的高是否合法即可</p>
 <h2 id="参考代码-4">参考代码</h2>
-<pre><code class="language-cpp">vector&lt;int&gt; manacher(string s) {
-    string t = &quot;#&quot;;
-    for (auto c : s) {
-        t += c;
-        t += '#';
+<pre><code class="language-cpp">void solve() {
+    cin(x);cin(y);cin(z);cin(s);
+    ll cnt=0;
+    rep(i,1,x)rep(j,1,y){
+        if(s&lt;i*j)break;
+        ll S=s-i*j;
+        if(S%(2*(i+j))!=0)continue;
+        ll h=S/(2*(i+j));
+        if(h&gt;=1&amp;&amp;h&lt;=z)cnt++;
     }
-    int n = t.size();
-    vector&lt;int&gt; r(n);
-    for (int i = 0, j = 0; i &lt; n; i++) {
-        if (2 * j - i &gt;= 0 &amp;&amp; j + r[j] &gt; i) {
-            r[i] = min(r[2 * j - i], j + r[j] - i);
-        }
-        while (i - r[i] &gt;= 0 &amp;&amp; i + r[i] &lt; n &amp;&amp; t[i - r[i]] == t[i + r[i]]) {
-            r[i] += 1;
-        }
-        if (i + r[i] &gt; j + r[j]) {
-            j = i;
-        }
-    }
-    return r;
-}
-vector&lt;int&gt; PR;
-inline bool PAL(int l,int r){
-    return PR[r+l-1]-1==(r-l+1);//就这玩意让我调了半天没过
-}
-void solve() {
-    scin(s);
-    PR = manacher(s);
-    if(!PAL(1,s.length())){
-        CY;
-        cout&lt;&lt;1&lt;&lt;et&lt;&lt;s&lt;&lt;et;
-        return;
-    }
-    rep(i,2,s.length()-1){
-        if(!PAL(1,i)&amp;&amp;!PAL(i+1, s.length())) {
-            CY;
-            cout&lt;&lt;2&lt;&lt;et&lt;&lt;s.substr(0,i)&lt;&lt;&quot; &quot;&lt;&lt;s.substr(i)&lt;&lt;et;
-            return;
-        }
-    }
-    CN;
+    cout&lt;&lt;cnt;
 }
 </code></pre>
+<h1 id="f-小红不想做模拟题">F. 小红不想做模拟题</h1>
+<p>线段树、暴力</p>
+<h2 id="大概思路-4">大概思路</h2>
+<p>暴力：</p>
+<p>答案是单调增加的，用数据结构记录下A,B串哪些位置有被修改过，下次修改时直接遍历一遍跑一遍，更新答案即可。（55ms 题目数据感觉水了，这个方法复杂度最坏应该是 $O(n^2)$ 的）</p>
+<p>数据结构优化：</p>
+<p>直接开个set维护A和B串的可更新位置，然后遍历的时候用while(sa.lower_bound(l)&lt;=r)来更新即可，这样的遍历次数是不超过2n的。（430ms 理论复杂度：$O(nlogn)$）</p>
+<h2 id="参考代码-5">参考代码</h2>
+<pre><code class="language-cpp">//暴力
+char a[100005];
+char b[100005];
+bool visa[100005];
+bool visb[100005];
+
+int res=0;
+char tp;int l,r;
+
+void solve(){
+    cin(n);
+    rep(i,1,n)cin&gt;&gt;a[i];
+    rep(i,1,n){cin&gt;&gt;b[i];res+=(a[i]=='1'&amp;&amp;b[i]=='1');}
+    cin(q);
+    
+    while(q--){
+        cin&gt;&gt;tp&gt;&gt;l&gt;&gt;r;
+        if(tp=='A'){
+            rep(i,l,r){
+                if(!visa[i]){
+                    visa[i]=1;
+                    if(a[i]=='0'&amp;&amp;b[i]=='1')res++;
+                    a[i]='1';
+                }else continue;
+            }
+        }else{
+            rep(i,l,r){
+                if(!visb[i]){
+                    visb[i]=1;
+                    if(a[i]=='1'&amp;&amp;b[i]=='0')res++;
+                    b[i]='1';
+                }else continue;
+            }
+        }
+        cout&lt;&lt;res&lt;&lt;et;
+    }
+}
+</code></pre>
+<pre><code class="language-cpp">//数据结构优化
+void solve(){
+    int res=0;
+    set&lt;int&gt;sa,sb;
+    cin(n);
+    scin(a);a=&quot; &quot;+a;
+    scin(b);b=&quot; &quot;+b;
+    
+    rep(i,1,n){if(a[i]=='0')sa.insert(i);}
+    rep(i,1,n){if(b[i]=='0')sb.insert(i);res+=(a[i]=='1'&amp;&amp;b[i]=='1');}
+    cin(q);
+    
+    char tp;int l,r;
+    while(q--){
+        cin&gt;&gt;tp&gt;&gt;l&gt;&gt;r;
+        if(tp=='A'){
+            while(true){
+                auto it=sa.lower_bound(l);
+                if(it==sa.end()||*it&gt;r)break;
+                if(a[*it]=='0'&amp;&amp;b[*it]=='1')res++;
+                a[*it]='1';sa.erase(*it);
+            }
+        }else{
+            while(true){
+                auto it=sb.lower_bound(l);
+                if(it==sb.end()||*it&gt;r)break;
+                if(a[*it]=='1'&amp;&amp;b[*it]=='0')res++;
+                b[*it]='1';sb.erase(*it);
+            }
+        }
+        cout&lt;&lt;res&lt;&lt;et;
+    }
+}
+</code></pre>
+<h1 id="g-小红不想做平衡树">G. 小红不想做平衡树</h1>
+<p>待补</p>
 <h1 id="附录">附录</h1>
 <p>这里放上用到的文件头和main函数</p>
 <pre><code class="language-cpp">#include&lt;iostream&gt;
 #include&lt;vector&gt;
 #include&lt;cmath&gt;
+#include&lt;string&gt;
 #include&lt;bits/stdc++.h&gt;
 using namespace std;
 using ll = long long;
 using ld = long double;
 //不要用#define，使用using可以用ll格式转换，但是#define不行
 #define et '\n'
-//慎用register和inline
 #define reg register
 #define rep(i,a,b) for(int i=(a);i&lt;=(b);i++)
 #define rrep(i,a,b) for(int i=(a);i&gt;=(b);i--)
@@ -527,18 +515,18 @@ using ld = long double;
 #define max(a,b) ((a&gt;b)?(a):(b))
 #define min(a,b) ((a&lt;b)?(a):(b))
 //#define PP(l,r,CK) *ranges::partition_point(ranges::iota_view((l),(r)+1),(CK))
-string ANS[2]={&quot;No\n&quot;,&quot;Yes\n&quot;};
-int M=1e9+7;
+string ANS[2] = { &quot;No\n&quot;,&quot;Yes\n&quot; };
+int M = 1e9 + 7;
 //inline ll MO(ll x){return (x%M+M)%M;}
 
 void solve(){
 
 }
 
-int main(){
-    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
+int main() {
+    ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     //pre();
-    cin(t);while(t--)
+    cin(t); while (t--)
     solve();
     return 0;
 }
@@ -558,7 +546,7 @@ int main(){
                     
   <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E9%A2%98%E8%A7%A3/">题解</a>
 
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/cf/">CF</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%89%9B%E5%AE%A2/">牛客</a>
 
                   </div>
                 
@@ -571,7 +559,7 @@ int main(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/bcj/" data-tooltip="并查集" aria-label="PREVIOUS: 并查集">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cgr_25/" data-tooltip="Codeforces Global Round 25" aria-label="PREVIOUS: Codeforces Global Round 25">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -579,7 +567,7 @@ int main(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_39/" data-tooltip="牛客周赛 Round 39" aria-label="NEXT: 牛客周赛 Round 39">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_705/" data-tooltip="Codeforces Round 705 (Div. 2)" aria-label="NEXT: Codeforces Round 705 (Div. 2)">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -622,9 +610,9 @@ int main(){
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cgr_25\/';
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/nk_zs_39\/';
         
-          this.page.identifier = '\/post\/solution\/cgr_25\/'
+          this.page.identifier = '\/post\/solution\/nk_zs_39\/'
         
       };
       (function() {
@@ -668,7 +656,7 @@ int main(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/bcj/" data-tooltip="并查集" aria-label="PREVIOUS: 并查集">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cgr_25/" data-tooltip="Codeforces Global Round 25" aria-label="PREVIOUS: Codeforces Global Round 25">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -676,7 +664,7 @@ int main(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_39/" data-tooltip="牛客周赛 Round 39" aria-label="NEXT: 牛客周赛 Round 39">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_705/" data-tooltip="Codeforces Round 705 (Div. 2)" aria-label="NEXT: Codeforces Round 705 (Div. 2)">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>

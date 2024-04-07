@@ -1298,6 +1298,17 @@ inline bool PAL(int l,int r){
 }
 </code></pre>
 <p>(Codeforce Global Round 25 E)</p>
+<h3 id="wa-vector去重">[WA] vector去重</h3>
+<p>vector去重的步骤是，先sort，再unique，最后erase，别把sort忘了</p>
+<pre><code class="language-cpp">sort(a.begin(),a.end());
+a.erase(unique(a.begin(),a.end()),a.end());
+</code></pre>
+<h3 id="tip-数据输入格式">[TIP] 数据输入格式</h3>
+<p>cin可以读入含前导0的整数，比如说00013的数据，cin读到整数型变量里就变成了13；使用getchar()忽略单个字符</p>
+<p>比如说要获取“03:12”的h和m，可以直接这样写：</p>
+<pre><code class="language-cpp">int h,m;
+cin&gt;&gt;h;getchar();cin&gt;&gt;m;
+</code></pre>
 <pre><code>前面的区域以后再来探索吧！
 </code></pre>
               
