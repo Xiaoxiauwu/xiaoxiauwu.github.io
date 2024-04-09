@@ -17,7 +17,7 @@
   },
   "name":"夏のBLOG",
   "description":"",
-  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_705\/",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_938\/",
   "keywords":"[tech, C\u002b\u002b, python, study]"
 }
 
@@ -33,20 +33,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces Round 705 (Div. 2)">
-<meta name="twitter:title" content="Codeforces Round 705 (Div. 2)">
-<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cf_705/">
-<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cf_705/">
+<meta property="og:title" content="Codeforces Round 938 (Div. 3)">
+<meta name="twitter:title" content="Codeforces Round 938 (Div. 3)">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cf_938/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cf_938/">
 <meta property="og:site_name" content="夏のBLOG">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-04-08T04:50:02">
+    <meta property="article:published_time" content="2024-04-10T01:24:09">
   
   
-    <meta property="article:modified_time" content="2024-04-08T04:50:02">
+    <meta property="article:modified_time" content="2024-04-10T01:24:09">
   
   
   
@@ -87,14 +87,14 @@
   <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
 
 
-    <title>Codeforces Round 705 (Div. 2)</title>
+    <title>Codeforces Round 938 (Div. 3)</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cf_705/">
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cf_938/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -268,15 +268,15 @@
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      Codeforces Round 705 (Div. 2)
+      Codeforces Round 938 (Div. 3)
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-04-08T04:50:02&#43;08:00">
+      <time datetime="2024-04-10T01:24:09&#43;08:00">
         
-  April 8, 2024
+  April 10, 2024
 
       </time>
     
@@ -304,119 +304,222 @@
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">B题写蠢了，WA了三次才发现判mirror时忘映射一下了</span>
+            <span class="post-header-cover-caption caption">最有趣的一场，有人叉g题叉疯了</span>
           
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<h1 id="a-anti-knapsack">A. Anti-knapsack</h1>
+<h1 id="a-yogurt-sale">A. Yogurt Sale</h1>
 <p>贪心</p>
 <h2 id="大概思路">大概思路</h2>
-<p>让你求 $1$ 到 $n$ 的最大集合，使的任意子集元素之和不为 $k$。</p>
-<p>显然， $k+1$ 到 $n$ 的元素都能加进来，$k$ 本身不能加进来，$\lfloor\frac{k}{2}\rfloor$ 到 $k-1$ 可以加进来，构造完毕，直接输出集合大小和元素即可。</p>
+<p>两种买法，哪种最省就用哪种买，奇数情况要小判一下</p>
 <h2 id="参考代码">参考代码</h2>
-<pre><code class="language-cpp">void solve() {
-    cin(n);cin(k);
-    cout&lt;&lt;n-k+k/2&lt;&lt;et;
-    rep(i,(k+1)/2,k-1)cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-    rep(i,k+1,n)cout&lt;&lt;i&lt;&lt;&quot; &quot;;
-    cout&lt;&lt;et;
+<pre><code class="language-cpp">void solve(){
+    cin(n);cin(a);cin(b);
+    if(1.0*b/2&gt;a)cout&lt;&lt;a*n&lt;&lt;et;
+    else cout&lt;&lt;(n/2)*b+(n%2)*a&lt;&lt;et;
 }
 </code></pre>
-<h1 id="b-planet-lapituletti">B. Planet Lapituletti</h1>
-<p>模拟</p>
+<h1 id="b-progressive-square">B. Progressive Square</h1>
+<p>暴力，构造</p>
 <h2 id="大概思路-1">大概思路</h2>
-<p>问你在某种时间进制下，找到从当前时刻到未来，最近一次使7段字显示器显示的时间镜像后仍为合法时间的时刻并输出。</p>
-<p>直接暴力往后递增时间，找到符合题意的时间就直接输出即可。</p>
+<p>由题意知给定参数下的矩阵唯一，直接以元素最小值，按题意生成矩阵元素，然后暴力判是否相等即可</p>
 <h2 id="参考代码-1">参考代码</h2>
-<pre><code class="language-cpp">int h,m;
-
-int mp[10]={0,1,5,-1,-1,2,-1,-1,8,-1};
-//其实还有一种写法，把这里的-1全换成9999，这样的话，只要任何一个数位不合法，ck函数里的ni和nj至少有一个会被污染成非法数，这样可以在ck里少写几行特判：
-
-// int mp[10]={0,1,5,9999,9999,2,9999,9999,8,9999};
-// bool ck(int i,int j){
-//     int ni=10*(mp[j%10])+mp[j/10];
-//     int nj=10*(mp[i%10])+mp[i/10];
-//     if(ni&gt;=h||nj&gt;=m)return 0;
-//     return 1;
-// }
-
-bool ck(int i,int j){
-    //cout&lt;&lt;i&lt;&lt;&quot; &quot;&lt;&lt;j&lt;&lt;&quot;]&quot;;
-    int ni=0,nj=0;
-    if(i&lt;10){if(mp[i]==-1)return 0;}
-    else if(mp[i%10]==-1||mp[i/10]==-1)return 0;
-
-    if(j&lt;10){if(mp[j]==-1)return 0;}
-    else if(mp[j%10]==-1||mp[j/10]==-1)return 0;
-
-    ni=10*(mp[j%10])+mp[j/10];
-    nj=10*(mp[i%10])+mp[i/10];
-    if(ni&gt;=h||nj&gt;=m)return 0;
-    return 1;
+<pre><code class="language-cpp">void solve(){
+    cin(n);cin(c);cin(d);
+//记录矩阵元素
+    vector&lt;int&gt;a(n*n),b;
+    CV(a);
+    sort(a.begin(),a.end());
+//暴力生成元素
+    rep(i,0,n-1)rep(j,0,n-1)b.push_back(a[0]+i*c+j*d);
+    sort(b.begin(),b.end());
+    
+    ANS(a==b);
 }
-
-pair&lt;int,int&gt; nxt(int i,int j){
-    j++;
-    if(j&gt;=m){j=0;i++;}
-    if(i&gt;=h)i=0;
-    return {i,j};
-}
-
-void print(int i,int j){
-    cout&lt;&lt;(i/10)&lt;&lt;(i%10)&lt;&lt;&quot;:&quot;&lt;&lt;(j/10)&lt;&lt;(j%10)&lt;&lt;et;
-}
-
-void solve() {
-    cin&gt;&gt;h&gt;&gt;m;
-    scin(s);
-    int nowh=s[0]-'0',nowm=s[3]-'0';
-    nowh=nowh*10+s[1]-'0';
-    nowm=nowm*10+s[4]-'0';
-    while(!ck(nowh,nowm)){
-        auto t=nxt(nowh,nowm);
-        nowh=t.first;
-        nowm=t.second;
+</code></pre>
+<h1 id="c-inhabitant-of-the-deep-sea">C. Inhabitant of the Deep Sea</h1>
+<p>暴力，模拟</p>
+<h2 id="大概思路-2">大概思路</h2>
+<p>直接取一半，两边往中间暴力删数即可</p>
+<h2 id="参考代码-2">参考代码</h2>
+<pre><code class="language-cpp">void solve(){
+    cin(n);cin(k);
+    vector&lt;ll&gt;a(n);
+    CV(a);
+    ll sum=0;
+    for(auto &amp;i:a)sum+=i;
+    if(k&gt;=sum){cout&lt;&lt;n&lt;&lt;et;return;}
+    
+    ll l=k/2+k%2;
+    ll r=k/2;
+    int cnt=0;
+    rep(i,0,n-1){
+        if(l&lt;a[i]){a[i]-=l;break;}
+        l-=a[i];a[i]=0;cnt++;
     }
-    print(nowh,nowm);
+    rrep(i,n-1,0){
+        if(r&lt;a[i])break;
+        r-=a[i];cnt++;
+    }
+    cout&lt;&lt;cnt&lt;&lt;et;
 }
 </code></pre>
-<p>来自某✌的码：</p>
-<pre><code class="language-cpp">int cal(int a) {
-  if (a == 2) return 5;
-  if (a == 5) return 2;
-  return a;
+<h1 id="d-inaccurate-subsequence-search">D. Inaccurate Subsequence Search</h1>
+<p>滑动窗口</p>
+<h2 id="大概思路-3">大概思路</h2>
+<p>用小的数组在大数组上滑动统计答案即可，开个map桶记录出现的数个数</p>
+<h2 id="参考代码-3">参考代码</h2>
+<pre><code class="language-cpp">void solve(){
+    cin(n);cin(m);cin(k);
+    vector&lt;int&gt;a(n);
+    CV(a);
+    map&lt;int,int&gt; cnt,acnt;
+    rep(i,1,m){//记录小数组（匹配用）的各元素出现次数
+        cin(tmp);
+        cnt[tmp]++;
+    }
+
+    ll ans=0;
+    rep(i,0,m-1){//将小数组与大数组左端对其，收集子数组出现的元素个数
+        acnt[a[i]]++;
+    }
+
+    ll same=0;//先暴力统计一遍匹配的数，准备开始滑动
+    for(auto &amp;[i,v]:acnt){
+        if(acnt[i]&amp;&amp;cnt[i])same+=min(acnt[i],cnt[i]);
+    }
+    if(same&gt;=k)ans++;
+
+    rep(i,m,n-1){//开始滑动，边滑动边收集
+        if(acnt[a[i-m]]&lt;=cnt[a[i-m]])same--;
+        acnt[a[i-m]]--;
+        if(acnt[a[i]]&lt;cnt[a[i]])same++;
+        acnt[a[i]]++;
+        if(same&gt;=k)ans++;
+    }
+    cout&lt;&lt;ans&lt;&lt;et;
 }
-int a[5] = {0, 1, 2, 5, 8};
-void huangyu() {
-  int h = read(), m = read();
-  ll hh, mm;
-  cin &gt;&gt; hh;
-  getchar();
-  cin &gt;&gt; mm;
-  for (int i = 0; i &lt; 5; i++)
-    for (int j = 0; j &lt; 5; j++)
-      for (int k = 0; k &lt; 5; k++)
-        for (int l = 0; l &lt; 5; l++) {
-          if (a[i] * 10 + a[j] &lt; h &amp;&amp; a[k] * 10 + a[l] &lt; m)
-            if ((a[i] * 10 + a[j]) * m + (a[k] * 10 + a[l]) &gt;= (hh * m + mm))
-              if ((cal(a[l]) * 10 + cal(a[k])) &lt; h &amp;&amp;
-                  ((cal(a[j]) * 10 + cal(a[i])) &lt; m)) {
-                cout &lt;&lt; a[i] &lt;&lt; a[j] &lt;&lt; &quot;:&quot; &lt;&lt; a[k] &lt;&lt; a[l] &lt;&lt; '\n';
-                return;
-              }
+</code></pre>
+<h1 id="e-long-inversions">E. Long Inversions</h1>
+<p>贪心，差分</p>
+<h2 id="大概思路-4">大概思路</h2>
+<p><em>会的人一下子就想出来了，不会的怎么想都想不出来</em></p>
+<p>从左到右贪心，比方说1011101这个样例，设k=4，如果只对某一位取反，必然会影响到第i+k位的数，在k等于4时，是否该取反的状态如下：</p>
+<p>第1到第4个数：0100<!-- raw HTML omitted -->
+第5到第7个数：010</p>
+<p>此时按位异或，会发现他们均为0</p>
+<ul>
+<li>对样例0100010，取k=4时，取反状态如下：</li>
+</ul>
+<p>[1~4]：1011<!-- raw HTML omitted -->
+[5~7]：101</p>
+<p>按位异或不全为0，故k不可能取4；取k=3时，有：</p>
+<p>[1~3]：101<!-- raw HTML omitted -->
+[4~6]：110<!-- raw HTML omitted -->
+[7~7]：1</p>
+<p>按位异或全为1，其一种推导路径如下：</p>
+<p>0100010<!-- raw HTML omitted -->
+0111110<!-- raw HTML omitted -->
+1001110<!-- raw HTML omitted -->
+1001001<!-- raw HTML omitted -->
+1110001<!-- raw HTML omitted -->
+1111111</p>
+<p>因此我们只需要开个差分数组，暴力从大到小枚举k，找到使差分数组值全相等时的情况输出即可（k=1必然可行，不用担心边界）</p>
+<h2 id="参考代码-4">参考代码</h2>
+<pre><code class="language-cpp">void solve(){
+    cin(k);scin(s);
+    do{
+        vector&lt;int&gt;a(k);
+        rep(i,0,s.length()-1)a[i%k]^='1'-s[i];
+        if(a==vector&lt;int&gt;(k,a[0])){cout&lt;&lt;k&lt;&lt;et;return;}
+    }while(k--);
+}
+</code></pre>
+<h1 id="f-unfair-game">F. Unfair Game</h1>
+<p>位运算，结论题</p>
+<h2 id="大概思路-5">大概思路</h2>
+<p>水题，把1,2,3,4二进制状态全列出来如下：</p>
+<p>001<!-- raw HTML omitted -->
+010<!-- raw HTML omitted -->
+011<!-- raw HTML omitted -->
+100</p>
+<p>很容易发现1^2^3=0的结论，又因为偶数个相同的数异或起来为0，所以设1，2，3，4的个数分别为a，b，c，d的话，答案就是a/2+b/2+c/2+d/2，当a，b，c均为奇数时，答案要加1</p>
+<h2 id="参考代码-5">参考代码</h2>
+<pre><code class="language-cpp">void solve(){
+    cin(a);cin(b);cin(c);cin(d);
+    cout&lt;&lt;a/2+b/2+c/2+d/2+(a%2&amp;&amp;b%2&amp;&amp;c%2)&lt;&lt;et;
+}
+</code></pre>
+<h1 id="g-gcd-on-a-grid">G. GCD on a grid</h1>
+<p>因数，bfs，可行性DP（感觉能用可行性dp的，一般也能bfs）</p>
+<h2 id="大概思路-6">大概思路</h2>
+<p><em>hack期最有趣的一题，有人拿了逆天数据hack掉了300多号人，排名第一页全军覆没，还好赛后重测时又重测了（不对，我又没ac，我管这么多干嘛）</em></p>
+<p>从2到 $\gcd(a[0][0],a[n][m])$ 枚举因子，然后跑bfs或dp即可（似曾相识的思路）</p>
+<p><em>题外话，开vector跑了1000ms，开全局数组只跑了500ms，快了一倍</em></p>
+<h2 id="参考代码-6">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    cin(n);cin(m);
+    vectors&lt;2&gt;a(n,vector&lt;int&gt;(m)),dp(n,vector&lt;int&gt;(m));
+    rep(i,0,n-1)rep(j,0,m-1)cin&gt;&gt;a[i][j];
+
+    auto ck=[&amp;](int d){
+        dp.assign(n, vector&lt;int&gt;(m, 0));
+        rep(i,0,n-1)rep(j,0,m-1)dp[i][j]=0;
+        dp[0][0]=1;//可行性dp
+        rep(i,0,n-1)rep(j,0,m-1)if(a[i][j]%d==0) {
+            if(i)dp[i][j]|=dp[i-1][j];//可行性传递
+            if(j)dp[i][j]|=dp[i][j-1];
         }
-  cout &lt;&lt; &quot;00:00&quot; &lt;&lt; endl;
+        return dp[n-1][m-1];
+    };
+
+    int qwq=__gcd(a[0][0],a[n-1][m-1]),ans=1;
+    for(int d=1;d&lt;=qwq/d;d++){
+        if(qwq%d==0){
+            if(ck(d))ans=max(ans,d);
+            if(ck(qwq/d)){ans=max(ans,qwq/d);break;}
+        }
+    }
+    CA;
 }
 </code></pre>
-<h1 id="c-k-beautiful-strings">C. K-beautiful Strings</h1>
-<p>待补题</p>
-<h1 id="d-gcd-of-an-array">D. GCD of an Array</h1>
-<p>待补题</p>
+<h1 id="h-the-most-reckless-defense">H. The Most Reckless Defense</h1>
+<p>费用流，MCFC，状压dp</p>
+<h2 id="大概思路-7">大概思路</h2>
+<p>没学过费用流和MCFC，这里只看了状压dp的思路</p>
+<p>题意说，每个半径只能使用一次，怪的血量又与半径有关系，这个关系式中含指数，半径每增大1，可对怪造成的最大影响就增大 $\Delta D= (r^2-(r-1)^2)\times 500$，但是怪的额外血量会提高 $\Delta H=3^r-3^{r-1}$，算一下会发现，当 $r=10$ 时，$\Delta H&gt;\Delta D$，因此半径再继续增加是没有意义的。</p>
+<p>所以我们设10个状态位，表示1到10的半径使用情况，做状压dp。设$dp[S]$ 表示半径选择状态为 S 时，可以设置的最大基础血量，然后每读入一个防御塔信息后，枚举状态，枚举该防御塔的半径，更新各个状态的最优值，最后输出 $dp[(1&laquo;10)-1]$ 这个状态即可（半径全用上肯定是最优的）。</p>
+<h2 id="参考代码-7">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    ll n,m,k;cin&gt;&gt;n&gt;&gt;m&gt;&gt;k;
+    string s[n+1];
+    rep(i,1,n){cin&gt;&gt;s[i];s[i]=&quot; &quot;+s[i];}
+    vector&lt;int&gt; dp(1&lt;&lt;10),dp_(1&lt;&lt;10);
+    while(k--){
+        ll x,y,p;cin&gt;&gt;x&gt;&gt;y&gt;&gt;p;
+        ll cnt[11]={0};//统计该塔在半径设为r时，可影响到的格子数
+        rep(i,1,n)rep(j,1,m)if(s[i][j]=='#'){
+            int r=ceil(hypot(x-i,y-j));
+            if(r&lt;=10)cnt[r]++;
+        }
+        rep(i,1,10)cnt[i]+=cnt[i-1];
+
+        dp_=dp;//滚动一下
+        rep(I,0,(1&lt;&lt;10)-1){//枚举所有状态
+            int w=1;
+            rep(j,1,10){//枚举该塔取各个半径r时，当前状态是否可以有更优的答案
+                w*=3;
+                if(I&gt;&gt;j-1&amp;1)dp[I]=max(dp[I],dp_[I^1&lt;&lt;j-1]+cnt[j]*p-w);
+            }
+        }
+    }
+    cout&lt;&lt;dp[(1&lt;&lt;10)-1]&lt;&lt;et;
+}
+</code></pre>
 <h1 id="附录">附录</h1>
-<p>这里放上用到的文件头和main函数（有更新，更了一个非常抽象的CV(a)，用于无处理一键读入元素）</p>
+<p>这里贴上用到的头部和main函数(有更新，更了奇怪的类模版递推以简化嵌套vector的写法)：</p>
 <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
 using namespace std;
 using ll = long long;
@@ -427,7 +530,6 @@ namespace Xiaoxia{
     #include&lt;cmath&gt;
     #include&lt;string&gt;
     #include&lt;algorithm&gt;
-    //不要用#define，使用using可以用ll格式转换，但是#define不行
     #define et '\n'
     #define reg register
     #define il inline
@@ -442,10 +544,18 @@ namespace Xiaoxia{
     #define max(a,b) ((a&gt;b)?(a):(b))
     #define min(a,b) ((a&lt;b)?(a):(b))
     #define CV(x) for(auto &amp;i:x)cin&gt;&gt;i
+    template&lt;int n,typename T&gt;struct VEC_ {
+        using type=vector&lt;typename VEC_&lt;n-1,T&gt;::type&gt;;
+    };
+    template&lt;typename T&gt;struct VEC_&lt;1,T&gt; {
+        using type=std::vector&lt;T&gt;;
+    };
+    template &lt;int n=1,typename T=int&gt;
+    using vectors = typename VEC_&lt;n, T&gt;::type;
     //#define PP(l,r,CK) *ranges::partition_point(ranges::iota_view((l),(r)+1),(CK))
-    string ANS[2] = { &quot;No\n&quot;,&quot;Yes\n&quot; };
     int M = 1e9 + 7;
     inline ll MO(ll x){return (x%M+M)%M;}
+    inline void ANS(bool x){cout&lt;&lt;(x?&quot;Yes\n&quot;:&quot;No\n&quot;);}
 }
 using namespace Xiaoxia;
 
@@ -456,7 +566,7 @@ void solve(){
 int main() {
     ios::sync_with_stdio(0); cin.tie(0); cout.tie(0);
     //pre();
-    cin(t); while (t--)
+    cin(t);while(t--)
     solve();
     return 0;
 }
@@ -489,7 +599,7 @@ int main() {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_39/" data-tooltip="牛客周赛 Round 39" aria-label="PREVIOUS: 牛客周赛 Round 39">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_705/" data-tooltip="Codeforces Round 705 (Div. 2)" aria-label="PREVIOUS: Codeforces Round 705 (Div. 2)">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -497,7 +607,7 @@ int main() {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_938/" data-tooltip="Codeforces Round 938 (Div. 3)" aria-label="NEXT: Codeforces Round 938 (Div. 3)">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -540,9 +650,9 @@ int main() {
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_705\/';
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_938\/';
         
-          this.page.identifier = '\/post\/solution\/cf_705\/'
+          this.page.identifier = '\/post\/solution\/cf_938\/'
         
       };
       (function() {
@@ -586,7 +696,7 @@ int main() {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_39/" data-tooltip="牛客周赛 Round 39" aria-label="PREVIOUS: 牛客周赛 Round 39">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_705/" data-tooltip="Codeforces Round 705 (Div. 2)" aria-label="PREVIOUS: Codeforces Round 705 (Div. 2)">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -594,7 +704,7 @@ int main() {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_938/" data-tooltip="Codeforces Round 938 (Div. 3)" aria-label="NEXT: Codeforces Round 938 (Div. 3)">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
