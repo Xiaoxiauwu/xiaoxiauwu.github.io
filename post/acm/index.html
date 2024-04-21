@@ -1314,7 +1314,7 @@ cin&gt;&gt;h;getchar();cin&gt;&gt;m;
 <pre><code class="language-cpp">ld d=sqrtl((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
 </code></pre>
 <p>有点麻烦，如果不在意函数的常数的话，可以使用cmath的函数求</p>
-<pre><code class="language-cpp">ld d=hypot(x1-x2,y1-y2);
+<pre><code class="language-cpp">ld d=hypot(x1-x2,y1-y2); +
 </code></pre>
 <h3 id="wa-unordered类型容器">[WA] unordered类型容器</h3>
 <p>此类容器不能用end和begin来访问，乱写小心CE</p>
@@ -1324,6 +1324,7 @@ cin&gt;&gt;h;getchar();cin&gt;&gt;m;
 <p>[From jiangly]</p>
 <pre><code class="language-cpp">if(a==vector&lt;int&gt;(n,a[0]))
 </code></pre>
+<h3 id="wa-并查集别用fa数组查根要用find函数">[WA] 并查集别用fa数组查根，要用find函数</h3>
 <pre><code>前面的区域以后再来探索吧！
 </code></pre>
               
