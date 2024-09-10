@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/xiaoxiauwu.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "XiaoXia",
+    
+    "image": "https://xiaoxiauwu.github.io/images/avatar.jpg"
+    
+  },
+  "name":"夏のBLOG",
+  "description":"[Fin] osc 拿到附件后打开是个wav文件，文件头文件尾经检查均正常，没有附加额外信息。\n拖到Audacity里查看频谱图，可以隐约的“CTF”三个字母，推测这个就是flag。 题目是osc（示波器），解题关键应该和波形有关，放大查看构成字符“F”的波形。 可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。\n对左边八个已知字符（\u0026ldquo;BaseCTF{“）分析，结果与猜想均吻合。\n直接上代码，经过适当的参数选取，可以将flag打印地好看一点：\nimport scipy.io.wavfile as wav\rfrom PIL import Image, ImageDraw\rrt, wavsignal = wav.read(\u0027flag.wav\u0027)\r#print(len(wavsignal))#151791\roffset = 10 # y轴偏移矫正\rlength = 151791 \/\/ 20 \/\/ 50 - 51 # 粗略估算每个波的波长\rimage = Image.new(\u0026quot;RGBA\u0026quot;, (1500, 200), (0, 0, 0))\rfor i in range(offset, 151791, length):\rif (i \u002b length - 1) \/\/ length \u0026gt;= 1500: break\rmx = 0\rpadding = int((i \/\/ length) \/ 4.",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/ctf\/basectf_fin_osc\/",
+  "keywords":"[tech, C\u002b\u002b, python, study]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.121.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="XiaoXia">
+<meta name="keywords" content="tech, C&#43;&#43;, python, study">
+<meta name="description" content="[Fin] osc 拿到附件后打开是个wav文件，文件头文件尾经检查均正常，没有附加额外信息。
+拖到Audacity里查看频谱图，可以隐约的“CTF”三个字母，推测这个就是flag。 题目是osc（示波器），解题关键应该和波形有关，放大查看构成字符“F”的波形。 可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。
+对左边八个已知字符（&ldquo;BaseCTF{“）分析，结果与猜想均吻合。
+直接上代码，经过适当的参数选取，可以将flag打印地好看一点：
+import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = wav.read(&#39;flag.wav&#39;)#print(len(wavsignal))#151791offset = 10 # y轴偏移矫正length = 151791 // 20 // 50 - 51 # 粗略估算每个波的波长image = Image.new(&quot;RGBA&quot;, (1500, 200), (0, 0, 0))for i in range(offset, 151791, length):if (i &#43; length - 1) // length &gt;= 1500: breakmx = 0padding = int((i // length) / 4.">
+
+
+<meta property="og:description" content="[Fin] osc 拿到附件后打开是个wav文件，文件头文件尾经检查均正常，没有附加额外信息。
+拖到Audacity里查看频谱图，可以隐约的“CTF”三个字母，推测这个就是flag。 题目是osc（示波器），解题关键应该和波形有关，放大查看构成字符“F”的波形。 可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。
+对左边八个已知字符（&ldquo;BaseCTF{“）分析，结果与猜想均吻合。
+直接上代码，经过适当的参数选取，可以将flag打印地好看一点：
+import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = wav.read(&#39;flag.wav&#39;)#print(len(wavsignal))#151791offset = 10 # y轴偏移矫正length = 151791 // 20 // 50 - 51 # 粗略估算每个波的波长image = Image.new(&quot;RGBA&quot;, (1500, 200), (0, 0, 0))for i in range(offset, 151791, length):if (i &#43; length - 1) // length &gt;= 1500: breakmx = 0padding = int((i // length) / 4.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[BaseCTF] [Fin] osc">
+<meta name="twitter:title" content="[BaseCTF] [Fin] osc">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/ctf/basectf_fin_osc/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/ctf/basectf_fin_osc/">
+<meta property="og:site_name" content="夏のBLOG">
+<meta property="og:description" content="[Fin] osc 拿到附件后打开是个wav文件，文件头文件尾经检查均正常，没有附加额外信息。
+拖到Audacity里查看频谱图，可以隐约的“CTF”三个字母，推测这个就是flag。 题目是osc（示波器），解题关键应该和波形有关，放大查看构成字符“F”的波形。 可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。
+对左边八个已知字符（&ldquo;BaseCTF{“）分析，结果与猜想均吻合。
+直接上代码，经过适当的参数选取，可以将flag打印地好看一点：
+import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = wav.read(&#39;flag.wav&#39;)#print(len(wavsignal))#151791offset = 10 # y轴偏移矫正length = 151791 // 20 // 50 - 51 # 粗略估算每个波的波长image = Image.new(&quot;RGBA&quot;, (1500, 200), (0, 0, 0))for i in range(offset, 151791, length):if (i &#43; length - 1) // length &gt;= 1500: breakmx = 0padding = int((i // length) / 4.">
+<meta name="twitter:description" content="[Fin] osc 拿到附件后打开是个wav文件，文件头文件尾经检查均正常，没有附加额外信息。
+拖到Audacity里查看频谱图，可以隐约的“CTF”三个字母，推测这个就是flag。 题目是osc（示波器），解题关键应该和波形有关，放大查看构成字符“F”的波形。 可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。
+对左边八个已知字符（&ldquo;BaseCTF{“）分析，结果与猜想均吻合。
+直接上代码，经过适当的参数选取，可以将flag打印地好看一点：
+import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = wav.read(&#39;flag.wav&#39;)#print(len(wavsignal))#151791offset = 10 # y轴偏移矫正length = 151791 // 20 // 50 - 51 # 粗略估算每个波的波长image = Image.new(&quot;RGBA&quot;, (1500, 200), (0, 0, 0))for i in range(offset, 151791, length):if (i &#43; length - 1) // length &gt;= 1500: breakmx = 0padding = int((i // length) / 4.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2024-09-11T01:54:38">
+  
+  
+    <meta property="article:modified_time" content="2024-09-11T01:54:38">
+  
+  
+  
+    
+      <meta property="article:section" content="CTF">
+    
+  
+  
+    
+      <meta property="article:tag" content="wav">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+
+
+
+
+  <meta property="og:image" content="https://s21.ax1x.com/2024/09/11/pAmbQzD.jpg">
+  <meta property="twitter:image" content="https://s21.ax1x.com/2024/09/11/pAmbQzD.jpg">
+
+
+  <meta property="og:image" content="https://s21.ax1x.com/2024/09/11/pAmbQzD.jpg">
+  <meta property="twitter:image" content="https://s21.ax1x.com/2024/09/11/pAmbQzD.jpg">
+
+
+    <title>[BaseCTF] [Fin] osc</title>
+
+    <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/ctf/basectf_fin_osc/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiaoxiauwu.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://xiaoxiauwu.github.io/css/codeblock.css">
+      
+    
+
+    
+      
+    
+    
+
+
+<script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202401110101/show_ads_impl_fy2021.js" id="google_shimpl"></script>
+<script>
+      MathJax = {
+         tex: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true,
+            tags: 'ams',
+         },
+      };
+   </script>
+<script type="text/javascript" async="" src="https://wuli.wiki/MathJax3/es5/tex-mml-chtml.js"></script>
+
+<script async src="https://xiaoxiauwu.github.io/js/busuanzi.pure.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade"></head>
+
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiaoxiauwu.github.io/" aria-label="Go to homepage">夏のBLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiaoxiauwu.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+
+
+<div  class="meta-item">&nbsp·&nbsp
+  <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+</div>
+
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiaoxiauwu.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">XiaoXia</h4>
+        
+          <h5 class="sidebar-profile-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Xiaoxiauwu" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.totorocatcat.top" target="_blank" rel="noopener" title="Totoroの小窝">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-link" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Totoroの小窝</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('https://s21.ax1x.com/2024/09/11/pAmbQzD.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      [BaseCTF] [Fin] osc
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2024-09-11T01:54:38&#43;08:00">
+        
+  September 11, 2024
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/ctf">CTF</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" id="top">
+          
+            <span class="post-header-cover-caption caption">电脑总算修好了</span>
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <h1 id="fin-osc">[Fin] osc</h1>
+<p>拿到附件后打开是个wav文件，文件头文件尾经检查均正常，没有附加额外信息。</p>
+<p>拖到Audacity里查看频谱图，可以隐约的“CTF”三个字母，推测这个就是flag。
+<a href="https://imgse.com/i/pAmbSI0"><img src="https://s21.ax1x.com/2024/09/11/pAmbSI0.png" alt="pAmbSI0.png"></a></p>
+<p>题目是osc（示波器），解题关键应该和波形有关，放大查看构成字符“F”的波形。
+<a href="https://imgse.com/i/pAmHXrj"><img src="https://s21.ax1x.com/2024/09/11/pAmHXrj.png" alt="pAmHXrj.png"></a></p>
+<p>可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。</p>
+<p>对左边八个已知字符（&ldquo;BaseCTF{“）分析，结果与猜想均吻合。</p>
+<p>直接上代码，经过适当的参数选取，可以将flag打印地好看一点：</p>
+<pre><code class="language-python">import scipy.io.wavfile as wav
+from PIL import Image, ImageDraw
+
+rt, wavsignal = wav.read('flag.wav')
+#print(len(wavsignal))#151791
+offset = 10    #    y轴偏移矫正
+length = 151791 // 20 // 50 - 51   #   粗略估算每个波的波长
+
+image = Image.new(&quot;RGBA&quot;, (1500, 200), (0, 0, 0))
+
+for i in range(offset, 151791, length):
+    if (i + length - 1) // length &gt;= 1500: break
+    mx = 0
+    padding = int((i // length) / 4.4)      #图像矫正
+    subwav = wavsignal[i + padding : i + length + padding]
+    for x, y in subwav:     #找到区间最大值（其实是可以公式推算的，斜线斜率可测，但我懒得算，能跑出图就算胜利）
+        mx = max(mx, y)
+    for j in range(len(subwav)):
+        y = mx - subwav[j][1]
+        c = min(255, int(255 * (max(0, y) / (2 * mx + 1))))     #用该点y值距区间最大值的距离计算亮度
+        L = len(subwav)
+        image.putpixel(((i + L - 1) // L, j * 200 // L), (0, c, 0))
+
+image.show()
+# image.save('flag！！！.png')
+</code></pre>
+<p>打印图片如下，还算清晰：
+<a href="https://imgse.com/i/pAmHjqs"><img src="https://s21.ax1x.com/2024/09/11/pAmHjqs.png" alt="pAmHjqs.png"></a></p>
+
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/wav/">wav</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_938/" data-tooltip="Codeforces Round 938 (Div. 3)" aria-label="PREVIOUS: Codeforces Round 938 (Div. 3)">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/ctf\/basectf_fin_osc\/';
+        
+          this.page.identifier = '\/post\/ctf\/basectf_fin_osc\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 XiaoXia. All Rights Reserved
+  </span>
+
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_938/" data-tooltip="Codeforces Round 938 (Div. 3)" aria-label="PREVIOUS: Codeforces Round 938 (Div. 3)">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">XiaoXia</h4>
+    
+      <div id="about-card-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        华南理工大学
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://xiaoxiauwu.github.io/images/cover_.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiaoxiauwu.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/click.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/sakura.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/cp.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

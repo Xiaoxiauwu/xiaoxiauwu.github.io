@@ -312,43 +312,31 @@
               <!-- raw HTML omitted -->
 <h1 id="acm模版集随缘更新中">ACM模版集（随缘更新中）</h1>
 <h2 id="基础板子">基础板子</h2>
-<pre><code class="language-cpp">#include&lt;iostream&gt;
-#include&lt;vector&gt;
-#include&lt;cmath&gt;
-#include&lt;set&gt;
-#include&lt;bits/stdc++.h&gt;
-#define ll long long
-#define ld long double
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+#define fi first
+#define se second
+#define max(a,b) ((a)&gt;(b)?(a):(b))
+#define min(a,b) ((a)&gt;(b)?(b):(a))
+#define ri register
 using namespace std;
-#define ET '\n'
-#define FOR(i,a,b) for(ll i=(a);i&lt;=(b);i++)
-#define rFOR(i,a,b) for(ll i=(a);i&gt;=(b);i--)
-//趋向for循环，一般情况别用，规定方向时会跳出的循环在这里不会跳出
-#define rep(i,a,b) for(ll i=(a);i!=(b)+2*(a&lt;b)-1;i+=2*(a&lt;b)-1)
-#define CIN(a) ll a;cin&gt;&gt;a
-#define DCIN(a) ld a;cin&gt;&gt;a
-#define SCIN(a) string a;cin&gt;&gt;a
-#define CA cout&lt;&lt;ans&lt;&lt;ET
-#define CY cout&lt;&lt;&quot;YES&quot;&lt;&lt;ET
-#define CN cout&lt;&lt;&quot;NO&quot;&lt;&lt;ET
-#define max(a,b) ((a&gt;b)?(a):(b))
-#define min(a,b) ((a&lt;b)?(a):(b))
+using ll=long long;
+using ull=unsigned long long;
+using ld=long double;
+ll INF=((ull)~0)&gt;&gt;2;
+ll M=1e9+7;
+template&lt;typename T&gt;T MO(T x){return (x%M+M)%M;}
+void ANS(bool x){cout&lt;&lt;(x?&quot;Yes\n&quot;:&quot;No\n&quot;);}
 std::mt19937 myrand(time(0));
-ll rnd(ll l, ll r) {return std::uniform_int_distribution&lt;ll&gt;(l, r)(myrand);}
-//没有C++20就不能用ranges了//CF又可以用C++20了，封印解除
-#define PP(l,r,CK) *ranges::partition_point(ranges::iota_view((l),(r)+1),(CK))
-int M=1e9+7;
-inline ll MO(ll x){return (x%M+M)%M;}
-string ANS[2]={&quot;No\n&quot;,&quot;Yes\n&quot;};
-
-void solve(){
-   
+ll rnd(ll l, ll r) {//随机数生成
+	return std::uniform_int_distribution&lt;ll&gt;(l, r)(myrand);
 }
+const int N=200005;
+const ld PI=acos(ld(-1));
 
-int main(){
-    ios::sync_with_stdio(0);cin.tie(0);cout.tie(0);
-    pre();
-    CIN(t);while(t--)
+signed main(){
+    cout.tie(0);cin.tie(0)-&gt;sync_with_stdio(false);
+    //pre();
+    //int t;cin&gt;&gt;t;while(t--)
     solve();
     return 0;
 }
@@ -479,6 +467,82 @@ FOR(i,1,n){
     }
     return r;
 }
+vector&lt;int&gt; PR;
+inline bool PAL(int l,int r){//判回文串（原理：判以(l+r)/2为中心的回文半径是否为l到r的长度）
+    return PR[r+l-1]-1==(r-l+1);//为什么要减一，看看上面的马拉车开头部分
+    //注意，这里双等号表示所求目标回文串不能是任何其他回文串的中心
+    //改成&gt;=的话，就可以略去以上条件
+}
+</code></pre>
+<h3 id="字符串单哈希-来自hireathsoul可能有点慢不知道是不是base取太大了">字符串单哈希 (来自Hireathsoul，可能有点慢，不知道是不是base取太大了)</h3>
+<p>给定一个字符串，O(n)预处理，O(1)下判断字符串子串相等的工具</p>
+<pre><code class="language-cpp">mt19937_64 rnd((ull)time(0));//随机数
+ll hshb[]={2663545921,1000000019,1000000033,1000000061,1000000069,1000000097};
+struct HASH{//带前导无效字符，下标从1开始
+    int n;
+    std::vector&lt;ll&gt; hsh,H;
+    ll p,base;
+    HASH(const std::string &amp;s):n(s.size()),hsh(n),H(n){
+        base=hshb[rnd()%6];//随机模数，防止被卡
+        p = 1234567891;
+        hsh[0] = 1;
+        for (int i = 1; i &lt;= n - 1; ++i){
+            hsh[i] = hsh[i - 1] * base % p;
+            H[i] = (H[i - 1] * base % p + s[i]) % p;
+        }
+    }
+    ll query(int l, int r){
+        return (H[r] - H[l - 1] * hsh[r - l + 1] % p + p) % p;
+    }
+};
+</code></pre>
+<h3 id="字符串双哈希来自gwtm">字符串双哈希（来自GWTM）</h3>
+<pre><code class="language-cpp">struct Shash{  
+    const ll base[2]={29,31};
+    const ll hashmod[2]={(ll)1e9+9,998244353};
+    array&lt;vector&lt;ll&gt;,2&gt;hsh;
+    array&lt;vector&lt;ll&gt;,2&gt;pwMod;
+    void init(string S){//传入时不需要加前导空字符，会自动加，下标从1开始
+        int n=S.size();S=' '+S;
+        hsh[0].resize(n+1),hsh[1].resize(n+1);
+        pwMod[0].resize(n+1),pwMod[1].resize(n+1);
+        for(int i=0;i&lt;2;++i){
+            pwMod[i][0]=1;
+            for (int j=1;j&lt;=n;++j){
+                pwMod[i][j]=pwMod[i][j-1]*base[i]%hashmod[i];
+                hsh[i][j]=(hsh[i][j-1]*base[i]+S[j])%hashmod[i];
+            }
+        }
+    }
+    pair&lt;ll,ll&gt;get(int l,int r){
+        pair&lt;ll,ll&gt; ans;
+        ans.first=(hsh[0][r]-hsh[0][l-1]*pwMod[0][r-l+1])%hashmod[0];
+        ans.second=(hsh[1][r]-hsh[1][l-1]*pwMod[1][r-l+1])%hashmod[1];
+        ans.first=(ans.first+hashmod[0])%hashmod[0];
+        ans.second=(ans.second+hashmod[1])%hashmod[1];
+        return ans;
+    }
+};
+bool same(Shash &amp;a,int la,int ra,Shash &amp;b,int lb,int rb){//查询
+    return a.get(la,ra)==b.get(lb,rb);
+}
+</code></pre>
+<h3 id="zfunction">zFunction</h3>
+<p>O(1)查询字符串以各个下标为起始下标时，最大的前缀匹配长度，</p>
+<pre><code class="language-cpp">auto zFunction(const std::string &amp;s) {
+    int n = s.size();
+    std::vector&lt;int&gt; z(n);
+    for (int i = 1, l = 0, r = 0; i &lt; n; i++) {
+        if (i &lt; r)
+            z[i] = min(z[i - l], r - i);
+        while (i + z[i] &lt; n and s[i + z[i]] == s[z[i]])
+            z[i]++;
+        if (i + z[i] &gt; r)
+            l = i, r = i + z[i];
+    }
+    z[0]=n;
+    return z;
+}
 </code></pre>
 <h2 id="数据结构">数据结构</h2>
 <h3 id="树状数组">树状数组</h3>
@@ -503,6 +567,8 @@ public:
 </code></pre>
 <h3 id="线段树">线段树</h3>
 <p>区间修改$O(logN)$，区间查询$O(logN)$。</p>
+<p>使用举例：
+求连续子区间的区间与大于m的最小值。建树，然后1到n枚举左端点，如果 $a[i]&lt;m$ ，那么continue，否则在树上二分其右端点。让ans=min(ans,sum(l,r))</p>
 <pre><code class="language-cpp">class SGT{
 public:
     ll M;ll* tree;ll* tag;
@@ -1325,6 +1391,10 @@ cin&gt;&gt;h;getchar();cin&gt;&gt;m;
 <pre><code class="language-cpp">if(a==vector&lt;int&gt;(n,a[0]))
 </code></pre>
 <h3 id="wa-并查集别用fa数组查根要用find函数">[WA] 并查集别用fa数组查根，要用find函数</h3>
+<h3 id="tip-cp的sum函数">[TIP] cp的sum函数</h3>
+<pre><code class="language-cpp">//begin(a)=&gt;a.begin()
+std::accumulate(begin(a), end(a), 0)
+</code></pre>
 <pre><code>前面的区域以后再来探索吧！
 </code></pre>
               
