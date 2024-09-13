@@ -41,8 +41,8 @@ import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = 
 直接上代码，经过适当的参数选取，可以将flag打印地好看一点：
 import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = wav.read(&#39;flag.wav&#39;)#print(len(wavsignal))#151791offset = 10 # y轴偏移矫正length = 151791 // 20 // 50 - 51 # 粗略估算每个波的波长image = Image.new(&quot;RGBA&quot;, (1500, 200), (0, 0, 0))for i in range(offset, 151791, length):if (i &#43; length - 1) // length &gt;= 1500: breakmx = 0padding = int((i // length) / 4.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="BaseCTF">
-<meta name="twitter:title" content="BaseCTF">
+<meta property="og:title" content="[BaseCTF] 个人题解">
+<meta name="twitter:title" content="[BaseCTF] 个人题解">
 <meta property="og:url" content="https://xiaoxiauwu.github.io/post/ctf/basectf/">
 <meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/ctf/basectf/">
 <meta property="og:site_name" content="夏のBLOG">
@@ -67,16 +67,12 @@ import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = 
   
   
     
-      <meta property="article:section" content="category">
-    
-      <meta property="article:section" content="subcategory">
+      <meta property="article:section" content="CTF">
     
   
   
     
-      <meta property="article:tag" content="tag1">
-    
-      <meta property="article:tag" content="tag2">
+      <meta property="article:tag" content="wav">
     
   
 
@@ -95,15 +91,15 @@ import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = 
 
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="og:image" content="https://s21.ax1x.com/2024/09/11/pAmbQzD.jpg">
+  <meta property="twitter:image" content="https://s21.ax1x.com/2024/09/11/pAmbQzD.jpg">
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="og:image" content="https://s21.ax1x.com/2024/09/11/pAmbQzD.jpg">
+  <meta property="twitter:image" content="https://s21.ax1x.com/2024/09/11/pAmbQzD.jpg">
 
 
-    <title>BaseCTF</title>
+    <title>[BaseCTF] 个人题解</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
@@ -278,13 +274,13 @@ import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = 
   <div class="post-header-cover
               text-center
               post-header-cover--full"
-       style="background-image:url('/images/cover.jpg')"
+       style="background-image:url('https://s21.ax1x.com/2024/09/11/pAmbQzD.jpg')"
        data-behavior="5">
     
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      BaseCTF
+      [BaseCTF] 个人题解
     </h1>
   
   
@@ -301,9 +297,7 @@ import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = 
   
     <span>in</span>
     
-      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/category">category</a>, 
-    
-      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/subcategory">subcategory</a>
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/ctf">CTF</a>
     
   
 
@@ -320,7 +314,7 @@ import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = 
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">文章cover图片描述</span>
+            <span class="post-header-cover-caption caption">打完ICPC网络赛再回来玩</span>
           
           
           <div class="post-content markdown">
@@ -2008,9 +2002,7 @@ print(&quot;BaseCTF{&quot; + MD5(FLAG[:-1]) + &quot;}&quot;)#BaseCTF{dc45a2a228f
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/tag1/">tag1</a>
-
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/tag2/">tag2</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/wav/">wav</a>
 
                   </div>
                 
