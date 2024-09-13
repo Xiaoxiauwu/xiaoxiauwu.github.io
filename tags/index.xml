@@ -6,8 +6,22 @@
     <description>Recent content in Tags on 夏のBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 11 Sep 2024 01:54:38 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 Sep 2024 03:38:25 +0800</lastBuildDate>
     <atom:link href="https://xiaoxiauwu.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>tag1</title>
+      <link>https://xiaoxiauwu.github.io/tags/tag1/</link>
+      <pubDate>Thu, 12 Sep 2024 03:38:25 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/tags/tag1/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>tag2</title>
+      <link>https://xiaoxiauwu.github.io/tags/tag2/</link>
+      <pubDate>Thu, 12 Sep 2024 03:38:25 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/tags/tag2/</guid>
+      <description></description>
+    </item>
     <item>
       <title>wav</title>
       <link>https://xiaoxiauwu.github.io/tags/wav/</link>

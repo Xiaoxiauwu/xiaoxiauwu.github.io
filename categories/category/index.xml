@@ -6,14 +6,14 @@
     <description>Recent content in category on 夏のBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 09 Feb 2024 16:19:39 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 12 Sep 2024 03:38:25 +0800</lastBuildDate>
     <atom:link href="https://xiaoxiauwu.github.io/categories/category/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Python</title>
-      <link>https://xiaoxiauwu.github.io/post/python/</link>
-      <pubDate>Fri, 09 Feb 2024 16:19:39 +0800</pubDate>
-      <guid>https://xiaoxiauwu.github.io/post/python/</guid>
-      <description></description>
+      <title>BaseCTF</title>
+      <link>https://xiaoxiauwu.github.io/post/ctf/basectf/</link>
+      <pubDate>Thu, 12 Sep 2024 03:38:25 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/post/ctf/basectf/</guid>
+      <description>Misc [Fin] osc 拿到附件后打开是个wav文件，文件头文件尾经检查均正常，没有附加额外信息。&#xA;拖到Audacity里查看频谱图，可以隐约的看到“CTF”三个字母，推测这个就是flag。 题目是osc（示波器），解题关键应该和波形有关，放大查看构成字符“F”的波形。 可以观察到波谷呈从“|”到“:”的变化（只看每个周期的前半段最低处），正好对应字符“F”从左向右用一个竖线扫描时，扫出的图案。推测字符是由每个波的前半个周期，波谷处形成的。&#xA;对左边八个已知字符（&amp;ldquo;BaseCTF{“）分析，结果与猜想均吻合。&#xA;直接上代码，经过适当的参数选取，可以将flag打印地好看一点：&#xA;import scipy.io.wavfile as wav&#xD;from PIL import Image, ImageDraw&#xD;rt, wavsignal = wav.read(&#39;flag.wav&#39;)&#xD;#print(len(wavsignal))#151791&#xD;offset = 10 # y轴偏移矫正&#xD;length = 151791 // 20 // 50 - 51 # 粗略估算每个波的波长&#xD;image = Image.new(&amp;quot;RGBA&amp;quot;, (1500, 200), (0, 0, 0))&#xD;for i in range(offset, 151791, length):&#xD;if (i + length - 1) // length &amp;gt;= 1500: break&#xD;mx = 0&#xD;padding = int((i // length) / 4.</description>
     </item>
   </channel>
 </rss>
