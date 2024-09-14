@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/xiaoxiauwu.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "XiaoXia",
+    
+    "image": "https://xiaoxiauwu.github.io/images/avatar.jpg"
+    
+  },
+  "name":"夏のBLOG",
+  "description":"",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/debug\/",
+  "keywords":"[tech, C\u002b\u002b, python, study]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.121.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="XiaoXia">
+<meta name="keywords" content="tech, C&#43;&#43;, python, study">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="[ACM] 个人常见问题">
+<meta name="twitter:title" content="[ACM] 个人常见问题">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/debug/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/debug/">
+<meta property="og:site_name" content="夏のBLOG">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2024-09-15T05:01:09">
+  
+  
+    <meta property="article:modified_time" content="2024-09-15T05:01:09">
+  
+  
+  
+    
+      <meta property="article:section" content="c&#43;&#43;">
+    
+      <meta property="article:section" content="模版">
+    
+  
+  
+    
+      <meta property="article:tag" content="ACM">
+    
+      <meta property="article:tag" content="算法">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+
+
+    <title>[ACM] 个人常见问题</title>
+
+    <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/debug/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiaoxiauwu.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://xiaoxiauwu.github.io/css/codeblock.css">
+      
+    
+
+    
+      
+    
+    
+
+
+<script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202401110101/show_ads_impl_fy2021.js" id="google_shimpl"></script>
+<script>
+      MathJax = {
+         tex: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true,
+            tags: 'ams',
+         },
+      };
+   </script>
+<script type="text/javascript" async="" src="https://wuli.wiki/MathJax3/es5/tex-mml-chtml.js"></script>
+
+<script async src="https://xiaoxiauwu.github.io/js/busuanzi.pure.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade"></head>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+<script src="https://xiaoxiauwu.github.io/js/cp.js"></script>
+<link rel="stylesheet" type="text/css" href="https://xiaoxiauwu.github.io/css/copy.css" />
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiaoxiauwu.github.io/" aria-label="Go to homepage">夏のBLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiaoxiauwu.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+
+
+<div  class="meta-item">&nbsp·&nbsp
+  <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+</div>
+
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiaoxiauwu.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">XiaoXia</h4>
+        
+          <h5 class="sidebar-profile-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Xiaoxiauwu" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.totorocatcat.top" target="_blank" rel="noopener" title="Totoroの小窝">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-link" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Totoroの小窝</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('/images/cover.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      [ACM] 个人常见问题
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2024-09-15T05:01:09&#43;08:00">
+        
+  September 15, 2024
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/c&#43;&#43;">c&#43;&#43;</a>, 
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/%e6%a8%a1%e7%89%88">模版</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" id="top">
+          
+            <span class="post-header-cover-caption caption">明天吃什么</span>
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <!-- raw HTML omitted -->
+<p>因为影响板子空间，所以现在特将其从板子区分离出来，自成一文。</p>
+<h2 id="tipswa">TIPS&amp;WA</h2>
+<p>这里记录收集到的一些小技巧和注意事项（大部分和STL相关）。</p>
+<h3 id="tip-获取一个整数二进制位数">[TIP] 获取一个整数二进制位数</h3>
+<p>正常做法是写循环位运算，</p>
+<pre><code class="language-cpp">int cnt=0;
+while(x){x&gt;&gt;=1;cnt++;}
+</code></pre>
+<p>但是如果直接用log2函数，写法上会更简洁更快（注意，测了一下，x小于1ll&laquo;16时，循环位移运算会快一点）</p>
+<pre><code class="language-cpp">inline int len(ll x){//获取二进制位数（记得#include&lt;cmath&gt;）
+    return x&gt;0?log2l(x)+1:0;
+}
+//log这里不需要写int，因为返回值自动设为int了
+
+如果你要卡常，试试下面的写法：
+inline int len(ll x){
+    if(x&lt;=(1ll&lt;&lt;16)){
+        int cnt=0;
+        while(x){x&gt;&gt;=1;cnt++;}
+    }
+    return x&gt;0?log2l(x)+1:0;
+}
+
+</code></pre>
+<h3 id="tipwa-位运算相关">[TIP/WA] 位运算相关</h3>
+<ul>
+<li>
+<p>按位左移，正数负数最左边补符号位（除开符号位的最左边）；按位右移，正数负数最右边都补0；无符号数当正数处理；</p>
+</li>
+<li>
+<p>含有对高达$10^{18}$的数进行位运算的题，在对表达式进行左移时记得开ll，比如</p>
+<pre><code class="language-cpp">1ll&lt;&lt;n
+</code></pre>
+</li>
+<li>
+<p>使用~进行按位取反操作，包括符号位。</p>
+<p>可以用~构造INF：</p>
+<pre><code class="language-cpp">ll INF=(((ull)~0)&gt;&gt;1);
+</code></pre>
+</li>
+<li>
+<p>使用__builtin_popcount()获取一个数二进制下1的个数</p>
+</li>
+</ul>
+<h3 id="tipwa-获取带空格的整行输入">[TIP/WA] 获取带空格的整行输入</h3>
+<p>洛谷的字符串题总是喜欢带一堆连续空格，还要求你不能忽略这些空格，这时候就需要用到$$getline(cin,t)$$了。
+(什么？不喜欢iostream？那去这里选一个你喜欢的款式：<a href="https://blog.csdn.net/CSDNFANSO/article/details/111824139">C/C++如何整行输入</a>，我就不一一列举了)</p>
+<h3 id="wa-sort函数与string数组">[WA] sort函数与string数组</h3>
+<p>两个string之间的比较也是要花时间的，若数组大小为 $n$，string长度为 $m$，则sort(a,a+n)的时间复杂的是 $O(nmlogn)$</p>
+<h3 id="tipwa-forauto-ia问题">[TIP/WA] for(auto &amp;i:a)问题</h3>
+<p>在for(auto &amp;i:a)循环体中对i修改直接反映于原迭代体a，但是不能在这种循环体中往a继续添加元素，不然会报错。</p>
+<p>初始化vector数组时可以利用这个特性减少代码量：</p>
+<pre><code class="language-cpp">vector&lt;int&gt; a(n);
+for(auto&amp; i:a)cin&gt;&gt;i;
+</code></pre>
+<h3 id="tip-nth_element与sort">[TIP] nth_element()与sort()</h3>
+<p>二者都可以求数组中第 $k$ 大，sort得先对数据进行 $O(n\log n)$ 的排序，再a[k]调用，而nth_element()则只需花 $O(n)$ 的时间进行部分排序，即可使得数组中第 $k$ 大的数就位，且其左边的数都比它小，右边的数都比它大</p>
+<h3 id="tip-和python类似的多行字符串输入">[TIP] 和python类似的多行字符串输入</h3>
+<p>使用R&quot;(多行内容)&quot;，即可完成，多行字符串的存储。和python的
+&lsquo;&lsquo;&lsquo;多行内容&rsquo;&lsquo;&lsquo;差不多。</p>
+<h3 id="wa-取模问题">[WA] 取模问题</h3>
+<p>有时候可能会遇到一个式子内的取模符号太多，导致很容易丢失重要信息，比如该模的式子没有取模：</p>
+<pre><code class="language-cpp">cout&lt;&lt;(((pre[n]-(ans&gt;0)*ans)%M+(ans&gt;0)*(ans*powp(2,k)%M)%M)%M+M)%M&lt;&lt;ET;
+//某场div2上，有个ans忘记取模了，导致一直WA2，怎么也调不出问题，赛后补上这个%M就AC了：
+cout&lt;&lt;(((pre[n]-(ans&gt;0)*ans)%M+(ans&gt;0)*((ans%M)*powp(2,k)%M)%M)%M+M)%M&lt;&lt;ET;
+</code></pre>
+<p>这时候可以考虑开一个函数来处理取模，化繁为简：</p>
+<pre><code class="language-cpp">inline ll MO(ll x){return (x%M+M)%M;}
+cout&lt;&lt;MO(MO(pre[n]-(ans&gt;0)*ans)+(ans&gt;0)*MO(MO(ans)*MO(powp(2,k))))&lt;&lt;ET;
+//虽然看着好像差不了多少的样子，但是起码不用再受到%M+M)%M的折磨了
+</code></pre>
+<h3 id="wa-python-的高精度问题">[WA] Python 的高精度问题</h3>
+<p>有些高精度的题，如果想用python来水的话，要特别注意除法的环节，python在除法时，会把结果转成float，而float型是不支持高精度运算的。所以这时候我们就需要整除。</p>
+<h3 id="wa-map的遍历问题">[WA] map的遍历问题</h3>
+<p>用for(auto &amp;[key,v]:mp){}即可</p>
+<p>但是不知道为什么，上次写了个for(auto &amp;[key1,v1]:mp)for(auto &amp;[key2,v2]:mp)结果TLE了，还以为自己写的不是正解。</p>
+<p>破案了，map的下标访问是 $O(logn)$ 的，所以TLE了</p>
+<h3 id="wa-forll-i0ini问题">[WA] for(ll i=0;i&lt;n;i++)问题</h3>
+<p>非必要别用ll写for循环，ll的运算比int运算慢了一倍，小心被卡常卡掉。</p>
+<h3 id="wa-lower_bound问题">[WA] lower_bound()问题</h3>
+<p>这个不是“返回指向第一个小于v的元素的迭代器”的意思，而是“返回指向第一个大于等于v的元素的迭代器”的意思，要想返回第一个小于等于的元素，我建议自己手写一个二分吧。</p>
+<h3 id="wa-素数筛问题">[WA] 素数筛问题</h3>
+<p>p数组别开小了，素数只是少，不代表它小，你100000的数据，开2024大小的数组跑素数筛是想WA几次？（Luogu P1621 集合）</p>
+<h3 id="tip-处理倍数的一个技巧">[TIP] 处理倍数的一个技巧</h3>
+<p>使用 (a+k-1)/k*k 可以得到大于等于a的第一个k的倍数。</p>
+<h3 id="wa-马拉车的r查回文子串">[WA] 马拉车的R[]查回文子串</h3>
+<p>菜就多练，别背个板子，抄了还不会用。如果很不太会写怎么验字符串子串是不是回文串，那就直接封装个函数，然后就只需要调这个函数就行了。你问常数？我的建议是，如果你题都没法AC，那怕被卡常而省运行时间又有何用？</p>
+<pre><code class="language-cpp">vector&lt;int&gt; PR;
+inline bool PAL(int l,int r){
+    return PR[r+l-1]-1==(r-l+1);
+}
+</code></pre>
+<p>(Codeforce Global Round 25 E)</p>
+<h3 id="wa-vector去重">[WA] vector去重</h3>
+<p>vector去重的步骤是，先sort，再unique，最后erase，别把sort忘了</p>
+<pre><code class="language-cpp">sort(a.begin(),a.end());
+a.erase(unique(a.begin(),a.end()),a.end());
+</code></pre>
+<h3 id="tip-数据输入格式">[TIP] 数据输入格式</h3>
+<p>cin可以读入含前导0的整数，比如说00013的数据，cin读到整数型变量里就变成了13；使用getchar()忽略单个字符</p>
+<p>比如说要获取“03:12”的h和m，可以直接这样写：</p>
+<pre><code class="language-cpp">int h,m;
+cin&gt;&gt;h;getchar();cin&gt;&gt;m;
+</code></pre>
+<h3 id="tip-计算几何计算距离的快速写法">[TIP] 计算几何计算距离的快速写法</h3>
+<p>正常是这样写：</p>
+<pre><code class="language-cpp">ld d=sqrtl((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
+</code></pre>
+<p>有点麻烦，如果不在意函数的常数的话，可以使用cmath的函数求</p>
+<pre><code class="language-cpp">ld d=hypot(x1-x2,y1-y2); +
+</code></pre>
+<h3 id="wa-unordered类型容器">[WA] unordered类型容器</h3>
+<p>此类容器不能用end和begin来访问，乱写小心CE</p>
+<h3 id="tip-降序排序容器">[TIP] 降序排序容器</h3>
+<p>正常sort(a.begin(),a.end())是升序排序容器，如果想要倒序排序，可以用sort(a.rbegin(),a.rend())来排序，而无序写cmp。</p>
+<h3 id="tip-判断vector内元素是否全相等">[TIP] 判断vector内元素是否全相等</h3>
+<p>[From jiangly]</p>
+<pre><code class="language-cpp">if(a==vector&lt;int&gt;(n,a[0]))
+</code></pre>
+<h3 id="wa-并查集别用fa数组查根要用find函数">[WA] 并查集别用fa数组查根，要用find函数</h3>
+<h3 id="tip-cp的sum函数">[TIP] cp的sum函数</h3>
+<pre><code class="language-cpp">//begin(a)=&gt;a.begin()
+std::accumulate(begin(a), end(a), 0)
+</code></pre>
+<h3 id="tip-stl前缀和">[TIP] STL前缀和</h3>
+<pre><code class="language-cpp">//begin(a)=&gt;a.begin()
+std::partial_sum(a.begin(), a.end(), b.begin());
+</code></pre>
+<h3 id="tip-stl轮换">[TIP] STL轮换</h3>
+<p>少用，O(n)的，你直接变换下标也行</p>
+<pre><code class="language-cpp">//begin(a)=&gt;a.begin()
+std::rotate(a.begin(), a.end(), x);//x指第几号元素会被移位到第一个
+</code></pre>
+<h3 id="tip-快速离散化">[TIP] 快速离散化</h3>
+<p>保证数据两两不同时的快速离散化</p>
+<pre><code class="language-cpp">std::vector&lt;int&gt; p(n);
+std::iota(p.begin(), p.end(), 0);
+std::sort(p.begin(), p.end(), [&amp;](int i, int j){
+	return a[i] &lt; a[j];
+});
+//此时，p的各个元素值代表原数组对应元素排序后的序号（从小到大）
+//1 8 5 3 2 -&gt; 0 4 3 2 1
+</code></pre>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/acm/">ACM</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/todolist/" data-tooltip="[置顶] To Do List" aria-label="PREVIOUS: [置顶] To Do List">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/lgr_200_div4/" data-tooltip="洛谷【LGR-200-Div.4】洛谷入门赛 #27" aria-label="NEXT: 洛谷【LGR-200-Div.4】洛谷入门赛 #27">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/debug\/';
+        
+          this.page.identifier = '\/post\/debug\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 XiaoXia. All Rights Reserved
+  </span>
+
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/todolist/" data-tooltip="[置顶] To Do List" aria-label="PREVIOUS: [置顶] To Do List">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/lgr_200_div4/" data-tooltip="洛谷【LGR-200-Div.4】洛谷入门赛 #27" aria-label="NEXT: 洛谷【LGR-200-Div.4】洛谷入门赛 #27">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">XiaoXia</h4>
+    
+      <div id="about-card-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        华南理工大学
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://xiaoxiauwu.github.io/images/cover_.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiaoxiauwu.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/click.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/sakura.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/cp.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

@@ -6,8 +6,22 @@
     <description>Recent content in 模版 on 夏のBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 28 Feb 2024 20:01:21 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 15 Sep 2024 05:01:09 +0800</lastBuildDate>
     <atom:link href="https://xiaoxiauwu.github.io/categories/%E6%A8%A1%E7%89%88/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>[ACM] 个人常见问题</title>
+      <link>https://xiaoxiauwu.github.io/post/debug/</link>
+      <pubDate>Sun, 15 Sep 2024 05:01:09 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/post/debug/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>[ACM] 模版集（线上赛专用）（随缘更新中）</title>
+      <link>https://xiaoxiauwu.github.io/post/template/</link>
+      <pubDate>Sat, 14 Sep 2024 06:01:21 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/post/template/</guid>
+      <description></description>
+    </item>
     <item>
       <title>[正在填坑] ACM模版集（个人自用，随缘更新中）</title>
       <link>https://xiaoxiauwu.github.io/post/acm/</link>

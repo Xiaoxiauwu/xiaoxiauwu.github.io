@@ -1,47 +1,42 @@
-// start copy-to-clipboard
-(function() {
-  'use strict';
-  if(!document.queryCommandSupported('copy')) {
-    return;
-  }
-  function flashCopyMessage(el, msg) {
-    el.textContent = msg;
-    setTimeout(function() {
-      el.textContent = "Copy";
-    }, 1000);
-  }
-  function selectText(node) {
-    var selection = window.getSelection();
-    var range = document.createRange();
-    range.selectNodeContents(node);
-    selection.removeAllRanges();
-    selection.addRange(range);
-    return selection;
-  }
-  function addCopyButton(containerEl) {
-    var copyBtn = document.createElement("button");
-    copyBtn.className = "highlight-copy-btn";
-    copyBtn.textContent = "Copy";
-    var codeEl = containerEl.firstElementChild;
-    copyBtn.addEventListener('click', function() {
-      try {
-        var selection = selectText(codeEl);
-        document.execCommand('copy');
-        selection.removeAllRanges();
-        flashCopyMessage(copyBtn, 'Copied!')
-      } catch(e) {
-        console && console.log(e);
-        flashCopyMessage(copyBtn, 'Failed :\'(')
-      }
-    });
-    containerEl.appendChild(copyBtn);
-  }
-// Add copy button to code blocks
-  var highlightBlocks = document.getElementsByClassName('codeblock');
-  Array.prototype.forEach.call(highlightBlocks, addCopyButton);
-})();
-//end copy-to-clipboard
-//language-shell codeblock hljs
-//language-c++ codeblock hljs language-c
-//language-cpp codeblock hljs
-//language-python codeblock hljs
+document.addEventListener('DOMContentLoaded', function () {
+	var codeBlocks = document.getElementsByTagName('code');
+
+	for (var i = 0; i < codeBlocks.length; i++) {
+		var codeBlock = codeBlocks[i];
+		if (!codeBlock.classList.contains("cpcode")) {
+			continue;
+		}
+
+		var button = document.createElement('button');
+		button.textContent = '复制代码';
+		button.classList.add('copy-button'); // add CSS class
+		codeBlock.parentNode.insertBefore(button, codeBlock.nextSibling);
+
+		var clipboard = new ClipboardJS(button, {
+			target: function (trigger) {
+				return trigger.previousSibling;
+			}
+		});
+		clipboard.on('success', function (e) {
+			e.clearSelection();
+			var notification = document.createElement('div');
+			notification.textContent = 'Copied!';
+			button.textContent = 'Copied!';
+			notification.classList.add('notification');
+			document.body.appendChild(notification);
+			setTimeout(function () {
+				notification.style.opacity = '0';
+				setTimeout(function () {
+					document.body.removeChild(notification);
+					button.textContent = 'Copy';
+				}, 1000);
+			}, 1000);
+			this.$Tips.tipWarningBox("复制成功");
+			//console.log('已复制到剪贴板:', e.text);
+		});
+		clipboard.on('error', function (e) {
+			console.error('复制失败:', e.action);
+			Toast("复制失败",1500);
+		});
+	}
+});
