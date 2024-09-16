@@ -481,7 +481,7 @@ void solve(){
 <p>设 $ E[i] = P[i]E[i + 1] + Q[i] $，则 $P[1] = 1$，$Q[1] = \frac{a_1 + b_1}{a_1}$</p>
 <p>对 $i (i \ge 2)$ 有如下转移方程：</p>
 <p>$$ E[i] = \frac{a_i^2}{a_i^2 + 2a_ib_i + b_i^2}E[i + 1] + \frac{2a_ib_i}{a_i^2 + 2a_ib_i + b_i^2}E[i] + \frac{b_i^2}{a_i^2 + 2a_ib_i + b_i^2}E[i - 1] + 1 $$</p>
-<p>将 $ E[i] = P[i]E[i] + Q[i] $ 代入到上式的 $E[i - 1]$ 中并移项整理有：</p>
+<p>将 $ E[i] = P[i]E[i + 1] + Q[i] $ 代入到上式的 $E[i - 1]$ 中并移项整理有：</p>
 <p>$$ E[i] = \frac{a_i^2}{a_i^2 + b_i^2 - b_i^2P[i - 1]}E[i + 1] + \frac{b_i^2Q[i - 1] + (a_i + b_i)^2}{a_i^2 + b_i^2 - b_i^2P[i - 1]} $$</p>
 <p>也就是说：</p>
 <p>$$ P[i] = \frac{a_i^2}{a_i^2 + b_i^2 - b_i^2P[i - 1]} $$
