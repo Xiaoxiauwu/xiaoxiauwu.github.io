@@ -17,7 +17,7 @@
   },
   "name":"夏のBLOG",
   "description":"",
-  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_972\/",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/nk_zs_60\/",
   "keywords":"[tech, C\u002b\u002b, python, study]"
 }
 
@@ -33,20 +33,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Codeforces Round 972 (Div. 2)">
-<meta name="twitter:title" content="Codeforces Round 972 (Div. 2)">
-<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cf_972/">
-<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cf_972/">
+<meta property="og:title" content="牛客周赛 Round 60">
+<meta name="twitter:title" content="牛客周赛 Round 60">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/nk_zs_60/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/nk_zs_60/">
 <meta property="og:site_name" content="夏のBLOG">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-09-15T06:39:55">
+    <meta property="article:published_time" content="2024-09-16T17:55:32">
   
   
-    <meta property="article:modified_time" content="2024-09-15T06:39:55">
+    <meta property="article:modified_time" content="2024-09-16T17:55:32">
   
   
   
@@ -60,7 +60,7 @@
     
       <meta property="article:tag" content="题解">
     
-      <meta property="article:tag" content="CF">
+      <meta property="article:tag" content="牛客">
     
   
 
@@ -79,22 +79,22 @@
 
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
+  <meta property="twitter:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
+  <meta property="twitter:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
 
 
-    <title>Codeforces Round 972 (Div. 2)</title>
+    <title>牛客周赛 Round 60</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cf_972/">
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_60/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -265,21 +265,21 @@
   <div class="post-header-cover
               text-center
               post-header-cover--full"
-       style="background-image:url('/images/cover.jpg')"
+       style="background-image:url('https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg')"
        data-behavior="5">
     
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      Codeforces Round 972 (Div. 2)
+      牛客周赛 Round 60
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-09-15T06:39:55&#43;08:00">
+      <time datetime="2024-09-16T17:55:32&#43;08:00">
         
-  September 15, 2024
+  September 16, 2024
 
       </time>
     
@@ -307,116 +307,228 @@
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">打的好唐，C题读错题意了</span>
+            <span class="post-header-cover-caption caption">不会带环期望DP</span>
           
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<h1 id="a-simple-palindrome">A. Simple Palindrome</h1>
+<h1 id="a-困难数学题">A. 困难数学题</h1>
 <h2 id="题意">题意</h2>
-<p>让你构造一个长度为n的，只含5种字符的，回文子串最少的字符串</p>
+<p>求 n xor n xor n xor n</p>
 <h2 id="大概思路">大概思路</h2>
-<p>同种字符内部配对，对回文子串总数的贡献与字符位置无关。但若出现“aba”这种相间的，则会产生额外贡献。根据自觉，不能让整个字符串字符全一样，得尽可能平均。</p>
+<p>求 n xor n xor n xor n</p>
 <h2 id="参考代码">参考代码</h2>
+<p>求 n xor n xor n xor n</p>
 <pre><code class="language-cpp">void solve(){
     int n;
-    cin &gt;&gt; n;
-
-    string s = &quot;aeiou&quot;;
-    vector&lt;int&gt; a(5);
-    for (int i = 0; i &lt; n; i++) {
-        a[i % 5]++;
-    }
-    for (int i = 0; i &lt; 5; i++) {
-        while (a[i]--) cout &lt;&lt; s[i];
-    }
-    cout &lt;&lt; &quot;\n&quot;;
+    std::cin &gt;&gt; n;
+    std::cout &lt;&lt; (n ^ n ^ n ^ n);
 }
 </code></pre>
-<h1 id="b2-the-strict-teacher-hard-version">B2. The Strict Teacher (Hard Version)</h1>
+<p>其实当时想到了可以直接输出0，但是为了保险一点就按照题目说的模拟了</p>
+<h1 id="b-构造序列">B. 构造序列</h1>
 <h2 id="题意-1">题意</h2>
-<p>n个格子，上面有m个老师，进行q次询问，每次要回答“若学生在x处，则老师抓到学生的最短时间是多少”，老师学生互相能看到行动，所以都会最优地移动。（老师学生同时移动，每次都只能移动一格，或者原地不动）</p>
+<p>给你 nn 个正数和 mm 个负数，请你使用这些数字，构造一个序列。</p>
+<p>序列需要满足：正数不能和正数相邻，负数不能和负数相邻。</p>
+<p>那么，最多能构造多长的序列？</p>
 <h2 id="大概思路-1">大概思路</h2>
-<p>贪心，分类讨论学生在最左边的老师的左边和最右边的老师的右边的情况，以及被两个老师夹住的情况就行</p>
+<p>贪心，选择较少的，乘2，然后判断较多的能不能补一个</p>
 <h2 id="参考代码-1">参考代码</h2>
 <pre><code class="language-cpp">void solve(){
-    int n, m, q;
-    cin &gt;&gt; n &gt;&gt; m &gt;&gt; q;
-    
-    vector&lt;int&gt; p(m);
-    for (auto &amp;i : p) cin &gt;&gt; i;
-
-    sort(p.begin(), p.end());
-
-    while (q--) {
-        int x;
-        cin &gt;&gt; x;
-
-        auto it = upper_bound(p.begin(), p.end(), x);
-
-        if (it == p.end()) {
-            cout &lt;&lt; n - p.back() &lt;&lt; &quot;\n&quot;;
-            continue;
-        }
-        if (it == p.begin()) {
-            cout &lt;&lt; p.front() - 1 &lt;&lt; &quot;\n&quot;;
-            continue    ;
-        }
-
-        int i = it - p.begin();
-        cout &lt;&lt; (p[i] - p[i - 1]) / 2 &lt;&lt; &quot;\n&quot;;
-    }
+    int n, m;
+    std::cin &gt;&gt; n &gt;&gt; m;
+    std::cout &lt;&lt; 2 * std::min(n, m) + (n != m);
 }
 </code></pre>
-<h1 id="c-lazy-narek">C. Lazy Narek</h1>
+<h1 id="c-连点成线">C. 连点成线</h1>
 <h2 id="题意-2">题意</h2>
-<p>给定n个长度为m的字符串，从中不改变顺序的情况下选任意的字符串拼接到一起，然后从左到右依次匹配 &ldquo;n&rdquo;, &ldquo;a&rdquo;, &ldquo;r&rdquo;, &ldquo;e&rdquo;, 和 &ldquo;k&rdquo;，循环匹配，要是遗漏了任何一个&quot;narek&quot;字符，GPT得1分，否则，每匹配成功一个&quot;narek&quot;，玩家得一分。问玩家得分 $score_n$ 和 GPT得分 $score_c$ 的差值最大为多少</p>
+<p>小红有一个 n×n 大小的格子棋盘，我们使用 (i,j) 表示棋盘中从上往下数第 i 行和从左往右数第 j 列的单元格。棋盘上有 m 个棋子，第 i 个棋子的坐标是 (xi,yi) 。</p>
+<p>对于一对棋子 i 和 j ，如果满足 xi​=xj​ 或者 yi​=yj​ ，则两个棋子之间可以连线。</p>
+<p>小红有点无聊，于是她把能连的线都连上了。现在，她想知道，最长的那条线，长度是多少。</p>
+<p>特别地，如果连线数量为 0 ，则输出 0 。</p>
 <h2 id="大概思路-2">大概思路</h2>
-<p><em>一开始看错题了，写了个逆天4维dp</em></p>
-<p>考虑dp转移，设dp[i][j]代表考虑到第i个字符串时，以5个字符的第j个字符结尾时的差值最大值。</p>
-<p>设从字符结尾为第j个开始，若选了第i个字符串，最后的字符结尾为k，得分变化为S，那么转移方程如下：</p>
-<p>$$ dp[i + 1][k] = max(dp[i + 1][k], dp[i][j] + S) $$</p>
-<p>然后注意边界条件和一些转移的细节就行。</p>
+<p>暴力map，统计每行最左，每行最右，每列最上面，每列最下面的，然后动态更新答案即可</p>
 <h2 id="参考代码-2">参考代码</h2>
-<pre><code class="language-cpp">std::string mt = &quot;narek&quot;;
+<pre><code class="language-cpp">void solve(){
+    int n, m;
+    std::cin &gt;&gt; n &gt;&gt; m;
+    
+    std::map&lt;int, int&gt; L, R, U, D;
+    int ans = 0;
+    while (m--) {
+        int x, y;
+        std::cin &gt;&gt; x &gt;&gt; y;
+        if (L.count(y)) {
+            L[y] = std::min(L[y], x);
+            R[y] = std::max(R[y], x);
+        } else {
+            L[y] = R[y] = x;
+        }
+        if (U.count(x)) {
+            D[x] = std::min(D[x], y);
+            U[x] = std::max(U[x], y);
+        } else {
+            D[x] = U[x] = y;
+        }
+        ans = std::max(ans, R[y] - L[y]);
+        ans = std::max(ans, U[x] - D[x]);
+    }
+    std::cout &lt;&lt; ans;
+}
+</code></pre>
+<h1 id="d-我们n个真是太厉害了">D. 我们N个真是太厉害了</h1>
+<h2 id="题意-3">题意</h2>
+<p>给你 n 个数，问你对于1 到 n任意一个数i，是否都存在一个子集和为i。</p>
+<h2 id="大概思路-3">大概思路</h2>
+<p>sort一下，从小到大一个个更新MEX，如果当前的数a[i]大于MEX，那么没法再更新了（因为MEX覆盖不到），直接输出MEX；否则更新MEX为MEX + a[i]。</p>
+<h2 id="参考代码-3">参考代码</h2>
+<pre><code class="language-cpp">void solve(){
+    int n;
+    std::cin &gt;&gt; n;
+    
+    std::vector&lt;int&gt; a(n);
+    for (auto &amp;i : a) std::cin &gt;&gt; i;
+    
+    std::sort(a.begin(), a.end());
+    
+    int MEX = 1;
+    for (auto &amp;i : a) {
+        if (i &gt; MEX) {
+            std::cout &lt;&lt; MEX &lt;&lt; &quot;\n&quot;;
+            return;
+        } else {
+            MEX = std::min(n + 1, MEX + i);
+        }
+        
+        if (MEX == n + 1) {
+            std::cout &lt;&lt; &quot;Cool!\n&quot;;
+            return;
+        }
+    }
+    std::cout &lt;&lt; MEX &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h1 id="e-折返跑">E. 折返跑</h1>
+<h2 id="题意-4">题意</h2>
+<p>笔直的跑道可以看作是一条数轴。跑道上有 n 个点位，其中，老师在 1 点和 n 点处各放了两根杆子，称为左杆和右杆，作为折返跑的折返点。</p>
+<p>老师规定，今天一共需要跑 m 趟。我们认为，从一根杆子开始，跑到另一根杆子结束为一趟，显然，一共需要进行 m−1 次折返。Zaoly偶然发现，杆子是可推动的，所以他有了一个大胆的想法——</p>
+<ul>
+<li>
+<p>每次跑至右杆折返后，都需要把右杆向左推动一段距离（大于 0），但仍保证右杆位于整数点，且在左杆的右边（不能与左杆重合）；</p>
+</li>
+<li>
+<p>每次跑至左杆折返后，都需要把左杆向右推动一段距离（大于 0），但仍保证左杆位于整数点，且在右杆的左边（不能与右杆重合）；</p>
+</li>
+</ul>
+<p>现在，给出整数 n 和 m 的值，请问Zaoly一共有多少种不同的推杆方法？由于答案可能很大，请将答案对 $(10^9+7)$ 取模后输出。注意，每次折返时都需要推杆，如果某一轮无法推动，则这一轮推杆非法。</p>
+<h2 id="大概思路-4">大概思路</h2>
+<p>纸上分析一下样例 &ldquo;4 3&rdquo; 和 &ldquo;5 3&rdquo;，很容易发现答案就是 $C_{n - 2}^{m - 1}$。</p>
+<h2 id="参考代码-4">参考代码</h2>
+<pre><code class="language-cpp">constexpr int M = 1e9 + 7;
+i64 powp(i64 a, i64 n) {
+    i64 ans = 1;
+    while (n) {
+        if (n &amp; 1) (ans *= a) %= M;
+        (a *= a) %= M;
+        n &gt;&gt;= 1;
+    }
+    return ans;
+}
+
+i64 inv(i64 x) {
+    return powp(x, M - 2);
+}
+
+constexpr int N = 1e6 + 1;
+
+i64 fac[N], invfac[N];
+ 
+void pre() {
+    fac[0] = invfac[0] = 1;
+    for (int i = 1; i &lt; N; i++) fac[i] = fac[i-1] * i % M;
+    invfac[N - 1] = inv(fac[N - 1]);
+    for (int i = N - 2; i &gt;= 1; i--) invfac[i] = invfac[i + 1] * (i + 1) % M;
+}
+ 
+i64 C(i64 n,i64 m) {
+    if (m &gt; n) return 0;
+    return fac[n] * invfac[n - m] % M * invfac[m] % M;
+}
 
 void solve(){
     int n, m;
     std::cin &gt;&gt; n &gt;&gt; m;
-
-    std::vector&lt;std::string&gt; a(n);
-    for (auto &amp;s : a) std::cin &gt;&gt; s;
-    std::vector&lt;std::array&lt;i64, 5&gt;&gt; dp(n + 1);
-
-    auto wk = [&amp;](int now, int i) -&gt; std::pair&lt;i64, i64&gt; {
-        std::string&amp; s = a[i];
-        int ans = 0;
-        for (int i = 0; i &lt; m; i++) {
-            if (s[i] == mt[now]) {
-                now++;
-                if (now == 5) ans += 10, now = 0;
-            }
-            if (mt.find(s[i]) != -1) ans--;
-        }
-        return {now, ans};
-    };
-
-    for (int i = 0; i &lt;= n; i++)for (int j = 0; j &lt; 5; j++) {
-        dp[i][j] = -2e9;
+    
+    std::cout &lt;&lt; C(n - 1 - 1, m - 1) &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h1 id="f-口吃">F. 口吃</h1>
+<h2 id="题意-5">题意</h2>
+<p>Zaoly要讲一句话，这句话有 n 个字，他要一个字一个字讲出来。奈何 Zaoly 口吃：</p>
+<ul>
+<li>讲到第 1 个字时，下一个要讲的字有 $\frac{​a_1}{a_1​+b_1}$​​ 的概率前进到第 2 个字，有 $\frac{b_1}{a_1​+b_1}$​ 的概率仍是第 1 个字。</li>
+<li>讲到第 i（2≤i≤n−1）个字时，下一个要讲的字有 $\frac{a_i^2}{a_i^2 + 2a_ib_i + b_i^2}$​​ 的概率前进到第 i+1 个字，有 $\frac{2a_ib_i}{a_i^2 + 2a_ib_i + b_i^2}$ 的概率仍是第 i 个字，有 $\frac{b_i^2}{a_i^2 + 2a_ib_i + b_i^2}$​​ 的概率倒退到第 i−1 个字。</li>
+<li>讲到第 n 个字时，讲话完毕，停止讲话。</li>
+</ul>
+<p>直到讲话完毕，Zaoly总共讲出的字数的期望是多少？</p>
+<h2 id="大概思路-5">大概思路</h2>
+<p>一眼带环的期望dp（为什么带环？因为可以从后面的状态转移到之前的状态），所以不能用普通的期望dp一直往后推，而是要用高斯消元的方法。</p>
+<p>注意到第一项只有一个自环和向前推进。列出转移方程：</p>
+<p>$$ E[1] = \frac{a_1}{a_1 + b_1}E[2] + \frac{b_1}{a_1 + b_1}E[1] + 1$$</p>
+<p>移项整理有：</p>
+<p>$$ E[1] = E[2] + \frac{a_1 + b_1}{a_1}$$</p>
+<p>设 $ E[i] = P[i]E[i + 1] + Q[i] $，则 $P[1] = 1$，$Q[1] = \frac{a_1 + b_1}{a_1}$</p>
+<p>对 $i (i \ge 2)$ 有如下转移方程：</p>
+<p>$$ E[i] = \frac{a_i^2}{a_i^2 + 2a_ib_i + b_i^2}E[i + 1] + \frac{2a_ib_i}{a_i^2 + 2a_ib_i + b_i^2}E[i] + \frac{b_i^2}{a_i^2 + 2a_ib_i + b_i^2}E[i - 1] + 1 $$</p>
+<p>将 $ E[i] = P[i]E[i] + Q[i] $ 代入到上式的 $E[i - 1]$ 中并移项整理有：</p>
+<p>$$ E[i] = \frac{a_i^2}{a_i^2 + b_i^2 - b_i^2P[i - 1]}E[i + 1] + \frac{b_i^2Q[i - 1] + (a_i + b_i)^2}{a_i^2 + b_i^2 - b_i^2P[i - 1]} $$</p>
+<p>也就是说：</p>
+<p>$$ P[i] = \frac{a_i^2}{a_i^2 + b_i^2 - b_i^2P[i - 1]} $$
+$$ Q[i] = \frac{b_i^2Q[i - 1] + (a_i + b_i)^2}{a_i^2 + b_i^2 - b_i^2P[i - 1]} $$</p>
+<p>其和 $E[i]$ 无关，那么我们可以预处理出所有的 $P[i]$, $Q[i]$，再用 $E[i] = P[i]E[i + 1] + Q[i] $倒序推出 $E[1]$ 即可，易知 $E[n] = 1$</p>
+<h2 id="参考代码-5">参考代码</h2>
+<pre><code class="language-cpp">constexpr int M = 1e9 + 7;
+i64 powp(i64 a, i64 n) {
+    i64 ans = 1;
+    while (n) {
+        if (n &amp; 1) (ans *= a) %= M;
+        (a *= a) %= M;
+        n &gt;&gt;= 1;
     }
-    dp[0][0] = 0;
+    return ans;
+}
 
-    for (int i = 0; i &lt; n; i++) {
-        for (int j = 0; j &lt; 5; j++) {
-            dp[i + 1][j] = std::max(dp[i + 1][j], dp[i][j]);
-            auto [N, S] = wk(j, i);
-            dp[i + 1][N] = std::max(dp[i + 1][N], dp[i][j] + S);
-        }
+i64 inv(i64 x) {
+    return powp(x, M - 2);
+}
+
+void solve(){
+    int n;
+    std::cin &gt;&gt; n;
+    std::vector&lt;i64&gt; a(n), b = a;
+    
+    for (int i = 1; i &lt; n; i++) std::cin &gt;&gt; a[i];
+    for (int i = 1; i &lt; n; i++) std::cin &gt;&gt; b[i];
+    
+    std::vector&lt;i64&gt; p(n), q = p;
+    
+    p[1] = 1; q[1] = (a[1] + b[1]) * inv(a[1]) % M;
+    for (int i = 2; i &lt; n; i++) {
+        i64 fm = (a[i] * a[i] % M + b[i] * b[i] % M - b[i] * b[i] % M * p[i - 1] % M + M) % M;
+        fm = inv(fm);
+        p[i] = (a[i] * a[i] % M) * fm % M;
+        q[i] = (b[i] * b[i] % M * q[i - 1] % M + ((a[i] + b[i]) % M) * ((a[i] + b[i]) % M) % M) % M * fm % M;
     }
-    i64 ans = 0;
-    for (int i = 0; i &lt; 5; i++) ans = std::max(ans, dp[n][i]);
-    std::cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+    
+    std::vector&lt;i64&gt; E(n + 1);
+    E[n] = 1;
+    
+    for (int i = n - 1; i &gt;= 1; i--) {
+        E[i] = (p[i] * E[i + 1] % M + q[i]) % M;
+    }
+    
+    std::cout &lt;&lt; E[1];
 }
 </code></pre>
               
@@ -434,7 +546,7 @@ void solve(){
                     
   <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E9%A2%98%E8%A7%A3/">题解</a>
 
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/cf/">CF</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%89%9B%E5%AE%A2/">牛客</a>
 
                   </div>
                 
@@ -447,7 +559,7 @@ void solve(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_371/" data-tooltip="AtCoder Beginner Contest 371" aria-label="PREVIOUS: AtCoder Beginner Contest 371">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_972/" data-tooltip="Codeforces Round 972 (Div. 2)" aria-label="PREVIOUS: Codeforces Round 972 (Div. 2)">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -455,7 +567,7 @@ void solve(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_60/" data-tooltip="牛客周赛 Round 60" aria-label="NEXT: 牛客周赛 Round 60">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -498,9 +610,9 @@ void solve(){
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_972\/';
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/nk_zs_60\/';
         
-          this.page.identifier = '\/post\/solution\/cf_972\/'
+          this.page.identifier = '\/post\/solution\/nk_zs_60\/'
         
       };
       (function() {
@@ -544,7 +656,7 @@ void solve(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_371/" data-tooltip="AtCoder Beginner Contest 371" aria-label="PREVIOUS: AtCoder Beginner Contest 371">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_972/" data-tooltip="Codeforces Round 972 (Div. 2)" aria-label="PREVIOUS: Codeforces Round 972 (Div. 2)">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -552,7 +664,7 @@ void solve(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_60/" data-tooltip="牛客周赛 Round 60" aria-label="NEXT: 牛客周赛 Round 60">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
