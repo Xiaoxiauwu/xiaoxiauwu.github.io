@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 
 		var button = document.createElement('button');
-		button.textContent = '复制代码';
+		button.textContent = 'Copy';
 		button.classList.add('copy-button'); // add CSS class
 		codeBlock.parentNode.insertBefore(button, codeBlock.nextSibling);
 
@@ -31,12 +31,12 @@ document.addEventListener('DOMContentLoaded', function () {
 					button.textContent = 'Copy';
 				}, 1000);
 			}, 1000);
-			this.$Tips.tipWarningBox("复制成功");
+			//this.$Tips.tipWarningBox("复制成功");
 			//console.log('已复制到剪贴板:', e.text);
 		});
 		clipboard.on('error', function (e) {
 			console.error('复制失败:', e.action);
-			Toast("复制失败",1500);
+			//Toast("复制失败",1500);
 		});
 	}
 });
