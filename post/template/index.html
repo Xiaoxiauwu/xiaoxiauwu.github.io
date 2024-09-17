@@ -43,10 +43,10 @@
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-09-14T06:01:21">
+    <meta property="article:published_time" content="2024-09-17T06:01:21">
   
   
-    <meta property="article:modified_time" content="2024-09-14T06:01:21">
+    <meta property="article:modified_time" content="2024-09-17T06:01:21">
   
   
   
@@ -277,9 +277,9 @@
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-09-14T06:01:21&#43;08:00">
+      <time datetime="2024-09-17T06:01:21&#43;08:00">
         
-  September 14, 2024
+  September 17, 2024
 
       </time>
     
@@ -593,29 +593,29 @@ i64 C(i64 n,i64 m) {
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
           <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">template&lt;typename T&gt;
 struct BIT {
-	std::vector&lt;T&gt; C;
+	std::vector&lt;T&gt; a;
 	int n;
 	BIT(int n_) {//下标从1开始
-		C.clear();
-		C.resize(n_ &#43; 1);
+		a.clear();
+		a.resize(n_ &#43; 1);
 		n = n_;
 	}
 	BIT() {}
-	BIT(const BIT&amp; bit) {
+	BIT(const BIT&amp; bit) {//[可选] 复制bit（很少用）
 		n = bit.n;
-		C = bit.C;
+		a = bit.a;
 	}
 	T getsum(int x) {//获取[1, x]的和		O(logn)
 	    T s = 0;
 	    while (x) {
-	        s &#43;= C[x];
+	        s &#43;= a[x];
 	        x -= (x &amp;- x);
 	    }
 	    return s;
 	}
-	void add(int x, T key) {//单点增加x的值	O(logn)
+	void add(int x, T val) {//单点增加x处的值	O(logn)
 	    while (x &lt;= n) {
-	        C[x] &#43;= key;
+	        a[x] &#43;= val;
 	        x &#43;= (x &amp;- x);
 	    }
 	}
@@ -1196,19 +1196,22 @@ int main(){
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
           <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">struct LB {
     i64 p[64] = {0};
     int cnt = 0, top = 0;
-    int MB = 50;//小卡一下常（设定上界）
+    int MB = 63;//小卡一下常（设定上界）
+    bool haszero = 0;
+    LB(){}
     template&lt;typename T&gt;
     LB(T &amp;a) {//快速初始化（可以没有）
         for (auto &amp;i : a) push(i);
     }
     void push(i64 x) {//追加元素
-        for (int i = 62; i &gt;= 0; i--) {
+        if (x == 0 || contain(x)) haszero = 1;
+        for (int i = 63; i &gt;= 0; i--) {
             if (x &amp; (1ll &lt;&lt; i)) {
                 if (!p[i]) {
                     p[i] = x;
@@ -1221,20 +1224,24 @@ int main(){
         }
     }
     bool contain(i64 x) {//是否能线性异或出x
-        for (int i = 62; i &gt;= 0; i--) {
+        if (x == 0) return zero();
+        for (int i = 63; i &gt;= 0; i--) {
             if (x &amp; (1ll &lt;&lt; i)) x ^= p[i];
         }
         return x == 0;
     }
+    bool zero() {
+        return haszero;
+    }
     i64 max() {//[可选]最大值
         i64 ans = 0;
-        for (int i = 62; i &gt;= 0; i--) {
+        for (int i = 63; i &gt;= 0; i--) {
             if ((ans ^ p[i]) &gt; ans) ans ^= p[i];
         }
         return ans;
     }
     i64 min() {//[可选]最小值
-        if (contain(0)) return 0;
+        if (zero()) return 0;
         for (int i = 0; i &lt;= 63; i&#43;&#43;) {
             if (p[i]) return p[i];
         }
@@ -1253,7 +1260,9 @@ int main(){
             if (p[i]) d[cnt&#43;&#43;] = p[i];
         }
     }
-    i64 kth(int k) {//[可选]第k大
+    i64 kth(int k) {//[可选]第k小（下标从1开始）
+        k--;
+        if (!zero()) k&#43;&#43;;
         if (k &gt;= (1ll &lt;&lt; cnt)) return -1;
         i64 ans = 0;
         for (int i = MB; i &gt;= 0; i--) {
@@ -1261,15 +1270,15 @@ int main(){
         }
         return ans;
     }
-    int rank(i64 x) {//[可选]排名
-        int ans = 0;
+    i64 rank(i64 x) {//[可选]排名（从小到大，下标从1开始）（如果要查询的数不能被线性异或出，返回的将是“线性基中第一个小于该数的排名”）
+        i64 ans = 0;
         for (int i = cnt - 1; i &gt;= 0; i--) {
             if (x &gt;= d[i]) {
-                ans &#43;= (1 &lt;&lt; i);
+                ans &#43;= (1ll &lt;&lt; i);
                 x ^= d[i];
             }
         }
-        return ans &#43; contain(0);
+        return ans &#43; zero();
     }
 };</code></pre>
         </div>
@@ -2394,7 +2403,7 @@ auto vec=buk.get();//把桶里的东西倒出来
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/ctf/basectf/" data-tooltip="[BaseCTF] 个人题解" aria-label="PREVIOUS: [BaseCTF] 个人题解">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_60/" data-tooltip="牛客周赛 Round 60" aria-label="PREVIOUS: 牛客周赛 Round 60">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -2491,7 +2500,7 @@ auto vec=buk.get();//把桶里的东西倒出来
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/ctf/basectf/" data-tooltip="[BaseCTF] 个人题解" aria-label="PREVIOUS: [BaseCTF] 个人题解">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_60/" data-tooltip="牛客周赛 Round 60" aria-label="PREVIOUS: 牛客周赛 Round 60">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>

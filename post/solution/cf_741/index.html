@@ -17,7 +17,7 @@
   },
   "name":"夏のBLOG",
   "description":"",
-  "url":"https:\/\/xiaoxiauwu.github.io\/post\/debug\/",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_741\/",
   "keywords":"[tech, C\u002b\u002b, python, study]"
 }
 
@@ -33,34 +33,34 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[ACM] 个人常见问题">
-<meta name="twitter:title" content="[ACM] 个人常见问题">
-<meta property="og:url" content="https://xiaoxiauwu.github.io/post/debug/">
-<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/debug/">
+<meta property="og:title" content="Codeforces Round 741 (Div. 2)">
+<meta name="twitter:title" content="Codeforces Round 741 (Div. 2)">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cf_741/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cf_741/">
 <meta property="og:site_name" content="夏のBLOG">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-09-15T05:01:09">
+    <meta property="article:published_time" content="2024-09-17T22:57:31">
   
   
-    <meta property="article:modified_time" content="2024-09-15T05:01:09">
+    <meta property="article:modified_time" content="2024-09-17T22:57:31">
   
-  
-  
-    
-      <meta property="article:section" content="c&#43;&#43;">
-    
-      <meta property="article:section" content="模版">
-    
   
   
     
-      <meta property="article:tag" content="ACM">
+      <meta property="article:section" content="题解">
     
-      <meta property="article:tag" content="算法">
+      <meta property="article:section" content="ACM">
+    
+  
+  
+    
+      <meta property="article:tag" content="题解">
+    
+      <meta property="article:tag" content="CF">
     
   
 
@@ -87,14 +87,14 @@
   <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
 
 
-    <title>[ACM] 个人常见问题</title>
+    <title>Codeforces Round 741 (Div. 2)</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/debug/">
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cf_741/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -271,15 +271,15 @@
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      [ACM] 个人常见问题
+      Codeforces Round 741 (Div. 2)
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-09-15T05:01:09&#43;08:00">
+      <time datetime="2024-09-17T22:57:31&#43;08:00">
         
-  September 15, 2024
+  September 17, 2024
 
       </time>
     
@@ -288,9 +288,9 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/c&#43;&#43;">c&#43;&#43;</a>, 
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/%e9%a2%98%e8%a7%a3">题解</a>, 
     
-      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/%e6%a8%a1%e7%89%88">模版</a>
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/acm">ACM</a>
     
   
 
@@ -307,154 +307,261 @@
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">明天吃什么</span>
+            <span class="post-header-cover-caption caption">不是，为什么大家都说D1出了，D2就很好出？</span>
           
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<p>因为影响板子空间，所以现在特将其从板子区分离出来，自成一文。</p>
-<h2 id="tipswa">TIPS&amp;WA</h2>
-<p>这里记录收集到的一些小技巧和注意事项（大部分和STL相关）。</p>
-<h3 id="tip-获取一个整数二进制位数">[TIP] 获取一个整数二进制位数</h3>
-<p>正常做法是写循环位运算，</p>
-<pre><code class="language-cpp">int cnt=0;
-while(x){x&gt;&gt;=1;cnt++;}
-</code></pre>
-<p>但是如果直接用log2函数，写法上会更简洁更快（注意，测了一下，x小于1ll&laquo;16时，循环位移运算会快一点）</p>
-<pre><code class="language-cpp">inline int len(ll x){//获取二进制位数（记得#include&lt;cmath&gt;）
-    return x&gt;0?log2l(x)+1:0;
-}
-//log这里不需要写int，因为返回值自动设为int了
+<h1 id="a-the-miracle-and-the-sleeper">A. The Miracle and the Sleeper</h1>
+<h2 id="题意">题意</h2>
+<p>让你在一个区间内找一对数，使得较大的数对较小数取模后的结果最大，输出最大值。</p>
+<h2 id="大概思路">大概思路</h2>
+<p>直接贪心地取最大值r，再取max(l, r / 2 + 1)即可，这样返回的取模后的值一定是二者差值</p>
+<h2 id="参考代码">参考代码</h2>
+<pre><code class="language-cpp">void solve(){
+    int l, r;
+    std::cin &gt;&gt; l &gt;&gt; r;
 
-如果你要卡常，试试下面的写法：
-inline int len(ll x){
-    if(x&lt;=(1ll&lt;&lt;16)){
-        int cnt=0;
-        while(x){x&gt;&gt;=1;cnt++;}
-    }
-    return x&gt;0?log2l(x)+1:0;
+    std::cout &lt;&lt; r % std::max(l, (r) / 2 + 1) &lt;&lt; &quot;\n&quot;;
 }
-
 </code></pre>
-<h3 id="tipwa-位运算相关">[TIP/WA] 位运算相关</h3>
+<h1 id="b-scenes-from-a-memory">B. Scenes From a Memory</h1>
+<h2 id="题意-1">题意</h2>
+<p>给你一个不含0的纯数字字符串，让你删除若干个数之后，剩下的数（不改变顺序）是个非质数（1或者合数），求剩下的字符串最短长度以及该字符串</p>
+<h2 id="大概思路-1">大概思路</h2>
+<p>一眼望去还以为是数位dp，但是其实是还算简单的分类讨论。</p>
 <ul>
-<li>
-<p>按位左移，正数负数最左边补符号位（除开符号位的最左边）；按位右移，正数负数最右边都补0；无符号数当正数处理；</p>
-</li>
-<li>
-<p>含有对高达$10^{18}$的数进行位运算的题，在对表达式进行左移时记得开ll，比如</p>
-<pre><code class="language-cpp">1ll&lt;&lt;n
-</code></pre>
-</li>
-<li>
-<p>使用~进行按位取反操作，包括符号位。</p>
-<p>可以用~构造INF：</p>
-<pre><code class="language-cpp">ll INF=(((ull)~0)&gt;&gt;1);
-</code></pre>
-</li>
-<li>
-<p>使用__builtin_popcount()获取一个数二进制下1的个数</p>
-</li>
+<li>如果原字符串里含有“1”，“4”，“6”，“8”，“9”，那么直接输出这个数就行，字符串长度为1。</li>
+<li>如果原字符串中有任何一种字符超过1个，那么输出两个该字符就行，字符串长度为2。</li>
+<li>如果原字符串中出现了2或者5，且不是字符串第一个，那么直接输出前一个数字，以及2或5即可，字符串长度为2。</li>
 </ul>
-<h3 id="tipwa-获取带空格的整行输入">[TIP/WA] 获取带空格的整行输入</h3>
-<p>洛谷的字符串题总是喜欢带一堆连续空格，还要求你不能忽略这些空格，这时候就需要用到$$getline(cin,t)$$了。
-(什么？不喜欢iostream？那去这里选一个你喜欢的款式：<a href="https://blog.csdn.net/CSDNFANSO/article/details/111824139">C/C++如何整行输入</a>，我就不一一列举了)</p>
-<h3 id="wa-sort函数与string数组">[WA] sort函数与string数组</h3>
-<p>两个string之间的比较也是要花时间的，若数组大小为 $n$，string长度为 $m$，则sort(a,a+n)的时间复杂的是 $O(nmlogn)$</p>
-<h3 id="tipwa-forauto-ia问题">[TIP/WA] for(auto &amp;i:a)问题</h3>
-<p>在for(auto &amp;i:a)循环体中对i修改直接反映于原迭代体a，但是不能在这种循环体中往a继续添加元素，不然会报错。</p>
-<p>初始化vector数组时可以利用这个特性减少代码量：</p>
-<pre><code class="language-cpp">vector&lt;int&gt; a(n);
-for(auto&amp; i:a)cin&gt;&gt;i;
-</code></pre>
-<h3 id="tip-nth_element与sort">[TIP] nth_element()与sort()</h3>
-<p>二者都可以求数组中第 $k$ 大，sort得先对数据进行 $O(n\log n)$ 的排序，再a[k]调用，而nth_element()则只需花 $O(n)$ 的时间进行部分排序，即可使得数组中第 $k$ 大的数就位，且其左边的数都比它小，右边的数都比它大</p>
-<h3 id="tip-和python类似的多行字符串输入">[TIP] 和python类似的多行字符串输入</h3>
-<p>使用R&quot;(多行内容)&quot;，即可完成，多行字符串的存储。和python的
-&lsquo;&lsquo;&lsquo;多行内容&rsquo;&lsquo;&lsquo;差不多。</p>
-<h3 id="wa-取模问题">[WA] 取模问题</h3>
-<p>有时候可能会遇到一个式子内的取模符号太多，导致很容易丢失重要信息，比如该模的式子没有取模：</p>
-<pre><code class="language-cpp">cout&lt;&lt;(((pre[n]-(ans&gt;0)*ans)%M+(ans&gt;0)*(ans*powp(2,k)%M)%M)%M+M)%M&lt;&lt;ET;
-//某场div2上，有个ans忘记取模了，导致一直WA2，怎么也调不出问题，赛后补上这个%M就AC了：
-cout&lt;&lt;(((pre[n]-(ans&gt;0)*ans)%M+(ans&gt;0)*((ans%M)*powp(2,k)%M)%M)%M+M)%M&lt;&lt;ET;
-</code></pre>
-<p>这时候可以考虑开一个函数来处理取模，化繁为简：</p>
-<pre><code class="language-cpp">inline ll MO(ll x){return (x%M+M)%M;}
-cout&lt;&lt;MO(MO(pre[n]-(ans&gt;0)*ans)+(ans&gt;0)*MO(MO(ans)*MO(powp(2,k))))&lt;&lt;ET;
-//虽然看着好像差不了多少的样子，但是起码不用再受到%M+M)%M的折磨了
-</code></pre>
-<h3 id="wa-python-的高精度问题">[WA] Python 的高精度问题</h3>
-<p>有些高精度的题，如果想用python来水的话，要特别注意除法的环节，python在除法时，会把结果转成float，而float型是不支持高精度运算的。所以这时候我们就需要整除。</p>
-<h3 id="wa-map的遍历问题">[WA] map的遍历问题</h3>
-<p>用for(auto &amp;[key,v]:mp){}即可</p>
-<p>但是不知道为什么，上次写了个for(auto &amp;[key1,v1]:mp)for(auto &amp;[key2,v2]:mp)结果TLE了，还以为自己写的不是正解。</p>
-<p>破案了，map的下标访问是 $O(logn)$ 的，所以TLE了</p>
-<h3 id="wa-forll-i0ini问题">[WA] for(ll i=0;i&lt;n;i++)问题</h3>
-<p>非必要别用ll写for循环，ll的运算比int运算慢了一倍，小心被卡常卡掉。</p>
-<h3 id="wa-lower_bound问题">[WA] lower_bound()问题</h3>
-<p>这个不是“返回指向第一个小于v的元素的迭代器”的意思，而是“返回指向第一个大于等于v的元素的迭代器”的意思，要想返回第一个小于等于的元素，我建议自己手写一个二分吧。</p>
-<h3 id="wa-素数筛问题">[WA] 素数筛问题</h3>
-<p>p数组别开小了，素数只是少，不代表它小，你100000的数据，开2024大小的数组跑素数筛是想WA几次？（Luogu P1621 集合）</p>
-<h3 id="tip-处理倍数的一个技巧">[TIP] 处理倍数的一个技巧</h3>
-<p>使用 (a+k-1)/k*k 可以得到大于等于a的第一个k的倍数。</p>
-<h3 id="wa-马拉车的r查回文子串">[WA] 马拉车的R[]查回文子串</h3>
-<p>菜就多练，别背个板子，抄了还不会用。如果很不太会写怎么验字符串子串是不是回文串，那就直接封装个函数，然后就只需要调这个函数就行了。你问常数？我的建议是，如果你题都没法AC，那怕被卡常而省运行时间又有何用？</p>
-<pre><code class="language-cpp">vector&lt;int&gt; PR;
-inline bool PAL(int l,int r){
-    return PR[r+l-1]-1==(r-l+1);
+<p>特判完上面两句后，原字符串的构成就只剩下“2”，“3”，“5”，“7”的排列组合了。</p>
+<p>我们直接对剩下所有可能的情况手动打表如下（“-”代表被排除的情况）：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>2</th>
+<th>3</th>
+<th>5</th>
+<th>7</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>-</td>
+<td>23</td>
+<td>-</td>
+<td>$\color{#00ff00}{27}$</td>
+</tr>
+<tr>
+<td>3</td>
+<td>-</td>
+<td>-</td>
+<td>-</td>
+<td>37</td>
+</tr>
+<tr>
+<td>5</td>
+<td>-</td>
+<td>53</td>
+<td>-</td>
+<td>$\color{#00ff00}{57}$</td>
+</tr>
+<tr>
+<td>7</td>
+<td>-</td>
+<td>73</td>
+<td>-</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>可以发现，所有可能情况中，只有27和57是合数，而题目又说给定字符串必定有解，因此我门只需要判断字符串中2或者7的出现情况来选择输出。</p>
+<h2 id="参考代码-1">参考代码</h2>
+<pre><code class="language-cpp">void solve(){
+    int n;
+    std::cin &gt;&gt; n;
+    std::string s;
+    std::cin &gt;&gt; s;
+
+    std::map&lt;char, int&gt; cnt;
+
+    for (auto &amp;c : s) {
+        if (c == '1' || c == '4' || c == '6' || c == '8' || c == '9') {
+            std::cout &lt;&lt; 1 &lt;&lt; '\n' &lt;&lt; c &lt;&lt; &quot;\n&quot;;
+            return;
+        }
+        cnt[c]++;
+    }
+    std::cout &lt;&lt; 2 &lt;&lt; &quot;\n&quot;;
+
+    std::string no5, no2;
+    for (auto &amp;[k, v] : cnt) {
+        if (v &gt;= 2) {
+            std::cout &lt;&lt; k &lt;&lt; k &lt;&lt; '\n';
+            return;
+        }
+    }
+
+    for (int i = n - 1; i &gt;= 0; i--) {
+        if ((s[i] == '2' || s[i] == '5') &amp;&amp; i != 0) {
+            std::cout &lt;&lt; s[i - 1] &lt;&lt; s[i] &lt;&lt; &quot;\n&quot;;
+            return;
+        }
+    }
+
+    if (cnt.count('2')) {
+        std::cout &lt;&lt; &quot;27\n&quot;;
+    } else {
+        std::cout &lt;&lt; &quot;57\n&quot;;
+    }
 }
 </code></pre>
-<p>(Codeforce Global Round 25 E)</p>
-<h3 id="wa-vector去重">[WA] vector去重</h3>
-<p>vector去重的步骤是，先sort，再unique，最后erase，别把sort忘了</p>
-<pre><code class="language-cpp">sort(a.begin(),a.end());
-a.erase(unique(a.begin(),a.end()),a.end());
+<h1 id="c-rings">C. Rings</h1>
+<h2 id="题意-2">题意</h2>
+<p>给定一个01字符串，让你选两个不同的区间（区间长度大于等于字符串总长度的一半），使得区间内的二进制串，一个是另一个的倍数（倍数非负）</p>
+<h2 id="大概思路-2">大概思路</h2>
+<p>贪心一下，注意到“0111101”和“111101”相等（倍数关系为1），以及“1111010”和“111101”成倍数关系，那么我们只要找到字符串中出现0的位置，然后根据位置决定贪心地向左还是贪心地向右取端点即可。</p>
+<p>比如11111111101111，那我们取(1,9),(1,10)显然可行，如果是1111011111111，那么取(5,13),(6,13)即可。</p>
+<p>要注意特判奇数且只有一个0的情况，比如1111110111111，那么我们可以取(1,7),(7,13)。</p>
+<p>然后就剩全1情况了，直接输出(1, n - 1), (2, n)即可。</p>
+<h2 id="参考代码-2">参考代码</h2>
+<pre><code class="language-cpp">void solve(){
+    int n;
+    std::cin &gt;&gt; n;
+    std::string s;
+    std::cin &gt;&gt; s;
+
+    for (int i = 0; i &lt; n / 2; i++) {
+        if (s[i] == '0') {
+            std::cout &lt;&lt; i + 1 &lt;&lt; &quot; &quot; &lt;&lt; n &lt;&lt; &quot; &quot; &lt;&lt; i + 1 + 1 &lt;&lt; &quot; &quot; &lt;&lt; n &lt;&lt; &quot;\n&quot;;
+            return;
+        }
+    }
+    for (int i = n / 2 + (n &amp; 1); i &lt; n; i++) {
+        if (s[i] == '0') {
+            std::cout &lt;&lt; 1 &lt;&lt; &quot; &quot; &lt;&lt; i + 1 &lt;&lt; &quot; &quot; &lt;&lt; 1 &lt;&lt; &quot; &quot; &lt;&lt; i &lt;&lt; &quot;\n&quot;;
+            return;
+        }
+    }
+
+    for (auto &amp;c : s) {
+        if (c == '0') {
+            std::cout &lt;&lt; 1 &lt;&lt; &quot; &quot; &lt;&lt; (n + 1) / 2 &lt;&lt; &quot; &quot; &lt;&lt; (n + 1) / 2 &lt;&lt; &quot; &quot; &lt;&lt; n &lt;&lt; &quot;\n&quot;;
+            return;
+        }
+    }
+
+    std::cout &lt;&lt; 1 &lt;&lt; &quot; &quot; &lt;&lt; n - 1 &lt;&lt; &quot; &quot; &lt;&lt; 2 &lt;&lt; &quot; &quot; &lt;&lt; n &lt;&lt; &quot;\n&quot;;
+}
 </code></pre>
-<h3 id="tip-数据输入格式">[TIP] 数据输入格式</h3>
-<p>cin可以读入含前导0的整数，比如说00013的数据，cin读到整数型变量里就变成了13；使用getchar()忽略单个字符</p>
-<p>比如说要获取“03:12”的h和m，可以直接这样写：</p>
-<pre><code class="language-cpp">int h,m;
-cin&gt;&gt;h;getchar();cin&gt;&gt;m;
-</code></pre>
-<h3 id="tip-计算几何计算距离的快速写法">[TIP] 计算几何计算距离的快速写法</h3>
-<p>正常是这样写：</p>
-<pre><code class="language-cpp">ld d=sqrtl((x1-x2)*(x1-x2)+(y1-y2)*(y1-y2));
-</code></pre>
-<p>有点麻烦，如果不在意函数的常数的话，可以使用cmath的函数求</p>
-<pre><code class="language-cpp">ld d=hypot(x1-x2,y1-y2); +
-</code></pre>
-<h3 id="wa-unordered类型容器">[WA] unordered类型容器</h3>
-<p>此类容器不能用end和begin来访问，乱写小心CE</p>
-<h3 id="tip-降序排序容器">[TIP] 降序排序容器</h3>
-<p>正常sort(a.begin(),a.end())是升序排序容器，如果想要倒序排序，可以用sort(a.rbegin(),a.rend())来排序，而无序写cmp。</p>
-<h3 id="tip-判断vector内元素是否全相等">[TIP] 判断vector内元素是否全相等</h3>
-<p>[From jiangly]</p>
-<pre><code class="language-cpp">if(a==vector&lt;int&gt;(n,a[0]))
-</code></pre>
-<h3 id="wa-并查集别用fa数组查根要用find函数">[WA] 并查集别用fa数组查根，要用find函数</h3>
-<h3 id="tip-cp的sum函数">[TIP] cp的sum函数</h3>
-<pre><code class="language-cpp">//begin(a)=&gt;a.begin()
-std::accumulate(begin(a), end(a), 0)
-</code></pre>
-<h3 id="tip-stl前缀和">[TIP] STL前缀和</h3>
-<pre><code class="language-cpp">//begin(a)=&gt;a.begin()
-std::partial_sum(a.begin(), a.end(), b.begin());
-</code></pre>
-<h3 id="tip-stl轮换">[TIP] STL轮换</h3>
-<p>少用，O(n)的，你直接变换下标也行</p>
-<pre><code class="language-cpp">//begin(a)=&gt;a.begin()
-std::rotate(a.begin(), a.end(), x);//x指第几号元素会被移位到第一个
-</code></pre>
-<h3 id="tip-快速离散化">[TIP] 快速离散化</h3>
-<p>保证数据两两不同时的快速离散化</p>
-<pre><code class="language-cpp">std::vector&lt;int&gt; p(n);
-std::iota(p.begin(), p.end(), 0);
-std::sort(p.begin(), p.end(), [&amp;](int i, int j){
-	return a[i] &lt; a[j];
-});
-//此时，p的各个元素值代表原数组对应元素排序后的序号（从小到大）
-//1 8 5 3 2 -&gt; 0 4 3 2 1
+<h1 id="d1-two-hundred-twenty-one-easy-version">D1. Two Hundred Twenty One (easy version)</h1>
+<h2 id="题意-3">题意</h2>
+<p>史迪奇喜欢和他的朋友斯帕克一起试验不同的机器。今天他们又做了一台机器。</p>
+<p>这台机器的主要部件是沿着一条直线排列的 $n$ 根棒子，编号从 $1$ 到 $n$ 包括在内。每根棒子都必须带有数量等于 $1$ 或 $-1$ 的电荷(否则机器将无法工作)。这台机器工作的另一个条件是，所有棒上电荷的符号变量之和必须为零。</p>
+<p>从形式上看，小棒可以表示为一个由 $n$ 个数字组成的数组，这些数字表示电荷的特征： $1$ 或 $-1$ 。那么条件必须成立： $a _ 1 - a _ 2 + a _ 3 - a _ 4 + \ldots = 0$ 或 $\sum\limits _ {i=1}^n (-1)^{i-1} \cdot a _ i = 0$ 。</p>
+<p>斯帕克用电流给所有 $n$ 根小棒充电，但不幸的是，这些小棒并没有正确充电(电荷的符号变量和不为零)。朋友们决定只把部分棒子留在机器里。斯帕克有 $q$ 个问题。在第 $i$ 个问题中，斯帕克问：如果机器中只有编号为 $l _ i$ 至 $r _ i$ 的小棒，那么从机器中取出最少多少根小棒才能使剩余小棒上电荷的符号变量和为零？也许朋友们弄错了，符号变量和已经为零。在这种情况下，你根本不需要移走电棒。</p>
+<p>如果小棒的数量为零，我们就假定电荷的符号变量和为零，也就是说，我们总是可以移除所有的小棒。</p>
+<p>帮助你的朋友，回答斯帕克的所有问题！</p>
+<h2 id="大概思路-3">大概思路</h2>
+<p>看题意有点抽象，实际上就是问你，给定区间，至少删几个数，才能让区间按顺序一次带上正负一交替的权值，求和后为0。</p>
+<p>假设字符串长度为偶数，那么我们纸上手玩一下样例，容易发现，按照每两个为一组的话，“++”和“&ndash;”造成的贡献都为0，而“+-”会提供+2的贡献，“-+”会提供-2的贡献。因此，我们可以先分区间左端点为奇数和偶数的两种情况，两两分组，前缀和收集贡献。再进行进一步分析。</p>
+<p><del>当区间长度为奇数时，必然要删奇数个数，考虑能不能只删一个数。我们将删数的位置定在字符串最右边，那么向左移动这个删数指针，对总的答案影响很小。</del></p>
+<p><del>假设从左往右分组，有一组造成正贡献的“+-”，那么当删数指针移动到该组左边的“+”字符上时，该组的贡献会产生什么变化？答案是该组会变成“-*”，要么造成0贡献，要么造成负贡献。</del></p>
+<p><del>也就是说，删数指针从右往左走时，会将指针右边的每个组的贡献取反（或者置0（或者，把0贡献变成0或正或负））</del></p>
+<p><del>当区间为偶数时，原区间带权求和已经为0时，显然时不需要删数的，输出0。</del></p>
+<p><del>当区间为偶数时，原区间带权求和不为0时，最少可以删两个数</del></p>
+<p><em>yysy我真不会，这规律我蒙出来的。(甚至还非常丢脸的贴了个树状数组代替前缀和)</em></p>
+<ul>
+<li>当区间长度为奇数时，存在一个位置，删除它后，区间正负权值和为0</li>
+<li>当区间长度为偶数，且区间权值和不为0时，存在两个位置，删除它后，区间正负权值和为0</li>
+<li>当区间长度为偶数，且区间权值和已经为0时，不需要操作。</li>
+</ul>
+<h2 id="参考代码-3">参考代码</h2>
+<pre><code class="language-cpp">template&lt;typename T&gt;
+struct BIT {
+	std::vector&lt;T&gt; C;
+	int n;
+	BIT(int n_) {//下标从1开始
+		C.clear();
+		C.resize(n_ + 1);
+		n = n_;
+	}
+	BIT() {}
+	BIT(const BIT&amp; bit) {
+		n = bit.n;
+		C = bit.C;
+	}
+	T getsum(int x) {//获取[1, x]的和		O(logn)
+	    T s = 0;
+	    while (x) {
+	        s += C[x];
+	        x -= (x &amp;- x);
+	    }
+	    return s;
+	}
+	void add(int x, T key) {//单点增加x的值	O(logn)
+	    while (x &lt;= n) {
+	        C[x] += key;
+	        x += (x &amp;- x);
+	    }
+	}
+};
+//附：想区间修改，区间查询的话，可以用这个维护差分数组（不过都只支持加减）
+//区间推平，区间加乘，等操作，请换线段树
+
+
+void solve(){
+    int n, q;
+    std::cin &gt;&gt; n &gt;&gt; q;
+    std::string s;
+    std::cin &gt;&gt; s;
+
+    std::vector&lt;bool&gt; a(n);
+    for (int i = 0; i &lt; n; i++) {
+        a[i] = (s[i] == '+');
+    }
+
+    BIT&lt;int&gt; J(n), O(n);
+    for (int i = 0; i + 1 &lt; n; i += 2) {
+        int v = 0;
+        if (a[i] != a[i + 1]) {
+            v = (a[i] == 1 ? 1 : -1);
+        }
+        J.add(i + 1, v);
+    }
+
+    for (int i = 1; i + 1 &lt; n; i += 2) {
+        int v = 0;
+        if (a[i] != a[i + 1]) {
+            v = (a[i] == 1 ? 1 : -1);
+        }
+        O.add(i + 1, v);
+    }
+
+    while (q--) {
+        int l, r;
+        std::cin &gt;&gt; l &gt;&gt; r;
+        l--;
+        
+        if ((r - l) &amp; 1) {
+            std::cout &lt;&lt; 1 &lt;&lt; &quot;\n&quot;;
+            continue;
+        }
+
+        int sum;
+        if (l &amp; 1) {
+            sum = O.getsum(r) - O.getsum(l);
+        } else {
+            sum = J.getsum(r) - J.getsum(l);
+        }
+
+        std::cout &lt;&lt; (sum == 0 ? 0 : 2) &lt;&lt; &quot;\n&quot;;
+    }
+}
 </code></pre>
               
 
@@ -469,9 +576,9 @@ std::sort(p.begin(), p.end(), [&amp;](int i, int j){
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/acm/">ACM</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E9%A2%98%E8%A7%A3/">题解</a>
 
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/cf/">CF</a>
 
                   </div>
                 
@@ -484,7 +591,7 @@ std::sort(p.begin(), p.end(), [&amp;](int i, int j){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/ctf/basectf/" data-tooltip="[BaseCTF] 个人题解" aria-label="PREVIOUS: [BaseCTF] 个人题解">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/todolist/" data-tooltip="[置顶] To Do List" aria-label="PREVIOUS: [置顶] To Do List">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -492,7 +599,7 @@ std::sort(p.begin(), p.end(), [&amp;](int i, int j){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/lgr_200_div4/" data-tooltip="洛谷【LGR-200-Div.4】洛谷入门赛 #27" aria-label="NEXT: 洛谷【LGR-200-Div.4】洛谷入门赛 #27">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_ecr_89/" data-tooltip="Educational Codeforces Round 89" aria-label="NEXT: Educational Codeforces Round 89">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -535,9 +642,9 @@ std::sort(p.begin(), p.end(), [&amp;](int i, int j){
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/debug\/';
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_741\/';
         
-          this.page.identifier = '\/post\/debug\/'
+          this.page.identifier = '\/post\/solution\/cf_741\/'
         
       };
       (function() {
@@ -581,7 +688,7 @@ std::sort(p.begin(), p.end(), [&amp;](int i, int j){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/ctf/basectf/" data-tooltip="[BaseCTF] 个人题解" aria-label="PREVIOUS: [BaseCTF] 个人题解">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/todolist/" data-tooltip="[置顶] To Do List" aria-label="PREVIOUS: [置顶] To Do List">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -589,7 +696,7 @@ std::sort(p.begin(), p.end(), [&amp;](int i, int j){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/lgr_200_div4/" data-tooltip="洛谷【LGR-200-Div.4】洛谷入门赛 #27" aria-label="NEXT: 洛谷【LGR-200-Div.4】洛谷入门赛 #27">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_ecr_89/" data-tooltip="Educational Codeforces Round 89" aria-label="NEXT: Educational Codeforces Round 89">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
