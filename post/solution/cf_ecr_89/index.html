@@ -382,20 +382,20 @@
 <p>根据题目和样例，可以靠直觉知道这个矩阵最后的形式应该有某种对称性。</p>
 <p>考虑样例给出的合法矩阵：</p>
 <p>$\begin{pmatrix}
-1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1\
-0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0\
+1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1\\
+0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0\\
 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1
 \end{pmatrix}$</p>
 <p>从起点和终点开始推，易知，只要满足如下条件，该矩阵就是一个合法的01矩阵：</p>
 <p>$\begin{pmatrix}
-\color{#ff0000}{1} &amp; \color{#ffaa00}{0} &amp; \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#666666}{1} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1}\
-\color{#ffaa00}{0} &amp; \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#666666}{0} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1} &amp; \color{#ffaa00}{0}\
+\color{#ff0000}{1} &amp; \color{#ffaa00}{0} &amp; \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#666666}{1} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1}\\
+\color{#ffaa00}{0} &amp; \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#666666}{0} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1} &amp; \color{#ffaa00}{0}\\
 \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#666666}{1} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1} &amp; \color{#ffaa00}{0} &amp; \color{#ff0000}{1}
 \end{pmatrix}$</p>
 <p>相同颜色的数必须全部相同（灰色部分不需要管，因为它是路径中心）</p>
 <p>$\begin{pmatrix}
-\color{#ff0000}{1} &amp; \color{#ffaa00}{0} &amp; \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1}\
-\color{#ffaa00}{0} &amp; \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1} &amp; \color{#ffaa00}{0}\
+\color{#ff0000}{1} &amp; \color{#ffaa00}{0} &amp; \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1}\\
+\color{#ffaa00}{0} &amp; \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1} &amp; \color{#ffaa00}{0}\\
 \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1} &amp; \color{#ffaa00}{0} &amp; \color{#ff0000}{1}
 \end{pmatrix}$</p>
 <p>而这种情况是没有所谓的路径中心的，所以要注意分奇偶特判一下</p>
