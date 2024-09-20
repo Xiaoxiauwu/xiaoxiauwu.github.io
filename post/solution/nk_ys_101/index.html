@@ -17,7 +17,7 @@
   },
   "name":"夏のBLOG",
   "description":"",
-  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_ecr_89\/",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/nk_ys_101\/",
   "keywords":"[tech, C\u002b\u002b, python, study]"
 }
 
@@ -33,20 +33,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Educational Codeforces Round 89">
-<meta name="twitter:title" content="Educational Codeforces Round 89">
-<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cf_ecr_89/">
-<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cf_ecr_89/">
+<meta property="og:title" content="牛客小白月赛101">
+<meta name="twitter:title" content="牛客小白月赛101">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/nk_ys_101/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/nk_ys_101/">
 <meta property="og:site_name" content="夏のBLOG">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-09-18T00:28:20">
+    <meta property="article:published_time" content="2024-09-21T03:40:47">
   
   
-    <meta property="article:modified_time" content="2024-09-18T00:28:20">
+    <meta property="article:modified_time" content="2024-09-21T03:40:47">
   
   
   
@@ -60,7 +60,7 @@
     
       <meta property="article:tag" content="题解">
     
-      <meta property="article:tag" content="CF">
+      <meta property="article:tag" content="牛客">
     
   
 
@@ -79,22 +79,22 @@
 
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
+  <meta property="twitter:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
+  <meta property="twitter:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
 
 
-    <title>Educational Codeforces Round 89</title>
+    <title>牛客小白月赛101</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cf_ecr_89/">
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/nk_ys_101/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -265,21 +265,21 @@
   <div class="post-header-cover
               text-center
               post-header-cover--full"
-       style="background-image:url('/images/cover.jpg')"
+       style="background-image:url('https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg')"
        data-behavior="5">
     
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      Educational Codeforces Round 89
+      牛客小白月赛101
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-09-18T00:28:20&#43;08:00">
+      <time datetime="2024-09-21T03:40:47&#43;08:00">
         
-  September 18, 2024
+  September 21, 2024
 
       </time>
     
@@ -307,148 +307,314 @@
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">不是，打成这样也有紫表现分？</span>
+            <span class="post-header-cover-caption caption">怎么有人写暴力切了F题啊，D题什么怪DP，没见过</span>
           
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<h1 id="a-shovels-and-swords">A. Shovels and Swords</h1>
-<p>波利卡普玩的是一款著名的电脑游戏（名字就不提了）。在这个游戏中，他可以制作两种工具&ndash;铲子和剑。制作一把铲子，波利卡普需要花费两根棍子和一颗钻石；制作一把剑，波利卡普需要花费两颗钻石和一根棍子。</p>
-<p>每种工具可以卖到正好一颗绿宝石。如果波利卡普有 $a$ 根木棍和 $b$ 颗钻石，他能赚到多少颗绿宝石？</p>
+<h1 id="a-tb的区间问题">A. tb的区间问题</h1>
+<h2 id="题意">题意</h2>
+<p>tb 给了 fc 一个长度为 n 的数组 A , fc 对 A 进行 k 次如下操作：</p>
+<p>删除数组第一个元素或者删除数组最后一个元素。</p>
+<p>求最后得到的数组和的最大值。</p>
 <h2 id="大概思路">大概思路</h2>
-<p>按照官方题解说的，答案应该满足以下三个性质：</p>
-<ul>
-<li>$ans \le a$</li>
-<li>$ans \le b$</li>
-<li>$ans \le \frac{a+b}{3}$</li>
-</ul>
-<p><em>被这题硬控半小时，最后没办法乱蒙了一个纸上不知道哪个角落推出来的关系时，然后1A过了</em></p>
+<p>滑动窗口秒了</p>
 <h2 id="参考代码">参考代码</h2>
 <pre><code class="language-cpp">void solve() {
-    int a, b;
-    std::cin &gt;&gt; a &gt;&gt; b;
-    if (a &gt; b) std::swap(a, b);
-
-    if (a * 2 &lt;= b) {
-        std::cout &lt;&lt; a &lt;&lt; &quot;\n&quot;;
+	int n, k;
+    std::cin &gt;&gt; n &gt;&gt; k;
+    
+    int l = n - k;
+    i64 ans = 0;
+    std::vector&lt;i64&gt; a(n);
+    for (auto &amp;i : a) std::cin &gt;&gt; i;
+    
+    i64 tmp = 0;
+    for (int i = 0; i &lt; n; i++) {
+        tmp += a[i];
+        if (i - l &gt;= 0) { 
+            tmp -= a[i - l];
+        }
+        ans = std::max(ans, tmp);
+    }
+    std::cout &lt;&lt; ans;
+}
+</code></pre>
+<h1 id="b-tb的字符串问题">B. tb的字符串问题</h1>
+<h2 id="题意-1">题意</h2>
+<p>tb 给了 fc 一个字符串。</p>
+<p>fc 对字符串可以进行若干次 （可能是0） 次如下操作：</p>
+<p>选择子串 &lsquo;&lsquo;fc&rsquo;&rsquo; 或者子串 &lsquo;&rsquo;tb&rsquo;&rsquo; ，将其从字符串中删去。</p>
+<p>求最后剩下字符串的最短长度。</p>
+<p>子串：原字符串中下标连续的一段字符串。</p>
+<h2 id="大概思路-1">大概思路</h2>
+<p>直接用栈贪心地匹配fc和tb就行</p>
+<h2 id="参考代码-1">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+	int n;
+    std::cin &gt;&gt; n;
+    std::string s;
+    std::cin &gt;&gt; s;
+    
+    std::stack&lt;char&gt; stk;
+    for (auto &amp;c : s) {
+        if (stk.size() &amp;&amp; (stk.top() == 'f' &amp;&amp; c == 'c' || stk.top() == 't' &amp;&amp; c == 'b')) {
+            stk.pop();
+        } else {
+            stk.push(c);
+        }
+    }
+    std::cout &lt;&lt; stk.size();
+}
+</code></pre>
+<h1 id="c-tb的路径问题">C. tb的路径问题</h1>
+<h2 id="题意-2">题意</h2>
+<p>tb 给了 fc 一张有 n×n 个格点的图。</p>
+<p>图上每个格点都写着一个数。第 i 行第 j 列的格点上写着的数字为 i 和 j 的最大公约数。</p>
+<p>现在 fc 需要从第 1 行第 1 列出发，去往第 n 行第 n 列处的格点，fc 可以消耗一点能量移向相邻的格点。</p>
+<p>在任何时候，设 fc 所位于的格点上所写的数字为 x ，如果 x 不为 1 ，他可以使用传送阵传送到任何数字为 x 的格点，此操作不消耗能量。</p>
+<p>求 fc 到达第 n 行第 n 列所消耗的最少能量。</p>
+<p>相邻：如果用 (x,y) 表示第 x 行第 y 列的位置，(x,y) 与 (x+1,y),(x,y+1),(x−1,y),(x,y−1) 相邻。</p>
+<h2 id="大概思路-2">大概思路</h2>
+<p>手玩一下样例，取n为10左右，把除1以外的格子标出来，容易发现gcd为2的格子实在是太多了。</p>
+<table>
+<thead>
+<tr>
+<th>行/列</th>
+<th>1</th>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>5</th>
+<th>6</th>
+<th>7</th>
+<th>8</th>
+<th>9</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>1</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>2</td>
+<td></td>
+<td>2</td>
+<td></td>
+<td>2</td>
+<td></td>
+<td>2</td>
+<td></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>3</td>
+<td></td>
+<td></td>
+<td>3</td>
+<td></td>
+<td></td>
+<td>3</td>
+<td></td>
+<td></td>
+<td>3</td>
+</tr>
+<tr>
+<td>4</td>
+<td></td>
+<td>2</td>
+<td></td>
+<td>4</td>
+<td></td>
+<td>2</td>
+<td></td>
+<td>2</td>
+<td></td>
+</tr>
+<tr>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>5</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>6</td>
+<td></td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td></td>
+<td>6</td>
+<td></td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td>7</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>7</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>8</td>
+<td></td>
+<td>2</td>
+<td></td>
+<td>2</td>
+<td></td>
+<td>2</td>
+<td></td>
+<td>8</td>
+<td></td>
+</tr>
+<tr>
+<td>9</td>
+<td></td>
+<td></td>
+<td>3</td>
+<td></td>
+<td></td>
+<td>3</td>
+<td></td>
+<td></td>
+<td>9</td>
+</tr>
+</tbody>
+</table>
+<p>我们当 $n$ 很大时，我们不妨先花两步走到 $(2,2)$，然后分类讨论：</p>
+<ul>
+<li>当 $n$ 为偶数时，$\gcd(n, n - 2) = 2$，我们只需要再花费2步，就能从 $(n - 2,n)$ 转移到 $(n, n)$</li>
+<li>当 $n$ 为奇数时，$n - 1$为偶数，我们可以先转移到 $(n-1,n-1)$，再花2步转移到 $(n,n)$</li>
+</ul>
+<p>然后注意特判 $n$ 很小的情况（$n = 1, 2, 3$）就可以了。</p>
+<h2 id="参考代码-2">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    int n;
+    std::cin &gt;&gt; n;
+     
+    if (n == 1) {
+        std::cout &lt;&lt; 0;
+        return;
+    } else if (n == 2) {
+        std::cout &lt;&lt; 2;
+        return;
+    } else if (n == 3) {
+        std::cout &lt;&lt; 4;
         return;
     } else {
-        int y = (2 * b - a) / 3;
-        a -= y;
-        b -= 2 * y;
-        int ans = y;
-        ans += std::min(b, a / 2);
-        std::cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
-    }
-}
-</code></pre>
-<p>官方题解：</p>
-<pre><code class="language-cpp">void solve() {
-    int a, b;
-    std::cin &gt;&gt; a &gt;&gt; b;
-    std::cout &lt;&lt; std::min(std::min(a, b), (a + b) / 3) &lt;&lt; &quot;\n&quot;;
-}
-</code></pre>
-<h1 id="b-shuffle">B. Shuffle</h1>
-<p>你有一个全为0的数组，第x个位置为1，进行q次操作，每次操作可在给出的区间内任选两个数，交换它们的位置。问操作结束后共有多少种可能的数组。（两数组不同当且仅当存在一个i，$a_i \ne a_i&rsquo;$）</p>
-<h2 id="大概思路-1">大概思路</h2>
-<p>直接贪心地维护一个区间，每次操作时，判断区间是否相交，若相交则更新所维护的区间的边界。</p>
-<p><em>一开始读错题了，我还以为区间操作顺序可打乱，研究了半小时怎么处理含x的区间并的长度</em></p>
-<h3 id="参考代码-1">参考代码</h3>
-<pre><code class="language-cpp">void solve(){
-    i64 n, x, m;
-    std::cin &gt;&gt; n &gt;&gt; x &gt;&gt; m;
-
-    i64 L = x, R = x;
-    auto insect = [&amp;](i64 l, i64 r) {
-        return std::max(R, r) - std::min(L, l) + 1 &lt; (R - L + 1) + (r - l + 1);
-    };
-    while (m--) {
-        i64 l, r;
-        std::cin &gt;&gt; l &gt;&gt; r;
-        if (insect(l, r)) {
-            L = std::min(L, l);
-            R = std::max(R, r);
-        }
-    }
-
-    std::cout &lt;&lt; R - L + 1 &lt;&lt; &quot;\n&quot;;
-}
-</code></pre>
-<h1 id="c-palindromic-paths">C. Palindromic Paths</h1>
-<p>给你一个01矩阵，让你可能少地修改，使得任意从(1, 1)到(n, m)的转移路径都为回文路径（只能向下或向右走）</p>
-<h2 id="大概思路-2">大概思路</h2>
-<p>根据题目和样例，可以靠直觉知道这个矩阵最后的形式应该有某种对称性。</p>
-<p>考虑样例给出的合法矩阵：</p>
-<p>$\begin{pmatrix}
-1 &amp; 0 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 1\\
-0 &amp; 1 &amp; 1 &amp; 0 &amp; 1 &amp; 1 &amp; 0\\
-1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 &amp; 1
-\end{pmatrix}$</p>
-<p>从起点和终点开始推，易知，只要满足如下条件，该矩阵就是一个合法的01矩阵：</p>
-<p>$\begin{pmatrix}
-\color{#ff0000}{1} &amp; \color{#ffaa00}{0} &amp; \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#666666}{1} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1}\\
-\color{#ffaa00}{0} &amp; \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#666666}{0} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1} &amp; \color{#ffaa00}{0}\\
-\color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#666666}{1} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1} &amp; \color{#ffaa00}{0} &amp; \color{#ff0000}{1}
-\end{pmatrix}$</p>
-<p>相同颜色的数必须全部相同（灰色部分不需要管，因为它是路径中心）</p>
-<p>$\begin{pmatrix}
-\color{#ff0000}{1} &amp; \color{#ffaa00}{0} &amp; \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1}\\
-\color{#ffaa00}{0} &amp; \color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1} &amp; \color{#ffaa00}{0}\\
-\color{#ffff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#00ff00}{1} &amp; \color{#ffff00}{1} &amp; \color{#ffaa00}{0} &amp; \color{#ff0000}{1}
-\end{pmatrix}$</p>
-<p>而这种情况是没有所谓的路径中心的，所以要注意分奇偶特判一下</p>
-<h2 id="参考代码-2">参考代码</h2>
-<pre><code class="language-cpp">void solve(){
-    int n, m;
-    std::cin &gt;&gt; n &gt;&gt; m;
-    std::vector&lt;std::vector&lt;int&gt;&gt; a(std::min(n, m) + 1, std::vector&lt;int&gt;(std::max(n, m) + 1));
-
-    if (n &gt; m) {
-        for (int i = 1; i &lt;= n; i++) {
-            for (int j = 1; j &lt;= m; j++) {
-                std::cin &gt;&gt; a[j][i];
-            }
-        }
-        std::swap(n, m);
-    } else {
-        for (int i = 1; i &lt;= n; i++) {
-            for (int j = 1; j &lt;= m; j++) {
-                std::cin &gt;&gt; a[i][j];
-            }
-        }
-    }
-    int ans = 0;
-    for (int j = 1; j &lt;= n + (m - 1 - n) / 2 - (n == m); j++) {
-        int sum = 0, L = 0, R = 0;
-        for (int i = 1; i &lt;= n &amp;&amp; j - i + 1 &gt;= 1; i++) {
-            sum++;
-            L += a[i][j - i + 1];
-            R += a[n - i + 1][m - (j - i + 1) + 1];
-        }
-
-        if (L == R &amp;&amp; (L == 0 || L == sum)) {
-            continue;
+        if (n % 2 == 0) {
+            std::cout &lt;&lt; 4;
         } else {
-            ans += std::min(L + R, 2 * sum - L - R);
+            std::cout &lt;&lt; 6;
         }
+        return;
     }
-    std::cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
 }
 </code></pre>
-<h1 id="d-two-divisors">D. Two Divisors</h1>
-<p>给你n个数，对于每个数$a_i$，找到它的一对约数$d_1 &gt; 1$, $d_2 &gt; 1$，满足$\gcd(d_1 + d_2, a_i) = 1$，如果不存在，输出-1。（$2 \le a_i \le 10^7$）</p>
+<h1 id="d-tb的平方问题">D. tb的平方问题</h1>
+<h2 id="题意-3">题意</h2>
+<p>tb 给了 fc 一个数组 A 。</p>
+<p>随后， tb 对 fc 进行了 q 次询问，每次询问 tb 给 fc 一个 x ，需要 fc 给出包含了 x 位置且区间和为完全平方数的连续子数组个数。</p>
 <h2 id="大概思路-3">大概思路</h2>
-<p><em>超级水题，为什么他放在D题啊，我觉得放B题都没问题的</em></p>
-<p>一眼就看到1e7这个数据范围，没记错的话，我板子里那个筛子的上限就是1e7。</p>
-<p>直接分类讨论即可：</p>
-<ul>
-<li>当 $a_i$ 为质数时，不存在符合题意的约数对。</li>
-<li>当 $a_i$ 为某个质数的幂时，显然不行，因为这样加出来的gcd必为那个质数。</li>
-<li>当 $a_i$ 由两个以上的本质不同的质数构成时，显然可以。若 $a_i = \prod p_i^{c_i}$，直接取 $a_i$ 的最小质因数 $p$，以及 $\frac{a_i}{p^{c}} $ 即可。</li>
-</ul>
+<p>注意到n比较小，为1e3，完全可以$O(n^2)$暴力预处理出所有元素和为完全平方数的区间。然后用差分进行快速区间修改，最后前缀和统计即可。</p>
+<p><em>不知道为什么没想到前缀和，直接上的树状数组</em></p>
 <h2 id="参考代码-3">参考代码</h2>
+<pre><code class="language-cpp">template&lt;typename T&gt;
+struct BIT {
+	std::vector&lt;T&gt; a;
+	int n;
+	BIT(int n_) {//下标从1开始
+		a.clear();
+		a.resize(n_ + 1);
+		n = n_;
+	}
+	BIT() {}
+	BIT(const BIT&amp; bit) {//[可选] 复制bit（很少用）
+		n = bit.n;
+		a = bit.a;
+	}
+	T getsum(int x) {//获取[1, x]的和		O(logn)
+	    T s = 0;
+	    while (x) {
+	        s += a[x];
+	        x -= (x &amp;- x);
+	    }
+	    return s;
+	}
+	void add(int x, T val) {//单点增加x处的值	O(logn)
+	    while (x &lt;= n) {
+	        a[x] += val;
+	        x += (x &amp;- x);
+	    }
+	}
+};
+//附：想区间修改，区间查询的话，可以用这个维护差分数组（不过都只支持加减）
+//区间推平，区间加乘，等操作，请换线段树
+
+
+void solve() {
+	int n, q;
+    std::vector&lt;i64&gt; a(n + 1), pre(n + 1);
+    for (int i = 1; i &lt;= n; i++) std::cin &gt;&gt; a[i];
+    
+    for (int i = 1; i &lt;= n; i++) {
+        pre[i] = a[i] + pre[i - 1];
+    }
+    
+    auto ck = [&amp;](i64 x) {
+        i64 x_ = std::sqrt(x);
+        return ((x_ - 1) * (x_ - 1) == x) || ((x_) * (x_) == x) || ((x_ + 1) * (x_ + 1) == x);
+    };
+    BIT&lt;i64&gt; bit(n + 1);
+    for (int i = 1; i &lt;= n; i++) {
+        for (int j = i; j &lt;= n; j &lt;= n) {
+            if (ck(pre[j] - pre[i - 1])) {
+                bit.add(i, 1);
+                bit.add(j + 1, -1);
+            }
+        }
+    }
+    while (q--) {
+        int x;
+        std::cin &gt;&gt; x;
+        std::cout &lt;&lt; bit.getsum(x) &lt;&lt; &quot;\n&quot;;
+    } 
+}
+</code></pre>
+<h1 id="e-tb的数数问题">E. tb的数数问题</h1>
+<h2 id="题意-4">题意</h2>
+<p>tb 给了 fc 一个包含若干个数字的可重集合 $A$ ，如果我们说一个数字 $x$ 是好的当且仅当 $\forall d∣x$ ，有 $d∈A$。</p>
+<p>现在，fc 想知道有多少个不同的正整数是好的，请你告诉他吧。</p>
+<p>$d∣x$ : 表示 $d$ 为 $x$ 的约数。</p>
+<p>$∀ d∣x$ ，有 d∈Ad∈A ： $x$ 的任何约数都至少在 $A$ 中出现一次。</p>
+<h2 id="大概思路-4">大概思路</h2>
+<p>一个很像dp的东西，设 $P_i$ 为 $a_i$ 的所有质因数构成的集合，那么转移方程如下：</p>
+<p>$$ dp[a_i] = \underset{p \in P_i}{{\LARGE\mathrm &amp;}} dp[\frac{a_i}{p}]$$</p>
+<p>然后统计dp[i]即可，复杂度应该是$O(n\log\max(a_i))$的。</p>
+<h2 id="参考代码-4">参考代码</h2>
 <pre><code class="language-cpp">struct Sieve {
     std::vector&lt;int&gt; mpf; // minimum prime factor
     std::vector&lt;int&gt; prime;
@@ -485,41 +651,105 @@
     }
 };
 
-Sieve si(1e7 + 1);
+Sieve si(1e6 + 1);
 
-void solve(){
-    //std::cout &lt;&lt; &quot;ok&quot;;
-    int n;
+void solve() {
+	int n;
     std::cin &gt;&gt; n;
-    std::vector&lt;std::pair&lt;int, int&gt;&gt; ans(n);
-
-    for (int i = 0; i &lt; n; i++) {
+    std::set&lt;int&gt; s;
+    while (n--) {
         int x;
         std::cin &gt;&gt; x;
+        s.insert(x);
+    }
+    
+    if (!s.count(1)) {
+        std::cout &lt;&lt; 0;
+        return;
+    }
+    
+    std::vector&lt;bool&gt; dp(*s.rbegin() + 1, 0);
+    int ans = 0;
+    
+    for (auto &amp;i : s) {
+        std::set&lt;int&gt; p;
+        int z = i;
+        while (z != 1) {
+            p.insert(si.mpf[z]);
+            z /= si.mpf[z];
+        }
+        
+        dp[i] = 1;
+        
+        for (auto &amp;j : p) {
+            dp[i] = dp[i] &amp; dp[i / j];
+        }
+        
+        ans += dp[i];
+    }
 
-        if (si.mpf[x] == x) {
-            ans[i] = {-1, -1};
-        } else {
-            int z = si.mpf[x];
-            while (x != 1 &amp;&amp; x % z == 0) {
-                x /= z;
-                //std::cout &lt;&lt; x &lt;&lt; &quot;\n&quot;;
-            }
-            if (x == 1) {
-                ans[i] = {-1, -1};
-            } else {
-                ans[i] = {z, x};
-            }
+    std::cout &lt;&lt; ans;
+}
+</code></pre>
+<h1 id="f-tb的排列问题">F. tb的排列问题</h1>
+<h2 id="题意-5">题意</h2>
+<p>tb 给了 fc 一个长度为 $n$ 的排列 $A$ ，fc 想要更改一下此排列，他选择了一个幸运数字 $w$ ,依照如下方式操作了 $n$ 次:</p>
+<p>第 $i$ 次操作中，选择两个整数 $x,y$，满足 $i≤x≤y≤min(i+w,n)$ ，交换 $A_x$​ 与 $A_y$​ 的值，$x = y$ 时数组不变。</p>
+<p>经过这 $n$ 次操作后，他得到了新的排列 $B$。</p>
+<p>由于 fc 的记忆只有七秒，他很快就忘记了 $A$ 排列是什么样子，只记得一部分 $A$ 排列中的元素以及其对应位置。现在他将 $B$ 排列以及残缺的 $A$ 排列给出，请你帮他计算一下一共有多少种可能的 $A$ 排列。（可能存在 fc 记忆错乱了，没有符合条件的 $A$ 。）</p>
+<p>由于答案过大，输出方案数模以 $998244353$ 即可。</p>
+<h2 id="大概思路-5">大概思路</h2>
+<p>直接正序遍历A数组模拟，一个个换B数组中各个数的位置。然后根据&quot;当前遍历到的位置之前的数是无法再改变的&quot;，分情况讨论。</p>
+<p>考虑两种情况：</p>
+<ul>
+<li>当前遍历到的数，在A数组中出现过</li>
+<li>当前遍历到的数，在A数组中没有出现过</li>
+</ul>
+<p>那么对于出现的情况，我们可以这样考虑：</p>
+<ul>
+<li>如果出现的数的下标大于 $i + w$，那么显然不存在合法的原排列，因为你没法把那个数移动到当前位置。</li>
+<li>如果出现的数的下标小于 $i + w$，那么显然存在一种方式，将那个数移动到该位置：若其下标在 $i$ 到 $i + w$ 之间，可以直接换；若下标小于 $i$，那根据“<strong>当前遍历到的位置之前的数是无法再改变的</strong>”可知，这个数早在前面的步骤就被丢到后面来了。</li>
+</ul>
+<p>对于没出现的情况，显然是要拿$-1$来顶，可以这样考虑：</p>
+<ul>
+<li>对于下标大于 $i + w$ 的 $-1$，我们不予考虑，因为类比之前的分析，我们知道这些 $-1$ 没法换过来。</li>
+<li>对于下标小于 $i + w$ 的 $-1$，显然是都有机会被放到当前位置的，我们只需要让答案乘上 “小于$i + w$的$-1$的个数 $-$ 已经使用过的 $-1$ 的个数”即可。</li>
+</ul>
+<h2 id="参考代码-5">参考代码</h2>
+<pre><code class="language-cpp">constexpr int M = 998244353;
+
+void solve() {
+	int n, w;
+    std::cin &gt;&gt; n &gt;&gt; w;
+    
+    std::vector&lt;int&gt; a(n), p = a, idx(n + 1, -1);
+    for (int i = 0; i &lt; n; i++) {
+        std::cin &gt;&gt; a[i];
+        if (a[i] != -1) {
+            idx[a[i]] = i;
         }
     }
-
-    for (auto &amp;[x, y] : ans) {
-        std::cout &lt;&lt; x &lt;&lt; &quot; &quot;;
+    for (auto &amp;i : p) std::cin &gt;&gt; i;
+    
+    i64 ans = 1;
+    int used = 0;
+    std::vector&lt;int&gt; pre(n);
+    pre[0] = (a[0] == -1);
+    for (int i = 1; i &lt; n; i++) {
+        pre[i] = pre[i - 1] + (a[i] == -1);
     }
-    std::cout &lt;&lt; &quot;\n&quot;;
-    for (auto &amp;[x, y] : ans) {
-        std::cout &lt;&lt; y &lt;&lt; &quot; &quot;;
+    
+    for (int i = 0; i &lt; n &amp;&amp; ans != 0; i++) {
+        if (idx[p[i]] != -1) {
+            if (idx[p[i]] &gt; i + w) {
+                ans = 0;
+            }
+        } else {
+            (ans *= (pre[std::min(n - 1, i + w)] - used)) %= M;
+            used++;
+        }
     }
+    std::cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
 }
 </code></pre>
               
@@ -537,7 +767,7 @@ void solve(){
                     
   <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E9%A2%98%E8%A7%A3/">题解</a>
 
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/cf/">CF</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%89%9B%E5%AE%A2/">牛客</a>
 
                   </div>
                 
@@ -550,7 +780,7 @@ void solve(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_741/" data-tooltip="Codeforces Round 741 (Div. 2)" aria-label="PREVIOUS: Codeforces Round 741 (Div. 2)">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_ecr_89/" data-tooltip="Educational Codeforces Round 89" aria-label="PREVIOUS: Educational Codeforces Round 89">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -558,7 +788,7 @@ void solve(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/nk_ys_101/" data-tooltip="牛客小白月赛101" aria-label="NEXT: 牛客小白月赛101">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -601,9 +831,9 @@ void solve(){
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_ecr_89\/';
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/nk_ys_101\/';
         
-          this.page.identifier = '\/post\/solution\/cf_ecr_89\/'
+          this.page.identifier = '\/post\/solution\/nk_ys_101\/'
         
       };
       (function() {
@@ -647,7 +877,7 @@ void solve(){
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_741/" data-tooltip="Codeforces Round 741 (Div. 2)" aria-label="PREVIOUS: Codeforces Round 741 (Div. 2)">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_ecr_89/" data-tooltip="Educational Codeforces Round 89" aria-label="PREVIOUS: Educational Codeforces Round 89">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -655,7 +885,7 @@ void solve(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/nk_ys_101/" data-tooltip="牛客小白月赛101" aria-label="NEXT: 牛客小白月赛101">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
