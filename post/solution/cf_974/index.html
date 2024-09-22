@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/xiaoxiauwu.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "XiaoXia",
+    
+    "image": "https://xiaoxiauwu.github.io/images/avatar.jpg"
+    
+  },
+  "name":"夏のBLOG",
+  "description":"",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_974\/",
+  "keywords":"[tech, C\u002b\u002b, python, study]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.121.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="XiaoXia">
+<meta name="keywords" content="tech, C&#43;&#43;, python, study">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces Round 974 (Div. 3)">
+<meta name="twitter:title" content="Codeforces Round 974 (Div. 3)">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cf_974/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cf_974/">
+<meta property="og:site_name" content="夏のBLOG">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2024-09-23T04:26:22">
+  
+  
+    <meta property="article:modified_time" content="2024-09-23T04:26:22">
+  
+  
+  
+    
+      <meta property="article:section" content="题解">
+    
+      <meta property="article:section" content="ACM">
+    
+  
+  
+    
+      <meta property="article:tag" content="题解">
+    
+      <meta property="article:tag" content="CF">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+
+
+    <title>Codeforces Round 974 (Div. 3)</title>
+
+    <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cf_974/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiaoxiauwu.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://xiaoxiauwu.github.io/css/codeblock.css">
+      
+    
+
+    
+      
+    
+    
+
+
+<script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202401110101/show_ads_impl_fy2021.js" id="google_shimpl"></script>
+<script>
+      MathJax = {
+         tex: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true,
+            tags: 'ams',
+         },
+      };
+   </script>
+<script type="text/javascript" async="" src="https://wuli.wiki/MathJax3/es5/tex-mml-chtml.js"></script>
+
+<script async src="https://xiaoxiauwu.github.io/js/busuanzi.pure.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade"></head>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+<script src="https://xiaoxiauwu.github.io/js/cp.js"></script>
+<link rel="stylesheet" type="text/css" href="https://xiaoxiauwu.github.io/css/copy.css" />
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiaoxiauwu.github.io/" aria-label="Go to homepage">夏のBLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiaoxiauwu.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+
+
+<div  class="meta-item">&nbsp·&nbsp
+  <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+</div>
+
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiaoxiauwu.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">XiaoXia</h4>
+        
+          <h5 class="sidebar-profile-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Xiaoxiauwu" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.totorocatcat.top" target="_blank" rel="noopener" title="Totoroの小窝">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-link" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Totoroの小窝</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('/images/cover.jpg')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      Codeforces Round 974 (Div. 3)
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2024-09-23T04:26:22&#43;08:00">
+        
+  September 23, 2024
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/%e9%a2%98%e8%a7%a3">题解</a>, 
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/acm">ACM</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" id="top">
+          
+            <span class="post-header-cover-caption caption">H题的实现太有趣了，随机异或哈希</span>
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <!-- raw HTML omitted -->
+<h1 id="a-robin-helps">A. Robin Helps</h1>
+<h2 id="题意">题意</h2>
+<p>每个人身上都有一点亡命之徒的影子，也有一点英雄的影子。</p>
+<p>侠盗罗宾汉因劫富济贫而闻名于世。</p>
+<p>罗宾遇到的 $n$ 人，上至 $1$ st，下至 $n$ th。第 $i$ 个人有 $a_i$ 金子。如果是 $a_i \ge k$ ，罗宾会拿走所有的 $a_i$ 金子；如果是 $a_i=0$ ，罗宾会给 $1$ 金子（如果他有的话）。罗宾开始时有 $0$ 金子。</p>
+<p>求罗宾给了多少人黄金。</p>
+<h2 id="大概思路">大概思路</h2>
+<p>根据题意模拟即可</p>
+<h2 id="参考代码">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    i64 n, k;
+    std::cin &gt;&gt; n &gt;&gt; k;
+    i64 sum = 0;
+    int cnt = 0;
+    while (n--) {
+        i64 x;
+        std::cin &gt;&gt; x;
+        if (x &gt;= k) {
+            sum += x;
+        } else if (x == 0) {
+            if (sum) sum--, cnt++; 
+        }
+    }
+    std::cout &lt;&lt; cnt &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h1 id="b-robin-hood-and-the-major-oak">B. Robin Hood and the Major Oak</h1>
+<h2 id="题意-1">题意</h2>
+<p>大橡树每年长出 $i^i$ 片新叶。它在 $1$ 年开始长出 $1$ 片叶子。</p>
+<p>树叶在树上的寿命为 $k$ 年。换句话说， $i$ 年长出的叶子会在 $i$ 年和 $i+k-1$ 年之间持续生长。</p>
+<p>罗宾认为偶数是幸运数字。请帮助罗宾判断这棵橡树在 $n$ 年的叶子数是否为偶数。</p>
+<h2 id="大概思路-1">大概思路</h2>
+<p>$i^i$ 的奇偶性可转化为 $i$ 的奇偶性，所以这题实际上就是让我们判断， $ [n - k + 1, n] $ 区间之和的奇偶性。</p>
+<h2 id="参考代码-1">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    i64 n, k;
+    std::cin &gt;&gt; n &gt;&gt; k;
+
+    std::cout &lt;&lt; ((((n + n - k + 1) * k / 2) % 2 == 0) ? &quot;YES&quot; : &quot;NO&quot;) &lt;&lt; &quot;\n&quot;;//等差数列求和
+}
+</code></pre>
+<h1 id="c-robin-hood-in-town">C. Robin Hood in Town</h1>
+<h2 id="题意-2">题意</h2>
+<p>镇上住着 $n$ 人。每个人的财富是 $a_i$ 金子。最富有的人又找到了一罐金子。</p>
+<p>形式地说，找到 <strong>一个</strong> $a_j=max(a_1, a_2, \dots, a_n)$ ，把 $a_j$ 改成 $a_j+x$ ，其中 $x$ 是在锅里找到的黄金的非负整数。如果有多个最大值，则可以是其中任意一个。</p>
+<p>如果一个人的财富<strong>严格少于平均财富的一半</strong>，那么这个人就是不快乐的。</p>
+<p>如果<strong>严格来说超过总人口</strong> $n$ <strong>的一半</strong>，那么罗宾汉就会出现。</p>
+<p>求罗宾汉出现的最小值 $x$ ，如果不可能，则输出 $-1$ 。</p>
+<p>$^{\text{∗}}$ 平均财富的定义是总财富除以总人口 $n$ ，即 $\frac{\sum a_i}{n}$ ，结果为实数。</p>
+<h2 id="大概思路-2">大概思路</h2>
+<p>观察样例可知， $n = 1$ 或 $2$ 无解。当 $n &gt; 2$ 时，稍微推导一下式子即可：</p>
+<p>$$\frac{sum + x}{2n} &gt; a_{\frac{n}{2}}$$
+$$x &gt; 2na_{\frac{n}{2}} - sum$$
+$$x_{min} = 2na_{\frac{n}{2}} - sum + 1$$</p>
+<p>其中 $a_{\frac{n}{2}}$ 表示原数组排序后的第 $\lfloor \frac{n}{2} \rfloor$ 个元素。</p>
+<p>为了避免输出复制，可以让结果对0取个max。</p>
+<h2 id="参考代码-2">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    int n;
+    std::cin &gt;&gt; n;
+    std::map&lt;i64, i64&gt; cnt;
+    std::vector&lt;i64&gt; a(n);
+
+    i64 sum = 0;
+    for (int i = 0; i &lt; n; i++) {
+        int x;
+        std::cin &gt;&gt; x;
+        a[i] = x;
+        cnt[x]++;
+        sum += x;
+    }
+
+    if (n &lt;= 2) {
+        std::cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
+        return;
+    }
+
+    std::sort(a.begin(), a.end());
+
+    int mid = a[n / 2];
+
+    std::cout &lt;&lt; std::max(0ll, (2ll * mid * n - sum + 1)) &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h1 id="d-robert-hood-and-mrs-hood">D. Robert Hood and Mrs Hood</h1>
+<h2 id="题意-3">题意</h2>
+<p>罗宾的哥哥和母亲来访，罗宾可以为每位访客选择开始的日子。</p>
+<p>所有日子的编号都是从 $1$ 到 $n$ 。来访者连续逗留 $d$ 天，其中所有的 $d$ 天必须在 $1$ 到 $n$ 之间。</p>
+<p>罗宾总共计划了 $k$ 项风险 &ldquo;工作&rdquo;。其中 $i$ 项工作发生在 $l_i$ 天和 $r_i$ 天之间，即 $1 \le i \le k$ 天。如果某项工作在 $d$ 天中的任何一天进行，那么这次访问就会与这项工作重叠（重叠时间的长短并不重要）。</p>
+<p>罗宾希望他弟弟的访问与最多的<strong>项不同工作</strong>重叠，而他母亲的访问与最少的<strong>项不同工作</strong>重叠。</p>
+<p>为罗宾的哥哥和母亲的来访寻找合适的开始日期。如果有多个合适的日期，选择最早的一个。</p>
+<h2 id="大概思路-3">大概思路</h2>
+<p>滑动窗口维护区间最大值即可。（但是似乎看到了更优雅的实现？）</p>
+<h2 id="参考代码-3">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    int n, d, k;
+    std::cin &gt;&gt; n &gt;&gt; d &gt;&gt; k;
+
+    std::vector&lt;std::pair&lt;i64, i64&gt;&gt; a(k);
+    for (auto &amp;[l, r] : a) {
+        std::cin &gt;&gt; l &gt;&gt; r;
+    }
+
+    std::sort(a.begin(), a.end());
+
+    int mxp = 1, mip = 1;
+    int mxv = 0, miv = 1e9;
+
+    std::priority_queue&lt;int, std::vector&lt;int&gt;, std::greater&lt;int&gt;&gt; q;
+    int j = 0;
+    for (int i = 1; i &lt;= n; i++) {
+        while (q.size() &amp;&amp; q.top() &lt;= i - d) q.pop();
+
+        while (j &lt; k &amp;&amp; a[j].first &lt;= i) {
+            q.push(a[j++].second);
+        }
+
+        if (i &gt;= d &amp;&amp; (int)q.size() &gt; mxv) {
+            mxv = q.size();
+            mxp = i - d + 1;
+        }
+        if (i &gt;= d &amp;&amp; (int)q.size() &lt; miv) {
+            miv = q.size();
+            mip = i - d + 1;
+        }
+    }
+    std::cout &lt;&lt; mxp &lt;&lt; &quot; &quot; &lt;&lt; mip &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h3 id="优雅的前缀和做法">优雅的前缀和做法</h3>
+<pre><code class="language-cpp">void solve() {
+    int n, d, k;
+    cin &gt;&gt; n &gt;&gt; d &gt;&gt; k;
+ 
+    vector&lt;int&gt; a(n + 2), b(n + 2);
+    for (int i = 0; i &lt; k; i++) {
+        int l, r;
+        cin &gt;&gt; l &gt;&gt; r;
+        a[l]++;//到目前为止，总共开始的任务量
+        b[r + 1]++;//到目前为止，总共已经结束的任务量
+    }
+ 
+    for (int i = 1; i &lt;= n + 1; i++) {
+        a[i] += a[i - 1];
+        b[i] += b[i - 1];
+    }
+ 
+    int x = 0, y = 0, mx = 0, mn = inf;
+ 
+    for (int i = 1; i + d - 1 &lt;= n; i++) {
+        int cur = a[i + d - 1] - b[i];//这样一减，就能知道当前区间有多少个任务
+ 
+        if (cur &gt; mx) {
+            mx = cur;
+            x = i;
+        }
+        if (cur &lt; mn) {
+            mn = cur;
+            y = i;
+        }
+    }
+ 
+    cout &lt;&lt; x &lt;&lt; &quot; &quot; &lt;&lt; y &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h1 id="e-rendez-vous-de-marian-et-robin">E. Rendez-vous de Marian et Robin</h1>
+<h2 id="题意-4">题意</h2>
+<p>旅行网络由 $n$ 个顶点和 $m$ 条边组成，顶点从 $1$ 到 $n$ 。 第 $i$ 条边连接顶点 $u_i$ 和 $v_i$ ，需要花费 $w_i$ 秒（所有 $w_i$ 都是偶数）。玛丽安从顶点 $1$ 开始，罗宾从顶点 $n$ 开始。</p>
+<p>此外， $n$ 个顶点中的 $h$ 个顶点都有一匹马可用。玛丽安和罗宾都是优秀的骑手，可以在短时间内（即 $0$ 秒）骑上马。骑马时，行进时间减半。一旦上马，马匹就能在剩余的路程中持续奔跑。相遇必须在顶点（即不在边上）。<strong>任何一方都可以选择在任何顶点上等待。</strong></p>
+<p>输出罗宾和玛丽安最早相遇的时间。如果顶点 $1$ 和 $n$ 断开，则输出 $-1$。</p>
+<h2 id="大概思路-4">大概思路</h2>
+<p>对1和n分别跑一遍dijkstra，dijkstra稍微改一下写法，如果遇到了有马的位置，对于之后的转移，转移的路径长度都减半。</p>
+<p>因为 <strong>任何一方都可以选择在任何顶点上等待。</strong> 所以跑完dijkstra之后，对每个节点求两人到达的时间的最大值可以得到在该节点相遇的最短时间。然后找到这个最短时间的最小值即可。</p>
+<h2 id="参考代码-4">参考代码</h2>
+<pre><code class="language-cpp">void dijkstra(int s, const std::vector&lt;std::vector&lt;std::pair&lt;int, i64&gt;&gt;&gt;&amp; edg, std::vector&lt;std::array&lt;i64, 2&gt;&gt;&amp; dis, std::vector&lt;bool&gt;&amp; hs) {
+    auto cmp = [&amp;](const auto&amp; a, const auto&amp; b) {
+        return std::make_pair(dis[a.first][a.second], a) &lt; std::make_pair(dis[b.first][b.second], b);
+    };
+    std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt; q(cmp);
+    
+    dis[s][0] = 0;
+    q.insert({s, 0});
+    
+    while (q.size()) {
+        auto [now, hsbefore] = *q.begin();
+        q.erase(q.begin());
+        
+        bool hsnow = (hsbefore || hs[now]);
+        for (auto &amp;[nxt, w] : edg[now]) {
+            i64 d = hsnow ? w / 2 : w;
+            if (dis[nxt][hsnow] &gt; dis[now][hsbefore] + d) {
+                q.erase({nxt, hsnow});//刷新
+                dis[nxt][hsnow] = dis[now][hsbefore] + d;
+                q.insert({nxt, hsnow});//insert的时候，会根据cmp自动排序位置
+            }
+        }
+    }
+}
+
+void solve() {
+    int n, k, h;
+    std::cin &gt;&gt; n &gt;&gt; k &gt;&gt; h;
+    std::vector&lt;bool&gt; hs(n);
+    
+    while (h--) {
+        int x;
+        std::cin &gt;&gt; x;
+        x--;
+        hs[x] = 1;
+    }
+    
+    std::vector&lt;std::vector&lt;std::pair&lt;int, i64&gt;&gt;&gt; edg(n);
+    
+    while (k--) {
+        int x, y, w;
+        std::cin &gt;&gt; x &gt;&gt; y &gt;&gt; w;
+        x--; y--;
+        edg[x].push_back({y, w});
+        edg[y].push_back({x, w});
+    }
+    
+    std::vector&lt;std::array&lt;i64, 2&gt;&gt; d1(n, {(i64)1e18, (i64)1e18}), d2(n, {(i64)1e18, (i64)1e18});
+    
+    dijkstra(0, edg, d1, hs);
+    dijkstra(n - 1, edg, d2, hs);
+    
+    auto get = [&amp;](int i) {
+        return std::max(std::min(d1[i][0], d1[i][1]), std::min(d2[i][0], d2[i][1]));
+    };
+    
+    i64 ans = 1e18;
+    for (int i = 0; i &lt; n; i++) {
+        ans = std::min(ans, get(i));
+    }
+    std::cout &lt;&lt; (ans == (i64)1e18 ? -1 : ans) &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h3 id="非常抽象的维护">非常抽象的维护</h3>
+<pre><code class="language-cpp">    auto cmp = [&amp;](const auto&amp; a, const auto&amp; b) {
+        return std::make_pair(dis[a.first][a.second], a) &lt; std::make_pair(dis[b.first][b.second], b);
+    };
+    std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt; q(cmp);
+</code></pre>
+<p>可以在每次insert时，按照外部提供的数据结构重新排序。（应该是O(logn)的）</p>
+<h1 id="f-sheriffs-defense">F. Sheriff&rsquo;s Defense</h1>
+<h2 id="题意-5">题意</h2>
+<p>诺丁汉郡长在建造营地时考虑到了策略问题，因此，从 $1$ 到 $n$ 正好有 $n$ 个营地和 $n-1$ 条小路，每条小路都连接着两个营地。从任何一个营地都可以到达另一个营地。每个营地 $i$ 最初都有 $a_i$ 枚金币。</p>
+<p>现在的情况是，所有营地都会被罗宾摧毁。警长可以从<strong>每个相邻的营地</strong>减去正好 $c$ 金子来强化营地，并用这些金子为营地建造更好的防御工事。强化一个营地<strong>不会改变</strong>自身的金币，只会改变其相邻营地的金币。一个营地的金币可以是负数。</p>
+<p>罗宾汉发动攻击后，所有经过强化的营地都会幸存下来，其他营地则会被摧毁。</p>
+<p>在罗宾汉攻击后，如果郡长最优化地强化了他的营地，他的幸存营地最多能保留多少黄金？</p>
+<p>当且仅当存在一条连接 $a$ 和 $b$ 的小路时， $a$ 营地与 $b$ 营地相邻。只有被加强的营地才算作答案，其他营地都会被摧毁。</p>
+<h2 id="大概思路-5">大概思路</h2>
+<p>树上dp，设 $dp[i][1]$ 表示，对于第 $i$ 个节点，保留该处的金币时，最多能保留多少金币； $dp[i][0]$ 表示，对于第 $i$ 个节点，不保留该处的金币时，最多能保留多少金币。</p>
+<p>那么转移方程如下：</p>
+<p>$$ dp[now][0] += \max(dp[nxt][0], dp[nxt][1]); $$
+$$ dp[now][1] += \max(dp[nxt][0], dp[nxt][1] - 2 * c); $$</p>
+<p>记得每次转移前先初始化 $dp[now][0] = 0$, $dp[now][1] = val[i]$。</p>
+<h2 id="参考代码-5">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    int n, c;
+    std::cin &gt;&gt; n &gt;&gt; c;
+    std::vector&lt;int&gt; val(n + 1);
+
+    for (int i = 1; i &lt;= n; i++) {
+        std::cin &gt;&gt; val[i];
+    }
+
+    std::vector&lt;std::vector&lt;int&gt;&gt; edg(n + 1);
+    for (int i = 1; i &lt; n; i++) {
+        int x, y;
+        std::cin &gt;&gt; x &gt;&gt; y;
+
+        edg[x].push_back(y);
+        edg[y].push_back(x);
+    }
+
+    std::vector&lt;std::array&lt;i64, 2&gt;&gt; dp(n + 1);
+    auto dfs = [&amp;](auto&amp;&amp; self, int now, int from) -&gt; void {
+        dp[now][0] = 0;
+        dp[now][1] = val[now];
+        for (auto &amp;nxt : edg[now]) {
+            if (nxt == from) continue;
+            self(self, nxt, now);
+
+            dp[now][0] += std::max(dp[nxt][0], dp[nxt][1]);
+            dp[now][1] += std::max(dp[nxt][0], dp[nxt][1] - 2 * c);
+        }
+    };
+
+    dfs(dfs, 1, -1);
+    i64 ans = std::max(dp[1][0], dp[1][1]);
+    std::cout &lt;&lt; ans &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h1 id="g-milky-days">G. Milky Days</h1>
+<p><em>待补</em></p>
+<h1 id="h-robin-hood-archery">H. Robin Hood Archery</h1>
+<h2 id="题意-6">题意</h2>
+<p>从 $1$ 到 $n$ ，一排有 $n$ 个目标。当玩家射中目标 $i$ 时，他们的得分就会增加 $a_i$ ，而目标 $i$ 则会被摧毁。游戏由多个回合组成，轮流进行。罗宾汉总是先开始游戏，然后是警长，以此类推。游戏一直持续到所有目标被摧毁为止。两名玩家开始时的得分都是 $0$ 。</p>
+<p>游戏结束时，得分最高的玩家获胜，其他玩家失败。如果双方得分相同，则为平局，没有输赢。在每个回合中，玩家可以射击任何之前没有射击过的目标。双方都以最佳方式进行游戏，尽可能获得最高分。</p>
+<p>诺丁汉郡长怀疑自己可能会输掉游戏！这种情况不能发生，您必须帮助警长。警长会提出 $q$ 个问题，每个问题都指定了 $l$ 和 $r$ 。这意味着游戏只能以目标 $l, l+1, \dots, r$ 进行，因为其他目标会在游戏开始前被警长删除。</p>
+<p>对于每个询问 $l$ ， $r$ ，判断警长在只考虑目标 $l, l+1, \dots, r$ 的情况下能否<strong>不输</strong>游戏。</p>
+<h2 id="大概思路-6">大概思路</h2>
+<p>稍微分析一下可知，先手优势特别大，后手只能平局或者输。那么什么时候平局？当然是区间内每种数的数量都为偶数的时候。也就是说，这题实际上是在问你：<strong>区间内每种数的数量是否都为偶数</strong></p>
+<h2 id="参考代码-6">参考代码</h2>
+<p>两种实现，一种是无脑写的莫队，复杂度 $O(n\sqrt n)$ ；另一种是神奇的随机异或哈希。</p>
+<h3 id="随机异或哈希">随机异或哈希</h3>
+<pre><code class="language-cpp">std::mt19937_64 rng(std::chrono::steady_clock::now().time_since_epoch().count());
+
+u64 RND[1000001];
+
+void pre() {
+    for (int i = 1; i &lt;= 1000000; i++) RND[i] = rng();
+}
+
+void solve() {
+    int n, q;
+    std::cin &gt;&gt; n &gt;&gt; q;
+
+    std::vector&lt;u64&gt; a(n + 1);
+    for (int i = 1; i &lt;= n; i++) std::cin &gt;&gt; a[i];
+    
+    for (int i = 1; i &lt;= n; i++) {
+        a[i] = RND[a[i]];
+        a[i] ^= a[i - 1];
+    }
+
+    while (q--) {
+        int l, r;
+        std::cin &gt;&gt; l &gt;&gt; r;
+        l--;
+        std::cout &lt;&lt; ((a[r] ^ a[l]) == 0 ? &quot;YES&quot; : &quot;NO&quot;) &lt;&lt; &quot;\n&quot;;
+    }
+}
+</code></pre>
+<h3 id="莫队">莫队</h3>
+<pre><code class="language-cpp">struct MD {//区间本质不同数的奇偶性（离线莫队）（其实直接随机异或哈希即可O(n)解决，写莫队只是为了稍微练一下莫队）
+    struct query {
+        int id;
+        int l;
+        int r;
+    };
+    std::vector&lt;query&gt; q;//m + 1
+    std::vector&lt;int&gt; a;//n + 1
+    int n, m, block;
+    
+    //[Editable] 你想维护的各种信息
+    std::vector&lt;std::string&gt; ans;
+    std::vector&lt;int&gt; cnt; 
+    int bad = 0;
+
+    void add(int v) {//[Editable] 维护添加操作
+        if (cnt[v] &amp; 1) bad--;
+        else bad++;
+        cnt[v]++;
+    }
+    void del(int v) {//[Editable] 维护删除操作
+        if (cnt[v] &amp; 1) bad--;
+        else bad++;
+        cnt[v]--;
+    }
+    
+    void init(const std::vector&lt;int&gt; &amp;A, const std::vector&lt;std::pair&lt;int, int&gt;&gt; &amp;Q) {//初始化（一般不变）（传入数组下标都从0开始，询问数组的元素范围:[1, n]）
+        n = A.size();
+        a.resize(n + 1);
+
+        block = std::sqrt(n);
+        for(int i = 1; i &lt;= n; i++) a[i] = A[i - 1];
+        
+        m = Q.size();
+        q.resize(m);
+
+        //[Editable] 维护信息初始化
+        cnt = A;
+        std::sort(cnt.begin(), cnt.end());
+        cnt.erase(std::unique(cnt.begin(), cnt.end()), cnt.end());
+        std::map&lt;int, int&gt; mp;
+        for (int i = 0; i &lt; cnt.size(); i++) {
+            mp[cnt[i]] = i;
+        }
+        for (int i = 1; i &lt;= n; i++) {
+            a[i] = mp[a[i]];
+        }
+        ans.resize(m + 1);
+        cnt.clear();
+        cnt.resize(mp.size());
+        //==========================//
+
+        for(int i = 0; i &lt; m; i++) {
+            q[i].id = i;
+            q[i].l = Q[i].first;
+            q[i].r = Q[i].second;
+        }
+        std::sort(q.begin(), q.end(), [&amp;](query a, query b) {//按块排序
+            int al = a.l / block, bl = b.l / block;
+            int ar = a.r / block, br = b.r / block;
+            if(al != bl) return al &lt; bl;
+            return ar &lt; br;
+        });
+    }
+ 
+    void work() {//[Editable] 处理答案
+        int l, r, cl, cr;
+        cr = 1;
+        cl = 1;
+        add(a[1]);
+        for(int i = 0; i &lt; m; i++)
+        {
+            l = q[i].l, r = q[i].r;
+            while(cr &lt; r) add(a[++cr]);
+            while(cl &gt; l) add(a[--cl]);
+            while(cr &gt; r) del(a[cr--]);
+            while(cl &lt; l) del(a[cl++]);
+            //[Editable] 统计答案
+            ans[q[i].id] = (bad == 0 ? &quot;YES&quot; : &quot;NO&quot;);
+        }
+    }
+    
+    std::string getans(int i) {//按询问下标获取答案
+        return ans[i];
+    }
+};
+
+void solve() {
+    int n, q;
+    std::cin &gt;&gt; n &gt;&gt; q;
+
+    std::vector&lt;int&gt; a(n);
+    for (auto &amp;i : a) std::cin &gt;&gt; i;
+
+    std::vector&lt;std::pair&lt;int, int&gt;&gt; qry(q);
+
+    for (auto &amp;[l, r] : qry) {
+        std::cin &gt;&gt; l &gt;&gt; r;
+    }
+    
+    MD md;
+    md.init(a, qry);
+    md.work();
+
+    for (int i = 0; i &lt; q; i++) {
+        std::cout &lt;&lt; md.getans(i) &lt;&lt; &quot;\n&quot;;
+    }
+}
+</code></pre>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E9%A2%98%E8%A7%A3/">题解</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/cf/">CF</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_372/" data-tooltip="AtCoder Beginner Contest 372" aria-label="PREVIOUS: AtCoder Beginner Contest 372">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/todolist/" data-tooltip="[置顶] To Do List" aria-label="NEXT: [置顶] To Do List">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_974\/';
+        
+          this.page.identifier = '\/post\/solution\/cf_974\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 XiaoXia. All Rights Reserved
+  </span>
+
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_372/" data-tooltip="AtCoder Beginner Contest 372" aria-label="PREVIOUS: AtCoder Beginner Contest 372">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/todolist/" data-tooltip="[置顶] To Do List" aria-label="NEXT: [置顶] To Do List">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">XiaoXia</h4>
+    
+      <div id="about-card-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        华南理工大学
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://xiaoxiauwu.github.io/images/cover_.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiaoxiauwu.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/click.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/sakura.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+

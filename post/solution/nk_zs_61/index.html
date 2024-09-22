@@ -17,7 +17,7 @@
   },
   "name":"夏のBLOG",
   "description":"",
-  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/lgr_200_div4\/",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/nk_zs_61\/",
   "keywords":"[tech, C\u002b\u002b, python, study]"
 }
 
@@ -33,20 +33,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="洛谷【LGR-200-Div.4】洛谷入门赛 #27">
-<meta name="twitter:title" content="洛谷【LGR-200-Div.4】洛谷入门赛 #27">
-<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/lgr_200_div4/">
-<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/lgr_200_div4/">
+<meta property="og:title" content="牛客周赛 Round 61">
+<meta name="twitter:title" content="牛客周赛 Round 61">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/nk_zs_61/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/nk_zs_61/">
 <meta property="og:site_name" content="夏のBLOG">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-09-15T05:46:56">
+    <meta property="article:published_time" content="2024-09-23T05:21:28">
   
   
-    <meta property="article:modified_time" content="2024-09-15T05:46:56">
+    <meta property="article:modified_time" content="2024-09-23T05:21:28">
   
   
   
@@ -60,7 +60,7 @@
     
       <meta property="article:tag" content="题解">
     
-      <meta property="article:tag" content="luogu">
+      <meta property="article:tag" content="牛客">
     
   
 
@@ -79,22 +79,22 @@
 
 
 
-  <meta property="og:image" content="https://s21.ax1x.com/2024/09/15/pAu8o9J.png">
-  <meta property="twitter:image" content="https://s21.ax1x.com/2024/09/15/pAu8o9J.png">
+  <meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
+  <meta property="twitter:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
 
 
-  <meta property="og:image" content="https://s21.ax1x.com/2024/09/15/pAu8o9J.png">
-  <meta property="twitter:image" content="https://s21.ax1x.com/2024/09/15/pAu8o9J.png">
+  <meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
+  <meta property="twitter:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
 
 
-    <title>洛谷【LGR-200-Div.4】洛谷入门赛 #27</title>
+    <title>牛客周赛 Round 61</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/lgr_200_div4/">
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_61/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -265,21 +265,21 @@
   <div class="post-header-cover
               text-center
               post-header-cover--full"
-       style="background-image:url('https://s21.ax1x.com/2024/09/15/pAu8o9J.png')"
+       style="background-image:url('https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg')"
        data-behavior="5">
     
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      洛谷【LGR-200-Div.4】洛谷入门赛 #27
+      牛客周赛 Round 61
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-09-15T05:46:56&#43;08:00">
+      <time datetime="2024-09-23T05:21:28&#43;08:00">
         
-  September 15, 2024
+  September 23, 2024
 
       </time>
     
@@ -307,87 +307,197 @@
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">也就只能打打水题安慰一下自己了</span>
+            <span class="post-header-cover-caption caption">逆天SPJ，硬控我一小时，还以为我D题错了</span>
           
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<p>不可能都讲，都挺水的，讲几道我觉得有意思的</p>
-<h1 id="e-距离">E 距离</h1>
+<h1 id="a-letter-song--致十年后的我们">A. Letter Song ~ 致十年后的我们</h1>
 <h2 id="题意">题意</h2>
-<p>每次操作修改一对关系，问所有关系的最值</p>
+<p>已知你在 Y 年 M 月 D 日向十年后的自己发送了一条消息；请你精确的计算出，哪一天的自己会收到这条消息。</p>
 <h2 id="大概思路">大概思路</h2>
-<p>有点像莫队的思想，用一个神奇的map迭代器就能过。</p>
-<h2 id="代码">代码</h2>
-<pre><code class="language-cpp">void solve(){
-    int n, m;
-    std::cin &gt;&gt; n &gt;&gt; m;
-    std::map&lt;std::pair&lt;int, int&gt;, int&gt; f;
-    std::map&lt;int, int&gt; cnt;
-
-    while (m--) {
-        int op, a, b, c;
-        std::cin &gt;&gt; op &gt;&gt; a &gt;&gt; b &gt;&gt; c;
-
-        if (op == 1) {
-            cnt[f[{a, b}]]--;
-            if (cnt[f[{a, b}]] == 0) cnt.erase(f[{a, b}]);
-            f[{a, b}] += c;
-            cnt[f[{a, b}]]++;
-        } else {
-            cnt[f[{a, b}]]--;
-            if (cnt[f[{a, b}]] == 0) cnt.erase(f[{a, b}]);
-            f[{a, b}] -= c;
-            cnt[f[{a, b}]]++;
-        }
-        std::cout &lt;&lt; cnt.rbegin()-&gt;first &lt;&lt; &quot;\n&quot;;//rbegin()取最大值，begin()取最小值
+<p>不难，直接字符串截取前四个，转int后加10，直接输出，并顺便输出后半部分。</p>
+<h2 id="参考代码">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+	std::string s;
+    std::cin &gt;&gt; s;
+    
+    int y = std::stoi(s.substr(0, 4));
+    std::cout &lt;&lt; y + 10 &lt;&lt; s.substr(4);
+}
+</code></pre>
+<h1 id="b-简单图形问题---0123">B. 简单图形问题 - 0123</h1>
+<h2 id="题意-1">题意</h2>
+<p>对于给定的未知多边形的面积，请你判断这是一个以整数为边长的正方形、或是以整数为边长的等边三角形、或是两者均是、或是两者均不是。</p>
+<h2 id="大概思路-1">大概思路</h2>
+<p>简单数学题，易知等边三角形面积一定会挂个无理数 $\sqrt 3$，所以只需要判断输入是否为平方数即可。</p>
+<h2 id="参考代码-1">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+	int n;
+    std::cin &gt;&gt; n;
+    
+    int n_ = std::sqrt(n);
+    if (n_ * n_ == n) {
+        std::cout &lt;&lt; 0 &lt;&lt; &quot;\n&quot;;
+    } else {
+        std::cout &lt;&lt; 3 &lt;&lt; &quot;\n&quot;;
     }
 }
 </code></pre>
-<h1 id="h-考试">H 考试</h1>
-<h2 id="题意-1">题意</h2>
-<p>给定等长度数组a，b，可以做任意次操作，将数组a的某个元素值增加，求最小的增加量总和，使得满足 $a[i] &gt; b[i]$ 的i个数严格大于满足 $a[i] &lt; b[i]$ 的i个数。</p>
-<h2 id="大概思路-1">大概思路</h2>
-<p>一个有趣的贪心，模拟一下就过了</p>
-<h2 id="代码-1">代码</h2>
-<pre><code class="language-cpp">void solve(){
-    int n;
-    std::cin &gt;&gt; n;
-
-    std::vector&lt;int&gt; a(n), b = a;
-    for (auto &amp;i : a) std::cin &gt;&gt; i;
-    for (auto &amp;i : b) std::cin &gt;&gt; i;
-
-    std::vector&lt;int&gt; c;
-    int win = 0;//胜
-    int fail = 0;//负
-    int ping = 0;//平
-    for (int i = 0; i &lt;n; i++) {
-        if (a[i] &gt; b[i]) win++;
-        else if (a[i] == b[i]) ping++;
-        else {
-            c.push_back(b[i] - a[i]);
-            fail++;
-        }
+<h1 id="c-小红的机器人构造---">C. 小红的机器人构造 - Ⅰ+Ⅱ+Ⅲ</h1>
+<h2 id="题意-2">题意</h2>
+<p>在无限大的网格平面上，我们使用 $(x,y)$ 表示网格中第 $x$ 行第 $y$ 列的单元格。
+小红有一只笨笨机器人初始位于 $(0,0)$ 单元格，她会向机器人下达 $n$ 个指令，机器人跟随指令上下左右移动。指令字符串由 $U,D,L,R$ 四个字符混合构成，以 $1$ 作为初始下标，形式化写作 $s1​s2​⋯sn$​ 。具体的，假设 $t$ 时刻机器人位于 $(i,j)$ 单元格，若指令字符串的第 $t+1$ 个字符存在：</p>
+<ul>
+<li>若 $s_{t+1}​=U$ ，则第 $t+1$ 时刻机器人位于 $(i+1,j)$ ；</li>
+<li>若 $s_{t+1}​=D$ ，则第 $t+1$ 时刻机器人位于 $(i−1,j)$ ；</li>
+<li>若 $s_{t+1}​=L$ ，则第 $t+1$ 时刻机器人位于 $(i,j−1)$ ；</li>
+<li>若 $s_{t+1}​=R$ ，则第 $t+1$ 时刻机器人位于 $(i,j+1)$ ；</li>
+</ul>
+<p>给出指令字符串，询问，能否删除部分指令（保持其余指令的相对位置不变），使得机器人最终位于 $(x,y)$ 。如果可以，计算有多少种不同的删除方案（删除不同下标视为不同方案），并输出其中任意一种。</p>
+<h2 id="大概思路-2">大概思路</h2>
+<p><em>什么OI制三合一？</em></p>
+<p>对于task1，我们直接统计每种字符的数量，然后判断x，y方向对应的字符是否都分别大于等于 $|x|$ 和 $|y|$。</p>
+<p>对于task2，我们可以在根据 $x$ 和 $y$ 的值，设定每种字符只能输出多少个，然后遍历字符串模拟即可。</p>
+<p>对于task3，我们考虑基于最少输出字符的情况，一对一对的加上相反方向的字符，对最终位置不影响。然后枚举可以加多少对，用组合数算贡献即可。显然这个枚举是 $O(n)$ 的。</p>
+<h2 id="参考代码-2">参考代码</h2>
+<pre><code class="language-cpp">constexpr int M = 1e9 + 7;
+constexpr int N = 1e5 + 5;
+i64 powp(i64 a, i64 n) {
+    i64 ans = 1;
+    while (n) {
+        if (n &amp; 1) (ans *= a) %= M;
+        (a *= a) %= M;
+        n &gt;&gt;= 1;
     }
+    return ans;
+}
 
-    std::sort(c.begin(), c.end());
-    i64 sum = 0;
-    int i = 0;
-    while (win &lt;= fail) {
-        if (ping) {//贪心选择平局，因为平局只要花费1的代价就能让fail-win的值减1
-            ping--;
-            win++;
-            sum++;
-        } else {//贪心地指增到刚好能让fail减少1的程度，构造一个平局，留给上面进行下一轮贪心
-            //（为什么不干脆顺便加1？因为有可能这里fail--后就可以退出while循环了，没必要再加1使win++）
-            fail--;
-            ping++;
-            sum += c[i++];
+i64 inv(i64 x) {
+    return powp(x, M - 2);
+}
+
+i64 fac[N], invfac[N];
+ 
+void pre() {
+    fac[0] = invfac[0] = 1;
+    for (int i = 1; i &lt; N; i++) fac[i] = fac[i-1] * i % M;
+    invfac[N - 1] = inv(fac[N - 1]);
+    for (int i = N - 2; i &gt;= 1; i--) invfac[i] = invfac[i + 1] * (i + 1) % M;
+}
+ 
+i64 C(i64 n,i64 m) {
+    if (m &gt; n) return 0;
+    return fac[n] * invfac[n - m] % M * invfac[m] % M;
+}
+
+
+void solve() {
+	int n, x, y;
+    std::cin &gt;&gt; n &gt;&gt; y &gt;&gt; x;
+    std::string s;
+    std::cin &gt;&gt; s;
+    std::map&lt;char, int&gt; cnt;
+    for (auto &amp;c : s) cnt[c]++;
+    
+    //task1
+    bool ck = ((x &gt; 0 ? (cnt['R'] &gt;= x) : (cnt['L'] &gt;= -x)) &amp; (y &gt; 0 ? (cnt['U'] &gt;= y) : (cnt['D'] &gt;= -y)));
+    
+    if (ck) {
+        std::cout &lt;&lt; &quot;YES &quot;;
+        //task2
+        auto cnt_ = cnt;
+        if (x &gt; 0) {
+            cnt_['L'] = 0;
+            cnt_['R'] = x;
+        } else {
+            cnt_['R'] = 0;
+            cnt_['L'] = -x;
         }
+        if (y &gt; 0) {
+            cnt_['D'] = 0;
+            cnt_['U'] = y;
+        } else {
+            cnt_['U'] = 0;
+            cnt_['D'] = -y;
+        }
+        auto cnt__ = cnt_;
+        for (auto &amp;c : s) {
+            if (cnt_[c]) {
+                std::cout &lt;&lt; c;
+                cnt_[c]--;
+            }
+        }
+        std::cout &lt;&lt; &quot; &quot;;
+        //task3
+        i64 ans = 1;
+        if (x &gt;= 0) {
+            i64 tmp = 0;
+            for (int i = 0; i &lt;= std::min(cnt['L'], cnt['R'] - cnt__['R']); i++) {
+                (tmp += C(cnt['R'], cnt__['R'] + i) * C(cnt['L'], i) % M) %= M;
+            }
+            (ans *= tmp) %= M;
+        } else {
+            i64 tmp = 0;
+            for (int i = 0; i &lt;= std::min(cnt['R'], cnt['L'] - cnt__['L']); i++) {
+                (tmp += C(cnt['L'], cnt__['L'] + i) * C(cnt['R'], i) % M) %= M;
+            }
+            (ans *= tmp) %= M;
+        }       
+        if (y &gt;= 0) {
+            i64 tmp = 0;
+            for (int i = 0; i &lt;= std::min(cnt['D'], cnt['U'] - cnt__['U']); i++) {
+                (tmp += C(cnt['U'], cnt__['U'] + i) * C(cnt['D'], i) % M) %= M;
+            }
+            (ans *= tmp) %= M;
+        } else {
+            i64 tmp = 0;
+            for (int i = 0; i &lt;= std::min(cnt['U'], cnt['D'] - cnt__['D']); i++) {
+                (tmp += C(cnt['D'], cnt__['D'] + i) * C(cnt['U'], i) % M) %= M;
+            }
+            (ans *= tmp) %= M;
+        }
+        std::cout &lt;&lt; ans;
+        
+        std::cout &lt;&lt; &quot;\n&quot;;
+    } else {
+        std::cout &lt;&lt; &quot;NO\n&quot;;
     }
-    std::cout &lt;&lt; sum; 
+}
+</code></pre>
+<h1 id="d-小红的差值构造---easyhardextreme">D. 小红的差值构造 - easy+hard+extreme</h1>
+<h2 id="题意-3">题意</h2>
+<p>小红有一个长度为 $n$ 的数组 $\{1,2,…,n\}$ 和一个整数 $l$ ，她想找到这样两个整数 $x$ 和 $y$ ，满足 $y−x=l$，记 $f_i=\min⁡{∣a_i−x∣,∣a_i−y∣}$，使得 $f_1​+f_2​+⋯+f_n$​ 最小。</p>
+<p>你需要输出满足条件的 $x$ 和 $y$ ，以及这个最小值。</p>
+<h2 id="大概思路-3">大概思路</h2>
+<p>分类讨论，当 $l &gt; n$ 时，显然我们无法将 $x$ 和 $y$ 同时置于数组的值域中，因此我们可以选择将其中一个端点居中放置到数组中，容易证明，这样的贡献算出来一定是最小的。设该贡献为 $calc(n)$，表示对长为 $n$ 的区间，当 $l &gt; n$ 时的最优答案，我们可以直接用两个等差数列求和搞定该值的计算。</p>
+<p><img src="https://s21.ax1x.com/2024/09/23/pAMX2Ue.png" alt=""></p>
+<p>当 $l &lt;= n$ 时，我们也要尽可能“居中”地放 $x$ 和 $y$。手画样例可知，答案可以划分成两个 “$l &gt; n$” 的情况，分别长为 $l$ 和 $n - l$。此时答案即为 $calc(l) + calc(n - l)$</p>
+<p><img src="https://s21.ax1x.com/2024/09/23/pAMXR4H.png" alt=""></p>
+<h2 id="参考代码-3">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+	i64 n, l;
+    std::cin &gt;&gt; n &gt;&gt; l;
+    
+    auto calc = [](i64 n) {
+    	i64 n_ = n / 2;
+    	return 1ll * (1ll + n_) * n_ - (n % 2 == 0 ? n_ : 0);
+    };
+    
+    if (l &lt;= n) {
+        i64 l_ = (l + 1) / 2;
+        i64 r = n / 2 + l_ + (l % 2 == 0);
+        std::cout &lt;&lt; r - l &lt;&lt; &quot; &quot; &lt;&lt; r &lt;&lt; &quot; &quot;;
+        
+        std::cout &lt;&lt; calc(n - l) + calc(l);
+    } else {
+    	i64 l_ = (n + 1) / 2;
+    	std::cout &lt;&lt; l_ - l &lt;&lt; &quot; &quot; &lt;&lt; l_ &lt;&lt; &quot; &quot;;
+    	
+    	std::cout &lt;&lt; calc(n);
+    }
+    std::cout &lt;&lt; &quot;\n&quot;;
 }
 </code></pre>
               
@@ -405,7 +515,7 @@
                     
   <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E9%A2%98%E8%A7%A3/">题解</a>
 
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/luogu/">luogu</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%89%9B%E5%AE%A2/">牛客</a>
 
                   </div>
                 
@@ -418,7 +528,7 @@
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/ctf/basectf/" data-tooltip="[BaseCTF] 个人题解" aria-label="PREVIOUS: [BaseCTF] 个人题解">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/todolist/" data-tooltip="[置顶] To Do List" aria-label="PREVIOUS: [置顶] To Do List">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -426,7 +536,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_371/" data-tooltip="AtCoder Beginner Contest 371" aria-label="NEXT: AtCoder Beginner Contest 371">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -469,9 +579,9 @@
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/lgr_200_div4\/';
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/nk_zs_61\/';
         
-          this.page.identifier = '\/post\/solution\/lgr_200_div4\/'
+          this.page.identifier = '\/post\/solution\/nk_zs_61\/'
         
       };
       (function() {
@@ -515,7 +625,7 @@
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/ctf/basectf/" data-tooltip="[BaseCTF] 个人题解" aria-label="PREVIOUS: [BaseCTF] 个人题解">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/todolist/" data-tooltip="[置顶] To Do List" aria-label="PREVIOUS: [置顶] To Do List">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -523,7 +633,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_371/" data-tooltip="AtCoder Beginner Contest 371" aria-label="NEXT: AtCoder Beginner Contest 371">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
