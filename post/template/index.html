@@ -3020,6 +3020,63 @@ public:
 
 
 
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">最小圆覆盖</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">struct MinCircleOver {
+    pii Center;
+    ld Radius;
+
+    MinCircleOver(PS ps) {
+        std::shuffle(begin(ps), end(ps), std::mt19937(time(0)));
+
+        for (int i = 0; i &lt; ps.size(); i&#43;&#43;) {
+            if (sgn(dis(Center, ps[i]) - Radius) &lt;= 0)
+                continue;
+            // i点不在圆内,说明 i要更新圆
+            Center = ps[i], Radius = 0;
+            for (int j = 0; j &lt; i; j&#43;&#43;) {
+                if (sgn(dis(Center, ps[j]) - Radius) &lt;= 0)
+                    continue;
+                // j不在圆内,说明 j要更新圆
+                Center = 0.5f * (ps[i] &#43; ps[j]), Radius = dis(Center, ps[i]);
+                for (int k = 0; k &lt; j; k&#43;&#43;) {
+                    if (sgn(dis(Center, ps[k]) - Radius) &lt;= 0)
+                        continue;
+                    // k不在圆内,说明 k要更新圆
+                    Center = excir(ps[i], ps[j], ps[k]), Radius = dis(Center, ps[i]);
+                }
+            }
+        }
+    }
+
+    pii excir(const pii &amp;a, const pii &amp;b, const pii &amp;c) {
+        // 三点求外接圆 圆心
+        auto d1 = 0.5f * (a &#43; b), d2 = d1 &#43; (a - b).rot();
+        auto d3 = 0.5f * (c &#43; b), d4 = d3 &#43; (c - b).rot();
+        return cross(d1, d2, d3, d4);
+    }
+};</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
 <details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">平面最近点对</summary>
   <table>
     <tbody>

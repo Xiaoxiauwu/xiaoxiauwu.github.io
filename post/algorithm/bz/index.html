@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/xiaoxiauwu.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "XiaoXia",
+    
+    "image": "https://xiaoxiauwu.github.io/images/avatar.jpg"
+    
+  },
+  "name":"夏のBLOG",
+  "description":"",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/algorithm\/bz\/",
+  "keywords":"[tech, C\u002b\u002b, python, study]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.121.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="XiaoXia">
+<meta name="keywords" content="tech, C&#43;&#43;, python, study">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="倍增及有关例题">
+<meta name="twitter:title" content="倍增及有关例题">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/algorithm/bz/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/algorithm/bz/">
+<meta property="og:site_name" content="夏のBLOG">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2024-09-26T04:13:18">
+  
+  
+    <meta property="article:modified_time" content="2024-09-26T04:13:18">
+  
+  
+  
+    
+      <meta property="article:section" content="c&#43;&#43;">
+    
+  
+  
+    
+      <meta property="article:tag" content="ACM">
+    
+      <meta property="article:tag" content="算法">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
+
+
+    <title>倍增及有关例题</title>
+
+    <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/algorithm/bz/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiaoxiauwu.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://xiaoxiauwu.github.io/css/codeblock.css">
+      
+    
+
+    
+      
+    
+    
+
+
+<script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202401110101/show_ads_impl_fy2021.js" id="google_shimpl"></script>
+<script>
+      MathJax = {
+         tex: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true,
+            tags: 'ams',
+         },
+      };
+   </script>
+<script type="text/javascript" async="" src="https://wuli.wiki/MathJax3/es5/tex-mml-chtml.js"></script>
+
+<script async src="https://xiaoxiauwu.github.io/js/busuanzi.pure.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade"></head>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+<script src="https://xiaoxiauwu.github.io/js/cp.js"></script>
+<link rel="stylesheet" type="text/css" href="https://xiaoxiauwu.github.io/css/copy.css" />
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiaoxiauwu.github.io/" aria-label="Go to homepage">夏のBLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiaoxiauwu.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+
+
+<div  class="meta-item">&nbsp·&nbsp
+  <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+</div>
+
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiaoxiauwu.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">XiaoXia</h4>
+        
+          <h5 class="sidebar-profile-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Xiaoxiauwu" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.totorocatcat.top" target="_blank" rel="noopener" title="Totoroの小窝">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-link" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Totoroの小窝</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('/images/AG.webp')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      倍增及有关例题
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2024-09-26T04:13:18&#43;08:00">
+        
+  September 26, 2024
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/c&#43;&#43;">c&#43;&#43;</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" id="top">
+          
+            <span class="post-header-cover-caption caption">Luogu题单补完计划之倍增</span>
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <!-- raw HTML omitted -->
+<h1 id="梗概">梗概</h1>
+<p><em>倍增算法，顾名思义，就是不断地翻倍。</em></p>
+<p><em>虽然是一种<strong>基础算法</strong>，但它能够使得线性的处理转化为对数级的处理，大大地优化时间复杂度，在很多算法中都有应用，其中最常见的就是ST表以及LCA了。</em></p>
+<h2 id="一些使用到倍增的算法思想">一些使用到倍增的算法、思想</h2>
+<ul>
+<li>快速幂（求大指数幂，矩阵快速求幂）</li>
+<li>ST表（处理区间可合并的查询（区间最大值，区间最小值））（搞清楚怎么转移，以便于化用到多维情况）</li>
+<li>路径转移倍增（求连续转移m次后的位置）</li>
+<li>[思想] 压缩有效范围</li>
+</ul>
+<h1 id="一些例题">一些例题</h1>
+<h2 id="快速幂">快速幂</h2>
+<p>这个还是算了，太基础了，我放个模版题上来算了：</p>
+<p><a href="https://www.luogu.com.cn/problem/P1226">P1226 【模板】快速幂 </a></p>
+<h2 id="st表">ST表</h2>
+<p><a href="https://www.luogu.com.cn/problem/P3865">P3865 【模板】ST 表 &amp;&amp; RMQ 问题</a></p>
+<p><a href="https://www.luogu.com.cn/problem/P1816">P1816 忠诚</a></p>
+<p><a href="https://www.luogu.com.cn/problem/P2880">P2880 [USACO07JAN] Balanced Lineup G</a></p>
+<p><a href="https://www.luogu.com.cn/problem/P6648">P6648 [CCC2019] Triangle: The Data Structure</a></p>
+<h2 id="路径转移倍增">路径转移倍增</h2>
+<p><a href="https://www.luogu.com.cn/problem/P3509">P3509 [POI2010] ZAB-Frog</a></p>
+<p><a href="https://www.luogu.com.cn/problem/P4155">P4155 [SCOI2015] 国旗计划</a></p>
+<p><a href="https://www.luogu.com.cn/problem/P7562">P7562 [JOISC 2021 Day4] イベント巡り 2 (Event Hopping 2) </a>（个人觉得这题会比下面那题稍微难一点）</p>
+<h2 id="思想-压缩有效范围">[思想] 压缩有效范围</h2>
+<p><a href="https://www.luogu.com.cn/problem/P3517">P3517 [POI2011] WYK-Plot</a></p>
+<p>
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">思路</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">求最小值的最大值，一眼二分，可以二分一下右端点，但是考虑如果每一段长度都为 $1$，那么每次都要二分 $log$ 次，总的是 $O(n2 log n)$，显然也不行。
+
+发现复杂度瓶颈在于每次二分得到的区间长是 $O(n)$ 级的，那么可不可以对于一个左端点，快速的找到右端点的范围呢？我们考虑倍增，设左端点为 $l$，我们倍增求出右端点的范围。设倍增得到最大的满足条件的区间长度为 $2k$，那么我们二分的左端点为 $i&#43;2k−1$，右端点为 $min(n,i&#43;2k&#43;1−1)$，在这段区间内二分，显然复杂度就正确了。</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">参考代码</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">#include&lt;bits/stdc&#43;&#43;.h&gt;
+using i64 = long long;
+using u64 = unsigned long long;
+using ld = double;
+
+std::mt19937_64 rng(std::chrono::steady_clock::now().time_since_epoch().count());
+ld eps = 1e-13 * (rng() % 10000 &#43; 1);
+
+template &lt;class T, class G&gt;
+struct BaseVector2 {
+    T x, y;
+    constexpr BaseVector2() : BaseVector2(T{}, T{}) {}
+    constexpr BaseVector2(T x, T y) : x{x}, y{y} {}
+
+    // 运算
+    constexpr BaseVector2 operator&#43;(BaseVector2 a) const {
+        return BaseVector2(x &#43; a.x, y &#43; a.y);
+    }
+    constexpr BaseVector2 operator-(BaseVector2 a) const {
+        return BaseVector2(x - a.x, y - a.y);
+    }
+    constexpr BaseVector2 operator-() const {
+        return BaseVector2(-x, -y);
+    }
+    constexpr G operator*(BaseVector2 a) const {
+        return G(x) * a.x &#43; G(y) * a.y;
+    }
+    constexpr G operator%(BaseVector2 a) const {
+        return G(x) * a.y - G(y) * a.x;
+    }
+    constexpr BaseVector2 rotate() const {
+        return BaseVector2(-y, x);
+    }
+    template&lt;class Float&gt;
+    constexpr BaseVector2 rotate(Float theta) const {
+        BaseVector2 b(cosl(theta), sinl(theta));
+        return BaseVector2(x * b.x - y * b.y,
+                           x * b.y &#43; y * b.x);
+    }
+    constexpr friend BaseVector2 operator*(const T &amp;a, BaseVector2 b) {
+        return BaseVector2(a * b.x, a * b.y);
+    }
+
+    // 比较
+    constexpr bool operator&lt;(BaseVector2 a) const {
+        if (x == a.x) {
+            return y &lt; a.y;
+        }
+        return x &lt; a.x;
+    }
+
+    constexpr bool operator&gt;(BaseVector2 a) const {
+        if (x == a.x) {
+            return y &gt; a.y;
+        }
+        return x &gt; a.x;
+    }
+
+    constexpr bool operator&lt;=(BaseVector2 a) const {
+        if (x == a.x) {
+            return y &lt;= a.y;
+        }
+        return x &lt;= a.x;
+    }
+
+    constexpr bool operator&gt;=(BaseVector2 a) const {
+        if (x == a.x) {
+            return y &gt;= a.y;
+        }
+        return x &gt;= a.x;
+    }
+
+    constexpr bool operator==(BaseVector2 a) const {
+        return x == a.x and y == a.y;
+    }
+
+    constexpr bool operator!=(BaseVector2 a) const {
+        return x != a.x or y != a.y;
+    }
+
+    // 输入输出
+    friend std::istream &amp;operator&gt;&gt;(std::istream &amp;in, BaseVector2 &amp;p) {
+        return in &gt;&gt; p.x &gt;&gt; p.y;
+    }
+    friend std::ostream &amp;operator&lt;&lt;(std::ostream &amp;ot, BaseVector2 p) {
+        return ot &lt;&lt; &#39;(&#39; &lt;&lt; p.x &lt;&lt; &#34;, &#34; &lt;&lt; p.y &lt;&lt; &#39;)&#39;;
+    }
+};
+
+template &lt;class T, class G&gt;
+G dis2(BaseVector2&lt;T, G&gt; a, BaseVector2&lt;T, G&gt; b = BaseVector2&lt;T, G&gt;(0, 0)) {
+    BaseVector2&lt;T, G&gt; p = a - b;
+    return p * p;
+}
+template &lt;class T, class G&gt;
+auto dis(BaseVector2&lt;T, G&gt; a, BaseVector2&lt;T, G&gt; b = BaseVector2&lt;T, G&gt;(0, 0)) {
+    return sqrtl(dis2(a, b));
+}
+
+template &lt;class T, class G&gt;
+int sgn(BaseVector2&lt;T, G&gt; p) {
+    if (p.x &lt; 0 or p.x == 0 and p.y &gt; 0) {
+        return 1;
+    } else
+        return 0;
+    // 以41象限为先
+}
+
+template &lt;class Vector&gt;
+bool polarCmp(Vector p, Vector q) {
+    if (sgn(p) == sgn(q)) {
+        if (p % q == 0) {
+            return dis2(p) &lt; dis2(q);
+        } else {
+            return p % q &gt; 0;
+        }
+    } else {
+        return sgn(p) &lt; sgn(q);
+    }
+}
+
+using Point = BaseVector2&lt;ld, ld&gt;;
+using Vector = Point;
+using PS = std::vector&lt;Point&gt;;
+
+// Line a-b cross Line c-d (here Point = Point&lt;ld, ld&gt;)
+Point cross(Point a, Point b, Point c, Point d) {
+    Point v = c - d;
+    ld sa = v % (a - d), sb = (b - d) % v;
+    return 1.L * sa / (sa &#43; sb) * (b - a) &#43; a;
+}
+
+const ld pi = acosl(-1);
+// a-b 和 a-c 的夹角 signed
+ld getAngle(Point a, Point b, Point c) {
+    auto v1 = b - a, v2 = c - a;
+    return atan2l(v1 % v2, v1 * v2); // ∠bac
+}
+
+int sgn(const ld &amp;a) {
+    return (a &lt; -eps ? -1 : a &gt; eps);
+}
+
+// 对四个不同的点判断四点共圆
+// d在abc外接圆外return 1, 内return -1
+int inCircle(Point a, Point b, Point c, Point d) {
+    ld ag1 = getAngle(a, b, c), ag2 = getAngle(d, c, b);
+    if (sgn(ag1) == sgn(ag2)) {
+        return sgn(pi - std::abs(ag1 &#43; ag2));
+    } else {
+        return sgn(std::abs(ag1) - std::abs(ag2));
+    }
+}
+
+//using pii = std::pair&lt;int, int&gt;;
+
+Point excir(const Point &amp;a, const Point &amp;b, const Point &amp;c) {
+    // 三点求外接圆 圆心
+    auto d1 = 0.5 * (a &#43; b), d2 = d1 &#43; (a - b).rotate();
+    auto d3 = 0.5 * (c &#43; b), d4 = d3 &#43; (c - b).rotate();
+    return cross(d1, d2, d3, d4);
+}
+
+struct MinCircleOver {
+    Point Center;
+    ld Radius = 0;//?
+
+    MinCircleOver(PS ps) {
+        std::shuffle(begin(ps), end(ps), std::mt19937(time(0)));
+
+        for (int i = 0; i &lt; ps.size(); i&#43;&#43;) {
+            if (sgn(dis(Center, ps[i]) - Radius - eps) &lt;= 0) 
+                continue;
+                
+            // i点不在圆内,说明 i要更新圆
+            Center = ps[i], Radius = 0;
+            for (int j = 0; j &lt; i; j&#43;&#43;) {
+                if (sgn(dis(Center, ps[j]) - Radius - eps) &lt;= 0)
+                    continue;
+                // j不在圆内,说明 j要更新圆
+                Center = 0.5 * (ps[i] &#43; ps[j]), Radius = dis(Center, ps[i]);
+                for (int k = 0; k &lt; j; k&#43;&#43;) {
+                    if (sgn(dis(Center, ps[k]) - Radius - eps) &lt;= 0)
+                        continue;
+                    // k不在圆内,说明 k要更新圆
+                    Center = excir(ps[i], ps[j], ps[k]), Radius = dis(Center, ps[i]);
+                }
+            }
+        }
+    }
+};
+
+PS ps(100000), rps(100000);
+Point Center;
+ld Radius;
+void FastMCO(int l, int r) {//卡常技巧：手动随机化
+    int cnt = 0;
+    for (int i = l; i &lt;= r; i&#43;&#43;) rps[cnt&#43;&#43;] = ps[i];
+    for (int i = 0; i &lt; cnt; i&#43;&#43;) std::swap(rps[i], rps[rng() % cnt]);
+
+    Center = rps[0];
+    Radius = 0;
+    for (int i = 0; i &lt; cnt; i&#43;&#43;) {
+        if (sgn(dis(Center, rps[i]) - Radius - eps) &lt;= 0) 
+            continue;
+            
+        // i点不在圆内,说明 i要更新圆
+        Center = rps[i], Radius = 0;
+        for (int j = 0; j &lt; i; j&#43;&#43;) {
+            if (sgn(dis(Center, rps[j]) - Radius - eps) &lt;= 0)
+                continue;
+            // j不在圆内,说明 j要更新圆
+            Center = 0.5 * (rps[i] &#43; rps[j]), Radius = dis(Center, rps[i]);
+            for (int k = 0; k &lt; j; k&#43;&#43;) {
+                if (sgn(dis(Center, rps[k]) - Radius - eps) &lt;= 0)
+                    continue;
+                // k不在圆内,说明 k要更新圆
+                Center = excir(rps[i], rps[j], rps[k]), Radius = dis(Center, rps[i]);
+            }
+        }
+    }
+}
+
+void solve() {
+    int n, m;
+    std::cin &gt;&gt; n &gt;&gt; m;
+    
+    // PS ps(n);
+    // for (auto &amp;[x, y] : ps) {
+    //     std::cin &gt;&gt; x &gt;&gt; y;
+    // }
+    for (int i = 0; i &lt; n; i&#43;&#43;) {
+        std::cin &gt;&gt; ps[i];
+    }
+
+    std::vector&lt;std::array&lt;int, 2&gt;&gt; res(m);
+
+    int m_ = 0;
+    auto ck = [&amp;](ld R) {
+        m_ = 0;
+        int ans = 0;
+        for (int i = 0; i &lt; n; i = ans &#43; 1) {
+            int k;
+            for (k = 1; i &#43; (1 &lt;&lt; k) &lt; n; k&#43;&#43;) {    //倍增压缩范围
+                //PS ps_(ps.begin() &#43; i, ps.begin() &#43; i &#43; (1 &lt;&lt; k) &#43; 1);
+                //MinCircleOver get(ps_);
+                FastMCO(i, i &#43; (1 &lt;&lt; k));
+                if (Radius &gt; R &#43; eps) break;
+            }
+
+            ans = i;
+            int l = i &#43; (1 &lt;&lt; (k - 1)), r = std::min(n - 1, i &#43; (1 &lt;&lt; k));
+            while (l &lt;= r) {    //二分
+                int mid = (l &#43; r) / 2;
+                //PS ps_(ps.begin() &#43; i, ps.begin() &#43; mid &#43; 1);
+                //MinCircleOver get(ps_);
+                FastMCO(i, mid);
+                
+                if (Radius &lt; R &#43; eps) {
+                    l = mid &#43; 1;
+                    ans = mid;
+                } else {
+                    r = mid - 1;
+                }
+            }
+
+            res[m_][0] = i;
+            res[m_&#43;&#43;][1] = ans;
+            if (m_ &gt; m) return 0;
+        }
+        return 1;
+    };
+
+    //MinCircleOver init(ps);
+    FastMCO(0, n - 1);
+    ld l = 0, r = Radius;
+    if (m &gt; 1) {
+        int cnt = 50;//二分上限50次
+        
+        while (cnt-- &amp;&amp; r - l &gt; eps) {
+            ld mid = (l &#43; r) / 2;
+            if (ck(mid)) r = mid;
+            else l = mid;
+        }
+
+        ck(r);
+        std::cout &lt;&lt; r &lt;&lt; &#34;\n&#34;;
+        std::cout &lt;&lt; m_ &lt;&lt; &#34;\n&#34;;
+        for (int i = 0; i &lt; m_; i&#43;&#43;) {
+            //PS ps_(ps.begin() &#43; res[i][0], ps.begin() &#43; res[i][1] &#43; 1);
+            //MinCircleOver mco(ps_);
+            FastMCO(res[i][0], res[i][1]);
+            std::cout &lt;&lt; Center.x &lt;&lt; &#34; &#34; &lt;&lt; Center.y &lt;&lt; &#34;\n&#34;;
+        }
+    } else {
+        std::cout &lt;&lt; Radius &lt;&lt; &#34;\n&#34;;
+        std::cout &lt;&lt; &#34;1\n&#34;;
+        std::cout &lt;&lt; Center.x &lt;&lt; &#34; &#34; &lt;&lt; Center.y;
+    }
+}
+
+signed main(){
+    std::cin.tie(0) -&gt; sync_with_stdio(false);
+    int t = 1;
+    //std::cin &gt;&gt; t;
+    std::cout &lt;&lt; std::setprecision(8) &lt;&lt; std::fixed;
+    while(t--) solve();
+    return 0;
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details></p>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/acm/">ACM</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/map_link/" data-tooltip="一种基于std::map的模拟链表实现方式" aria-label="PREVIOUS: 一种基于std::map的模拟链表实现方式">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/algorithm\/bz\/';
+        
+          this.page.identifier = '\/post\/algorithm\/bz\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 XiaoXia. All Rights Reserved
+  </span>
+
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/map_link/" data-tooltip="一种基于std::map的模拟链表实现方式" aria-label="PREVIOUS: 一种基于std::map的模拟链表实现方式">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">XiaoXia</h4>
+    
+      <div id="about-card-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        华南理工大学
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://xiaoxiauwu.github.io/images/cover_.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiaoxiauwu.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/click.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/sakura.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
