@@ -338,7 +338,7 @@ using i64 = long long;
 using u64 = unsigned long long;
 
 void solve() {
-	
+    
 }
 
 signed main(){
@@ -1674,6 +1674,44 @@ void join(int x,int y,int v){
     </tbody>
   </table>
 </details>
+<h3 id="pbdstree">pbdsTree</h3>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">pbdsTree</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">#include &lt;ext/pb_ds/assoc_container.hpp&gt;
+#include &lt;ext/pb_ds/tree_policy.hpp&gt;
+
+namespace pb = __gnu_pbds;
+
+template &lt;class T, class Cmp = std::less&lt;T&gt;&gt;
+using RedBlackTree =
+    pb::tree&lt;T, pb::null_type, Cmp, pb::rb_tree_tag,
+             pb::tree_order_statistics_node_update&gt;;
+
+/**
+ * order_of_key(x) -&gt; 查询有多少元素比x小
+ * find_by_order(x) -&gt; 查询第x个元素的迭代器
+ */</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
 <h2 id="图论">图论</h2>
 <h3 id="kruskal">Kruskal</h3>
 
@@ -1927,6 +1965,40 @@ tr.work();</code></pre>
   </table>
 </details>
 <h2 id="字符串">字符串</h2>
+<p>
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">KMP</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">auto kmp(const std::string &amp;s) {
+    int n = s.size();
+    std::vector&lt;int&gt; link(n);
+    for (int i = 1, j = 0; i &lt; n; i&#43;&#43;) {
+        while (j and s[i] != s[j])
+            j = link[j - 1];
+        j &#43;= (s[i] == s[j]);
+        link[i] = j;
+    }
+    return link;
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
 
   
     
@@ -1968,7 +2040,7 @@ inline bool PAL(int l,int r){//判回文串（原理：判以(l&#43;r)/2为中�
       </div>
     </tbody>
   </table>
-</details>
+</details></p>
 
   
     
@@ -2013,7 +2085,7 @@ struct HASH{//带前导无效字符，下标从1开始
     </tbody>
   </table>
 </details>
-
+<p>
   
     
   
@@ -2075,6 +2147,70 @@ bool same(Shash &amp;a,int la,int ra,Shash &amp;b,int lb,int rb){//查询
 
 
 
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">字符串N哈希（来自Capps）</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">template &lt;int D, std::array&lt;int, D&gt; B, std::array&lt;int, D&gt; P&gt;
+struct StringHash {
+    std::vector&lt;std::array&lt;int, D&gt;&gt; h;
+
+    template &lt;class T&gt;
+    StringHash(const T &amp;s) : h(s.size() &#43; 1) {
+        for (int i = 0; i &lt; s.size(); i&#43;&#43;) {
+            for (int k = 0; k &lt; D; k&#43;&#43;) {
+                h[i &#43; 1][k] = (1ll * h[i][k] * B[k] &#43; s[i] &#43; 1) % P[k];
+            }
+        }
+    }
+
+    // [l, r)
+    std::array&lt;int, D&gt; get(int l, int r) {
+        static std::vector&lt;std::array&lt;int, D&gt;&gt; spow(1);
+        if (r - l &lt; 0)
+            throw -1;
+
+        if (spow.size() &lt; r - l &#43; 1) {
+            if (spow[0][0] == 0) {
+                spow[0].fill(1);
+            }
+            int n = spow.size();
+            spow.resize(r - l &#43; 1);
+            for (int i = n; i &lt; spow.size(); i&#43;&#43;) {
+                for (int k = 0; k &lt; D; k&#43;&#43;) {
+                    spow[i][k] = 1ll * spow[i - 1][k] * B[k] % P[k];
+                }
+            }
+        }
+
+        std::array&lt;int, D&gt; res = {};
+        for (int k = 0; k &lt; D; k&#43;&#43;) {
+            res[k] = h[r][k] - 1ll * h[l][k] * spow[r - l][k] % P[k];
+            res[k] &#43;= (res[k] &lt; 0 ? P[k] : 0);
+        }
+        return res;
+    }
+};
+using Hash = StringHash&lt;2, {133, 331}, {int(1e9 &#43; 21), int(1e9 &#43; 33)}&gt;;</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
 <details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">zFunction</summary>
   <table>
     <tbody>
@@ -2103,7 +2239,7 @@ auto zFunction(const std::string &amp;s) {
       </div>
     </tbody>
   </table>
-</details>
+</details></p>
 <h2 id="数学">数学</h2>
 <h3 id="归并排序">归并排序</h3>
 <p>排序，求逆序数</p>
@@ -2360,6 +2496,1035 @@ __gcd(x,y);
 <p>组合通项式2：</p>
 <p>$$CTL_n=\textrm{C}^n_{2n}-\textrm{C}^{n-1}_{2n}$$</p>
 <p>为什么要记这么多式子？当然是推式子化简需要。</p>
+<h2 id="计算几何">计算几何</h2>
+<p>基本来自Capps</p>
+<h3 id="点二维">点（二维）</h3>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">Point</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">template &lt;class T, class G&gt;
+struct BaseVector2 {
+    T x, y;
+    constexpr BaseVector2() : BaseVector2(T{}, T{}) {}
+    constexpr BaseVector2(T x, T y) : x{x}, y{y} {}
+
+    // 运算
+    constexpr BaseVector2 operator&#43;(BaseVector2 a) const {
+        return BaseVector2(x &#43; a.x, y &#43; a.y);
+    }
+    constexpr BaseVector2 operator-(BaseVector2 a) const {
+        return BaseVector2(x - a.x, y - a.y);
+    }
+    constexpr BaseVector2 operator-() const {
+        return BaseVector2(-x, -y);
+    }
+    constexpr G operator*(BaseVector2 a) const {
+        return G(x) * a.x &#43; G(y) * a.y;
+    }
+    constexpr G operator%(BaseVector2 a) const {
+        return G(x) * a.y - G(y) * a.x;
+    }
+    constexpr BaseVector2 rotate() const {
+        return BaseVector2(-y, x);
+    }
+    template&lt;class Float&gt;
+    constexpr BaseVector2 rotate(Float theta) const {
+        BaseVector2 b(cosl(theta), sinl(theta));
+        return BaseVector2(x * b.x - y * b.y,
+                           x * b.y &#43; y * b.x);
+    }
+    constexpr friend BaseVector2 operator*(const T &amp;a, BaseVector2 b) {
+        return BaseVector2(a * b.x, a * b.y);
+    }
+
+    // 比较
+    constexpr bool operator&lt;(BaseVector2 a) const {
+        if (x == a.x) {
+            return y &lt; a.y;
+        }
+        return x &lt; a.x;
+    }
+
+    constexpr bool operator&gt;(BaseVector2 a) const {
+        if (x == a.x) {
+            return y &gt; a.y;
+        }
+        return x &gt; a.x;
+    }
+
+    constexpr bool operator&lt;=(BaseVector2 a) const {
+        if (x == a.x) {
+            return y &lt;= a.y;
+        }
+        return x &lt;= a.x;
+    }
+
+    constexpr bool operator&gt;=(BaseVector2 a) const {
+        if (x == a.x) {
+            return y &gt;= a.y;
+        }
+        return x &gt;= a.x;
+    }
+
+    constexpr bool operator==(BaseVector2 a) const {
+        return x == a.x and y == a.y;
+    }
+
+    constexpr bool operator!=(BaseVector2 a) const {
+        return x != a.x or y != a.y;
+    }
+
+    // 输入输出
+    friend std::istream &amp;operator&gt;&gt;(std::istream &amp;in, BaseVector2 &amp;p) {
+        return in &gt;&gt; p.x &gt;&gt; p.y;
+    }
+    friend std::ostream &amp;operator&lt;&lt;(std::ostream &amp;ot, BaseVector2 p) {
+        return ot &lt;&lt; &#39;(&#39; &lt;&lt; p.x &lt;&lt; &#34;, &#34; &lt;&lt; p.y &lt;&lt; &#39;)&#39;;
+    }
+};
+
+template &lt;class T, class G&gt;
+G dis2(BaseVector2&lt;T, G&gt; a, BaseVector2&lt;T, G&gt; b = BaseVector2&lt;T, G&gt;(0, 0)) {
+    BaseVector2&lt;T, G&gt; p = a - b;
+    return p * p;
+}
+template &lt;class T, class G&gt;
+auto dis(BaseVector2&lt;T, G&gt; a, BaseVector2&lt;T, G&gt; b = BaseVector2&lt;T, G&gt;(0, 0)) {
+    return sqrtl(dis2(a, b));
+}
+
+template &lt;class T, class G&gt;
+int sgn(BaseVector2&lt;T, G&gt; p) {
+    if (p.x &lt; 0 or p.x == 0 and p.y &gt; 0) {
+        return 1;
+    } else
+        return 0;
+    // 以41象限为先
+}
+
+template &lt;class Vector&gt;
+bool polarCmp(Vector p, Vector q) {
+    if (sgn(p) == sgn(q)) {
+        if (p % q == 0) {
+            return dis2(p) &lt; dis2(q);
+        } else {
+            return p % q &gt; 0;
+        }
+    } else {
+        return sgn(p) &lt; sgn(q);
+    }
+}
+
+using Point = BaseVector2&lt;int, i64&gt;;
+using Vector = Point;
+using PS = std::vector&lt;Point&gt;;</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+<h3 id="有关线的操作">有关线的操作</h3>
+<p>
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">Point - Line</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">// a on Seg b-c
+bool onSeg(Point a, Point b, Point c) {
+    b = b - a, c = c - a;
+    return b % c == 0 and b * c &lt;= 0;
+}
+
+// a disTo Line b-c
+ld disToLine(Point a, Point b, Point c) {
+    Point v1 = b - c, v2 = a - c;
+    return 1.L * std::abs(v1 % v2) / sqrtl(v1 * v1);
+}
+
+// a disTo Seg b-c
+ld disToSeg(Point a, Point b, Point c) {
+    if ((a - b) * (c - b) &lt;= 0 or (a - c) * (b - c) &lt;= 0) {
+        return std::min(dis(a, b), dis(a, c));
+    }
+    return disToLine(a, b, c);
+}
+
+// a project to Line b-c (here Point = Point&lt;ld, ld&gt;)
+Point foot(Point a, Point b, Point c) {
+    Point u = a - b, v = c - b;
+    return b &#43; 1.L * (u * v) / (v * v) * v;
+}
+
+// a symmetry to Line b-c (here Point = Point&lt;ld, ld&gt;)
+Point symmetry(Point a, Point b, Point c) {
+    Point ft = foot(a, b, c);
+    return 2 * ft - a;
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">Line - Line</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">// Line a-b cross Line c-d (here Point = Point&lt;ld, ld&gt;)
+Point cross(Point a, Point b, Point c, Point d) {
+    Point v = c - d;
+    ld sa = v % (a - d), sb = (b - d) % v;
+    return 1.L * sa / (sa &#43; sb) * (b - a) &#43; a;
+}
+
+const ld pi = acosl(-1);
+// a-b 和 a-c 的夹角 signed
+ld getAngle(Point a, Point b, Point c) {
+    auto v1 = b - a, v2 = c - a;
+    return atan2l(v1 % v2, v1 * v2); // ∠bac
+}
+
+// 对四个不同的点判断四点共圆
+// d在abc外接圆外return 1, 内return -1
+int inCircle(Point a, Point b, Point c, Point d) {
+    ld ag1 = getAngle(a, b, c), ag2 = getAngle(d, c, b);
+    if (sgn(ag1) == sgn(ag2)) {
+        return sgn(PI - std::abs(ag1 &#43; ag2));
+    } else {
+        return sgn(std::abs(ag1) - std::abs(ag2));
+    }
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details></p>
+<h3 id="多边形">多边形</h3>
+<p>
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">凸包</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">PS convex(PS ps) {
+    std::sort(ps.begin(), ps.end());
+    ps.erase(std::unique(ps.begin(), ps.end()), ps.end());
+
+    const int n = ps.size();
+    if (n &lt;= 1) {
+        return ps;
+    }
+
+    PS hull(n &#43; 1);
+    int k = -1;
+
+    for (int i = 0; i &lt; n; i&#43;&#43;) {
+        while (k &gt;= 1 and (hull[k] - hull[k - 1]) % (ps[i] - hull[k]) &lt;= 0) {
+            k -= 1;
+        }
+        hull[&#43;&#43;k] = ps[i];
+    }
+
+    for (int i = n - 2, m = k &#43; 1; i &gt;= 0; i--) {
+        while (k &gt;= m and (hull[k] - hull[k - 1]) % (ps[i] - hull[k]) &lt;= 0) {
+            k -= 1;
+        }
+        hull[&#43;&#43;k] = ps[i];
+    }
+
+    assert(k &gt;= 2);
+    return hull.resize(k), hull;
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">求凸包面积</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">ld area(const PS &amp;ps) {
+    ld res = 0;
+    for (int i = 0; i &lt; ps.size(); i&#43;&#43;) {
+        int j = (i &#43; 1) % ps.size();
+        res &#43;= ps[i] % ps[j];
+    }
+    return res / 2;
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">Point - Polygon</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">// #include &#34;onSeg&#34;
+
+class InPoly {
+    // Seg c-d is Cross Seg a-b
+    bool isCross(Point a, Point b, Point c, Point d) const {
+        Vector ab = b - a, cd = d - c;
+        if (ab % cd == 0)
+            return 0; // 共线,寄
+        int r1 = sgn(ab % (c - a)), r2 = sgn(ab % (d - a));
+        int g1 = sgn(cd % (a - c)), g2 = sgn(cd % (b - c));
+        return !(r1 * r2 &gt; 0 or r1 &#43; r2 == -1 or g1 * g2 &gt; 0);
+        // 真相交或者 c-d 贴着 a-b 左边
+    }
+
+public:
+    // a IN/OUT/ON Polygon
+    std::string operator()(Point a, const PS &amp;ps) const {
+        int res = 0;
+        Vector b = {1 &lt;&lt; 30, a.y};
+        for (int i = 0; i &lt; ps.size(); i&#43;&#43;) {
+            int j = (i &#43; 1) % ps.size();
+            if (onSeg(a, ps[i], ps[j]))
+                return &#34;ON&#34;;
+            res &#43;= isCross(a, b, ps[i], ps[j]);
+        }
+        return (res % 2 ? &#34;IN&#34; : &#34;OUT&#34;);
+    }
+};
+const InPoly inPoly;
+
+// a IN/OUT/ON Convex
+std::string inConvex(Point a, const PS &amp;ps) {
+    if (a == ps[0])
+        return &#34;ON&#34;;
+    if (ps.size() &lt;= 1)
+        return &#34;OUT&#34;;
+    if (ps.size() == 2)
+        return onSeg(a, ps[0], ps[1]) ? &#34;ON&#34; : &#34;OUT&#34;;
+    auto v = a - ps[0];
+    if ((ps[1] - ps[0]) % v &lt; 0 or (ps.back() - ps[0]) % v &gt; 0)
+        return &#34;OUT&#34;;
+    int l = 1, r = ps.size() - 1;
+    while (l &#43; 1 &lt; r) {
+        auto mid = l &#43; r &gt;&gt; 1;
+        auto res = (ps[mid] - ps[0]) % v;
+        if (res == 0)
+            return (ps[mid] == a ? &#34;ON&#34; : (onSeg(a, ps[0], ps[mid]) ? &#34;IN&#34; : &#34;OUT&#34;));
+        (res &gt; 0 ? l : r) = mid;
+    }
+    auto res = (ps[r] - ps[l]) % (a - ps[l]);
+    if (res == 0 or onSeg(a, ps[0], ps[l]) or onSeg(a, ps[0], ps[r]))
+        return &#34;ON&#34;;
+    return (res &gt; 0 ? &#34;IN&#34; : &#34;OUT&#34;);
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">Line - Polygon</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">PS cutPoly(const PS &amp;ps, Point a, Point b) {
+    // 返回多边形 ps 在有向直线 a-&gt;b 左边的部分
+    PS v;
+    auto c = b - a;
+    for (int i = 0; i &lt; ps.size(); i&#43;&#43;) {
+        int j = (i &#43; 1) % ps.size();
+        auto cr1 = c % (ps[i] - a), cr2 = c % (ps[j] - a);
+        if (cr1 &gt;= 0)
+            v.push_back(ps[i]);
+        if (sgn(cr1) * sgn(cr2) == -1)
+            v.push_back(cross(a, b, ps[i], ps[j]));
+    }
+    return v;
+}
+
+
+// find point of tangency
+class BinarySearchOnConvex {
+    PS vs;
+
+public:
+    constexpr BinarySearchOnConvex(const PS &amp;ps) : vs(ps.size()) {
+        int n = size(ps);
+        for (int i = 0; i &lt; n; i&#43;&#43;) {
+            int j = (i &#43; 1) % n;
+            vs[i] = ps[j] - ps[i];
+        }
+    }
+
+    int operator()(Point a) const {
+        int res = std::lower_bound(begin(vs), end(vs), a, polarCmp) - begin(vs);
+        return res % size(vs);
+    }
+};</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">求两凸包闵可夫斯基和</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">PS minkowski(const PS &amp;a, const PS &amp;b) {
+    int n = a.size(), m = b.size();
+    if (!n or !m)
+        return PS();
+
+    PS ps(1, a[0] &#43; b[0]);
+    int ap = 0, bp = 0;
+    while (ap &lt; n and bp &lt; m) {
+        auto va = a[(ap &#43; 1) % n] - a[ap];
+        auto vb = b[(bp &#43; 1) % m] - b[bp];
+        auto res = va % vb;
+        if (res &gt; 0)
+            ps.push_back(ps.back() &#43; va), ap&#43;&#43;;
+        if (res &lt; 0)
+            ps.push_back(ps.back() &#43; vb), bp&#43;&#43;;
+        if (res == 0)
+            ps.push_back(ps.back() &#43; va &#43; vb), ap&#43;&#43;, bp&#43;&#43;;
+    }
+    while (ap &lt; n) {
+        auto va = a[(ap &#43; 1) % n] - a[ap];
+        ps.push_back(ps.back() &#43; va), ap&#43;&#43;;
+    }
+    while (bp &lt; m) {
+        auto vb = b[(bp &#43; 1) % m] - b[bp];
+        ps.push_back(ps.back() &#43; vb), bp&#43;&#43;;
+    }
+    return ps.pop_back(), ps;
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details></p>
+<h3 id="一些具体应用">一些具体应用</h3>
+<p>
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">平面最近点对</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">
+// 得到平面最近点对距离的平方
+template &lt;class T, class G&gt;
+G closestPair(std::vector&lt;Point&lt;T, G&gt;&gt; ps) {
+    auto pf = [&amp;](const T &amp;x) {
+        return 1ll * x * x;
+    };
+
+    G ans = 1ll &lt;&lt; 60;
+    std::function&lt;void(int, int)&gt; find = [&amp;](int l, int r) {
+        if (r - l &lt;= 1)
+            return;
+        int mid = l &#43; r &gt;&gt; 1;
+        find(l, mid), find(mid, r);
+
+        std::vector&lt;Point&lt;T, G&gt;&gt; b; // points in caught
+        for (int i = l; i &lt; r; i&#43;&#43;)
+            if (pf(std::fabs(ps[i].x - ps[mid].x)) &lt; ans)
+                b.push_back(ps[i]);
+
+        std::sort(b.begin(), b.end(), [&amp;](pii u, pii v) {
+            return u.y &lt; v.y; // sort by y
+        });
+
+        for (int i = 0; i &lt; b.size(); i&#43;&#43;)
+            for (int j = i &#43; 1; j &lt; b.size() and pf(b[j].y - b[i].y) &lt; ans; j&#43;&#43;)
+                ans = std::min(ans, dis2(b[j] - b[i]));
+    };
+    std::sort(begin(ps), end(ps)); // sort by x
+    find(0, ps.size());
+
+    return ans;
+}
+// O(nlog2n) but almost O(nlogn)</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">三角剖分</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">const ld pi = acosl(-1);
+// a-b 和 a-c 的夹角 signed
+ld getAngle(Point a, Point b, Point c) {
+    auto v1 = b - a, v2 = c - a;
+    return atan2l(v1 % v2, v1 * v2); // ∠bac
+}
+
+// 对四个不同的点判断四点共圆
+// d在abc外接圆外return 1, 内return -1
+int inCircle(Point a, Point b, Point c, Point d) {
+    auto ag1 = getAngle(a, b, c), ag2 = getAngle(d, c, b);
+    if (sgn(ag1) == sgn(ag2)) {
+        return sgn(pi - std::abs(ag1 &#43; ag2));
+    } else {
+        return sgn(std::abs(ag1) - std::abs(ag2));
+    }
+}
+
+struct Delaunay {
+    struct Edge {
+        Edge *l, *r, *inv;
+        int face, from;
+
+        Edge() : face{0}, from{-1} {
+            l = r = inv = nullptr;
+        }
+    };
+
+    void addFace(Edge *e0, Edge *e1, Edge *e2, int fid) {
+        e0-&gt;r = e2-&gt;l = e1;
+        e1-&gt;r = e0-&gt;l = e2;
+        e2-&gt;r = e1-&gt;l = e0;
+
+        e0-&gt;face = e1-&gt;face = e2-&gt;face = fid;
+        face[fid] = e0;
+    }
+
+    void init() {
+        bucket.resize(2 * (n &#43; 1));
+        vertex.resize(n &#43; 3);
+
+        // 加三个点构造全局三角形
+        ps.emplace_back(Inf * 10, Inf);
+        ps.emplace_back(-Inf, Inf);
+        ps.emplace_back(-Inf, -Inf * 10);
+
+        std::vector&lt;Edge *&gt; e(6);
+        for (auto &amp;pt : e) {
+            pt = new Edge();
+        }
+
+        e[0]-&gt;from = e[5]-&gt;from = n;
+        e[1]-&gt;from = e[3]-&gt;from = n &#43; 1;
+        e[2]-&gt;from = e[4]-&gt;from = n &#43; 2;
+
+        for (int i = 0; i &lt; 3; i&#43;&#43;) {
+            e[i]-&gt;inv = e[i &#43; 3];
+            e[i &#43; 3]-&gt;inv = e[i];
+        }
+
+        face.resize(2);
+        addFace(e[0], e[1], e[2], 0);
+        addFace(e[5], e[4], e[3], 1);
+
+        for (int i = 0; i &lt; 3; i&#43;&#43;)
+            vertex[i &#43; n] = e[i];
+
+        bucket[1].resize(n);
+        std::iota(begin(bucket[1]), end(bucket[1]), 0);
+        belong.assign(n, 1);
+    }
+
+    std::vector&lt;Edge *&gt; vertex, face;
+    std::vector&lt;std::vector&lt;int&gt;&gt; bucket;
+    std::vector&lt;int&gt; belong;
+    PS ps;
+    const int n;
+
+    static constexpr int Inf = int(1e8);
+    Delaunay(const PS &amp;initPs) : n{(int)initPs.size()}, ps(initPs) {
+        init();
+
+        for (int i = 0; i &lt; n; i&#43;&#43;) {
+            addPoint(i);
+
+            Edge *e = vertex[i];
+            for (int j = 0; j &lt; 3; j&#43;&#43;) {
+                if (flip(i, e-&gt;r-&gt;inv)) {
+                    e = e-&gt;l-&gt;inv;
+                    j -= 2;
+                } else {
+                    e = e-&gt;inv-&gt;r;
+                }
+            }
+        }
+    }
+
+    bool inFace(Point p, int fid) {
+        int cnt = 0;
+        Edge *e = face[fid];
+        do {
+            auto a = ps[e-&gt;from];
+            e = e-&gt;r;
+            auto b = ps[e-&gt;from];
+
+            cnt &#43;= (b - a) % (p - a) &gt; 0;
+        } while (e != face[fid]);
+
+        return cnt == 3 or cnt == 0;
+    }
+
+    void addPoint(int pid) {
+        int fid[3] = {belong[pid], face.size(), face.size() &#43; 1};
+
+        auto pointS = bucket[fid[0]];
+        bucket[fid[0]].clear();
+
+        face.resize(face.size() &#43; 2);
+
+        std::vector&lt;Edge *&gt; e(6);
+        for (int i = 0; i &lt; 6; i&#43;&#43;) {
+            e[i] = new Edge();
+        }
+        for (int i = 0; i &lt; 6; i&#43;&#43;) {
+            e[i]-&gt;inv = e[i ^ 1];
+        }
+
+        e[1]-&gt;from = e[3]-&gt;from = e[5]-&gt;from = pid;
+        Edge *tmpe = face[fid[0]];
+        int r = 0, l = 5;
+        for (int j = 0; j &lt; 3; j&#43;&#43;) {
+            Edge *tmpr = tmpe-&gt;r;
+
+            int b = tmpr-&gt;from;
+            e[r]-&gt;from = b;
+
+            addFace(e[l], tmpe, e[r], fid[j]);
+
+            r = (r &#43; 2) % 6, l = (l &#43; 2) % 6;
+            tmpe = tmpr;
+        }
+
+        vertex[pid] = e[1];
+
+        for (int p : pointS) {
+            if (p == pid)
+                continue;
+            for (int j = 0; j &lt; 3; j&#43;&#43;) {
+                if (inFace(ps[p], fid[j])) {
+                    belong[p] = fid[j];
+                    bucket[fid[j]].push_back(p);
+                    break;
+                }
+            }
+        }
+    }
+
+    bool flip(int pid, Edge *e) {
+        if (e-&gt;face == 0)
+            return false;
+
+        auto fir = e-&gt;inv-&gt;l;
+
+        int inCircleRes = inCircle(ps[pid], ps[fir-&gt;r-&gt;from],
+                                   ps[fir-&gt;l-&gt;from], ps[e-&gt;l-&gt;from]);
+
+        if (inCircleRes &gt;= 0)
+            return false;
+
+        int fid[2] = {fir-&gt;face, e-&gt;face};
+
+        auto pointS = bucket[fid[0]];
+        pointS.insert(pointS.end(), bucket[fid[1]].begin(), bucket[fid[1]].end());
+
+        bucket[fid[0]].clear();
+        bucket[fid[1]].clear();
+
+        auto ev = e-&gt;inv;
+        auto sec = e-&gt;r, thir = e-&gt;l, four = fir-&gt;l;
+
+        addFace(fir, sec, ev, fid[0]);
+        addFace(e, thir, four, fid[1]);
+        e-&gt;from = pid;
+        ev-&gt;from = thir-&gt;from;
+
+        for (int p : pointS) {
+            for (int j = 0; j &lt; 2; j&#43;&#43;) {
+                if (inFace(ps[p], fid[j])) {
+                    belong[p] = fid[j];
+                    bucket[fid[j]].push_back(p);
+                    break;
+                }
+            }
+        }
+        return true;
+    }
+};</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details></p>
+<h3 id="点三维">点（三维）</h3>
+<p>
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">Point (3D)</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">template &lt;class T, class G&gt;
+struct BaseVector3 {
+    T x, y, z;
+
+    constexpr BaseVector3() : BaseVector3(T{}, T{}, T{}) {}
+
+    constexpr BaseVector3(T x, T y, T z)
+        : x{x}, y{y}, z{z} {}
+
+    constexpr BaseVector3 operator-(BaseVector3 a) const {
+        return BaseVector3(x - a.x, y - a.y, z - a.z);
+    }
+
+    constexpr BaseVector3 operator-() const {
+        return BaseVector3(-x, -y, -z);
+    }
+
+    constexpr BaseVector3 operator&#43;(BaseVector3 a) const {
+        return BaseVector3(x &#43; a.x, y &#43; a.y, z &#43; a.z);
+    }
+
+    constexpr G operator*(BaseVector3 a) const {
+        return x * a.x &#43; y * a.y &#43; z * a.z;
+    }
+
+    constexpr BaseVector3 operator%(BaseVector3 a) const {
+        return BaseVector3(
+            y * a.z - a.y * z,
+            a.x * z - x * a.z,
+            x * a.y - a.x * y);
+    }
+
+    constexpr friend BaseVector3 operator*(T d, BaseVector3 a) {
+        return BaseVector3(d * a.x, d * a.y, d * a.z);
+    }
+
+    constexpr friend bool sameLine(BaseVector3 a, BaseVector3 b) {
+        return dis2(a % b) == 0;
+    }
+
+    constexpr friend bool sameDir(BaseVector3 a, BaseVector3 b) {
+        return samLine(a, b) and a * b &gt;= 0;
+    }
+
+    // 字典序
+    constexpr bool operator&lt;(BaseVector3 a) const {
+        if (x != a.x)
+            return x &lt; a.x;
+        if (y != a.y)
+            return y &lt; a.y;
+        return z &lt; a.z;
+    }
+
+    constexpr bool operator==(BaseVector3 a) const {
+        return x == a.x and y == a.y and z == a.z;
+    }
+
+    constexpr friend auto &amp;operator&gt;&gt;(std::istream &amp;is, BaseVector3 &amp;p) {
+        return is &gt;&gt; p.x &gt;&gt; p.y &gt;&gt; p.z;
+    }
+    constexpr friend auto &amp;operator&lt;&lt;(std::ostream &amp;os, BaseVector3 p) {
+        return os &lt;&lt; &#39;(&#39; &lt;&lt; p.x &lt;&lt; &#34;, &#34; &lt;&lt; p.y &lt;&lt; &#34;, &#34; &lt;&lt; p.z &lt;&lt; &#39;)&#39;;
+    }
+};
+
+template &lt;class T, class G&gt;
+G dis2(BaseVector3&lt;T, G&gt; a, BaseVector3&lt;T, G&gt; b = BaseVector3&lt;T, G&gt;{}) {
+    auto p = a - b;
+    return p * p;
+}
+template &lt;class T, class G&gt;
+auto dis(BaseVector3&lt;T, G&gt; a, BaseVector3&lt;T, G&gt; b = BaseVector3&lt;T, G&gt;{}) {
+    return sqrtl(dis2(a, b));
+}
+
+template &lt;class T, class G&gt;
+auto area(BaseVector3&lt;T, G&gt; a, BaseVector3&lt;T, G&gt; b = BaseVector3&lt;T, G&gt;{}) {
+    return dis(a % b) / 2;
+}
+
+template &lt;class T&gt;
+struct TrianglePatch {
+    std::array&lt;T, 3&gt; vertexs;
+
+    constexpr TrianglePatch() : vertexs{} {}
+
+    constexpr TrianglePatch(T u, T v, T w)
+        : vertexs({u, v, w}) {}
+
+    constexpr T &amp;operator[](int i) {
+        return vertexs[i];
+    }
+
+    constexpr T normal() const {
+        return (vertexs[1] - vertexs[0]) % (vertexs[2] - vertexs[0]);
+    }
+
+    constexpr T vectorTo(T a) const {
+        return a - vertexs[0];
+    }
+
+    constexpr auto area() const {
+        return ::area(vertexs[1] - vertexs[0], vertexs[2] - vertexs[0]);
+    }
+
+    constexpr bool coPlane(T a) const {
+        return vectorTo(a) * normal() == 0;
+    }
+
+    constexpr bool left(T a) const {
+        return vector(a) * normal() &gt; 0;
+    }
+
+    constexpr bool contains(T a) const {
+        if (!coPlane(a)) {
+            return false;
+        }
+
+        T norm = normal();
+        int leftCnt = 0;
+
+        for (int i = 0; i &lt; 3; i&#43;&#43;) {
+            T edge = vertexs[(i &#43; 1) % 3] - vertexs[i];
+            T to_a = a - vertexs[i];
+
+            leftCnt &#43;= sameDir(edge % to_a, norm);
+        }
+
+        return leftCnt == 3;
+    }
+};
+
+using Point = BaseVector3&lt;Float, Float&gt;;
+using Vector = Point;
+
+using PS = std::vector&lt;Point&gt;;
+using PatchS = std::vector&lt;TrianglePatch&lt;Point&gt;&gt;;</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">三维凸包</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">PatchS convex(PS ps) {
+    std::sort(begin(ps), end(ps));
+    ps.erase(std::unique(ps.begin(), ps.end()), ps.end());
+    // 去除重复点
+
+    const int n = ps.size();
+
+    if (n &lt; 4) {
+        return {};
+    }
+
+    std::vector vis(n, std::vector&lt;int&gt;(n, -1));
+    using IndexPatch = std::array&lt;int, 3&gt;;
+
+    std::vector&lt;IndexPatch&gt; pls(2);
+    pls[0] = IndexPatch{0, 1, 2};
+    pls[1] = IndexPatch{0, 2, 1};
+
+    auto isAbove = [&amp;](Point p, IndexPatch &amp;pl) {
+        auto vec = (ps[pl[1]] - ps[pl[0]]) % (ps[pl[2]] - ps[pl[0]]);
+        return vec * (p - ps[pl[0]]) &gt;= 0;
+    };
+
+    for (int i = 3; i &lt; n; i&#43;&#43;) {
+        std::vector&lt;IndexPatch&gt; res, del;
+        for (int j = 0; j &lt; size(pls); j&#43;&#43;) {
+            if (!isAbove(ps[i], pls[j])) {
+                res.push_back(pls[j]);
+            } else {
+                del.push_back(pls[j]);
+                for (int k = 0; k &lt; 3; k&#43;&#43;) {
+                    int r = (k &#43; 1) % 3;
+                    vis[pls[j][k]][pls[j][r]] = i;
+                }
+            }
+        }
+        for (auto pl : del) {
+            for (int k = 0; k &lt; 3; k&#43;&#43;) {
+                int r = (k &#43; 1) % 3;
+                if (vis[pl[k]][pl[r]] == i and vis[pl[r]][pl[k]] != i) {
+                    res.push_back({pl[k], pl[r], i});
+                }
+            }
+        }
+        std::swap(res, pls);
+    }
+
+    PatchS ans;
+    for (auto pl : pls) {
+        ans.push_back({ps[pl[0]], ps[pl[1]], ps[pl[2]]});
+    }
+
+    return ans;
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details></p>
 <h2 id="其他">其他</h2>
 <h3 id="高精">高精</h3>
 
@@ -2418,61 +3583,6 @@ ostream&amp; operator&lt;&lt;(ostream &amp;COUT,BINT a){
     </tbody>
   </table>
 </details>
-<h3 id="极简二分板子from-jiangly">极简二分板子（FROM jiangly）</h3>
-<p>若数列已经按某规则划分成了左右两组，则该STL可快速返回其分界点（右边那组最靠左的元素）。</p>
-<p>注意事项：若ck函数在给定范围内均成立，则返回的是r+1的值，如果有必要，这点记得特判一下。
-
-  
-    
-  
-  
-  
-  
-
-
-
-<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">极简二分板子</summary>
-  <table>
-    <tbody>
-      <div style="display: flex;">
-        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre>
-        </div>
-        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
-          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">//所需库：algorithm，ranges（C&#43;&#43;20才有的，还是得记一下标准二分板子，这个只是偷懒用的）
-//返回第一个使ck(x)为假的x
-//（l,r&#43;1）因为是左开右闭，所以右端应&#43;1
-int ans = *ranges::partition_point(ranges::iota_view(l, r&#43;1),
-    [&amp;](int v) {
-        return ck(v);
-    });
-
-//使用例：
-#define PP(r,l,CK) *ranges::partition_point(ranges::iota_view(l, r&#43;1),CK)
-
-ll ans=PP(1,n,[&amp;](int x){
-    ...
-    return 1;
-    ...
-    return 0;//ck函数直接写这里就行
-});
-//注意，如果你使用#define的调用方法，那么CK块里面不能出现逗号
-//不然会报错。如果你真的需要在ck函数里写逗号，请auto ck=[&amp;](int x){...};
-//再PP(1,n,ck);
-
-//最基础的两个线性二分STL：
-//返回指向第一个大于v的元素的迭代器
-auto mid=upper_bound(a.begin(),a.end(),v);
-if(mid==a.end())//此时数组中不存在满足条件的数
-else int ans=mid-a.begin();
-
-//返回指向第一个大于等于v的元素的迭代器
-auto mid=lower_bound(a.begin(),a.end(),v);</code></pre>
-        </div>
-      </div>
-    </tbody>
-  </table>
-</details></p>
 <h3 id="最大子矩形">最大子矩形</h3>
 <p>给定方格图，图上有一些障碍点，求最大子矩形，内部不含障碍点
 
