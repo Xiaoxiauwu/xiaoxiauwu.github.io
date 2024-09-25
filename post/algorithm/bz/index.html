@@ -316,6 +316,7 @@
 <ul>
 <li>快速幂（求大指数幂，矩阵快速求幂）</li>
 <li>ST表（处理区间可合并的查询（区间最大值，区间最小值））（搞清楚怎么转移，以便于化用到多维情况）</li>
+<li>LCA（找最近公共祖先）</li>
 <li>路径转移倍增（求连续转移m次后的位置）</li>
 <li>[思想] 压缩有效范围</li>
 </ul>
@@ -328,10 +329,14 @@
 <p><a href="https://www.luogu.com.cn/problem/P1816">P1816 忠诚</a></p>
 <p><a href="https://www.luogu.com.cn/problem/P2880">P2880 [USACO07JAN] Balanced Lineup G</a></p>
 <p><a href="https://www.luogu.com.cn/problem/P6648">P6648 [CCC2019] Triangle: The Data Structure</a></p>
+<h2 id="lca">LCA</h2>
+<p>暂时不知道有啥，找到了我再多放几个上来</p>
+<p><a href="https://www.luogu.com.cn/problem/P3379">P3379 【模板】最近公共祖先（LCA） </a></p>
 <h2 id="路径转移倍增">路径转移倍增</h2>
 <p><a href="https://www.luogu.com.cn/problem/P3509">P3509 [POI2010] ZAB-Frog</a></p>
 <p><a href="https://www.luogu.com.cn/problem/P4155">P4155 [SCOI2015] 国旗计划</a></p>
-<p><a href="https://www.luogu.com.cn/problem/P7562">P7562 [JOISC 2021 Day4] イベント巡り 2 (Event Hopping 2) </a>（个人觉得这题会比下面那题稍微难一点）</p>
+<p><a href="https://www.luogu.com.cn/problem/P7562">P7562 [JOISC 2021 Day4] イベント巡り 2 (Event Hopping 2) </a></p>
+<p>（<em>个人觉得这题 ↑ 会比下面那题稍微难一点</em>）</p>
 <h2 id="思想-压缩有效范围">[思想] 压缩有效范围</h2>
 <p><a href="https://www.luogu.com.cn/problem/P3517">P3517 [POI2011] WYK-Plot</a></p>
 <p>
@@ -349,12 +354,16 @@
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
-          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">求最小值的最大值，一眼二分，可以二分一下右端点，但是考虑如果每一段长度都为 $1$，那么每次都要二分 $log$ 次，总的是 $O(n2 log n)$，显然也不行。
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">求最小值的最大值，一眼二分，可以二分一下右端点，但是考虑如果每一段长度都为
+ 1，那么每次都要二分 log 次，总的是 O(n^2 log n)，显然也不行。
 
-发现复杂度瓶颈在于每次二分得到的区间长是 $O(n)$ 级的，那么可不可以对于一个左端点，快速的找到右端点的范围呢？我们考虑倍增，设左端点为 $l$，我们倍增求出右端点的范围。设倍增得到最大的满足条件的区间长度为 $2k$，那么我们二分的左端点为 $i&#43;2k−1$，右端点为 $min(n,i&#43;2k&#43;1−1)$，在这段区间内二分，显然复杂度就正确了。</code></pre>
+发现复杂度瓶颈在于每次二分得到的区间长是 O(n) 级的，那么可不可以对于一个左端
+点，快速的找到右端点的范围呢？我们考虑倍增，设左端点为 l，我们倍增求出右端点
+的范围。设倍增得到最大的满足条件的区间长度为 2k，那么我们二分的左端点为 
+i&#43;2k−1，右端点为 min(n,i&#43;2k&#43;1−1)，在这段区间内二分，显然复杂度就正确了。</code></pre>
         </div>
       </div>
     </tbody>
@@ -728,7 +737,7 @@ signed main(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/template/" data-tooltip="[ACM] 模版集（线上赛专用）（随缘更新中）" aria-label="NEXT: [ACM] 模版集（线上赛专用）（随缘更新中）">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -825,7 +834,7 @@ signed main(){
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--disabled">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/template/" data-tooltip="[ACM] 模版集（线上赛专用）（随缘更新中）" aria-label="NEXT: [ACM] 模版集（线上赛专用）（随缘更新中）">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>

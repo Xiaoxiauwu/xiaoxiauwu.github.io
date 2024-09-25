@@ -43,10 +43,10 @@
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-09-23T04:01:21">
+    <meta property="article:published_time" content="2024-09-26T05:10:21">
   
   
-    <meta property="article:modified_time" content="2024-09-23T04:01:21">
+    <meta property="article:modified_time" content="2024-09-26T05:10:21">
   
   
   
@@ -277,9 +277,9 @@
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-09-23T04:01:21&#43;08:00">
+      <time datetime="2024-09-26T05:10:21&#43;08:00">
         
-  September 23, 2024
+  September 26, 2024
 
       </time>
     
@@ -2708,7 +2708,7 @@ Point symmetry(Point a, Point b, Point c) {
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
           <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">// Line a-b cross Line c-d (here Point = Point&lt;ld, ld&gt;)
@@ -2723,6 +2723,10 @@ const ld pi = acosl(-1);
 ld getAngle(Point a, Point b, Point c) {
     auto v1 = b - a, v2 = c - a;
     return atan2l(v1 % v2, v1 * v2); // ∠bac
+}
+
+int sgn(const ld &amp;a) {
+    return (a &lt; -eps ? -1 : a &gt; eps);
 }
 
 // 对四个不同的点判断四点共圆
@@ -3025,12 +3029,20 @@ public:
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
-          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">struct MinCircleOver {
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">//需要cross（在Line - Line里）
+Point excir(const Point &amp;a, const Point &amp;b, const Point &amp;c) {
+    // 三点求外接圆 圆心
+    auto d1 = 0.5 * (a &#43; b), d2 = d1 &#43; (a - b).rotate();
+    auto d3 = 0.5 * (c &#43; b), d4 = d3 &#43; (c - b).rotate();
+    return cross(d1, d2, d3, d4);
+}
+
+struct MinCircleOver {
     pii Center;
-    ld Radius;
+    ld Radius = 0;
 
     MinCircleOver(PS ps) {
         std::shuffle(begin(ps), end(ps), std::mt19937(time(0)));
@@ -3053,13 +3065,6 @@ public:
                 }
             }
         }
-    }
-
-    pii excir(const pii &amp;a, const pii &amp;b, const pii &amp;c) {
-        // 三点求外接圆 圆心
-        auto d1 = 0.5f * (a &#43; b), d2 = d1 &#43; (a - b).rot();
-        auto d3 = 0.5f * (c &#43; b), d4 = d3 &#43; (c - b).rot();
-        return cross(d1, d2, d3, d4);
     }
 };</code></pre>
         </div>
@@ -3874,7 +3879,7 @@ auto vec=buk.get();//把桶里的东西倒出来
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/debug/" data-tooltip="[ACM] 个人常见问题" aria-label="PREVIOUS: [ACM] 个人常见问题">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/bz/" data-tooltip="倍增及有关例题" aria-label="PREVIOUS: 倍增及有关例题">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -3882,7 +3887,7 @@ auto vec=buk.get();//把桶里的东西倒出来
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_372/" data-tooltip="AtCoder Beginner Contest 372" aria-label="NEXT: AtCoder Beginner Contest 372">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/todolist/" data-tooltip="[置顶] To Do List" aria-label="NEXT: [置顶] To Do List">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -3971,7 +3976,7 @@ auto vec=buk.get();//把桶里的东西倒出来
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/debug/" data-tooltip="[ACM] 个人常见问题" aria-label="PREVIOUS: [ACM] 个人常见问题">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/bz/" data-tooltip="倍增及有关例题" aria-label="PREVIOUS: 倍增及有关例题">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -3979,7 +3984,7 @@ auto vec=buk.get();//把桶里的东西倒出来
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/abc_372/" data-tooltip="AtCoder Beginner Contest 372" aria-label="NEXT: AtCoder Beginner Contest 372">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/todolist/" data-tooltip="[置顶] To Do List" aria-label="NEXT: [置顶] To Do List">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
