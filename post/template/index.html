@@ -2040,7 +2040,7 @@ inline bool PAL(int l,int r){//判回文串（原理：判以(l&#43;r)/2为中�
       </div>
     </tbody>
   </table>
-</details></p>
+</details>
 
   
     
@@ -2085,7 +2085,7 @@ struct HASH{//带前导无效字符，下标从1开始
     </tbody>
   </table>
 </details>
-<p>
+
   
     
   
@@ -3044,7 +3044,7 @@ struct MinCircleOver {
     pii Center;
     ld Radius = 0;
 
-    MinCircleOver(PS ps) {
+    MinCircleOver(PS ps) {//理论O(n^3)，但随机化之后，期望复杂度是O(n)
         std::shuffle(begin(ps), end(ps), std::mt19937(time(0)));
 
         for (int i = 0; i &lt; ps.size(); i&#43;&#43;) {

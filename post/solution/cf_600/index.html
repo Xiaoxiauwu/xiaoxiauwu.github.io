@@ -17,7 +17,7 @@
   },
   "name":"夏のBLOG",
   "description":"",
-  "url":"https:\/\/xiaoxiauwu.github.io\/post\/todolist\/",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_600\/",
   "keywords":"[tech, C\u002b\u002b, python, study]"
 }
 
@@ -33,32 +33,34 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="[置顶] To Do List">
-<meta name="twitter:title" content="[置顶] To Do List">
-<meta property="og:url" content="https://xiaoxiauwu.github.io/post/todolist/">
-<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/todolist/">
+<meta property="og:title" content="Codeforces Round 600 (Div. 2)">
+<meta name="twitter:title" content="Codeforces Round 600 (Div. 2)">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cf_600/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cf_600/">
 <meta property="og:site_name" content="夏のBLOG">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-09-26T05:11:37">
+    <meta property="article:published_time" content="2024-09-27T02:37:26">
   
   
-    <meta property="article:modified_time" content="2024-09-26T05:11:37">
+    <meta property="article:modified_time" content="2024-09-27T02:37:26">
   
-  
-  
-    
-      <meta property="article:section" content="c&#43;&#43;">
-    
   
   
     
-      <meta property="article:tag" content="ACM">
+      <meta property="article:section" content="题解">
     
-      <meta property="article:tag" content="算法">
+      <meta property="article:section" content="ACM">
+    
+  
+  
+    
+      <meta property="article:tag" content="题解">
+    
+      <meta property="article:tag" content="CF">
     
   
 
@@ -77,22 +79,22 @@
 
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/sleep.webp">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/sleep.webp">
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
 
 
-  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/sleep.webp">
-  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/sleep.webp">
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
 
 
-    <title>[置顶] To Do List</title>
+    <title>Codeforces Round 600 (Div. 2)</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/todolist/">
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cf_600/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -263,21 +265,21 @@
   <div class="post-header-cover
               text-center
               post-header-cover--full"
-       style="background-image:url('/images/sleep.webp')"
+       style="background-image:url('/images/cover.jpg')"
        data-behavior="5">
     
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      [置顶] To Do List
+      Codeforces Round 600 (Div. 2)
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-09-26T05:11:37&#43;08:00">
+      <time datetime="2024-09-27T02:37:26&#43;08:00">
         
-  September 26, 2024
+  September 27, 2024
 
       </time>
     
@@ -286,7 +288,9 @@
   
     <span>in</span>
     
-      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/c&#43;&#43;">c&#43;&#43;</a>
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/%e9%a2%98%e8%a7%a3">题解</a>, 
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/acm">ACM</a>
     
   
 
@@ -303,466 +307,209 @@
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">&ldquo;憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧&rdquo; - Toge</span>
+            <span class="post-header-cover-caption caption">打的好唐</span>
           
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<h1 id="to-do-list">To Do List</h1>
-<h2 id="比赛情况记录">比赛情况记录</h2>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>完成状态</th>
-<th>备注</th>
-<th>时间</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><a href="https://mirror.codeforces.com/contest/1253https://mirror.codeforces.com/contest/1253">Codeforces Round 600 (Div. 2)</a></td>
-<td>4/6/0</td>
-<td>6题时代的div2，怎么出的和Edu场一样？</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://ac.nowcoder.com/acm/contest/91072">牛客周赛 Round 61</a></td>
-<td>4/4/0</td>
-<td>逆天SPJ，硬控我一小时，还以为我D题错了</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://mirror.codeforces.com/contest/2014">Codeforces Round 974 (Div. 3)</a></td>
-<td>4/8/3</td>
-<td>H题的实现太有趣了，随机异或哈希</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://atcoder.jp/contests/abc372/tasks">AtCoder Beginner Contest 372</a></td>
-<td>5/7/0</td>
-<td>E题犯傻了，带权并查集查询的时候忘记更新权值了</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://mirror.codeforces.com/gym/105358">ICPC网络预选赛2</a></td>
-<td>2/12/0</td>
-<td>为什么是2？因为只有两道是我写的</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://mirror.codeforces.com/contest/2013">Codeforces Round 973 (Div. 2)</a></td>
-<td>3/7/2</td>
-<td>D题写错了一个地方，痛失一题</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://ac.nowcoder.com/acm/contest/90072#question">牛客小白月赛101</a></td>
-<td>5/6/1</td>
-<td>最后一题是什么奇怪思维题？</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://mirror.codeforces.com/group/gN3WSMKicW/contest/1366/problems">Educational Codeforces Round 89 (Rated for Div. 2)</a></td>
-<td>4/7/0</td>
-<td>为什么都会E，不理解，找时间补一下</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://mirror.codeforces.com/group/gN3WSMKicW/contest/1562/problems">Codeforces Round 741 (Div. 2)</a></td>
-<td>4/7/0</td>
-<td>有个思维题（D2），不知道要不要补，看起来很有趣<!-- raw HTML omitted -->E是个SA？有时间看看</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://ac.nowcoder.com/acm/contest/90070">牛客周赛 Round 60</a></td>
-<td>5/6/1</td>
-<td>带环期望DP</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://qoj.ac/contest/1794">ICPC网络预选赛1</a></td>
-<td>2/13/0</td>
-<td>听说有网络流</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://mirror.codeforces.com/contest/2005">Codeforces Round 972 (Div. 2)</a></td>
-<td>3/7/1</td>
-<td>C题题目读错了，是个dp；找时间看看E题，听说是个暴力的博弈</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://atcoder.jp/contests/abc371/tasks">AtCoder Beginner Contest 371</a></td>
-<td>4/7/0</td>
-<td>C题想复杂了，还是很有趣的</td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://www.luogu.com.cn/contest/197855">洛谷【LGR-200-Div.4】洛谷入门赛 #27</a></td>
-<td>6/8/2</td>
-<td>C题特判忘了，I题没时间了</td>
-<td></td>
-</tr>
-<tr>
-<td>华工2024校赛</td>
-<td>3/13/2</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>ECR 90</td>
-<td>2/7/0</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>CGR 25</td>
-<td>4/9/1</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>CF 938 div3</td>
-<td>5/8/3</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>ECR 164</td>
-<td>3/6/1</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>CF 939 div2</td>
-<td>3/7/1</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>牛客小白月赛 91</td>
-<td>4/7/0</td>
-<td>子序列自动机</td>
-<td></td>
-</tr>
-<tr>
-<td>ABC 184</td>
-<td>4/6/1</td>
-<td>期望dp</td>
-<td></td>
-</tr>
-<tr>
-<td>ABC 350</td>
-<td>4/7/0</td>
-<td>期望dp</td>
-<td></td>
-</tr>
-<tr>
-<td>牛客小白月赛 52</td>
-<td>3/6/1</td>
-<td>multiset维护滑动窗口，树状数组</td>
-<td></td>
-</tr>
-<tr>
-<td>CF 886 div4</td>
-<td>4/8/4</td>
-<td>差分约束，带权并查集</td>
-<td></td>
-</tr>
-<tr>
-<td>CF 887 div2</td>
-<td>2/6/1</td>
-<td></td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<h2 id="待补的一些题比赛">待补的一些题/比赛</h2>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>完成状态</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>带环期望dpP4457</td>
-<td>卡住了</td>
-<td>黑题一点有它黑的道理</td>
-</tr>
-<tr>
-<td>线段树优化建图典题CF786B</td>
-<td>未开始</td>
-<td>怎么好多人会</td>
-</tr>
-<tr>
-<td>洛谷P2048完美钢琴</td>
-<td>未开始</td>
-<td>听说是典题</td>
-</tr>
-<tr>
-<td>cpp实训项目</td>
-<td><strong>已完成</strong></td>
-<td>设计UI，事件控制，随机生成地图的逻辑</td>
-</tr>
-<tr>
-<td>写一个爬虫，获取最近的可参加的比赛时间</td>
-<td><strong>已完成</strong></td>
-<td>有些oj获取的时间可能不是很准确</td>
-</tr>
-<tr>
-<td>#洛谷基础题单补完</td>
-<td>进行中</td>
-<td>倍增，拓扑排序</td>
-</tr>
-<tr>
-<td>#牛客回溯</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>#ABC回溯</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>#CF回溯</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>#集训队VJ补题</td>
-<td>未完成</td>
-<td>三分，数学，概率DP，“简单DP”</td>
-</tr>
-<tr>
-<td>CF 705 补题</td>
-<td>差两题</td>
-<td>看着像一个数位DP，一个数论</td>
-</tr>
-<tr>
-<td>牛客 周赛 93 补题</td>
-<td>差一题</td>
-<td>不会，今天的牛客和CF到这里了，去看看洛谷</td>
-</tr>
-<tr>
-<td>广工校赛补题</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>CF 936 补题</td>
-<td>差一题</td>
-<td>扫描线，莫队，先去学一手再回来看看</td>
-</tr>
-<tr>
-<td>ECR 90 补题</td>
-<td>差好多</td>
-<td></td>
-</tr>
-<tr>
-<td>广大校赛补题</td>
-<td>差一半</td>
-<td>区间MEX学习，解同余方程</td>
-</tr>
-<tr>
-<td>ABC 349 补题</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>CGR 25 补题</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>华工校赛 补题</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>ECR 164 补题</td>
-<td>差两题</td>
-<td></td>
-</tr>
-<tr>
-<td>牛客 挑战赛 74 补题</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>ABC 184 补题</td>
-<td>未开始</td>
-<td>期望dp</td>
-</tr>
-<tr>
-<td>ABC 350 补题</td>
-<td>未开始</td>
-<td>期望dp</td>
-</tr>
-<tr>
-<td>牛客 小白月赛 91 补题</td>
-<td>差3题</td>
-<td>子序列自动机</td>
-</tr>
-<tr>
-<td>CPgg的题单</td>
-<td>未开始</td>
-<td>CF1795C CF1203D2 CF1793D CF1200D CF1795E CF1202C</td>
-</tr>
-</tbody>
-</table>
-<h1 id="待补的算法">待补的算法</h1>
-<table>
-<thead>
-<tr>
-<th>项目</th>
-<th>状态</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>倍增算法例题整理</td>
-<td>完成（？）</td>
-<td></td>
-</tr>
-<tr>
-<td>找时间再看看洛谷那题倍增，理解一下 <a href="https://www.luogu.com.cn/problem/P7562">P7562</a></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>再好好理解一下P4155的那个倍增</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td>理解cp的二维BIT是干嘛用的，以及RangeBIT又是什么</td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td><a href="https://zhuanlan.zhihu.com/p/34158974/">计算几何基础概念学习</a></td>
-<td>有点多</td>
-<td></td>
-</tr>
-<tr>
-<td>网络流</td>
-<td>未开始</td>
-<td>我写网络流？真的假的</td>
-</tr>
-<tr>
-<td>线性基整理</td>
-<td>有点多</td>
-<td>可删除线性基，区间线性基，<a href="https://blog.csdn.net/C20181220_xiang_m_y/article/details/106060335?spm=1001.2101.3001.6650.4&amp;utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-106060335-blog-105892617.235%5Ev43%5Epc_blog_bottom_relevance_base6&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromBaidu%7ERate-4-106060335-blog-105892617.235%5Ev43%5Epc_blog_bottom_relevance_base6&amp;utm_relevant_index=9">太多了，找时间看看</a></td>
-</tr>
-<tr>
-<td>莫队整理</td>
-<td>进行到一半</td>
-<td></td>
-</tr>
-<tr>
-<td>区间回文串统计</td>
-<td>未完成</td>
-<td></td>
-</tr>
-<tr>
-<td>概率dp与期望dp</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>数位DP学习</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>#图论巩固</td>
-<td>IDK</td>
-<td>建图方式的熟悉，并查集，LCA，DFS序，欧拉序，多源最短路，树形DP</td>
-</tr>
-<tr>
-<td>#树论巩固</td>
-<td>未开始</td>
-<td>熟悉线段树板子，主席树，权值线段树</td>
-</tr>
-<tr>
-<td>#基本群论</td>
-<td>在看了</td>
-<td>Burnside定理，Polya定理</td>
-</tr>
-<tr>
-<td>#组合数学</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>#字符串相关知识</td>
-<td>在看了</td>
-<td>洛谷岛屿，01Trie，Trie，AC自动机，KMP自动机，回文自动机，子序列自动机</td>
-</tr>
-<tr>
-<td>#数据结构巩固</td>
-<td>未开始</td>
-<td>各种线段树，树状数组</td>
-</tr>
-<tr>
-<td>莫反与欧反</td>
-<td>看了，感觉容易忘</td>
-<td></td>
-</tr>
-<tr>
-<td>CDQ分治</td>
-<td>未开始</td>
-<td></td>
-</tr>
-<tr>
-<td>FFT</td>
-<td>进行中</td>
-<td>jiangly大板子，你值得拥有</td>
-</tr>
-</tbody>
-</table>
-<h1 id="一些oj">一些OJ</h1>
-<table>
-<thead>
-<tr>
-<th>OJ</th>
-<th>备注</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>洛谷</td>
-<td>有在线赛</td>
-</tr>
-<tr>
-<td>Codeforces</td>
-<td>有在线赛</td>
-</tr>
-<tr>
-<td>牛客</td>
-<td>有在线赛</td>
-</tr>
-<tr>
-<td>力扣</td>
-<td>有在线赛</td>
-</tr>
-<tr>
-<td>Atcoder</td>
-<td>有在线赛</td>
-</tr>
-<tr>
-<td>VJ</td>
-<td>无在线赛，有集训题库</td>
-</tr>
-</tbody>
-</table>
+<h1 id="a-single-push">A. Single Push</h1>
+<h2 id="题意">题意</h2>
+<p>给你两个等长度数组 $a$，$b$，问你是否可以选择或不选数组 $a$ 的一段连续子段，子段每个元素都加上 $k$，使得两数组均相等？</p>
+<h2 id="大概思路">大概思路</h2>
+<p>题意不难，难的是如何快速写实现。</p>
+<p>我们直接对两个数组作差，然后消掉前后缀的连续 $0$，最后再判断剩下的部分是否含 $0$ 即可。</p>
+<h2 id="参考代码">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    int n;
+    std::cin &gt;&gt; n;
+
+    std::vector&lt;int&gt; a(n), b = a;
+    for (auto &amp;i : a) std::cin &gt;&gt; i;
+    for (auto &amp;i : b) std::cin &gt;&gt; i;
+
+    for (int i = 0; i &lt; n; i++) {
+        a[i] -= b[i];
+        a[i] = -a[i];
+        if (a[i] &lt; 0) {
+            std::cout &lt;&lt; &quot;NO\n&quot;;
+            return;
+        }
+    }
+
+    int i = 0;
+    for (; i &lt; n; i++) {
+        if (a[i] != 0) break;
+    }
+
+    int j = n - 1;
+    for (; j &gt;= 0; j--) {
+        if (a[j] != 0) break;
+    }
+
+    std::set&lt;int&gt; s;
+    for (int k = i; k &lt;= j; k ++) {
+        s.insert(a[k]);
+    }
+    std::cout &lt;&lt; (s.size() &lt;= 1 ? &quot;YES\n&quot; : &quot;NO\n&quot;);
+}
+</code></pre>
+<h1 id="b-silly-mistake">B. Silly Mistake</h1>
+<h2 id="题意-1">题意</h2>
+<p>给你一个数组，问你是否可以将其分成若干个子数组（不得改变相对位置），使得每个子数组满足如下规则：</p>
+<ul>
+<li>每种元素只能出现一次</li>
+<li>绝对值相等的一对元素，正数必须出现在负数前面</li>
+<li>子数组元素和为 $0$</li>
+</ul>
+<h2 id="大概思路-1">大概思路</h2>
+<p>直接模拟即可，考虑贪心，当前已经选取到的子数组元素和为 $0$ 时，立马切割，一定是最优的。如果操作到不能再进行操作时，输出 $-1$ 即可。</p>
+<h2 id="参考代码-1">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    int n;
+    std::cin &gt;&gt; n;
+
+    std::vector&lt;int&gt; a(n);
+    i64 sum = 0;
+    for (auto &amp;i : a) (std::cin &gt;&gt; i), sum += i;
+
+    if (sum != 0 || a.back() &gt; 0) {
+        std::cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
+        return;
+    }
+
+    std::vector&lt;int&gt; ans;
+
+    int cnt_ = 1;
+    int in = 1;
+    std::set&lt;int&gt; cnt;
+    cnt.insert(a[0]);
+
+    for (int i = 1; i &lt; n; i++) {
+        cnt_++;
+        if (a[i] &gt; 0) {//收到正数（入）
+            if (!cnt.count(a[i])) {//没出现过，加入
+                cnt.insert(a[i]);
+                in++;
+            } else {
+                std::cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
+                return;
+            }
+        } else {//收到负数（出）
+            if (!cnt.count(-a[i])) {//没出现过
+                std::cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
+                return;
+            } else {//出现过
+                in--;
+            }
+        }
+
+        if (in == 0) {
+            ans.push_back(cnt_);
+            cnt_ = 0;
+            cnt.clear();
+        }
+    }
+
+    std::cout &lt;&lt; ans.size() &lt;&lt; &quot;\n&quot;;
+    for (auto &amp;u : ans) std::cout &lt;&lt; u &lt;&lt; &quot; &quot;;
+    std::cout &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h1 id="c-sweets-eating">C. Sweets Eating</h1>
+<h2 id="题意-2">题意</h2>
+<p>津杉给轻音乐俱乐部带来了 $n$ 颗美味的糖果。它们的编号从 $1$ 到 $n$ ，其中 $i$ /th的糖果的糖浓度用整数 $a_i$ 来描述。</p>
+<p>Yui 喜欢吃甜食，但出于健康考虑，她每天最多只能吃 $m$ 种甜食。</p>
+<p>天数编号从 $1$ 开始（依次为 $1, 2, 3, \ldots$ ）。在第 $d$ 天食用 $i$ 种甜食会导致 $(d \cdot a_i)$ 的糖分惩罚，因为随着时间的推移，甜食的糖分会越来越高。一种甜食最多只能吃一次。</p>
+<p>糖分惩罚的总和将是每种甜食的糖分惩罚的 <strong>总和</strong>。</p>
+<p>假设小伊选择了 $k$ 种甜食，并按照任意顺序吃完。她能得到的 <strong>最少</strong> 总糖罚分是多少？</p>
+<p>由于小依是一个犹豫不决的女孩，她希望您能回答 $1$ 和 $n$ 之间 $k$ 的每一个值。</p>
+<h2 id="大概思路-2">大概思路</h2>
+<p>稍加分析可知，先对原数组排序，然后选前 $k$ 小的元素，从大到小吃，最后的和一定是最小的（排序不等式：反序和 $\le$ 乱序和 $\le$ 正序和）</p>
+<p>那么我们要考虑怎么优化这个统计过程，直接暴力统计是 $O(n^2)$ 的，肯定会超时。</p>
+<p>考虑当前处理是第 $k + 1$ 个答案，那么 $k$ 的答案肯定是已经处理好的，我们手玩一下样例，看看能不能从前一个答案递推过来。</p>
+<p><img src="https://s21.ax1x.com/2024/09/27/pAlaJRP.png" alt=""></p>
+<p>容易发现，当处理第 $k + 1$ 个答案时，只有 $k + 1，k + 1 - m， k + 1 - 2m，\dots$ 处的贡献发生了变化。那么我们只需要预处理出一个序号公差不为 $1$ 的前缀和，然后每次更新答案的时候，加上 $pre[i]$ 即可。</p>
+<p>这个预处理是 $O(n)$ 的，不会超时。</p>
+<h2 id="参考代码-2">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    int n, m;
+    std::cin &gt;&gt; n &gt;&gt; m;
+    std::vector&lt;i64&gt; a(n);
+    for (auto &amp;i : a) std::cin &gt;&gt; i;
+    std::sort(a.begin(), a.end());
+
+    std::vector&lt;i64&gt; pre(n);
+    for (int i = 0; i &lt; m; i++) {
+        pre[i] = a[i];
+        for (int j = i + m; j &lt; n; j += m) {
+            pre[j] += a[j] + pre[j - m];
+        }
+    }
+
+    i64 ans = 0;
+    for (int i = 0; i &lt; n; i++) {
+        ans += pre[i];
+        std::cout &lt;&lt; ans &lt;&lt; &quot; &quot;;
+    }
+
+    std::cout &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h1 id="d-harmonious-graph">D. Harmonious Graph</h1>
+<h2 id="题意-3">题意</h2>
+<p>给你一个有 $n$ 个节点的无向图，让你连上最少的边数，使得“若任意两个节点 $l，r(l &lt; r)$之间可达，那么 $l，k（l &lt; k &lt; r）$ 之间也是可达的”成立。</p>
+<h2 id="大概思路-3">大概思路</h2>
+<p>其实题意可以转化为，给你若干个联通块，问你最少合并几次，可以让每个联通块内部的元素均是连续的（即，如果一个联通块有 $1$ 和 $3$，那么这个联通块一定含有 $2$）。</p>
+<p>考虑从小到大遍历每个元素，同时维护一个“截至到第 $i$ 个元素，访问过的联通块的内部元素最大值” $MAX$。若当前访问到的元素 $i$ 与 $MAX$ 不在一个并查集里，且 $i &lt; MAX$ 那么必须连边。</p>
+<p>遍历一遍，统计连边次数即可。</p>
+<h2 id="参考代码-3">参考代码</h2>
+<pre><code class="language-cpp">const int N=200005;
+int F[N], mx[N];//维护并查集元素最大最小值
+int find(int x) {
+    if(F[x]!=x) {
+        int t=F[x];//暂存其亲戚
+        F[x]=find(F[x]);
+        
+        mx[x] = std::max(mx[x], mx[t]);
+    }
+    return F[x];
+}
+void join(int x,int y){
+    int Fx=find(x),Fy=find(y);
+    if(Fx!=Fy){
+        F[Fx]=Fy;
+        
+        mx[Fy] = std::max(mx[Fy], mx[Fx]);
+    }
+}
+
+
+void solve() {  
+    int n, m;
+    std::cin &gt;&gt; n &gt;&gt; m;
+
+    for (int i = 1; i &lt;= n; i++) F[i] = mx[i] = i;
+
+    while (m--) {
+        int x, y;
+        std::cin &gt;&gt; x &gt;&gt; y;
+        join(x, y);
+    }
+
+    int mxx = mx[1];
+    int ans = 0;
+    for (int i = 1; i &lt;= n; i++) {
+        if (find(mxx) != find(i) &amp;&amp; i &lt; mxx) {
+            ans++;
+            join(mxx, i);
+        } 
+        mxx = std::max(mxx, mx[i]);
+    }
+
+    std::cout &lt;&lt; ans;
+}
+</code></pre>
               
 
 
@@ -776,9 +523,9 @@
                   <div class="post-footer-tags">
                     <span class="text-color-light text-small">TAGGED IN</span><br/>
                     
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/acm/">ACM</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E9%A2%98%E8%A7%A3/">题解</a>
 
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/cf/">CF</a>
 
                   </div>
                 
@@ -791,7 +538,7 @@
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/template/" data-tooltip="[ACM] 模版集（线上赛专用）（随缘更新中）" aria-label="PREVIOUS: [ACM] 模版集（线上赛专用）（随缘更新中）">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/todolist/" data-tooltip="[置顶] To Do List" aria-label="PREVIOUS: [置顶] To Do List">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -799,7 +546,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_600/" data-tooltip="Codeforces Round 600 (Div. 2)" aria-label="NEXT: Codeforces Round 600 (Div. 2)">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -842,9 +589,9 @@
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/todolist\/';
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_600\/';
         
-          this.page.identifier = '\/post\/todolist\/'
+          this.page.identifier = '\/post\/solution\/cf_600\/'
         
       };
       (function() {
@@ -888,7 +635,7 @@
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/template/" data-tooltip="[ACM] 模版集（线上赛专用）（随缘更新中）" aria-label="PREVIOUS: [ACM] 模版集（线上赛专用）（随缘更新中）">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/todolist/" data-tooltip="[置顶] To Do List" aria-label="PREVIOUS: [置顶] To Do List">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -896,7 +643,7 @@
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_600/" data-tooltip="Codeforces Round 600 (Div. 2)" aria-label="NEXT: Codeforces Round 600 (Div. 2)">
+            <a class="post-action-btn btn btn--disabled">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
