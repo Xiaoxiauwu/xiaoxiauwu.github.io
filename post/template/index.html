@@ -2239,6 +2239,121 @@ auto zFunction(const std::string &amp;s) {
       </div>
     </tbody>
   </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">Trie</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">struct trie {
+    std::vector&lt;std::array&lt;int, 26&gt;&gt; next;
+    std::vector&lt;bool&gt; exist;
+    int cnt = 0;
+
+    std::string t;// [可选] 用于记录dfs的子串
+    trie(int type, int len) {//size大小应满足 ：n &lt;= 字符串最大长度 * 字符串种类数 
+        next.resize(len * type);
+        exist.resize(len * type);
+        t.resize(len);
+    }
+    void insert(const std::string&amp; s) {
+        int p = 0;
+        for (int i = 0; i &lt; s.size(); i&#43;&#43;) {
+            int c = s[i] - &#39;a&#39;;
+            if (!next[p][c]) next[p][c] = &#43;&#43;cnt;
+            p = next[p][c];
+        }
+        exist[p] = 1;
+    }
+    bool find(const std::string&amp; s) {
+        int p = 0;
+        for (int i = 0; i &lt; s.size(); i&#43;&#43;) {
+            int c = s[i] - &#39;a&#39;;
+            if (!next[p][c]) return 0;
+            p = next[p][c];
+        }
+        return exist[p];
+    }
+    
+    void dfs(int now, int dep) {// [可选] 先序遍历所有字符串（初始参数：0, 0）
+        if (exist[now]) {
+            std::cout &lt;&lt; t.substr(0, dep) &lt;&lt; &#34;\n&#34;;// [editable] 该字符串即为一次遍历结果，这里修改对其进行的操作
+        }
+        for (int i = 0; i &lt; 26; i&#43;&#43;) {
+            if (next[now][i]) {
+                t[dep] = &#39;a&#39; &#43; i;
+                dfs(next[now][i], dep &#43; 1);
+            }
+        }
+    }
+};</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">01Trie</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">struct trie01 {
+    std::vector&lt;std::array&lt;int, 2&gt;&gt; next;
+    std::vector&lt;bool&gt; exist;
+    int cnt = 0;
+    trie(int n) {//size大小应满足 ：n &lt;= 字符串长度 * 字符串种类数 
+        next.resize(n);
+        exist.resize(n);
+    }
+    void insert(const std::string&amp; s) {    // 插入字符串s,l为字符串s的长度
+        int p = 0;
+        for (int i = 0; i &lt; s.size(); i&#43;&#43;) {
+            int c = s[i] - &#39;0&#39;;        //这里是把char型换成int型0~25储存起来
+            if (!next[p][c]) next[p][c] = &#43;&#43;cnt;    // 如果没有，就添加结点
+            p = next[p][c];
+        }
+        exist[p] = 1;
+    }
+    bool find(const std::string&amp; s) {    // 查找字符串    //可根据具体情况返回bool/int型
+        int p = 0;
+        for (int i = 0; i &lt; s.size(); i&#43;&#43;) {
+            int c = s[i] - &#39;0&#39;;
+            if (!next[p][c]) return 0;
+            p = next[p][c];
+        }
+        return exist[p];
+    }
+};</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
 </details></p>
 <h2 id="数学">数学</h2>
 <h3 id="归并排序">归并排序</h3>
@@ -3849,6 +3964,284 @@ auto vec=buk.get();//把桶里的东西倒出来
 //operator&gt;(const T a,T b)
 //不然会报错
 </code></pre>
+<h3 id="min25筛">min25筛</h3>
+<p>一种能在亚线性时间复杂度内求积性函数的算法。</p>
+<p>使用条件：</p>
+<ul>
+<li>求和函数具有积性 $f(ab) = f(a)f(b)$</li>
+<li>$f(1) = 1$</li>
+<li>$f(p^k)$ 能够被快速计算</li>
+</ul>
+<p>例如：
+积性函数 $f(p^k) = p^k (p^k - 1)$ 可以拆成两个积性函数 $x^2$ 和 $-x$ 的和。而且 $p^k$ 确实很容易求出（式子已经给出）。那么拆成一个两项的多项式f，然后分别求前缀和pref，最后合并贡献即可。</p>
+<p><em>有些函数可能不完全符合上述条件，但是你可以选择分类讨论解决之</em></p>
+<blockquote>
+<table>
+<thead>
+<tr>
+<th>幂数</th>
+<th>求和公式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$1$</td>
+<td>$n$</td>
+</tr>
+<tr>
+<td>$x$</td>
+<td>$\frac{n(n + 1)}{2}$</td>
+</tr>
+<tr>
+<td>$x^2$</td>
+<td>$\frac{n(n + 1)(2n + 1)}{6}$</td>
+</tr>
+<tr>
+<td>$x^3$</td>
+<td>$[\frac{n(n + 1)}{2}]^2$</td>
+</tr>
+<tr>
+<td>$\dots$</td>
+<td>$\dots$</td>
+</tr>
+<tr>
+<td>$x^k$</td>
+<td>$\frac{1}{k + 1}[(n + 1)^{k + 1} - 1 - \sum_{i = 0}^{k - 1}C_{k + 1}^i(\sum_{m = 1}^{n}m^i)]$</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">MIN25</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">
+#include&lt;bits/stdc&#43;&#43;.h&gt;
+using i64 = long long;
+using u64 = unsigned long long;
+
+constexpr int M = 1e9 &#43; 7;
+i64 powp(i64 a, i64 n) {
+    i64 ans = 1;
+    while (n) {
+        if (n &amp; 1) (ans *= a) %= M;
+        (a *= a) %= M;
+        n &gt;&gt;= 1;
+    }
+    return ans;
+}
+
+i64 inv(i64 x) {
+    return powp(x, M - 2);
+}
+
+struct Sieve {
+    std::vector&lt;int&gt; mpf; // minimum prime factor
+    std::vector&lt;int&gt; prime;
+
+    Sieve(int n) : mpf(n) {
+        for (int i = 2; i &lt; n; i&#43;&#43;) {
+            if (mpf[i] == 0) {
+                prime.push_back(i);
+                mpf[i] = i;
+            }
+            for (int j = 0; j &lt; prime.size() and i * prime[j] &lt; n; j&#43;&#43;) {
+                mpf[i * prime[j]] = prime[j];
+                if (prime[j] == mpf[i])
+                    break;
+            }
+        }
+    }
+
+    // get ai64 factors
+    std::vector&lt;int&gt; getDiv(int x) const {
+        std::vector&lt;int&gt; _div(1, 1);
+        while (x &gt; 1) {
+            int d = mpf[x];
+            int l = 0, r = _div.size();
+            while (x % d == 0) {
+                for (int k = l; k &lt; r; k&#43;&#43;) {
+                    _div.push_back(_div[k] * d);
+                }
+                x /= d;
+                l = r, r = _div.size();
+            }
+        }
+        return _div;
+    }
+};
+
+struct min25 {
+    i64 n, N;//原n， 根号n，根号下质数个数
+    std::vector&lt;std::vector&lt;int&gt;&gt; sum;//M，根号N下的质数个数
+    std::vector&lt;std::vector&lt;int&gt;&gt; g;//N &lt;&lt; 1
+    std::vector&lt;int&gt; w;//N &lt;&lt; 1
+
+    std::vector&lt;int&gt; id1, id2;//N
+    int tot, sq;
+    int cnt;//根号下质数个数
+    std::vector&lt;int&gt; p;//质数数组
+
+    std::vector&lt;std::function&lt;int(int)&gt;&gt; f;// [editable] 求拟合用的积性函数每一项
+    std::vector&lt;std::function&lt;int(int)&gt;&gt; pref;// [editable] 拟合用的积性函数每一项快速求和 [2, x] （务必存一下那个求和公式表）
+    std::vector&lt;int&gt; a;// [editable] 多项式系数
+    
+    std::function&lt;i64(i64)&gt; pk;// [editable] p^k的快速求法（输入的x作为p^k）
+    int len;//多项式项数
+
+    //前缀和最大范围；求拟合用的积性函数每一项；拟合用的积性函数每一项快速求和；多项式系数；快速求p^k函数
+    min25(
+        i64 n,
+        std::vector&lt;std::function&lt;int(int)&gt;&gt; f, 
+        std::vector&lt;std::function&lt;int(int)&gt;&gt; pref, 
+        std::vector&lt;int&gt; a,
+        std::function&lt;int(int)&gt; pk
+    ) : n(n), f(f), pref(pref), a(a), pk(pk), len(a.size()) {
+        //N = std::ceil(std::sqrt(1.0 * n &#43; 1000));
+        N = std::sqrt(std::max(20.0, 2.0 * n));
+        Sieve si(N);
+        p = si.prime;
+        cnt = p.size();
+
+        sum.resize(len);
+        g.resize(len);
+        for (int i = 0; i &lt; len; i&#43;&#43;) {
+            sum[i].resize(cnt &#43; 1);
+            g[i].resize(N * 2 &#43; 1);
+        }
+        w.resize(N * 2 &#43; 1);
+        id1.resize(N &#43; 1);
+        id2.resize(N &#43; 1);
+
+        for (int j = 0; j &lt; len; j&#43;&#43;) {
+            for (int i = 1; i &lt;= cnt; i&#43;&#43;) {
+                sum[j][i] = (sum[j][i - 1] &#43; f[j](p[i - 1])) % M;
+            }
+        }
+        //std::cout &lt;&lt; 1;
+    }
+
+    int getid(i64 x) {
+        if (x &lt;= sq) return id1[x];
+        return id2[n / x];
+    }
+
+    int func(const std::vector&lt;int&gt;&amp; x) {// 单项式组合成多项式
+        i64 val = 0;
+        for (int i = 0; i &lt; len; i&#43;&#43;) {
+            (val &#43;= 1ll * (M &#43; a[i]) % M * x[i] % M &#43; M) %= M;
+        }
+        return val;
+    }
+    i64 S(i64 x, int j) {
+        if(p[j] &gt; x) return 0;
+
+        std::vector&lt;int&gt; v1(len), v2(len);
+        for (int i = 0; i &lt; len; i&#43;&#43;) {
+            v1[i] = g[i][getid(x)];
+            v2[i] = sum[i][j];
+        }
+
+        i64 sp, ans = (func(v1) - func(v2) &#43; M) % M;
+        for (int i = j &#43; 1; i &lt;= cnt &amp;&amp; 1ll * p[i - 1] * p[i - 1] &lt;= x; i&#43;&#43;) {
+            sp = p[i - 1];
+            for (int e = 1; sp &lt;= x; sp *= p[i - 1], e&#43;&#43;)
+                (ans &#43;= 1ll * pk(sp) * (S(x / sp, i) &#43; (e &gt; 1)) % M) %= M;
+        }
+        return (ans &#43; M) % M;
+    }
+    i64 work(i64 nn) {
+        tot = 0;
+        n = nn;
+        sq = std::sqrt(n);
+        for(i64 r, m, l = 1; l &lt;= n; l = r &#43; 1) {
+            r = n / (n / l);
+            w[tot] = m = n / l;
+            for (int i = 0; i &lt; len; i&#43;&#43;) {
+                g[i][tot] = pref[i](m);
+            }
+            if(m &lt;= sq)
+                id1[m] = tot;
+            else
+                id2[n / m] = tot;
+            &#43;&#43;tot;
+        }
+        for (int i = 1; i &lt;= cnt; i&#43;&#43;) {
+            for (int j = 0; j &lt; tot &amp;&amp; 1ll * p[i - 1] * p[i - 1] &lt;= w[j]; j&#43;&#43;) {
+                for (int k = 0; k &lt; len; k&#43;&#43;) {
+                    g[k][j] = (1ll * g[k][j] - 1ll * f[k](p[i - 1]) * (1ll * g[k][getid(w[j] / p[i - 1])] - sum[k][i - 1]) % M) % M;
+                }
+            }
+        }
+        return (S(n, 0) &#43; 1) % M;
+    }
+};
+
+int inv2, inv6;
+
+void solve() {
+    inv2 = inv(2);
+    inv6 = inv(6);
+    i64 n;
+    std::cin &gt;&gt; n;
+
+    std::vector&lt;std::function&lt;int(int)&gt;&gt; f(2);
+    auto pref = f;
+    auto pk = [&amp;](i64 x) -&gt; i64 {//快速计算p^k
+        x %= M;
+        return 1ll * x * (x - 1) % M;
+    };
+
+    std::vector&lt;int&gt; a({-1, 1});//拟合的多项式系数
+
+    f[0] = [](int x) -&gt; int {//拟合的多项式每一项计算方法（忽略系数）
+        x %= M;
+        return 1ll * x % M;
+    };
+    f[1] = [](int x) -&gt; int {
+        x %= M;
+        return 1ll * x * x % M;
+    };
+
+    pref[0] = [](int x) -&gt; int {//用拟合的多项式快速计算前缀和[2, x]的公式（直接n次幂求和查表）
+        x %= M;
+        return (1ll * x * (x &#43; 1) % M * inv2 % M - 1 &#43; M) % M;
+    };
+    pref[1] = [](int x) -&gt; int {
+        x %= M;
+        return (1ll * x * (x &#43; 1) % M * (2ll * x % M &#43; 1) % M * inv6 % M - 1 &#43; M) % M;
+    };
+
+    min25 m25(n, f, pref, a, pk);
+    std::cout &lt;&lt; m25.work(n);
+}
+
+signed main(){
+    //std::cin.tie(0) -&gt; sync_with_stdio(false);
+    int t = 1;
+    //std::cin &gt;&gt; t;
+    while(t--) solve();
+    return 0;
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
 <pre><code>前面的区域以后再来探索吧！
 </code></pre>
               
