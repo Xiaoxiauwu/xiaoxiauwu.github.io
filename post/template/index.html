@@ -504,12 +504,13 @@ i64 inv(i64 x) {
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
-          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">i64 fac[N], invfac[N];
- 
-void pre() {
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">constexpr int N = 1e5;
+i64 fac[N], invfac[N];
+
+void pre() {//      #######组合数预处理时不能超过模数########
     fac[0] = invfac[0] = 1;
     for (int i = 1; i &lt; N; i&#43;&#43;) fac[i] = fac[i-1] * i % M;
     invfac[N - 1] = inv(fac[N - 1]);
@@ -736,8 +737,7 @@ struct BIT {
   </table>
 </details>
 <h3 id="线段树">线段树</h3>
-<p>单点修改，区间查询。（可选功能：*区间查找满足条件的第一个元素，*区间查找满足条件的最后一个元素</p>
-
+<p>
   
     
   
@@ -747,15 +747,16 @@ struct BIT {
 
 
 
-<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">SGT(Jiangly)</summary>
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">单点修改，区间查询和</summary>
   <table>
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
-          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">template&lt;class Info&gt;//	SGT template (from jiangly)
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">//单点修改，区间查询。（可选功能：区间查找满足条件的第一个元素，区间查找满足条件的最后一个元素
+template&lt;class Info&gt;//	SGT template (from jiangly)
 struct SGT {
     int n;//	size
     std::vector&lt;Info&gt; info;//	the info vector
@@ -888,6 +889,311 @@ SGT&lt;Info&gt; sgt(N);</code></pre>
     </tbody>
   </table>
 </details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">区间加，区间查询min/max</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">
+const i64 inf = 1e9;
+template &lt;class T&gt;
+struct SGT_min {//区间加，区间查询最小值
+    #define chl (k &lt;&lt; 1)
+    #define chr (k &lt;&lt; 1 | 1)
+    #define mid ((l &#43; r) &gt;&gt; 1)
+    T *t, *tag;
+    int n;
+
+    SGT_min(int n) {
+        t = new T[n &lt;&lt; 2]();
+        tag = new T[n &lt;&lt; 2]();
+        this-&gt;n = n;
+    }
+
+    void push_up(int k) {
+        t[k] = std::min(t[chl], t[chr]);
+    }
+
+    void push_down(int k, int l, int r) {
+        if (!tag[k]) return;
+        t[chl] &#43;= tag[k]; t[chr] &#43;= tag[k];
+        tag[chl] &#43;= tag[k]; tag[chr] &#43;= tag[k]; tag[k]=0;
+    }
+
+    void build(int k, int l, int r, T *a) {
+        if (l &gt; r) return;
+        if (l == r) {t[k] = a[l]; return;}
+        build(chl , l, mid, a); build(chr, mid &#43; 1, r, a);
+        push_up(k);
+    }
+    void build(T *a) {build(1, 1, n, a);}
+
+    void update_add(int k, int l, int r, int ll, int rr, T x) {//区间加
+        if (l &gt; rr || ll &gt; r) return;
+        if (l &gt;= ll &amp;&amp; r &lt;= rr) {t[k] &#43;= x; tag[k] &#43;= x; return;}
+        push_down(k, l, r);
+        update_add(chl, l, mid, ll, rr, x); update_add(chr, mid &#43; 1, r, ll, rr, x);
+        push_up(k);
+    }
+    void update_add(int ll, int rr, T x) {update_add(1, 1, n, ll, rr - 1, x);}//左闭右开性质
+
+    T query(int k, int l, int r, int ll, int rr) {
+        if (l &gt; rr || ll &gt; r) return inf * 10000;  // attention!
+        if (l &gt;= ll &amp;&amp; r &lt;= rr) return t[k];
+        push_down(k, l, r);
+        return std::min(query(chl, l, mid, ll, rr), query(chr, mid &#43; 1, r, ll, rr));
+    }
+    T query(int ll, int rr) {return query(1, 1, n, ll, rr - 1);}//左闭右开性质
+};</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details></p>
+<h3 id="可持久化线段树">可持久化线段树</h3>
+<p>
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">可持久化线段树</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">template&lt;typename T&gt;
+struct SGT_maintain {//可持久化线段树，单点修改，单点历史查询
+    struct node {int l, r; T v;};
+    int n;
+    std::vector&lt;node&gt; t;
+    std::vector&lt;T&gt; a;//下标从1开始
+    int num = 0;
+    std::vector&lt;int&gt; root;//保存历史版本编号
+
+    SGT_maintain(int n_) : n(n_), t(50 * n_), a(n_ &#43; 1) {}
+    //k ： 版本编号
+    int build(int k, int l, int r) {//建树，先把a数组读完再build(0, 1, n);
+        num&#43;&#43;;
+        k = num;
+        if (l == r) {
+            t[k].v = a[l];
+            return k;
+        }
+        int mid = (l &#43; r) &gt;&gt; 1;
+        t[k].l = build(t[k].l, l, mid);
+        t[k].r = build(t[k].l, mid &#43; 1, r);
+        return k;
+    }
+
+    void build() {// [可选]
+        save(build(0, 1, n));
+    }
+
+    void save(int k) {//新建备份
+        root.push_back(k);
+    }
+
+    int update(int k, int l, int r, int p, int v) {
+        num&#43;&#43;;
+        t[num] = t[k];
+        k = num;
+        if (l == r) {
+            t[k].v = v;
+        } else {
+            int mid = (l &#43; r) &gt;&gt; 1;
+            if (p &lt;= mid) t[k].l = update(t[k].l, l, mid, p, v);
+            else t[k].r = update(t[k].r, mid &#43; 1, r, p, v);
+        }
+        return k;
+    }
+
+    void update(int k, int p, int v) {// [可选]单点修改，同时更新历史版本
+        save(update(root[k], 1, n, p, v));
+    }
+
+    T query(int k, int l, int r, int p) {
+        if (l == r) {
+            return t[k].v;
+        }
+        int mid = (l &#43; r) &gt;&gt; 1;
+        if (p &lt;= mid) return query(t[k].l, l, mid, p);
+        else return query(t[k].r, mid &#43; 1, r, p);
+    }
+
+    T query(int k, int p) {// [可选]单点历史版本查询
+        return query(root[k], 1, n, p);
+    }
+};
+
+void solve() {//使用例
+    int n, m;
+    std::cin &gt;&gt; n &gt;&gt; m;
+    
+    SGT_maintain&lt;int&gt; sgt(n);
+    for (int i = 1; i &lt;= n; i&#43;&#43;) {
+        std::cin &gt;&gt; sgt.a[i];
+    }
+
+    sgt.build();
+
+    for (int i = 1; i &lt;= m; i&#43;&#43;) {
+        int v, op, p;
+        std::cin &gt;&gt; v &gt;&gt; op &gt;&gt; p;
+
+        if (op == 1) {
+            int x;
+            std::cin &gt;&gt; x;
+            sgt.update(v, p, x);
+        } else {
+            std::cout &lt;&lt; sgt.query(v, p) &lt;&lt; &#34;\n&#34;;
+            sgt.save(sgt.root[v]);
+        }
+    }
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">区间第k小</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">//原理是原数组离散化之后，以数组下标为版本，更新各个数出现次数
+template&lt;typename T&gt;
+struct SGT_kth_maintain {//可持久化权值线段树，单点修改，查询rank为k的数
+    struct node {int l, r; T v;};
+    int n;
+    std::vector&lt;node&gt; t;//开50倍
+    std::vector&lt;T&gt; a;//下标从1开始
+    int num = 0;
+    std::vector&lt;int&gt; root;//保存历史版本编号
+
+    SGT_kth_maintain(int n_) : n(n_), t(100 * n_ &#43; 1), a(n_ &#43; 1) {}
+    //k ： 版本编号
+    int build(int l, int r) {//建树，不需要读入，初始化版本就是全0
+        num&#43;&#43;;
+        int k = num;
+        if (l == r) {
+            return k;
+        }
+        int mid = (l &#43; r) &gt;&gt; 1;
+        t[k].l = build(l, mid);
+        t[k].r = build(mid &#43; 1, r);
+        return k;
+    }
+
+    void build() {// [可选] 建树
+        save(build(1, n));
+    }
+
+    void save(int k) {//新建备份
+        root.push_back(k);
+    }
+
+    int update(int k, int l, int r, int p) {//单点修改，同时更新历史版本
+        num&#43;&#43;;
+        int num_ = num;
+        t[num_] = t[k];
+        t[num_].v&#43;&#43;;
+        //k = num;
+        if (l == r) {
+            return num_;
+            //t[k].v = v;
+        } else {
+            int mid = (l &#43; r) &gt;&gt; 1;
+            if (p &lt;= mid) t[num_].l = update(t[k].l, l, mid, p);
+            else t[num_].r = update(t[k].r, mid &#43; 1, r, p);
+        }
+        return num_;
+    }
+
+    void update(int k, int p) {// [可选] 单点修改(元素计数更新)，同时更新历史版本
+        save(update(root[k - 1], 1, n, p));
+    }
+
+    T query(int k1, int k2, int l, int r, int p) {//区间历史版本查询有多少数比p小
+        if (l == r) {
+            return l;//t[k].v;
+        }
+        int cnt = t[t[k2].l].v - t[t[k1].l].v;
+        int mid = (l &#43; r) &gt;&gt; 1;
+        if (cnt &gt;= p) return query(t[k1].l, t[k2].l, l, mid, p);
+        else return query(t[k1].r, t[k2].r, mid &#43; 1, r, p - cnt);
+    }
+
+    T query(int l, int r, int p) {// [可选] 单点历史版本查询
+        return query(root[l - 1], root[r], 1, n, p);
+    }
+};
+
+void solve() {
+    int n, m;
+    std::cin &gt;&gt; n &gt;&gt; m;
+
+    std::vector&lt;int&gt; a(n);
+    for (auto &amp;i : a) std::cin &gt;&gt; i;
+    auto b = a;
+
+    std::sort(b.begin(), b.end());
+    b.erase(std::unique(b.begin(), b.end()), b.end());
+
+    int n_ = b.size();
+    
+    SGT_kth_maintain&lt;int&gt; sgt(n_);
+    sgt.build();
+
+    for (int i = 1; i &lt;= n; i&#43;&#43;) {
+        sgt.update(i, std::lower_bound(b.begin(), b.end(), a[i - 1]) - b.begin() &#43; 1);
+    }
+
+    for (int i = 1; i &lt;= m; i&#43;&#43;) {
+        int l, r, k;
+        std::cin &gt;&gt; l &gt;&gt; r &gt;&gt; k;
+
+        std::cout &lt;&lt; b[sgt.query(l, r, k) - 1] &lt;&lt; &#34;\n&#34;;
+    }
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details></p>
 <h3 id="珂朵莉树">珂朵莉树</h3>
 <p>当数据随机时，用于快速处理与 “区间推平” 有关的题。</p>
 
@@ -1551,7 +1857,7 @@ int main(){
   </table>
 </details>
 <h3 id="并查集">并查集</h3>
-
+<p>
   
     
   
@@ -1592,31 +1898,27 @@ void join(int x,int y){//合并集合
 
 
 
-<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">并查集（模板类）</summary>
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">并查集（常用）</summary>
   <table>
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
-          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">template&lt;typename T&gt;
-struct BCJ{
-    map&lt;T,T&gt; F;//使用map储存集合关系
-    BCJ(){}
-    void reset(){F.clear();}//重置，进行下一回合操作
-    void init(T x){mp[x]=x;}//需要自己手动初始化
-    T find(T x){//溯源
-        if(F[x]!=x){
-            F[x]=find(F[x]);
-        }
-        return F[x];
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">
+struct DSU {
+    std::vector&lt;int&gt; F;
+    DSU(int n) : F(n &#43; 1) {
+        std::iota(F.begin(), F.end(), 0);
     }
-    void join(T x,T y){//合并集合
-        T Fx=find(x),Fy=find(y);
-        if(Fx!=Fy){
-            F[Fx]=Fy;
-        }
+    void find(int x) {
+        return F[x] == x ? F[x] : F[x] = find(F[x]);
+    }
+    bool join(int x, int y) {
+        bool ok = (find(x) == find(y));
+        F[find(x)] = find(y);
+        return !ok;
     }
 };</code></pre>
         </div>
@@ -1624,6 +1926,52 @@ struct BCJ{
     </tbody>
   </table>
 </details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">并查集（模板类）</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">template&lt;typename T&gt;
+struct DSU {
+    map&lt;T, T&gt; F;
+    DSU(){}
+    void reset() {
+        F.clear();
+    }//重置
+    void init(T x) {
+        mp[x] = x;
+    }//需要自己手动初始化
+    T find(T x) {//溯源
+        if (F[x] != x) {
+            F[x] = find(F[x]);
+        }
+        return F[x];
+    }
+    void join(T x, T y) {//合并集合
+        T Fx = find(x), Fy = find(y);
+        if (Fx != Fy) {
+            F[Fx] = Fy;
+        }
+    }
+};</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details></p>
 
   
     
@@ -1642,24 +1990,24 @@ struct BCJ{
           <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
-          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">const int N=100005;
-int F[N],val[N];
-int find(int x){
-    if(F[x]!=x){
-        int t=F[x];//暂存其亲戚
-        F[x]=find(F[x]);
-        val[x]&#43;=val[t];
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">const int N = 100005;
+int F[N] ,val[N];
+int find(int x) {
+    if(F[x] != x){
+        int t = F[x];//暂存其亲戚
+        F[x] = find(F[x]);
+        val[x] &#43;= val[t];
         //合并之前是val[x]=x-&gt;t，val[t]=t-&gt;Ft
         //所以合并后val[x]应&#43;=val[t]（要让x直接连到Ft那边，权值自然得加上val[t]
         //不一定是相加。还要看具体的题目，有些题目甚至要求你不止维护一种权值
     }
     return F[x];
 }
-void join(int x,int y,int v){
-    int Fx=find(x),Fy=find(y);
-    if(Fx!=Fy){
-        F[Fx]=Fy;
-        val[Fx]=v&#43;val[y]-val[x];
+void join(int x, int y, int v){
+    int Fx = find(x), Fy = find(y);
+    if(Fx != Fy){
+        F[Fx] = Fy;
+        val[Fx] = v &#43; val[y] - val[x];
         //理解成向量加减法，假设x和y的亲戚均不为自己，那么有如下关系：
         //y-&gt;Fy
         //↑  ↑
@@ -1729,38 +2077,119 @@ using RedBlackTree =
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
-          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">struct node{//点类
-	int u,v,w;
-    bool operator&lt;(const &amp;node a){
-        return a.w&lt;b.w;
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">//需要一个并查集
+struct DSU {
+    std::vector&lt;int&gt; F;
+    DSU(int n) : F(n) {
+        std::iota(F.begin(), F.end(), 0);
     }
-}edge[200005];
+    int find(int x) {
+        return F[x] == x ? F[x] : F[x] = find(F[x]);
+    }
+    bool join(int x, int y) {
+        bool ok = (find(x) == find(y));
+        F[find(x)] = find(y);
+        return !ok;
+    }
+};
 
-int f[5005];
-int find(int x){
-	while(x!=f[x])x=f[x]=f[f[x]];
-	return x;
-}//并查集与路径压缩
+//            双向连边                                                       图               点数
+std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; kruskal(std::vector&lt;std::array&lt;int, 3&gt;&gt; edgs, int n) {
+    std::sort(edgs.begin(), edgs.end());
+    DSU dsu(n);
 
-void kruskal(){
-	sort(edge,edge&#43;m);
-	int cnt=0;
-	for(int i=0;i&lt;m;i&#43;&#43;){//多理解一下
-		int u=find(edge[i].u),v=find(edge[i].v);
-		if(u==v)continue;
-		ans&#43;=edge[i].w;
-		f[v]=u;
-		if(&#43;&#43;cnt==n-1)break;
-	}
+    std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; edg(n);//连边
+    for (auto &amp;[w, u, v] : edgs) {
+        int fu = dsu.find(u);
+        int fv = dsu.find(v);
+        if (fu != fv) {
+            edg[u].push_back({v, w});
+            edg[v].push_back({u, w});
+            dsu.join(u, v);
+        }
+    }
+
+    return edg;
 }</code></pre>
         </div>
       </div>
     </tbody>
   </table>
 </details>
+<h3 id="kruskal重构树最小生成树">kruskal重构树（最小生成树）</h3>
+<p>用于求图中，两点间最短路径的最大值的最小值
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">kruskal(MST)</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">struct DSU {
+    std::vector&lt;int&gt; F;
+    DSU(int n) : F(n) {
+        std::iota(F.begin(), F.end(), 0);
+    }
+    DSU(const DSU&amp; dsu_) {
+        F = dsu_.F;
+    }
+    int find(int x) {
+        return F[x] == x ? F[x] : F[x] = find(F[x]);
+    }
+    bool join(int x, int y) {
+        int fx = find(x), fy = find(y);
+        bool ok = (fx == fy);
+        F[fx] = fy;
+        return !ok;
+    }
+};
+
+//           kruskal重构树（不需要边权）        节点值                                    
+std::tuple&lt;std::vector&lt;std::vector&lt;int&gt;&gt;, std::vector&lt;int&gt;, DSU&gt; EXkruskal(std::vector&lt;std::array&lt;int, 3&gt;&gt; edgs, int n) {
+    std::sort(edgs.begin(), edgs.end());
+    DSU dsu(2 * n);
+    int cnt = n;
+    std::vector&lt;int&gt; val(2 * n);//  节点值
+
+    std::vector&lt;std::vector&lt;int&gt;&gt; edg(2 * n);
+    for (auto &amp;[w, u, v] : edgs) {
+        int fu = dsu.find(u);
+        int fv = dsu.find(v);
+        if (fu != fv) {
+            edg[fu].push_back(cnt);
+            edg[fv].push_back(cnt);
+            // edg[u].push_back(cnt);
+            // edg[v].push_back(cnt);
+            val[cnt] = w;
+            
+            dsu.join(fu, cnt);
+            dsu.join(fv, cnt);
+            cnt&#43;&#43;;
+            if (cnt == 2 * n - 1) break;
+        }
+    }
+
+    return {edg, val, dsu};
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details></p>
 <h3 id="dijkstra">dijkstra</h3>
 
   
@@ -2443,62 +2872,113 @@ for(ll i=1;i&lt;(1&lt;&lt;cnt);i++){//
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
-          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">ll M=10000;
-class Matrix{
-public:
-    int n,m;
-    vector&lt;vector&lt;ll&gt; &gt; a;
-    Matrix(int n_,int m_){
-        n=n_;m=m_;
-        a=vector&lt;vector&lt;ll&gt; &gt;(n&#43;1,vector&lt;ll&gt;(m&#43;1,0));
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">template&lt;typename T&gt;
+struct Matrix {
+    int n, m;
+    std::vector&lt;std::vector&lt;T&gt;&gt; a;
+    Matrix(int n_,int m_) {
+        n = n_; 
+        m = m_;
+        a = std::vector&lt;std::vector&lt;T&gt;&gt;(n, std::vector&lt;T&gt;(m, 0));
     }
-    Matrix(vector&lt;vector&lt;ll&gt; &gt; tmp){//快速创建矩阵（为什么C&#43;&#43;98用不了brace-init啊）
-        n=tmp.size();m=tmp[0].size();
-        a=vector&lt;vector&lt;ll&gt; &gt;(n&#43;1,vector&lt;ll&gt;(m&#43;1,0));
-        FOR(i,1,n)FOR(j,1,m)a[i][j]=tmp[i-1][j-1];
+    Matrix(std::vector&lt;std::vector&lt;T&gt;&gt; tmp) {// [可选] 快速创建矩阵（为什么C&#43;&#43;98用不了brace-init啊）
+        n = tmp.size();
+        m = tmp[0].size();
+        a = std::vector&lt;std::vector&lt;T&gt;&gt;(n, std::vector&lt;T&gt;(m, 0));
+        for (int i = 0; i &lt; n; i&#43;&#43;) {
+            for (int j = 0; j &lt; m; j&#43;&#43;) {
+                a[i][j] = tmp[i][j];
+            }
+        }
     }
-    vector&lt;ll&gt;&amp; operator[](ll i){//重载运算符
+    std::vector&lt;T&gt;&amp; operator[](int i) {//重载运算符
         return a[i];
     }
-    Matrix operator*(Matrix b){//矩阵求积
-        Matrix tmp(n,b.m);
-        FOR(i,1,n)FOR(j,1,b.m)FOR(k,1,m){
-            tmp[i][j]&#43;=a[i][k]*b[k][j];
-            tmp[i][j]%=M;
+    Matrix&lt;T&gt; operator*(Matrix&lt;T&gt;&amp; b) {//矩阵求积
+        Matrix tmp(n, b.m);
+        for (int i = 0; i &lt; n; i&#43;&#43;) {
+            for (int j = 0; j &lt; b.m; j&#43;&#43;) {
+                for (int k = 0; k &lt; m; k&#43;&#43;) {
+                    tmp[i][j] &#43;= a[i][k] * b[k][j];
+                    tmp[i][j] %= M;
+                }
+            }
         }
         return tmp;
     }
-    Matrix operator^(ll n){//快速幂
-        Matrix a=*this,ans=a;ans=1;
-        while(n){
-            if(n&amp;1)ans=ans*a;
-            a=a*a;
-            n&gt;&gt;=1;
+    Matrix&lt;T&gt; operator^(T n) {//快速幂
+        Matrix a = *this, ans = a;
+        ans = 1;//要用到单位矩阵的重载
+        while (n) {
+            if(n &amp; 1) ans = ans * a;
+            a = a * a;
+            n &gt;&gt;= 1;
         }
         return ans;
     }
-    void operator=(ll n){//单位矩阵
-        FOR(i,1,n)FOR(j,1,m)a[i][j]=(i==j)*n;
+    void operator=(T n) {// [可选] 单位矩阵
+        for (int i = 0; i &lt; n; i&#43;&#43;) {
+            for (int j = 0; j &lt; m; j&#43;&#43;) {
+                a[i][j] = (i == j) * n;
+            }
+        }
     }
     //====接下来是一些和快速幂无关的函数
-    Matrix T(){//矩阵求转置
-        Matrix tmp(m,n);
-        FOR(i,1,n)FOR(j,1,m)tmp[j][i]=a[i][j];
+    Matrix&lt;T&gt; RT() {// [可选] 矩阵求转置
+        Matrix tmp(m, n);
+        for (int i = 0; i &lt; n; i&#43;&#43;) {
+            for (int j = 0; j &lt; m; j&#43;&#43;) {
+                tmp[j][i] = a[i][j];
+            }
+        }
         return tmp;
     }
+
+    // std::vector&lt;T&gt; GuassElim() {//高斯消元求解线性方程组（取模意义下）,不会改变原矩阵
+    //     auto b = *this;//复制一份
+    //     assert(n == m - 1);//要求 列数比行数多一
+
+    //     std::vector&lt;T&gt; tmp(m);//保存当前行
+        
+    //     for (int i = 0; i &lt; n - 1; i&#43;&#43;) {//用第几行开始向下消
+    //         for (int j = 0; j &lt; m; j&#43;&#43;) {//预处理当前行
+    //             if (b[i][m - 1 - i] == 0) {
+    //                 return std::vector&lt;T&gt;(m, -1);//无解
+    //             }
+    //             if (j != m - 1 - i) (b[i][j] *= inv(b[i][m - 1 - i])) %= M;//乘尾项逆元，归一化
+    //             b[i][m - 1 - i] = 1;
+    //         }
+
+    //         for (int j = i &#43; 1; i &lt; n; i&#43;&#43;) {//从之后的行开始消
+    //             tmp = a[i];//复制
+    //             for (int j = 0; j &lt; m; j&#43;&#43;) {//预处理当前行
+    //                 if (j != m - 1 - i) (b[i][j] *= inv(b[i][m - 1 - i])) %= M;//乘尾项逆元，归一化
+    //                 b[i][m - 1 - i] = 1;
+    //             }
+    //准备开工
+    //             //for ()
+    //         }
+    //     }
+
+    // }
+
     void print(){//测试输出用，可以不写
-        FOR(i,1,n)FOR(j,1,m)cout&lt;&lt;a[i][j]&lt;&lt;&#34; \n&#34;[j==m];
+        for (int i = 0; i &lt; n; i&#43;&#43;) {
+            for (int j = 0; j &lt; m; j&#43;&#43;) {
+                std::cout &lt;&lt; a[i][j] &lt;&lt; &#34; \n&#34;[j == m - 1];
+            }
+        }
     }
 };
 /*
 //用法举例：
 Matrix a(2,2);
-a[1][1]=1;a[1][2]=1;
-a[2][1]=1;a[2][2]=0;
-cout&lt;&lt;(a^n)[1][2];//求斐波那契第n项（模M）
+a[0][0]=1;a[0][1]=1;
+a[1][0]=1;a[1][1]=0;
+cout&lt;&lt;(a^n)[0][1];//求斐波那契第n项（模M）
 
 Matrix b({  {1,2,3},
             {4,5,6} });
@@ -3795,6 +4275,59 @@ ostream&amp; operator&lt;&lt;(ostream &amp;COUT,BINT a){
     }
     return COUT;
 }</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+<h3 id="快读">快读</h3>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">FastIO</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">namespace IO{
+	char ibuf[(1 &lt;&lt; 20) &#43; 1], *iS, *iT;
+	#if ONLINE_JUDGE
+	#define gh() (iS == iT ? iT = (iS = ibuf) &#43; fread(ibuf, 1, (1 &lt;&lt; 20) &#43; 1, stdin), (iS == iT ? EOF : *iS&#43;&#43;) : *iS&#43;&#43;)
+ 	#else
+	#define gh() getchar()
+	#endif
+	#define reg register
+	inline long long read () {
+		reg char ch = gh();
+		reg long long x = 0;
+		reg char t = 0;
+		while (ch &lt; &#39;0&#39; || ch &gt; &#39;9&#39;)   t |= ch == &#39;-&#39;, ch = gh();
+		while (ch &gt;= &#39;0&#39; &amp;&amp; ch &lt;= &#39;9&#39;) x = x * 10 &#43; (ch ^ 48), ch = gh();
+		return t ? -x : x;
+	}
+	inline void write(long long x) {
+		if (x &lt; 0) {
+			x = ~(x - 1);
+			putchar(&#39;-&#39;);
+		}
+		if (x &gt; 9)
+			write(x / 10);
+		putchar(x % 10 &#43; &#39;0&#39;);
+	}
+}
+//
+using IO::read;
+using IO::write;</code></pre>
         </div>
       </div>
     </tbody>
