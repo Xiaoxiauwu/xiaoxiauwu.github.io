@@ -466,11 +466,12 @@ if (&#43;&#43;CNT == 5860) {
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
           <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">constexpr int M = 1e9 &#43; 7;
 i64 powp(i64 a, i64 n) {
+    a %= M;
     i64 ans = 1;
     while (n) {
         if (n &amp; 1) (ans *= a) %= M;
@@ -899,7 +900,7 @@ SGT&lt;Info&gt; sgt(N);</code></pre>
 
 
 
-<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">区间加，区间查询min/max</summary>
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">区间加，区间查询min</summary>
   <table>
     <tbody>
       <div style="display: flex;">
@@ -957,6 +958,170 @@ struct SGT_min {//区间加，区间查询最小值
         return std::min(query(chl, l, mid, ll, rr), query(chr, mid &#43; 1, r, ll, rr));
     }
     T query(int ll, int rr) {return query(1, 1, n, ll, rr - 1);}//左闭右开性质
+};</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">区间加，区间查询max</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">
+const i64 inf = 1e9;
+template &lt;class T&gt;
+struct SGT_max {//区间加，区间查询最大值
+    #define chl (k &lt;&lt; 1)
+    #define chr (k &lt;&lt; 1 | 1)
+    #define mid ((l &#43; r) &gt;&gt; 1)
+    T *t, *tag;
+    int n;
+
+    SGT_max(int n) {
+        t = new T[n &lt;&lt; 2]();
+        tag = new T[n &lt;&lt; 2]();
+        this-&gt;n = n;
+    }
+
+    void push_up(int k) {
+        t[k] = std::max(t[chl], t[chr]);
+    }
+
+    void push_down(int k, int l, int r) {
+        if (!tag[k]) return;
+        t[chl] &#43;= tag[k]; t[chr] &#43;= tag[k];
+        tag[chl] &#43;= tag[k]; tag[chr] &#43;= tag[k]; tag[k]=0;
+    }
+
+    void build(int k, int l, int r, T *a) {
+        if (l &gt; r) return;
+        if (l == r) {t[k] = a[l]; return;}
+        build(chl , l, mid, a); build(chr, mid &#43; 1, r, a);
+        push_up(k);
+    }
+    void build(T *a) {build(1, 1, n, a);}
+
+    void build(int k, int l, int r) {
+        if (l &gt; r) return;
+        if (l == r) {t[k] = 0; return;}
+        build(chl , l, mid); build(chr, mid &#43; 1, r);
+        push_up(k);
+    }
+    void build() {build(1, 1, n);}
+
+    void update_add(int k, int l, int r, int ll, int rr, T x) {//区间加
+        if (l &gt; rr || ll &gt; r) return;
+        if (l &gt;= ll &amp;&amp; r &lt;= rr) {t[k] &#43;= x; tag[k] &#43;= x; return;}
+        push_down(k, l, r);
+        update_add(chl, l, mid, ll, rr, x); update_add(chr, mid &#43; 1, r, ll, rr, x);
+        push_up(k);
+    }
+    void update_add(int ll, int rr, T x) {update_add(1, 1, n, ll, rr - 1, x);}//左闭右开性质
+
+    T query(int k, int l, int r, int ll, int rr) {
+        if (l &gt; rr || ll &gt; r) return -inf;  // attention!，找不到的处理
+        if (l &gt;= ll &amp;&amp; r &lt;= rr) return t[k];
+        push_down(k, l, r);
+        return std::max(query(chl, l, mid, ll, rr), query(chr, mid &#43; 1, r, ll, rr));
+    }
+    T query(int ll, int rr) {return query(1, 1, n, ll, rr - 1);}//左闭右开性质
+};</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">单点修改，区间查询max</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">struct SGT_max_one {
+    struct Node {
+        int l, r, lc, rc, max, lzy;
+    } t[maxn &lt;&lt; 2];
+    int cnt;
+    // void upd(int u) {
+    //     if (t[u].lzy) {
+    //         Node &amp;lc = t[t[u].lc], &amp;rc = t[t[u].rc];
+    //         lc.lzy &#43;= t[u].lzy; lc.max &#43;= t[u].lzy;
+    //         rc.lzy &#43;= t[u].lzy; rc.max &#43;= t[u].lzy;
+    //         t[u].lzy = 0;
+    //     }
+    // }
+    int bt(int l, int r) {
+        int u = &#43;&#43;cnt;
+        t[u] = { l, r, -1, -1, -inf };
+        if (l &lt; r) {
+            int mid = (l &#43; r) &gt;&gt; 1;
+            t[u].lc = bt(l, mid);
+            t[u].rc = bt(mid &#43; 1, r);
+        }
+        return u;
+    }
+    void mod(int u, int p, int x) {
+        // if (u == 1) printf(&#34;mod&gt; %d %d\n&#34;, p, x);
+        if (t[u].l == t[u].r) t[u].max = x;
+        else {
+            int mid = (t[u].l &#43; t[u].r) &gt;&gt; 1;
+            if (p &lt;= mid) mod(t[u].lc, p, x);
+            else mod(t[u].rc, p, x);
+            t[u].max = std::max(t[t[u].lc].max, t[t[u].rc].max);
+        }
+    }
+    // void add(int u, int l, int r, int tt) {
+    //     // if (u == 1) printf(&#34;add&gt; %d %d %d\n&#34;, l, r, tt);
+    //     if (t[u].l == l &amp;&amp; t[u].r == r) {
+    //         t[u].max &#43;= tt; t[u].lzy &#43;= tt;
+    //     } else {
+    //         upd(u);
+    //         int mid = (t[u].l &#43; t[u].r) &gt;&gt; 1;
+    //         if (r &lt;= mid) add(t[u].lc, l, r, tt);
+    //         else if (l &gt; mid) add(t[u].rc, l, r, tt);
+    //         else add(t[u].lc, l, mid, tt), add(t[u].rc, mid &#43; 1, r, tt);
+    //         t[u].max = std::max(t[t[u].lc].max, t[t[u].rc].max);
+    //     }
+    // }
+    int query(int u, int l, int r) {
+        // if (u == 1) printf(&#34;query&gt; %d %d\n&#34;, l, r);
+        if (l &gt; r) return -inf;
+        if (t[u].l == l &amp;&amp; t[u].r == r) {
+            return t[u].max;
+        } else {
+            int mid = (t[u].l &#43; t[u].r) &gt;&gt; 1;
+            if (r &lt;= mid) return query(t[u].lc, l, r);
+            else if (l &gt; mid) return query(t[u].rc, l, r);
+            else return std::max(query(t[u].lc, l, mid), query(t[u].rc, mid &#43; 1, r));
+        }
+    }
 };</code></pre>
         </div>
       </div>
@@ -2060,6 +2225,44 @@ using RedBlackTree =
     </tbody>
   </table>
 </details>
+<h3 id="safe-unordered_map">Safe Unordered_Map</h3>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">Safe Unordered_Map</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">struct custom_hash { //手写的 hash 函数
+    static uint64_t splitmix64(uint64_t x) {
+        x&#43;=0x9e3779b97f4a7c15;
+        x=(x^(x&gt;&gt;30))*0xbf58476d1ce4e5b9;
+        x=(x^(x&gt;&gt;27))*0x94d049bb133111eb;
+        return x^(x&gt;&gt;31);
+    }
+    size_t operator()(uint64_t x) const {
+        static const uint64_t FIXED_RANDOM = std::chrono::steady_clock::now().time_since_epoch().count();
+        return splitmix64(x &#43; FIXED_RANDOM);
+    }
+};
+
+std::unordered_map&lt;i64, i64, custom_hash&gt; safe_unordered_map;</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
 <h2 id="图论">图论</h2>
 <h3 id="kruskal">Kruskal</h3>
 
@@ -2581,7 +2784,7 @@ bool same(Shash &amp;a,int la,int ra,Shash &amp;b,int lb,int rb){//查询
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
           <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">template &lt;int D, std::array&lt;int, D&gt; B, std::array&lt;int, D&gt; P&gt;
@@ -2624,7 +2827,9 @@ struct StringHash {
         return res;
     }
 };
-using Hash = StringHash&lt;2, {133, 331}, {int(1e9 &#43; 21), int(1e9 &#43; 33)}&gt;;</code></pre>
+//基数, 模数
+using Hash = StringHash&lt;2, {133, 331}, {int(1e9 &#43; 21), int(1e9 &#43; 33)}&gt;;
+using Hash = StringHash&lt;3, std::array&lt;int, 3&gt;{1&#39;000&#39;003, 19260817, 998244353}, std::array&lt;int, 3&gt;{int(1e9) &#43; 9, int(1e9 &#43; 21), int(1e9 &#43; 33)}&gt;;</code></pre>
         </div>
       </div>
     </tbody>
@@ -4281,7 +4486,7 @@ ostream&amp; operator&lt;&lt;(ostream &amp;COUT,BINT a){
   </table>
 </details>
 <h3 id="快读">快读</h3>
-
+<p>
   
     
   
@@ -4333,6 +4538,40 @@ using IO::write;</code></pre>
     </tbody>
   </table>
 </details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">FastI</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">template&lt;typename T&gt;
+void read(T &amp;r) {
+    r = 0;
+    static char ch, last;
+    ch = getchar(), last = &#39;z&#39;;
+    while (ch &lt; &#39;0&#39; || ch &gt; &#39;9&#39;) last = ch, ch = getchar();
+    while (ch &gt;= &#39;0&#39; &amp;&amp; ch &lt;= &#39;9&#39;) r = (r &lt;&lt; 1) &#43; (r &lt;&lt; 3) &#43; (ch ^ 48), ch = getchar();
+    r = (last == &#39;-&#39;) ? -r : r;
+}
+template&lt;typename T, typename...Ts&gt;
+void read(T &amp;arg, Ts&amp;...arg_left) { read(arg); read(arg_left...); }</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details></p>
 <h3 id="最大子矩形">最大子矩形</h3>
 <p>给定方格图，图上有一些障碍点，求最大子矩形，内部不含障碍点
 
