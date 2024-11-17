@@ -6,8 +6,15 @@
     <description>Recent content in c&#43;&#43; on 夏のBLOG</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 26 Sep 2024 05:11:37 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 17 Nov 2024 17:56:56 +0800</lastBuildDate>
     <atom:link href="https://xiaoxiauwu.github.io/categories/c++/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>一种用于维护不交区间的STL科技</title>
+      <link>https://xiaoxiauwu.github.io/post/algorithm/range_set/</link>
+      <pubDate>Sun, 17 Nov 2024 17:56:56 +0800</pubDate>
+      <guid>https://xiaoxiauwu.github.io/post/algorithm/range_set/</guid>
+      <description></description>
+    </item>
     <item>
       <title>[置顶] To Do List</title>
       <link>https://xiaoxiauwu.github.io/post/todolist/</link>

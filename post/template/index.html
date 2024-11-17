@@ -808,6 +808,123 @@ struct RangeBIT {//需要套个正常BIT板子
       </div>
     </tbody>
   </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">MatBIT(Capps)</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">template &lt;class T, class Merge = std::plus&lt;T&gt;&gt;
+struct MatBIT {
+    const Merge merge;
+    std::vector&lt;BIT&lt;T, Merge&gt;&gt; t;
+
+    MatBIT(int n, int m)
+        : t(n &#43; 1, BIT&lt;T&gt;(m)), merge(Merge()) {}
+
+    void modify(int x, int y, const T &amp;v) {
+        for (int i = x &#43; 1; i &lt; t.size(); i &#43;= i &amp; -i) {
+            t[i].modify(y, v);
+        }
+    }
+
+    T posQuery(int x, int y) {
+        T res = T();
+        for (int i = x &#43; 1; i; i -= i &amp; -i) {
+            res = merge(res, t[i].posQuery(y));
+        }
+        return res;
+    }
+
+    // [u, d), [l, r)
+    T rangeQuery(int u, int l, int d, int r) {
+        u -= 1, l -= 1, d -= 1, r -= 1;
+        T res1 = posQuery(d, r) &#43; posQuery(u, l);
+        T res2 = posQuery(d, l) &#43; posQuery(u, r);
+        return res1 - res2;
+    }
+};
+//二维树状数组，单点修改，区间查询
+//或者维护二维差分：区间修改，单点查询</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">RangeMatBIT(Capps)</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">template &lt;class T&gt;
+struct RangeMatBIT {
+    MatBIT&lt;T&gt; p, px, py, pxy;
+
+    RangeMatBIT(int n, int m)
+        : p(n, m), px(n, m), py(n, m), pxy(n, m) {}
+
+    // [u, d), [l, r)
+    void rangeModify(int u, int l, int d, int r, const T &amp;v) {
+        modify(u, l, v);
+        modify(d, r, v);
+        modify(u, r, -v);
+        modify(d, l, -v);
+    }
+
+    // [u, d), [l, r)
+    T rangeQuery(int u, int l, int d, int r) {
+        u -= 1, l -= 1, d -= 1, r -= 1;
+        return query(u, l) &#43; query(d, r) - query(d, l) - query(u, r);
+    }
+
+private:
+    void modify(int x, int y, const T &amp;v) {
+        p.modify(x, y, v);
+        px.modify(x, y, v * x);
+        py.modify(x, y, v * y);
+        pxy.modify(x, y, v * x * y);
+    }
+
+    T query(int x, int y) {
+        T res = T();
+        res &#43;= p.posQuery(x, y) * (x &#43; 1) * (y &#43; 1);
+        res -= px.posQuery(x, y) * (y &#43; 1);
+        res -= py.posQuery(x, y) * (x &#43; 1);
+        res &#43;= pxy.posQuery(x, y);
+        return res;
+    }
+};
+//区间修改，区间查询</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
 </details></p>
 <h3 id="st表">ST表</h3>
 

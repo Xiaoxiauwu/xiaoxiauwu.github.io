@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    
+    <script type="application/ld+json">
+
+{  
+  "@context":"http://schema.org",
+  "@type":"Website",
+  "@id":"https:\/\/xiaoxiauwu.github.io\/",
+  "author": {
+    "@type": "Person",
+    "name": "XiaoXia",
+    
+    "image": "https://xiaoxiauwu.github.io/images/avatar.jpg"
+    
+  },
+  "name":"夏のBLOG",
+  "description":"",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/algorithm\/range_set\/",
+  "keywords":"[tech, C\u002b\u002b, python, study]"
+}
+
+</script>
+    <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Hugo 0.121.2 with theme Tranquilpeak 0.5.3-BETA">
+<meta name="author" content="XiaoXia">
+<meta name="keywords" content="tech, C&#43;&#43;, python, study">
+<meta name="description" content="">
+
+
+<meta property="og:description" content="">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一种用于维护不交区间的STL科技">
+<meta name="twitter:title" content="一种用于维护不交区间的STL科技">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/algorithm/range_set/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/algorithm/range_set/">
+<meta property="og:site_name" content="夏のBLOG">
+<meta property="og:description" content="">
+<meta name="twitter:description" content="">
+<meta property="og:locale" content="en-us">
+
+  
+    <meta property="article:published_time" content="2024-11-17T17:56:56">
+  
+  
+    <meta property="article:modified_time" content="2024-11-17T17:56:56">
+  
+  
+  
+    
+      <meta property="article:section" content="c&#43;&#43;">
+    
+  
+  
+    
+      <meta property="article:tag" content="ACM">
+    
+      <meta property="article:tag" content="算法">
+    
+  
+
+
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/avatar.jpg">
+
+
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
+
+
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/AG.webp">
+
+
+    <title>一种用于维护不交区间的STL科技</title>
+
+    <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
+    
+
+    
+
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/algorithm/range_set/">
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.css" integrity="sha512-H9jrZiiopUdsLpg94A333EfumgUBpO9MdbxStdeITo+KEIMaNfHNvwyjjDJb+ERPaRS6DpyRlKbvPUasNItRyw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    
+    
+    <link rel="stylesheet" href="https://xiaoxiauwu.github.io/css/style-h6ccsoet3mzkbb0wngshlfbaweimexgqcxj0h5hu4h82olsdzz6wmqdkajm.min.css" />
+    
+    
+      
+        <link rel="stylesheet"  href="https://xiaoxiauwu.github.io/css/codeblock.css">
+      
+    
+
+    
+      
+    
+    
+
+
+<script src="https://pagead2.googlesyndication.com/pagead/managed/js/adsense/m202401110101/show_ads_impl_fy2021.js" id="google_shimpl"></script>
+<script>
+      MathJax = {
+         tex: {
+            inlineMath: [['$','$'], ['\\(','\\)']],
+            processEscapes: true,
+            tags: 'ams',
+         },
+      };
+   </script>
+<script type="text/javascript" async="" src="https://wuli.wiki/MathJax3/es5/tex-mml-chtml.js"></script>
+
+<script async src="https://xiaoxiauwu.github.io/js/busuanzi.pure.js"></script>
+  <meta name="referrer" content="no-referrer-when-downgrade"></head>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
+<script src="https://xiaoxiauwu.github.io/js/cp.js"></script>
+<link rel="stylesheet" type="text/css" href="https://xiaoxiauwu.github.io/css/copy.css" />
+  <body>
+    <div id="blog">
+      <header id="header" data-behavior="5">
+  <i id="btn-open-sidebar" class="fa fa-lg fa-bars"></i>
+  <div class="header-title">
+    <a class="header-title-link" href="https://xiaoxiauwu.github.io/" aria-label="Go to homepage">夏のBLOG</a>
+  </div>
+  
+    
+      <a class="header-right-picture "
+         href="https://xiaoxiauwu.github.io/#about" aria-label="Open the link: /#about">
+    
+    
+    
+      
+        <img class="header-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+      
+    
+    </a>
+  
+
+
+<div  class="meta-item">&nbsp·&nbsp
+  <span id="busuanzi_container_page_pv">本文阅读量<span id="busuanzi_value_page_pv"></span>次</span>
+</div>
+
+</header>
+
+      <nav id="sidebar" data-behavior="5">
+  <div class="sidebar-container">
+    
+      <div class="sidebar-profile">
+        <a href="https://xiaoxiauwu.github.io/#about" aria-label="Read more about the author">
+          <img class="sidebar-profile-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+        </a>
+        <h4 class="sidebar-profile-name">XiaoXia</h4>
+        
+          <h5 class="sidebar-profile-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></h5>
+        
+      </div>
+    
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/" title="Home">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-home" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Home</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/categories" title="Categories">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-bookmark" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Categories</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/tags" title="Tags">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-tags" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Tags</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/archives" title="Archives">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-archive" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Archives</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://xiaoxiauwu.github.io/#about" title="About">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-question" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">About</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://github.com/Xiaoxiauwu" target="_blank" rel="noopener" title="GitHub">
+    
+      <i class="sidebar-button-icon fab fa-lg fa-github" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">GitHub</span>
+    </a>
+  </li>
+
+  <li class="sidebar-button">
+    
+      <a class="sidebar-button-link " href="https://www.totorocatcat.top" target="_blank" rel="noopener" title="Totoroの小窝">
+    
+      <i class="sidebar-button-icon fas fa-lg fa-link" aria-hidden="true"></i>
+      
+      <span class="sidebar-button-desc">Totoroの小窝</span>
+    </a>
+  </li>
+
+
+    </ul>
+    <ul class="sidebar-buttons">
+      
+
+    </ul>
+  </div>
+</nav>
+
+      
+  <div class="post-header-cover
+              text-center
+              post-header-cover--full"
+       style="background-image:url('/images/AG.webp')"
+       data-behavior="5">
+    
+      <div class="post-header main-content-wrap text-center">
+  
+    <h1 class="post-title">
+      一种用于维护不交区间的STL科技
+    </h1>
+  
+  
+  <div class="postShorten-meta post-meta">
+    
+      <time datetime="2024-11-17T17:56:56&#43;08:00">
+        
+  November 17, 2024
+
+      </time>
+    
+    
+  
+  
+    <span>in</span>
+    
+      <a class="category-link" href="https://xiaoxiauwu.github.io/categories/c&#43;&#43;">c&#43;&#43;</a>
+    
+  
+
+  </div>
+
+</div>
+    
+  </div>
+
+
+      <div id="main" data-behavior="5"
+        class="hasCover
+               hasCoverMetaIn
+               hasCoverCaption">
+        <article class="post" id="top">
+          
+            <span class="post-header-cover-caption caption">在洛谷题解区找到的一个不为人知的STL Trick</span>
+          
+          
+          <div class="post-content markdown">
+            <div class="main-content-wrap">
+              <!-- raw HTML omitted -->
+<h1 id="disjoint-interval-union并查区间">Disjoint Interval Union（并查区间）</h1>
+<p>这是一个码量特别小的，基于 std::set 的 STL 科技，能够维护不相交区间，同时还具有链表的性质。时间复杂度参考正常的 std::set。</p>
+<p><em>注：该STL并非本人发明，发现该科技的人也没给它取名，DIU是我随便取的名字</em></p>
+<h2 id="如何声明">如何声明</h2>
+<p>其代码量十分之小，仅有短短几行：</p>
+<pre><code class="language-cpp">auto cmp = [](const auto&amp; a, const auto&amp; b) -&gt; bool {
+    return a.second &lt; b.first;
+};
+std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt; s(cmp);
+</code></pre>
+<p>重点是这个 cmp，如果没有 decltype 可用，你也可以选择使用仿函数等方式传入 cmp：</p>
+<pre><code class="language-cpp">class cmp {
+public:
+    bool operator()(const std::pair&lt;int, int&gt;&amp; a, const std::pair&lt;int, int&gt;&amp; b) {
+        return a.second &lt; b.first;
+    }
+};
+
+std::set&lt;std::pair&lt;int, int&gt;, cmp&gt; s;
+</code></pre>
+<p>或者干脆自己造个 struct 来维护：</p>
+<pre><code class="language-cpp">struct Seg {
+    int l, r;
+    bool operator&lt;(const Seg&amp; a, const Seg&amp; b) {
+        return a.r &lt; b.l;
+    }
+};
+std::set&lt;Seg&gt; s;
+</code></pre>
+<p>std::pair&lt;int, int&gt; 不是必要的，只要你体现出这种右端点大于左端的非对称比较即可。</p>
+<h2 id="性质">性质</h2>
+<p>这种 cmp 方式，配合 set 内部的排序机制，会让 set 以为两个相交的区间是同一个元素。</p>
+<p>比方说，如果你往set中插入 $[1, 4]$ 后，再插入 $[3, 6]$，最后set中其实只有最开始的 $[1, 4]$，因为set认为你之后添加的 $[3, 6]$ 和 $[1, 4]$ 是相等的。</p>
+<p><img src="https://s21.ax1x.com/2024/11/17/pARQdFH.png" alt=""></p>
+<p>运用这种性质，我们可以使用 s.find({x, y}) 找到按左端点排序，从小到大，第一个与 $[x, y]$ 相交的元素的迭代器，没找到则返回 s.end()。</p>
+<h3 id="变式">变式</h3>
+<p>我们将重载的 $&lt;$ 换成 $\le$，那么这个 set 维护的不交区间将从闭区间变为开区间：</p>
+<p><img src="https://s21.ax1x.com/2024/11/17/pARQz11.png" alt=""></p>
+<p>但是建议少用这种变式，因为可能会出现违背直觉的事情：</p>
+<p><img src="https://s21.ax1x.com/2024/11/17/pARlauV.png" alt=""></p>
+<p>除非你真的知道自己在干什么，不然就尽量避免用这种变式，否则WA了后果自负。</p>
+<h2 id="原理">原理</h2>
+<p>讲完了性质，现在来说说原理，为什么这样重载小于号之后，set就能够维护不相交区间呢？这涉及到了std::set底层的排序比较算法：</p>
+<p>set 内部的元素比较使用的是“严格弱序”这一种关系。这种关系的推导用了一些离散数学的知识，这里仅仅只做简单的解释。</p>
+<p>比如，&lt; 就是一种严格弱序，而 &lt;= 不是一种严格弱序。使用严格弱序这一关系的好处，就是仅仅只用重载 &lt; 一个运算符，即可完成元素的比较，不需要重载 &lt;=、==、&gt; 等等。</p>
+<p>所有的比较情况如下：</p>
+<ul>
+<li>
+<p>$a$ 小于 $b$ &ndash;&gt; a &lt; b</p>
+</li>
+<li>
+<p>$b$ 小于 $a$ &ndash;&gt; b &lt; a</p>
+</li>
+<li>
+<p>$a$ 等于 $b$ &ndash;&gt; !(a &lt; b) &amp;&amp; !(b &lt; a)</p>
+</li>
+</ul>
+<p>关键点就在于最后的等于这个判断。</p>
+<h4 id="第一种相交情况相交但不包含">第一种相交情况：相交，但不包含。</h4>
+<p>假设有两个结构体，分别表示两段区间 $a$ ：$[1,4]$、$b$：$[2,5]$。</p>
+<p>按照上面的小于号重载方式手动验算，得到的结果正好就是 !(a &lt; b) &amp;&amp; !(b &lt; a) 因此，这种情况下，set 就会认为这两个元素是相等的。</p>
+<h4 id="第二种相交情况相交且包含">第二种相交情况：相交且包含。</h4>
+<p>假设有两个结构体，分别表示两段区间 $a$ ：$[1,5]$、$b$：$[2,4]$。</p>
+<p>按照上面的小于号重载方式手动验算，得到的结果正好也是 !(a &lt; b) &amp;&amp; !(b &lt; a)</p>
+<h4 id="第三种情况不相交">第三种情况：不相交</h4>
+<p>简单想象一下便知，此时，一定有某一个区间的右端点小于另一个区间的左端点。无论如何，这两个不相交的区间是不会被认为是相等的。</p>
+<p>综上所述，一旦两个区间产生了相交，set 就会认为它们相等，从而自动去重。而一旦两个区间不相交，它们也一定就不相等。</p>
+<h2 id="应用与例题">应用与例题</h2>
+<p>DIU 可以用来维护区间合并，也能用来处理区间分割。合理使用该性质，可以在有些题目中，想不出方法或者懒得写正解时偷鸡。</p>
+<h3 id="abc127c-prison">abc127C Prison</h3>
+<p><a href="https://atcoder.jp/contests/abc127/tasks/abc127_c">abc127C Prison</a></p>
+<h4 id="题意">题意：</h4>
+<p>给你 n 个区间，求区间交集大小。</p>
+<h4 id="diu-做法">DIU 做法：</h4>
+<p>DIU 板子题（确信），用 DIU 维护区间交操作即可。</p>
+<pre><code class="language-cpp">void solve() {
+    int _, m;
+    std::cin &gt;&gt; _ &gt;&gt; m;
+
+    auto cmp = [](const auto&amp; a, const auto&amp; b) -&gt; auto {
+        return a.first &gt; b.second;
+    };
+
+    std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt; seg(cmp);
+    auto it = seg.find({0, 0});//用来声明 it 的类型
+
+    while (m--) {
+        int l, r;
+        std::cin &gt;&gt; l &gt;&gt; r;
+        if ((seg.size() == 1) &amp;&amp; (it = seg.find({l, r})) == seg.end()) {//如果 DIU 里面有区间，但是没能找到相交区间，那么说明交集为空
+            std::cout &lt;&lt; 0;
+            return;
+        }
+        if ((it = seg.find({l, r})) == seg.end()) {//如果 DIU 里面没存任何区间
+            seg.insert({l, r});
+        } else {
+            auto [l_, r_] = *it;
+            seg.erase(it);
+            l = std::max(l, l_);
+            r = std::min(r, r_);
+            seg.insert({l, r});
+        }
+    }
+
+    std::cout &lt;&lt; seg.begin() -&gt; second - seg.begin() -&gt; first + 1;
+}
+</code></pre>
+<h3 id="cf1927d-find-the-different-ones">CF1927D Find the Different Ones!</h3>
+<p><a href="https://codeforces.com/contest/1927/problem/D">CF1927D Find the Different Ones!</a></p>
+<h4 id="题意-1">题意：</h4>
+<p>给你一个由 $n$ 个整数组成的数组 $a$ 和 $q$ 个查询。</p>
+<p>每个查询由两个整数 $l$ 和 $r$ ( $1 \le l \le r \le n$ ) 表示。您的任务是为每个查询找到两个索引 $i$ 和 $j$ （或者确定它们不存在），以便：</p>
+<ul>
+<li>$l \le i \le r$ ;</li>
+<li>$l \le j \le r$ ;</li>
+<li>$a_i \ne a_j$ .</li>
+</ul>
+<p>换句话说，对于每个查询，您需要在 $a_l, a_{l+1}, \dots, a_r$ 中找到一对不同的元素，或者报告不存在这样一对元素。</p>
+<h4 id="diu-做法-1">DIU 做法：</h4>
+<p>一眼 DIU 板子题（确信），直接遍历数组，将每对相邻且不相等的元素记为一个区间，然后加入到 DIU 中维护即可。</p>
+<p>考虑到这种情况：
+[3, 4] 为一个相邻互异元素对区间，我们查询 [4, 7] 的时候可能会不小心查到 [3, 4]，这是不合法的答案，因此 DIU 的 &lt;= 的性质就派上用场了，只用 &lt; 反而会出错。</p>
+<pre><code class="language-cpp">void solve() {//在区间中找到一对不等数的下标
+    int n;
+    std::cin &gt;&gt; n;
+    std::vector&lt;int&gt; a(n);
+    for (auto &amp;i : a) std::cin &gt;&gt; i;
+
+    auto cmp = [](const auto&amp; a, const auto&amp; b) -&gt; auto {
+        return a.second &lt;= b.first;
+    };
+    std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt; s(cmp);
+
+    for (int i = 1; i &lt; n; i++) {//记录相邻互异区间
+        if (a[i] != a[i - 1]) {
+            s.insert({i - 1, i});
+        }
+    }
+
+    int q;
+    std::cin &gt;&gt; q;
+    while (q--) {
+        int l, r;
+        std::cin &gt;&gt; l &gt;&gt; r;
+        l--; r--;
+
+        auto it = s.find({l, r});//直接查
+        if (it == s.end()) {
+            std::cout &lt;&lt; &quot;-1 -1\n&quot;;
+        } else {
+            std::cout &lt;&lt; it-&gt;first + 1 &lt;&lt; &quot; &quot; &lt;&lt; it-&gt;second + 1 &lt;&lt; &quot;\n&quot;;
+        }
+    }
+
+    std::cout &lt;&lt; &quot;\n&quot;; 
+}
+</code></pre>
+<h3 id="abc380e-1d-bucket-tool">abc380E 1D Bucket Tool</h3>
+<p><a href="https://atcoder.jp/contests/abc380/tasks/abc380_e">abc380E 1D Bucket Tool</a></p>
+<h4 id="题意-2">题意：</h4>
+<p>相信大家都玩过画板上的 &ldquo;油漆桶&rdquo; 功能吧，就如题目所言，本题要维护一个1维的油漆操作与查询。</p>
+<p>你有一个 $1 \times n$ 的色带，一开始，第 $i$ 个格子的颜色为 $i$ 值。</p>
+<p>你需要处理 $Q$ 个操作，有两种：</p>
+<ul>
+<li>1 x c : 在位置 $x$ 使用油漆，这会将当前格子且与当前格子颜色相同且相邻的格子也涂成颜色 $c$，如果对于相邻的格子，也存在颜色相同且相邻的其他格子，那么继续将该涂色操作传递下去。</li>
+<li>2 x : 查询第 $x$ 个格子的颜色。</li>
+</ul>
+<h4 id="diu-做法-2">DIU 做法：</h4>
+<p>正常写的话，是用并查集维护一个链表，搞合并。但是显然，我们也可以用 DIU 偷鸡。</p>
+<p>我们用 DIU 维护区间的左右端点，颜色，以及区间大小。在涂色操作时，利用 DIU 找到与当前修改的区间的相邻区间，判断是否需要合并即可。</p>
+<p>时间复杂度：$O(n\log n)$</p>
+<pre><code class="language-cpp">void solve() {
+    int n, m;
+    std::cin &gt;&gt; n &gt;&gt; m;
+
+    auto cmp = [](const auto&amp; a, const auto&amp; b) -&gt; auto {
+        return a[1] &lt; b[0];
+    };
+
+    std::set&lt;std::array&lt;int, 4&gt;, decltype(cmp)&gt; s(cmp);
+
+    std::vector&lt;int&gt; cnt(n + 1, 1);
+    for (int i = 1; i &lt;= n; i++) {
+        s.insert({i, i, i, 1});// l, r, c, siz
+    }
+
+    while (m--) {
+        int op;
+        std::cin &gt;&gt; op;
+        if (op == 1) {
+            int x, zc;
+            std::cin &gt;&gt; x &gt;&gt; zc;
+            auto it = s.find({x, x, -1, -1});
+            auto [l, r, c, siz] = *it;
+            s.erase(it);
+
+            cnt[c] -= siz;
+            c = zc;
+            cnt[c] += siz;
+
+            auto lit = s.find({l - 1, l - 1, -1, -1});
+            auto rit = s.find({r + 1, r + 1, -1, -1});
+
+            if (lit != s.end()) {
+                auto [ll, rr, cc, ssiz] = *lit;
+                if (cc == c) {//该合并了
+                    l = ll;
+                    siz += ssiz;
+                    s.erase(lit);
+                }
+            }
+            if (rit != s.end()) {
+                auto [ll, rr, cc, ssiz] = *rit;
+                if (cc == c) {//该合并了
+                    r = rr;
+                    siz += ssiz;
+                    s.erase(rit);
+                }
+            }
+
+            s.insert({l, r, c, siz});
+        } else {
+            int c;
+            std::cin &gt;&gt; c;
+            std::cout &lt;&lt; cnt[c] &lt;&lt; &quot;\n&quot;;
+        }
+    }
+}
+</code></pre>
+<h3 id="cf550a-two-substrings">CF550A Two Substrings</h3>
+<p><a href="https://codeforces.com/contest/550/problem/A">CF550A Two Substrings</a></p>
+<h4 id="题意-3">题意：</h4>
+<p>给定字符串 s 。您的任务是判断给定的字符串 s 是否包含两个不重叠的子串&quot;AB&quot; 和&quot;BA&quot; (子串的顺序不限)。</p>
+<h4 id="diu-做法-3">DIU 做法：</h4>
+<p><em>为什么 A 题上 DIU？其实是因为当时正解没想出来，罚时快罚爆了，最后迫不得已用 DIU 暴力偷鸡</em></p>
+<p>我们直接暴力将所有含 &ldquo;AB&rdquo; 的区间添加到 DIU 中进行维护。然后暴力遍历字符串，每找到一个 &ldquo;BA&rdquo; 子串，就用这段区间抹掉 DIU 中的相交区间，然后判断 DIU 是否为空即可。</p>
+<p>理论复杂度：$O(n^2\log n)$，实际跑起来特别快，$1e5$ 的数据只跑了 $78ms$。</p>
+<pre><code class="language-cpp">void solve() {
+    std::string s;
+    std::cin &gt;&gt; s;
+
+    if (s.size() &lt;= 3) {
+        std::cout &lt;&lt; &quot;NO&quot;;
+        return;
+    }
+
+    int n = s.size();
+
+    std::map&lt;std::string, int&gt; cnt;
+    for (int i = 0; i &lt; n - 1; i++) {
+        cnt[s.substr(i, 2)]++;
+    }
+
+    auto cmp = [](const auto&amp; a, const auto&amp; b) -&gt; auto {
+        return a.second &lt; b.first;
+    };
+    std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt; seg(cmp);
+    
+    for (int i = 0; i &lt; n - 1; i++) {
+        if (s.substr(i, 2) == &quot;AB&quot;) seg.insert({i, i + 1});
+    }
+
+    for (int i = 0; i &lt; n - 1; i++) {
+        if (s.substr(i, 2) == &quot;BA&quot;) {
+            auto tmp = seg;
+
+            auto it = tmp.find({i, i + 1});
+            while ((it = tmp.find({i, i + 1})) != tmp.end()) {
+                tmp.erase(it);
+            }
+
+            if (tmp.size()) {
+                std::cout &lt;&lt; &quot;YES\n&quot;;
+                return;
+            }
+        }
+    }
+
+    std::cout &lt;&lt; &quot;NO\n&quot;;
+}
+</code></pre>
+<h3 id="cf1623b-game-on-ranges">CF1623B Game on Ranges</h3>
+<p><a href="https://codeforces.com/contest/1623/problem/B">CF1623B Game on Ranges</a></p>
+<h4 id="题意-4">题意：</h4>
+<p>爱丽丝和鲍勃在玩下面这个游戏。爱丽丝有一个由互不相交的整数范围组成的集合 $S$ ，最初只包含一个范围 $[1, n]$ 。在一个回合中，爱丽丝从集合 $S$ 中选出一个范围 $[l, r]$ ，并要求鲍勃在这个范围中选出一个数字。鲍勃选择了一个数字 $d$ ( $l \le d \le r$ )。然后爱丽丝从 $S$ 中取出 $[l, r]$ 并将范围 $[l, d - 1]$ （如果是 $l \le d - 1$ ）和范围 $[d + 1, r]$ （如果是 $d + 1 \le r$ ）放入集合 $S$ 中。当集合 $S$ 为空时，游戏结束。我们可以证明每局棋的回合数正好是 $n$ 。</p>
+<p>游戏结束后，爱丽丝记得她从集合 $S$ 中选出的所有范围 $[l, r]$ ，但鲍勃却不记得他选出的任何数字。但是鲍勃很聪明，他知道自己可以从爱丽丝的范围中找出自己的数字 $d$ ，所以他向你求助，希望你能用你的编程技巧帮助他。</p>
+<p>给定爱丽丝挑选的范围列表 ( $[l, r]$ )，针对每个范围，帮助鲍勃找出鲍勃挑选的数字 $d$ 。</p>
+<p>我们可以证明，对于爱丽丝挑选的有效范围列表，鲍勃总有一种唯一的方法来选择他的数字。</p>
+<h4 id="diu-做法-4">DIU 做法：</h4>
+<p>将区间按长度从大到小排序后遍历，用 DIU 模拟区间分割，给每个区间绑定一个序号，用于答案输出即可。时间复杂度 $O(n\log n)$</p>
+<pre><code class="language-cpp">void solve() {
+    int n;
+    std::cin &gt;&gt; n;
+
+    std::vector&lt;std::array&lt;int, 4&gt;&gt; a(n);
+
+    for (auto &amp;[len, l, r, i] : a) {
+        std::cin &gt;&gt; l &gt;&gt; r;
+        len = r - l + 1;
+    }
+
+    for (int i = 0; i &lt; n; i++) {
+        a[i][3] = i;
+    }
+
+    std::sort(a.rbegin(), a.rend());
+
+    auto cmp = [](const auto&amp; a, const auto&amp; b) -&gt; auto {
+        return a[1] &lt; b[0];
+    };
+    std::set&lt;std::array&lt;int, 3&gt;, decltype(cmp)&gt; s(cmp);
+
+    std::vector&lt;int&gt; ans(n);
+    s.insert({1, n, a[0][3]});//
+    for (int i = 1; i &lt; n; i++) {
+        auto it = s.find({a[i][1], a[i][2], 0});
+        auto [l, r, idx] = *it;
+        s.erase(it);
+
+        if (l == a[i][1] &amp;&amp; r == a[i][2]) {//有别人干了
+            s.insert({a[i][1], a[i][2], a[i][3]});
+            continue;
+        }
+
+        if (l == a[i][1]) {//右端点分割
+            ans[idx] = a[i][2] + 1;
+            
+            s.insert({a[i][1], a[i][2], a[i][3]});
+            if (a[i][2] + 1 &lt; r) {
+                s.insert({a[i][2] + 2, r, a[i][3]});
+            }
+        } else {//左端点分割
+            ans[idx] = a[i][1] - 1;
+
+            s.insert({a[i][1], a[i][2], a[i][3]});
+            if (a[i][1] - 1 &gt; l) {
+                s.insert({l, a[i][1] - 2, a[i][3]});
+            }
+        }
+    }
+    
+    //ans[a[n - 1][3]] = a[n - 1][1];
+
+    std::sort(a.begin(), a.end(), [](const auto&amp; a, const auto&amp; b){//按下标排序
+        return a[3] &lt; b[3];
+    });
+
+    for (int i = 0; i &lt; n; i++) {
+        std::cout &lt;&lt; a[i][1] &lt;&lt; &quot; &quot; &lt;&lt; a[i][2] &lt;&lt; &quot; &quot; &lt;&lt; (a[i][1] == a[i][2] ? a[i][1] : ans[i]) &lt;&lt; &quot;\n&quot;;
+    }
+
+    std::cout &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h3 id="abc147f-sum-difference">abc147F Sum Difference</h3>
+<p><a href="https://atcoder.jp/contests/abc147/tasks/abc147_f">abc147F Sum Difference</a></p>
+<h4 id="题意-5">题意：</h4>
+<p>我们有一个长度为 $N$ 的整数序列 $A$，其中 $A1=X,Ai+1=Ai+D(1≤i&lt;N)$ 成立。</p>
+<p>高桥将取走这个序列中的一些（可能是全部或者一个也不取），而青木将取走剩下的所有元素。</p>
+<p>设 $S$ 和 $T$ 分别为高桥和青木取走的数字的总和。有多少个可能的 $S−T$ 的值？</p>
+<h4 id="diu-做法-5">DIU 做法：</h4>
+<p><em>Emmmm，我忘了当时的抽象思路了，找时间补一下做法，先放个实现</em></p>
+<pre><code class="language-cpp">void solve() {//怎么都会数论啊
+    int n, x, d;
+    std::cin &gt;&gt; n &gt;&gt; x &gt;&gt; d;
+
+    if (d == 0) {//如果增量为 0
+        if (x == 0) {
+            std::cout &lt;&lt; 1; 
+        } else {
+            std::cout &lt;&lt; n + 1;
+        }
+        return;
+    }
+
+    auto cmp = [](const std::pair&lt;i64, i64&gt; a, const std::pair&lt;i64, i64&gt; b) -&gt; bool {
+        return a.first &lt;= b.second;
+    };//为什么不让我decltype
+    std::map&lt;int, std::set&lt;std::pair&lt;i64, i64&gt;, decltype(cmp)&gt;&gt; cnt;
+
+    // std::map&lt;int, std::set&lt;std::pair&lt;i64, i64&gt;, cmp&gt;&gt; cnt;
+    if (d &lt; 0) x = -x, d = -d;
+    for (i64 k = 0; k &lt;= n; k++) {
+        i64 l = k * (k - 1) / 2, r = k * (2 * n - k - 1) / 2;
+        i64 t = k * x;
+        l += t / d, r += t / d;
+
+        if (!cnt.count(t % d)) {
+            cnt.insert({t % d, std::set&lt;std::pair&lt;i64, i64&gt;, decltype(cmp)&gt;(cmp)});
+        }
+
+        auto it = cnt[t % d].find({l, r});
+        if (it != cnt[t % d].end()) {
+            l = std::min(l, it -&gt; first);
+            r = std::max(r, it -&gt; second);
+            cnt[t % d].erase(it);
+        }
+        cnt[t % d].insert({l, r});
+    }
+
+    i64 sum = 0;
+    for (auto &amp;[t, s] : cnt) {
+        for (auto &amp;[l, r] : s) {
+            sum += r - l + 1;
+        }
+    }
+
+    std::cout &lt;&lt; sum;
+}
+</code></pre>
+<h3 id="u503858-走地鸡分组">U503858 走地鸡分组</h3>
+<p><a href="https://www.luogu.com.cn/problem/U503858?contestId=213150">U503858 走地鸡分组</a></p>
+<h4 id="题意-6">题意：</h4>
+<p>给定一个序列，要求对其分出尽可能多的组，使得每组中，每种元素数量为偶数。保证有解。</p>
+<h4 id="正解">正解：</h4>
+<p>贪心，由于每只鸡都必须属于某个小组，考虑从前往后遍历，并将每次的分界处都尽量靠左，也就是一遇到可以分界的位置就直接分界。</p>
+<p>可以使用 std::set 维护编号的出现次数：每遇到一个编号，如果它在 set 里，说明它已经出现过奇数次，那就把它删掉，否则把它插入 set 里。由于 set 里存的是所有当前出现次数是奇数的编号，那么当 set 的大小为 0 时，就说明当前组内不存在任何数量是奇数的编号，可以在此处分组。时间复杂度 $O(n\log n)$。</p>
+<p>由于 $a \le 10^6$，也可以直接开 cnt 数组来记录出现次数，时间复杂度 $O(n)$。</p>
+<h4 id="diu-做法-6">DIU 做法：</h4>
+<p>考虑到必定有解，因此一定能从左到右，用相同元素组合出 $\frac{n}{2}$ 个区间，直接利用 DIU 从左到右贪心，合并存在相交的区间即可。时间复杂度 $O(n\log n)$</p>
+<pre><code class="language-cpp">void solve() {
+    int n;
+    std::cin &gt;&gt; n;
+    
+    std::vector&lt;int&gt; vis(1e6 + 1, -1);
+    std::vector&lt;std::pair&lt;int, int&gt;&gt; res;
+    for (int i = 0; i &lt; n; i++) {
+        int x;
+        std::cin &gt;&gt; x;
+        if (vis[x] != -1) {
+            res.push_back({vis[x], i});
+            vis[x] = -1;
+        } else {
+            vis[x] = i;
+        }
+    }
+
+    auto cmp = [](const auto&amp; a, const auto&amp; b) -&gt; auto {
+        return a.second &lt; b.first;
+    };
+    std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt; s(cmp);
+
+    for (auto [l, r] : res) {
+        auto it = s.find({l, r});
+
+        while (it != s.end()) {
+            auto [ll, rr] = *it;
+            s.erase(it);
+            l = std::min(l, ll);
+            r = std::max(r, rr);
+            it = s.find({l, r});
+        }
+
+        s.insert({l, r});
+    }
+
+    std::cout &lt;&lt; s.size();
+}
+</code></pre>
+<h3 id="u503856-走地鸡群">U503856 走地鸡群</h3>
+<p><a href="https://www.luogu.com.cn/problem/U503856?contestId=213150">U503856 走地鸡群</a></p>
+<h4 id="题意-7">题意：</h4>
+<p>给定一个高度序列，$0$ 时刻时，雨水初始高度为 $0$，每分钟雨水上升一个单位长度，雨水上升过程中，低于雨水高度的部分会被淹没，从而将原始高度序列划分为若干独立的岛屿。你需要计算出，从 $0$ 时刻开始到刚好淹没整个岛屿的过程中，每时刻的岛屿数量。避免答案输出过大，你只需要输出所有时刻下岛屿数量的异或和即可。</p>
+<h4 id="正解-1">正解：</h4>
+<p><strong>方法一</strong>
+首先对 $a$ 数组进行排序，然后从 $0$ 到 $d$ 遍历时间节点，在第 $i$ 时刻时，考虑高度为 $i$ 的地面被淹没所会造成的影响。
+现在考虑下标为 $j$ 的地面被淹没造成的影响：</p>
+<ul>
+<li>如果其左右两侧的地面已经被淹没，则该处地面被淹没后，答案减一。</li>
+<li>如果其左右两侧地面都未被淹没，则该处地面被淹没后，答案加一。</li>
+<li>其余情况，不会使答案发生改变。</li>
+</ul>
+<p>在高度为 $i$ 的地面全部考虑完后，则所得答案即为时刻 $i$ 的答案。</p>
+<p>最后统计异或和即可。</p>
+<p>时间复杂度为 $O(n\log n)$。</p>
+<p><strong>方法二</strong></p>
+<p>观察到在固定时刻 $h$，合法二元组 $(x,y)$ 的数量，与 $a_i &gt; h$ 且 $a_{i - 1} \le h$ 的下标 $i$ 的数量相等，因此可以考虑每处下标的地面在哪些时刻具有贡献。
+对于 $a_{i - 1} \le a_i$ 的下标 $i$，显然其在任意时刻都没有贡献。 对于 $a_{i - 1} &lt; a_i$ 的下标 ，在 $h \in [a_{i - 1}, a_i - 1]$ 时，
+其具有 $1$ 的贡献。
+使用差分进行区间修改，最后统计答案即可。
+时间复杂度为 $O(n)$。</p>
+<h4 id="diu-做法-7">DIU 做法：</h4>
+<p>哪那么多废话，枚举雨水高度，直接无脑用 DIU 模拟区间分割即可。时间复杂度 $O(n\log n)$</p>
+<pre><code class="language-cpp">void solve() {
+    int n;
+    std::cin &gt;&gt; n;
+    
+    std::map&lt;int, std::vector&lt;int&gt;&gt; pos;
+    for (int i = 0; i &lt; n; i++) {
+        int x;
+        std::cin &gt;&gt; x;
+        pos[x].push_back(i);
+    }
+
+    int h = pos.rbegin()-&gt;first;
+
+    auto cmp = [](const auto&amp; a, const auto&amp; b) -&gt; auto {
+        return a.second &lt; b.first;
+    };
+    std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt; s(cmp);
+    s.insert({0, n - 1});
+
+    auto add = [&amp;](int l, int r) -&gt; void {
+        if (l &gt; r) return;
+        s.insert({l, r});
+    };
+
+    int ans = 0;
+    for (int i = 0; i &lt; h; i++) {
+        for (auto &amp;j : pos[i]) {
+            auto it = s.find({j, j});
+            auto [l, r] = *it;
+            s.erase(it);
+
+            add(l, j - 1);
+            add(j + 1, r);
+        }
+
+        ans ^= (int)s.size();
+    }
+
+    std::cout &lt;&lt; ans;
+}
+</code></pre>
+<h3 id="cf2020d-connect-the-dots">CF2020D Connect the Dots</h3>
+<p><a href="https://codeforces.com/contest/2020/problem/D">CF2020D Connect the Dots</a></p>
+<h4 id="题意-8">题意：</h4>
+<p>在一个晴朗的夜晚，爱丽丝坐下来玩经典游戏 &ldquo;连连看&rdquo;，但游戏规则有了变化。</p>
+<p>游戏开始时，爱丽丝画了一条直线，并在直线上标出了 $n$ 个点，索引从 $1$ 到 $n$ 。最初，这些点之间没有弧线，所以它们都是不相交的。之后，爱丽丝执行了 $m$ 次以下类型的操作：</p>
+<ul>
+<li>她选取三个整数 $a_i$ 、 $d_i$ ( $1 \le d_i \le 10$ ) 和 $k_i$ 。</li>
+<li>她选取点 $a_i, a_i+d_i, a_i+2d_i, a_i+3d_i, \ldots, a_i+k_i\cdot d_i$ 并用弧连接每一对点。</li>
+</ul>
+<p>在完成所有 $m$ 操作后，她想知道这些点所构成的连通部分的个数 $^\dagger$ 。请帮她求出这个数。</p>
+<p>$^\dagger$ 如果两点之间有一条路径经过几条（可能为零）弧和其他点，则这两点被称为在一个相连的分量中。</p>
+<h4 id="diu-做法-8">DIU 做法：</h4>
+<p>DIU 配合 DSU，考虑到 $d$ 特别小，最大为 $10$，我们直接开 $10 * 10 = 100$ 个 DIU，然后每次操作时，在对应 $d$ 的 $a % d$ 的 DIU 中进行区间合并即可。</p>
+<p>全部操作处理完毕后，暴力遍历所有的 DIU，用 DSU 合并处理即可。</p>
+<p>时间复杂度：$O(100n\log^2n)$</p>
+<pre><code class="language-cpp">const int N=200005;
+int F[N];
+int find(int x){//查询，自带路径压缩
+    return x==F[x]?x:F[x]=find(F[x]);
+}
+void join(int x,int y){//合并集合
+    F[find(x)]=find(y);
+}
+
+void solve() {
+    int n, m;
+    std::cin &gt;&gt; n &gt;&gt; m;
+
+    for (int i = 1; i &lt;= n; i++) F[i] = i;
+
+    auto cmp = [](const auto&amp; a, const auto&amp; b) -&gt; bool {
+        return a.second &lt; b.first;
+    };
+
+    std::vector&lt;std::vector&lt;std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt;&gt;&gt; seg(11);
+    for (int i = 1; i &lt;= 10; i++) {
+        seg[i] = std::vector&lt;std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt;&gt;(i, std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt;(cmp));
+    }
+
+    while (m--) {
+        int a, d, k;
+        std::cin &gt;&gt; a &gt;&gt; d &gt;&gt; k;
+        if (k == 0) continue;
+
+        auto it = seg[d][a % d].find({a, a + k * d});
+        if (it == seg[d][a % d].end()) {
+            seg[d][a % d].insert({a, a + k * d});
+        } else {
+            int L = a;
+            int R = a + k * d;
+            while ((it = seg[d][a % d].find({a, a + k * d})) != seg[d][a % d].end()) {
+                L = std::min(L, it -&gt; first);
+                R = std::max(R, it -&gt; second);
+                seg[d][a % d].erase(it);
+            }
+            
+            seg[d][a % d].insert({L, R});
+        }
+    }
+
+    for (int i = 1; i &lt;= 10; i++) {
+        for (int j = 0; j &lt; i; j++) {
+            for (auto &amp;[l, r] : seg[i][j]) {
+                for (int k = l; k &lt;= r; k += i) {
+                    join(l, k);
+                }
+            }
+        }
+    }
+
+    std::set&lt;int&gt; cnt;
+    for (int i = 1; i &lt;= n; i++) {
+        cnt.insert(find(i));
+    }
+    std::cout &lt;&lt; cnt.size() &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+              
+
+
+            </div>
+          </div>
+          <div id="post-footer" class="post-footer main-content-wrap">
+            
+              
+                
+                
+                  <div class="post-footer-tags">
+                    <span class="text-color-light text-small">TAGGED IN</span><br/>
+                    
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/acm/">ACM</a>
+
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%AE%97%E6%B3%95/">算法</a>
+
+                  </div>
+                
+              
+            
+            
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/revise/" data-tooltip="杂谈" aria-label="PREVIOUS: 杂谈">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+            
+  
+    <div id="disqus_thread">
+      <noscript>Please enable JavaScript to view the comments powered by Disqus.</noscript>
+    </div>
+    <script type="text/javascript">
+      var disqus_config = function() {
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/algorithm\/range_set\/';
+        
+          this.page.identifier = '\/post\/algorithm\/range_set\/'
+        
+      };
+      (function() {
+        
+        
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+          document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+          return;
+        }
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        var disqus_shortname = 'hugo-tranquilpeak-theme';
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+    </script>
+  
+
+
+          </div>
+        </article>
+        <footer id="footer" class="main-content-wrap">
+  <span class="copyrights">
+    &copy; 2024 XiaoXia. All Rights Reserved
+  </span>
+
+
+<div class="busuanzi-footer">
+  <span id="busuanzi_container_site_pv">
+    本站总访问量<span id="busuanzi_value_site_pv"></span>次
+  </span>
+  <span id="busuanzi_container_site_uv">
+    本站访客数<span id="busuanzi_value_site_uv"></span>人次
+  </span>
+</div></footer>
+      </div>
+      <div id="bottom-bar" class="post-bottom-bar" data-behavior="5">
+        
+<div class="post-actions-wrap">
+  <nav >
+    <ul class="post-actions post-action-nav">
+      
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/revise/" data-tooltip="杂谈" aria-label="PREVIOUS: 杂谈">
+          
+              <i class="fa fa-angle-left"></i>
+              <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
+            </a>
+        </li>
+        <li class="post-action">
+          
+            <a class="post-action-btn btn btn--disabled">
+          
+              <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
+              <i class="fa fa-angle-right"></i>
+            </a>
+        </li>
+      
+    </ul>
+  </nav>
+<ul class="post-actions post-action-share" >
+  
+    <li class="post-action hide-lg hide-md hide-sm">
+      <a class="post-action-btn btn btn--default btn-open-shareoptions" href="#btn-open-shareoptions" aria-label="Share this post">
+        <i class="fa fa-share-alt" aria-hidden="true"></i>
+      </a>
+    </li>
+    
+  
+  
+    <li class="post-action">
+      <a class="post-action-btn btn btn--default" href="#disqus_thread" aria-label="Leave a comment">
+        <i class="far fa-comment"></i>
+      </a>
+    </li>
+  
+  <li class="post-action">
+    
+      <a class="post-action-btn btn btn--default" href="#top" aria-label="Back to top">
+      <i class="fa fa-arrow-up" aria-hidden="true"></i>
+    
+    </a>
+  </li>
+</ul>
+</div>
+
+
+      </div>
+      
+
+    </div>
+    
+    <div id="about">
+  <div id="about-card">
+    <div id="about-btn-close">
+      <i class="fa fa-times"></i>
+    </div>
+    
+      <img id="about-card-picture" src="https://xiaoxiauwu.github.io/images/avatar.jpg" alt="Author&#39;s picture" />
+    
+    <h4 id="about-card-name">XiaoXia</h4>
+    
+      <div id="about-card-bio">憧憬着未来却虚度着当下，到头来自己也只是一片空虚吧<strong>LIVE IN THE MOMENT</strong></div>
+    
+    
+      <div id="about-card-job">
+        <i class="fa fa-briefcase"></i>
+        <br/>
+        学生
+      </div>
+    
+    
+      <div id="about-card-location">
+        <i class="fa fa-map-marker-alt"></i>
+        <br/>
+        华南理工大学
+      </div>
+    
+  </div>
+</div>
+
+    
+
+    
+  
+    
+      <div id="cover" style="background-image:url('https://xiaoxiauwu.github.io/images/cover_.jpg');"></div>
+    
+  
+
+
+    
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/highlight.min.js" integrity="sha512-z+/WWfyD5tccCukM4VvONpEtLmbAm5LDu7eKiyMQJ9m7OfPEDL7gENyDRL3Yfe8XAuGsS2fS4xSMnl6d30kqGQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.5.7/jquery.fancybox.min.js" integrity="sha512-uURl+ZXMBrF4AwGaWmEetzrd+J5/8NRkWAvJx5sbPSSuOb0bZLqf+tOzniObO00BjHa/dD7gub9oCGMLPQHtQA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script src="https://xiaoxiauwu.github.io/js/script-yqzy9wdlzix4lbbwdnzvwx3egsne77earqmn73v9uno8aupuph8wfguccut.min.js"></script>
+
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-gE8KAQyFIzV1C9+GZ8TKJHZS2s+n7EjNtC+IMRn1l5+WYJTHOODUM6JSjZhFhqXmc7bG8Av6XXpckA4tYhflnw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/apache.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-EWROca+bote+7Oaaar1F6y74iZj1r1F9rm/ly7o+/FwJopbBaWtsFDmaKoZDd3QiGU2pGacBirHJNivmGLYrow==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/go.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-GDVzAn0wpx1yVtQsRWmFc6PhJiLBPdUic+h4GWgljBh904O3JU10fk9EKNpVyIoPqkFn54rgL2QBG4BmUTMpiQ==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/http.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-UgZlma8NzkrDb/NWgmLIcTrH7i/CSnLLDRFqCSNF5NGPpjKmzyM25qcoXGOup8+cDakKyaiTDd7N4dyH4YT+IA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/less.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-lot9koe73sfXIrUvIPM/UEhuMciN56RPyBdOyZgfO53P2lkWyyXN7J+njcxIIBRV+nVDQeiWtiXg+bLAJZDTfg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/nginx.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-Zd3e7XxHP00TD0Imr0PIfeM0fl0v95kMWuhyAS3Wn1UTSXTkz0OhtRgBAr4JlmADRgiXr4x7lpeUdqaGN8xIog==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/puppet.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-qtqDO052iXMSP+5d/aE/jMtL9vIIGvONgTJziC2K/ZIB1yEGa55WVxGE9/08rSQ62EoDifS9SWVGZ7ihSLhzMA==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/scss.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-1NmkjnEDnwwwcu28KoQF8vs3oaPFokQHbmbtwGhFfeDsQZtVFI8zW2aE9O8yMYdpdyKV/5blE4pSWw4Z/Sv97w==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/stylus.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-B2wSfruPjr8EJL6IIzQr1eAuDwrsfIfccNf/LCEdxELCgC/S/ZMt/Uvk80aD79m7IqOqW+Sw8nbkvha20yZpzg==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/swift.min.js"></script>
+  
+
+  
+    <script async crossorigin="anonymous" defer integrity="sha512-28oDiQZGKUVN6wQ7PSLPNipOcmkCALXKwOi7bnkyFf8QiMZQxG9EQoy/iiNx6Zxj2cG2SbVa4dXKigQhu7GiFw==" src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.1.0/languages/yaml.min.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/click.js"></script>
+  
+
+  
+    <script src="https://xiaoxiauwu.github.io/js/sakura.js"></script>
+  
+
+
+<script>
+$(document).ready(function() {
+  hljs.configure({ classPrefix: '', useBR: false });
+  $('pre.code-highlight > code, pre > code').each(function(i, block) {
+    if (!$(this).hasClass('codeblock')) {
+      $(this).addClass('codeblock');
+    }
+    hljs.highlightBlock(block);
+  });
+});
+</script>
+
+
+
+
+    
+  </body>
+</html>
+
