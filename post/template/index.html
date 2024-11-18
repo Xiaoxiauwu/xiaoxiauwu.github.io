@@ -636,6 +636,228 @@ i64 C(i64 n,i64 m) {
     </tbody>
   </table>
 </details>
+<h3 id="背包求方案数">背包求方案数</h3>
+<p>
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">ZCBagCnt</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">//求01/完全背包的，最优情况的方案数
+i64 ZCBagCnt(int V, std::vector&lt;int&gt;&amp; w, std::vector&lt;int&gt;&amp; v) {//O(nV)
+    int n = w.size();
+    
+    std::vector&lt;i64&gt; f(V &#43; 1), g(V &#43; 1);//求体积恰好等于j的最大价值；求体积恰好等于j的最大方案数
+    f[0] = 0;
+    g[0] = 1;
+    for (int i = 0; i &lt; n; i&#43;&#43;) {
+        for(int j = V;j &gt;= w[i]; j--) {//01
+        //for(int j = w[i];j &lt;= V; j&#43;&#43;) {//完全
+            i64 cnt;
+            if (f[j] &lt; f[j - w[i]] &#43; v[i]) cnt = g[j - w[i]];
+            else if(f[j] == f[j - w[i]] &#43; v[i]) cnt = g[j - w[i]] &#43; g[j];
+            else cnt = g[j];
+            g[j] = cnt;//%mod;
+            f[j] = std::max(f[j], f[j - w[i]] &#43; v[i]);
+        }
+    }
+    i64 res = 0;
+    for (int i = 0; i &lt;= V; i&#43;&#43;) res = std::max(res, f[i]);//找出最大价值
+    i64 cnt = 0;
+    for (int i = 0; i &lt;= V; i&#43;&#43;) //找出所有体积不同的最大价值，每个体积有不同的方案数，累加求和
+        if (f[i] == res) cnt &#43;= g[i];//%mod;
+    return cnt;
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">ZCBagCnt_V</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">//求01/完全背包的，体积恰好为V的方案数
+i64 ZCBagCnt_V(int V, std::vector&lt;int&gt;&amp; v) {//O(nV)
+    int n = v.size();
+    std::vector&lt;i64&gt; f(V &#43; 1);
+    f[0] = 1;
+
+    for (int i = 0; i &lt; n; i&#43;&#43;) {
+        for (int j = V; j &gt;= v[i]; j--) {//01
+        //for (int j = v[i]; j &lt;= V; j&#43;&#43;) {//完全
+            f[j] &#43;= f[j - v[i]];
+        }
+    }
+
+    return f[V];
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details></p>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">ZBagCnt</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">//求01背包的，最优情况的方案数（较短的板子）
+i64 ZBagCnt(int V, std::vector&lt;int&gt;&amp; w, std::vector&lt;int&gt;&amp; v) {
+    int n = w.size();
+
+    std::vector&lt;i64&gt; f(V &#43; 1), h(V &#43; 1, 1);//h[j]表示体积不超过j时的最优方案的方案数
+
+    for (int i = 0; i &lt; n; i&#43;&#43;) {
+        for (int j = V; j &gt;= w[i]; j--) {
+            if (f[j] == f[j - w[i]] &#43; v[i]) h[j] = (h[j] &#43; h[j - w[i]]);//%mod;
+            else if (f[j] &lt; f[j - w[i]] &#43; v[i]) h[j] = h[j - w[i]];
+            f[j] = std::max(f[j], f[j - w[i]] &#43; v[i]);
+        }
+    }
+
+    return h[V];
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+<h3 id="背包求具体方案">背包求具体方案</h3>
+<p>
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">ZbagSolve</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">//求01背包的最优具体方案
+std::vector&lt;int&gt; ZbagSolve(int V, std::vector&lt;int&gt;&amp; w, std::vector&lt;int&gt;&amp; v) {
+    int n = w.size();
+
+    std::vector&lt;std::vector&lt;int&gt;&gt; f(n &#43; 1, std::vector&lt;int&gt;(V &#43; 1));
+    for(int i = n - 1; i &gt;= 0; i--)
+        for(int j = 0; j &lt;= V; j&#43;&#43;) {
+            f[i][j] = f[i &#43; 1][j];
+            if(j &gt;= w[i]) f[i][j] = std::max(f[i][j], f[i &#43; 1][j - w[i]] &#43; v[i]);
+        }
+
+    std::vector&lt;int&gt; ans;
+    for(int i = 0, j = V; i &lt; n; i&#43;&#43;)
+        if(j &gt;= w[i] &amp;&amp; f[i][j] == f[i &#43; 1][j - w[i]] &#43; v[i]){
+            ans.push_back(i);
+            j -= w[i];
+        }
+    //最优情况的值是f[V]，懒得开for收集的时候再从这里传出去吧
+    return ans;
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">ZbagSolve</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">//求完全背包的最优具体方案
+std::vector&lt;int&gt; CBagSolve(int V, std::vector&lt;int&gt;&amp; w, std::vector&lt;int&gt;&amp; v) {//O(nV)
+    int n = w.size();
+
+    std::vector&lt;std::vector&lt;int&gt;&gt; path(n &#43; 1, std::vector&lt;int&gt;(V &#43; 1));
+    std::vector&lt;int&gt; f(V &#43; 1);
+	for (int i = 0; i &lt; n; i&#43;&#43;) {
+		for (int j = w[i]; j &lt;= V; j&#43;&#43;) {
+			path[i][j] = 0;
+			if (f[j] &lt; f[j - w[i]] &#43; v[i]) {
+				f[j] = f[j - w[i]] &#43; v[i];
+				path[i][j] = 1;
+			}
+		}
+	}
+
+    std::vector&lt;int&gt; ans;
+ 
+	int i = n - 1;//N个物品
+	int j = V;//背包容量是V
+	while (i &gt; 0 &amp;&amp; j &gt; 0) {
+		if (path[i][j] == 1) {
+            ans.push_back(i);
+			j -= w[i];
+		} else i--;
+	}
+
+    return ans;
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details></p>
 <h2 id="数据结构">数据结构</h2>
 <h3 id="树状数组">树状数组</h3>
 <p>
@@ -5309,7 +5531,7 @@ auto vec=buk.get();//把桶里的东西倒出来
 //不然会报错
 </code></pre>
 <h3 id="min25筛">min25筛</h3>
-<p>一种能在亚线性时间复杂度内求积性函数的算法。</p>
+<p>一种能在亚线性时间复杂度内求积性函数前缀和的算法。</p>
 <p>使用条件：</p>
 <ul>
 <li>求和函数具有积性 $f(ab) = f(a)f(b)$</li>
