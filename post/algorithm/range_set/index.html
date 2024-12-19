@@ -378,12 +378,51 @@ std::set&lt;Seg&gt; s;
 <p>综上所述，一旦两个区间产生了相交，set 就会认为它们相等，从而自动去重。而一旦两个区间不相交，它们也一定就不相等。</p>
 <h2 id="应用与例题">应用与例题</h2>
 <p>DIU 可以用来维护区间合并，也能用来处理区间分割。合理使用该性质，可以在有些题目中，想不出方法或者懒得写正解时偷鸡。</p>
+<h3 id="p2434-sdoi2005-区间">P2434 [SDOI2005] 区间</h3>
+<h4 id="题意">题意：</h4>
+<p>现给定 $n$ 个闭区间 $[a_i, b_i]$（$1 \le i \le n$）。这些区间的并可以表示为一些不相交的闭区间的并。你的任务就是在这些表示方式中找出包含最少区间的方案。你的输出应该按照区间的升序排列。这里如果说两个区间 $[a, b]$ 和 $[c, d]$ 是按照升序排列的，那么我们有 $a \le b &lt; c \le d$。</p>
+<p>请写一个程序：</p>
+<p>读入这些区间；</p>
+<p>计算满足给定条件的不相交闭区间；</p>
+<p>把这些区间按照升序输出。</p>
+<h4 id="diu-做法">DIU 做法：</h4>
+<p>纯纯的 DIU 板子，不说思路了，自己看代码理解：</p>
+<pre><code class="language-cpp">void solve() {
+    int n;
+    std::cin &gt;&gt; n;
+    
+    auto cmp = [](const auto&amp; a, const auto&amp; b) -&gt; auto {
+        return a.second &lt; b.first;
+    };
+    std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt; s(cmp);
+
+    while (n--) {
+        int l, r;
+        std::cin &gt;&gt; l &gt;&gt; r;
+
+        auto it = s.find({l ,r});
+        while (it != s.end()) {
+            if (it-&gt;first &gt; r) break;
+            l = std::min(l, it-&gt;first);
+            r = std::max(r, it-&gt;second);
+            it++;
+            s.erase(std::prev(it));
+        }
+
+        s.insert({l, r});
+    }
+
+    for (auto &amp;[l, r] : s) {
+        std::cout &lt;&lt; l &lt;&lt; &quot; &quot; &lt;&lt; r &lt;&lt; &quot;\n&quot;;
+    }
+}
+</code></pre>
 <h3 id="abc001d---感雨時刻の整理">ABC001D - 感雨時刻の整理</h3>
 <p><a href="https://atcoder.jp/contests/abc001/tasks/abc001_4">ABC001D - 感雨時刻の整理</a></p>
-<h4 id="题意">题意：</h4>
+<h4 id="题意-1">题意：</h4>
 <p>给你 $N$ 个时间段，要你对每个时间段按5分钟进行取整后，合并相交的区间，最后输出剩下的时间段个数，并按时间顺序依次输出各个区间。</p>
 <p>取整方式：左端点向下取整，右端点向上取整，例如：1323-1401 取整后变为：1320-1405</p>
-<h4 id="diu-做法">DIU 做法：</h4>
+<h4 id="diu-做法-1">DIU 做法：</h4>
 <p>DIU 板子题，将时间格式化之后，用DIU维护区间合并即可。</p>
 <pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
 using i64 = long long;
@@ -446,7 +485,7 @@ signed main() {
 </code></pre>
 <h3 id="cf1927d-find-the-different-ones">CF1927D Find the Different Ones!</h3>
 <p><a href="https://codeforces.com/contest/1927/problem/D">CF1927D Find the Different Ones!</a></p>
-<h4 id="题意-1">题意：</h4>
+<h4 id="题意-2">题意：</h4>
 <p>给你一个由 $n$ 个整数组成的数组 $a$ 和 $q$ 个查询。</p>
 <p>每个查询由两个整数 $l$ 和 $r$ ( $1 \le l \le r \le n$ ) 表示。您的任务是为每个查询找到两个索引 $i$ 和 $j$ （或者确定它们不存在），以便：</p>
 <ul>
@@ -455,7 +494,7 @@ signed main() {
 <li>$a_i \ne a_j$ .</li>
 </ul>
 <p>换句话说，对于每个查询，您需要在 $a_l, a_{l+1}, \dots, a_r$ 中找到一对不同的元素，或者报告不存在这样一对元素。</p>
-<h4 id="diu-做法-1">DIU 做法：</h4>
+<h4 id="diu-做法-2">DIU 做法：</h4>
 <p>一眼 DIU 板子题（确信），直接遍历数组，将每对相邻且不相等的元素记为一个区间，然后加入到 DIU 中维护即可。</p>
 <p>考虑到这种情况：
 [3, 4] 为一个相邻互异元素对区间，我们查询 [4, 7] 的时候可能会不小心查到 [3, 4]，这是不合法的答案，因此 DIU 的 &lt;= 的性质就派上用场了，只用 &lt; 反而会出错。</p>
@@ -496,7 +535,7 @@ signed main() {
 </code></pre>
 <h3 id="abc380e-1d-bucket-tool">abc380E 1D Bucket Tool</h3>
 <p><a href="https://atcoder.jp/contests/abc380/tasks/abc380_e">abc380E 1D Bucket Tool</a></p>
-<h4 id="题意-2">题意：</h4>
+<h4 id="题意-3">题意：</h4>
 <p>相信大家都玩过画板上的 &ldquo;油漆桶&rdquo; 功能吧，就如题目所言，本题要维护一个1维的油漆操作与查询。</p>
 <p>你有一个 $1 \times n$ 的色带，一开始，第 $i$ 个格子的颜色为 $i$ 值。</p>
 <p>你需要处理 $Q$ 个操作，有两种：</p>
@@ -504,7 +543,7 @@ signed main() {
 <li>1 x c : 在位置 $x$ 使用油漆，这会将当前格子且与当前格子颜色相同且相邻的格子也涂成颜色 $c$，如果对于相邻的格子，也存在颜色相同且相邻的其他格子，那么继续将该涂色操作传递下去。</li>
 <li>2 c : 查询颜色为 $c$ 的格子的数量。</li>
 </ul>
-<h4 id="diu-做法-2">DIU 做法：</h4>
+<h4 id="diu-做法-3">DIU 做法：</h4>
 <p>正常写的话，是用并查集维护一个链表，搞合并。但是显然，我们也可以用 DIU 偷鸡。</p>
 <p>我们用 DIU 维护区间的左右端点，颜色，以及区间大小。在涂色操作时，利用 DIU 找到与当前修改的区间的相邻区间，判断是否需要合并即可。</p>
 <p>时间复杂度：$O(n\log n)$</p>
@@ -568,9 +607,9 @@ signed main() {
 </code></pre>
 <h3 id="cf550a-two-substrings">CF550A Two Substrings</h3>
 <p><a href="https://codeforces.com/contest/550/problem/A">CF550A Two Substrings</a></p>
-<h4 id="题意-3">题意：</h4>
+<h4 id="题意-4">题意：</h4>
 <p>给定字符串 s 。您的任务是判断给定的字符串 s 是否包含两个不重叠的子串&quot;AB&quot; 和&quot;BA&quot; (子串的顺序不限)。</p>
-<h4 id="diu-做法-3">DIU 做法：</h4>
+<h4 id="diu-做法-4">DIU 做法：</h4>
 <p><em>为什么 A 题上 DIU？其实是因为当时正解没想出来，罚时快罚爆了，最后迫不得已用 DIU 暴力偷鸡</em></p>
 <p>我们直接暴力将所有含 &ldquo;AB&rdquo; 的区间添加到 DIU 中进行维护。然后暴力遍历字符串，每找到一个 &ldquo;BA&rdquo; 子串，就用这段区间抹掉 DIU 中的相交区间，然后判断 DIU 是否为空即可。</p>
 <p>理论复杂度：$O(n^2\log n)$，实际跑起来特别快，$1e5$ 的数据只跑了 $78ms$。</p>
@@ -620,12 +659,12 @@ signed main() {
 </code></pre>
 <h3 id="cf1623b-game-on-ranges">CF1623B Game on Ranges</h3>
 <p><a href="https://codeforces.com/contest/1623/problem/B">CF1623B Game on Ranges</a></p>
-<h4 id="题意-4">题意：</h4>
+<h4 id="题意-5">题意：</h4>
 <p>爱丽丝和鲍勃在玩下面这个游戏。爱丽丝有一个由互不相交的整数范围组成的集合 $S$ ，最初只包含一个范围 $[1, n]$ 。在一个回合中，爱丽丝从集合 $S$ 中选出一个范围 $[l, r]$ ，并要求鲍勃在这个范围中选出一个数字。鲍勃选择了一个数字 $d$ ( $l \le d \le r$ )。然后爱丽丝从 $S$ 中取出 $[l, r]$ 并将范围 $[l, d - 1]$ （如果是 $l \le d - 1$ ）和范围 $[d + 1, r]$ （如果是 $d + 1 \le r$ ）放入集合 $S$ 中。当集合 $S$ 为空时，游戏结束。我们可以证明每局棋的回合数正好是 $n$ 。</p>
 <p>游戏结束后，爱丽丝记得她从集合 $S$ 中选出的所有范围 $[l, r]$ ，但鲍勃却不记得他选出的任何数字。但是鲍勃很聪明，他知道自己可以从爱丽丝的范围中找出自己的数字 $d$ ，所以他向你求助，希望你能用你的编程技巧帮助他。</p>
 <p>给定爱丽丝挑选的范围列表 ( $[l, r]$ )，针对每个范围，帮助鲍勃找出鲍勃挑选的数字 $d$ 。</p>
 <p>我们可以证明，对于爱丽丝挑选的有效范围列表，鲍勃总有一种唯一的方法来选择他的数字。</p>
-<h4 id="diu-做法-4">DIU 做法：</h4>
+<h4 id="diu-做法-5">DIU 做法：</h4>
 <p>将区间按长度从大到小排序后遍历，用 DIU 模拟区间分割，给每个区间绑定一个序号，用于答案输出即可。时间复杂度 $O(n\log n)$</p>
 <pre><code class="language-cpp">void solve() {
     int n;
@@ -693,11 +732,11 @@ signed main() {
 </code></pre>
 <h3 id="abc147f-sum-difference">abc147F Sum Difference</h3>
 <p><a href="https://atcoder.jp/contests/abc147/tasks/abc147_f">abc147F Sum Difference</a></p>
-<h4 id="题意-5">题意：</h4>
+<h4 id="题意-6">题意：</h4>
 <p>我们有一个长度为 $N$ 的整数序列 $A$，其中 $A1=X,Ai+1=Ai+D(1≤i&lt;N)$ 成立。</p>
 <p>高桥将取走这个序列中的一些（可能是全部或者一个也不取），而青木将取走剩下的所有元素。</p>
 <p>设 $S$ 和 $T$ 分别为高桥和青木取走的数字的总和。有多少个可能的 $S−T$ 的值？</p>
-<h4 id="diu-做法-5">DIU 做法：</h4>
+<h4 id="diu-做法-6">DIU 做法：</h4>
 <p><em>Emmmm，我忘了当时的抽象思路了，找时间补一下做法，先放个实现</em></p>
 <pre><code class="language-cpp">void solve() {//怎么都会数论啊
     int n, x, d;
@@ -749,13 +788,13 @@ signed main() {
 </code></pre>
 <h3 id="u503858-走地鸡分组">U503858 走地鸡分组</h3>
 <p><a href="https://www.luogu.com.cn/problem/U503858?contestId=213150">U503858 走地鸡分组</a></p>
-<h4 id="题意-6">题意：</h4>
+<h4 id="题意-7">题意：</h4>
 <p>给定一个序列，要求对其分出尽可能多的组，使得每组中，每种元素数量为偶数。保证有解。</p>
 <h4 id="正解">正解：</h4>
 <p>贪心，由于每只鸡都必须属于某个小组，考虑从前往后遍历，并将每次的分界处都尽量靠左，也就是一遇到可以分界的位置就直接分界。</p>
 <p>可以使用 std::set 维护编号的出现次数：每遇到一个编号，如果它在 set 里，说明它已经出现过奇数次，那就把它删掉，否则把它插入 set 里。由于 set 里存的是所有当前出现次数是奇数的编号，那么当 set 的大小为 0 时，就说明当前组内不存在任何数量是奇数的编号，可以在此处分组。时间复杂度 $O(n\log n)$。</p>
 <p>由于 $a \le 10^6$，也可以直接开 cnt 数组来记录出现次数，时间复杂度 $O(n)$。</p>
-<h4 id="diu-做法-6">DIU 做法：</h4>
+<h4 id="diu-做法-7">DIU 做法：</h4>
 <p>考虑到必定有解，因此一定能从左到右，用相同元素组合出 $\frac{n}{2}$ 个区间，直接利用 DIU 从左到右贪心，合并存在相交的区间即可。时间复杂度 $O(n\log n)$</p>
 <pre><code class="language-cpp">void solve() {
     int n;
@@ -798,7 +837,7 @@ signed main() {
 </code></pre>
 <h3 id="u503856-走地鸡群">U503856 走地鸡群</h3>
 <p><a href="https://www.luogu.com.cn/problem/U503856?contestId=213150">U503856 走地鸡群</a></p>
-<h4 id="题意-7">题意：</h4>
+<h4 id="题意-8">题意：</h4>
 <p>给定一个高度序列，$0$ 时刻时，雨水初始高度为 $0$，每分钟雨水上升一个单位长度，雨水上升过程中，低于雨水高度的部分会被淹没，从而将原始高度序列划分为若干独立的岛屿。你需要计算出，从 $0$ 时刻开始到刚好淹没整个岛屿的过程中，每时刻的岛屿数量。避免答案输出过大，你只需要输出所有时刻下岛屿数量的异或和即可。</p>
 <h4 id="正解-1">正解：</h4>
 <p><strong>方法一</strong>
@@ -818,7 +857,7 @@ signed main() {
 其具有 $1$ 的贡献。
 使用差分进行区间修改，最后统计答案即可。
 时间复杂度为 $O(n)$。</p>
-<h4 id="diu-做法-7">DIU 做法：</h4>
+<h4 id="diu-做法-8">DIU 做法：</h4>
 <p>哪那么多废话，枚举雨水高度，直接无脑用 DIU 模拟区间分割即可。时间复杂度 $O(n\log n)$</p>
 <pre><code class="language-cpp">void solve() {
     int n;
@@ -863,7 +902,7 @@ signed main() {
 </code></pre>
 <h3 id="cf2020d-connect-the-dots">CF2020D Connect the Dots</h3>
 <p><a href="https://codeforces.com/contest/2020/problem/D">CF2020D Connect the Dots</a></p>
-<h4 id="题意-8">题意：</h4>
+<h4 id="题意-9">题意：</h4>
 <p>在一个晴朗的夜晚，爱丽丝坐下来玩经典游戏 &ldquo;连连看&rdquo;，但游戏规则有了变化。</p>
 <p>游戏开始时，爱丽丝画了一条直线，并在直线上标出了 $n$ 个点，索引从 $1$ 到 $n$ 。最初，这些点之间没有弧线，所以它们都是不相交的。之后，爱丽丝执行了 $m$ 次以下类型的操作：</p>
 <ul>
@@ -872,7 +911,7 @@ signed main() {
 </ul>
 <p>在完成所有 $m$ 操作后，她想知道这些点所构成的连通部分的个数 $^\dagger$ 。请帮她求出这个数。</p>
 <p>$^\dagger$ 如果两点之间有一条路径经过几条（可能为零）弧和其他点，则这两点被称为在一个相连的分量中。</p>
-<h4 id="diu-做法-8">DIU 做法：</h4>
+<h4 id="diu-做法-9">DIU 做法：</h4>
 <p>DIU 配合 DSU，考虑到 $d$ 特别小，最大为 $10$，我们直接开 $10 * 10 = 100$ 个 DIU，然后每次操作时，在对应 $d$ 的 $a % d$ 的 DIU 中进行区间合并即可。</p>
 <p>全部操作处理完毕后，暴力遍历所有的 DIU，用 DSU 合并处理即可。</p>
 <p>时间复杂度：$O(100n\log^2n)$</p>
@@ -940,12 +979,12 @@ void solve() {
 </code></pre>
 <h3 id="gym104095-j-二进制与平方和">GYM104095 J. 二进制与、平方和</h3>
 <p><a href="https://codeforces.com/gym/104095/problem/J">2020 CCPC Henan Provincial Collegiate Programming Contest J 二进制与、平方和</a></p>
-<h4 id="题意-9">题意：</h4>
+<h4 id="题意-10">题意：</h4>
 <p>请你维护一个长度为 $n$ 的非负整数序列 $a_1, a_2, \dots, a_n$，支持以下两种操作：</p>
 <p>第一种操作会将序列 $a_l, a_{l + 1}, \dots, a_r$ 中的每个元素，修改为各自和 $x$ 的&quot;二进制与&quot;（Bitwise binary AND）的值，其中 $l, r, x$ 在每次操作时会给定；
 第二种操作会询问序列 $a_l, a_{l + 1}, \dots, a_r$ 中所有元素的平方和模 $998244353$ 的值，即 $ \sum_{i = l}^ra_i^2 \mod 998244353$，其中 $l, r$ 在每次操作时会给定。
 总共有 $q$ 次操作，请你在维护序列的过程中，输出第二种操作所询问的答案。注意需要取模。</p>
-<h4 id="diu-做法-9">DIU 做法：</h4>
+<h4 id="diu-做法-10">DIU 做法：</h4>
 <p>考虑操作一有次数限制，对与 $n$ 个数的每个位，操作一最多能进行 $1$ 次操作，暴力修改，最多次数是 $nlogv$ 次。</p>
 <p>我们可以对每个位开 DIU，维护一堆连续的 $1$ 区间，然后每次操作一的时候暴力对每位的 DIU 进行修改即可。</p>
 <p>至于平方和，直接用树状数组 BIT 解决。</p>
@@ -1073,6 +1112,10 @@ void solve() {
 <p><a href="https://www.luogu.com.cn/problem/U503856?contestId=213150">U503856 走地鸡群</a></p>
 <p><a href="https://codeforces.com/contest/2020/problem/D">CF2020D Connect the Dots</a></p>
 <p><a href="https://codeforces.com/gym/104095/problem/J">2020 CCPC Henan Provincial Collegiate Programming Contest J 二进制与、平方和</a></p>
+<p><a href="https://www.luogu.com.cn/problem/P1840">P1840 Color the Axis</a></p>
+<p><a href="https://www.luogu.com.cn/problem/P4979">P4979 矿洞：坍塌</a></p>
+<p><a href="https://codeforces.com/problemset/problem/915/E">CF915E Physical Education Lessons</a></p>
+<p><a href="https://codeforces.com/problemset/problem/817/F">CF817F MEX Queries</a></p>
 <h2 id="嵌套-stl-报错问题">嵌套 STL 报错问题</h2>
 <p>我也不知道为什么会报错，在使用其他 STL 套 DIU 前，记得先给 STL 内部的 DIU 赋个值初始化一下，不然没法正常使用。</p>
 <pre><code class="language-cpp">auto cmp = [](const auto&amp; a, const auto&amp; b) -&gt; auto {
@@ -1092,6 +1135,8 @@ std::vector&lt;std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt;&gt;
     seg(24, std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt;(cmp));
 </code></pre>
 <p>也就动手复制粘贴的事情，花不了多少时间，就当是为了使用它那美丽性质的代价吧。</p>
+<h2 id="后记">后记</h2>
+<p>多次实践中发现，这其实就是散装珂朵莉树吧。很多珂朵莉树能过的题，它都能过。</p>
               
 
 

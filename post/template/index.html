@@ -1435,6 +1435,160 @@ SGT&lt;Info&gt; sgt(N);</code></pre>
 
 
 
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">区间修改，区间查询</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">
+template&lt;typename Info, typename Tag&gt;
+struct SGT {
+    #define lson (p&lt;&lt;1)
+    #define rson (p&lt;&lt;1|1)
+    std::vector&lt;Info&gt; ans;
+    std::vector&lt;Tag&gt; tag;
+    int n;
+    SGT() : n(0) {}
+    SGT(int n, Info v = Info()) {
+        init(std::vector&lt;Info&gt;(n, v));
+    }
+    SGT(std::vector&lt;Info&gt; a) {
+        init(a);
+    }
+
+    void init(std::vector&lt;Info&gt; a) {
+        n = a.size();
+        ans.resize(4 &lt;&lt; std::__lg(n));
+        tag.resize(4 &lt;&lt; std::__lg(n));
+        auto build = [&amp;](auto&amp;&amp; self, int p, int l, int r) -&gt; void {
+            if (r - l == 1) {
+                ans[p] = a[l];
+                return;
+            }
+            
+            int m = (l &#43; r) &gt;&gt; 1;
+            self(self, lson, l, m);
+            self(self, rson, m, r);
+
+            pushup(p);
+        };
+        build(build, 1, 0, n);           
+    }
+
+    void pushup(int p) {
+        ans[p] = ans[lson] &#43; ans[rson];
+    }
+    
+    void pushdown(int p, int l, int r) {
+        int m = (l &#43; r) / 2;
+
+        ans[lson] = ans[lson] &#43; tag[p];
+        tag[lson] = tag[lson] &#43; tag[p];
+
+        ans[rson] = ans[rson] &#43; tag[p];
+        tag[rson] = tag[rson] &#43; tag[p];
+
+        tag[p] = Tag();
+    }
+    
+    void modify(int p, int l, int r, int x, int y, Tag k) {//区间修改
+        if (x &lt;= l &amp;&amp; r &lt;= y) {
+            ans[p] = ans[p] &#43; k;
+            tag[p] = tag[p] &#43; k;
+            return;
+        }
+
+        pushdown(p, l, r);
+
+        int m = (l &#43; r) &gt;&gt; 1;
+        if (x &lt; m) modify(lson, l, m, x, y, k);
+        if (y &gt; m) modify(rson, m, r, x, y, k);
+
+        pushup(p);
+    }
+
+    void modify(int l, int r, Tag k) {// [可选]
+        if (l == r) return;//
+        //assert(l &lt; r &amp;&amp; l &gt;= 0 &amp;&amp; r &lt;= n);//可选
+        modify(1, 0, n, l, r, k);
+    }
+
+    Info query(int p, int l, int r, int x, int y) {//区间查询
+        if (x &lt;= l &amp;&amp; r &lt;= y) return ans[p];
+
+        Info res;
+
+        pushdown(p, l, r);
+        
+        int m = (l &#43; r) &gt;&gt; 1;
+        if (x &lt; m) res = res &#43; query(lson, l, m, x, y); 
+        if (y &gt; m) res = res &#43; query(rson, m, r, x, y); 
+
+        return res;
+    }
+
+    Info query(int l, int r) { // [可选]
+        if (l == r) return Info();//
+        //assert(l &lt; r &amp;&amp; l &gt;= 0 &amp;&amp; r &lt;= n);//可选
+        return query(1, 0, n, l, r);
+    }
+
+    #undef lson
+    #undef rson
+
+    void show() {
+        std::cout &lt;&lt; &#34;=======================\n&#34;;
+        for (int i = 0; i &lt; n; i&#43;&#43;) {
+            std::cout &lt;&lt; query(i, i &#43; 1).v &lt;&lt; &#34; &#34;;
+        }
+        std::cout &lt;&lt; &#34;\n&#34;;
+    }
+};
+
+struct Info {//信息
+    int v;
+    Info(int v = 0) : v(v) {}
+    Info operator&#43;(const Info&amp; b) const {//信息直接合并方式
+        return Info(v | b.v);
+    }
+};
+
+struct Tag {//Tag信息
+    int v = -1;
+    Tag(int v = -1) : v(v) {}
+    Tag operator&#43;(const Tag&amp; b) const {//Tag之间合并关系
+        if (b.v == -1) return Tag(v);
+        return b;
+    }
+};
+
+//Tag与Info之间的合并关系
+Info operator&#43;(const Info&amp; a, const Tag&amp; b) {//赋值型Tag
+    //如果tag是某个非法值，那么不进行赋值操作
+    //否则进行赋值操作
+    if (b.v == -1) return a;
+    return Info(b.v);
+}
+
+//如果是区间加，Info里还需要维护区间长度</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
 <details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">区间加，区间查询min</summary>
   <table>
     <tbody>
@@ -2857,8 +3011,11 @@ std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; kruskal(std::vec
     </tbody>
   </table>
 </details>
-<h3 id="kruskal重构树最小生成树">kruskal重构树（最小生成树）</h3>
-<p>用于求图中，两点间最短路径的最大值的最小值
+<h3 id="kruskal重构树">kruskal重构树</h3>
+<p>用于求图中，两点间最短路径的最大值的最小值。
+（在整个图联通的情况下，最终共有 2n - 1个节点，树根编号为2n - 2；
+若存在不联通的情况，需要用并查集维护每个联通块的最大编号，
+然后向 2n - 1 号节点连边，最后以 2n - 1 为树根跑 HLD）
 
   
     
@@ -2874,7 +3031,7 @@ std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; kruskal(std::vec
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
           <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">struct DSU {
@@ -2896,8 +3053,11 @@ std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; kruskal(std::vec
     }
 };
 
-//           kruskal重构树（不需要边权）        节点值                                    
-std::tuple&lt;std::vector&lt;std::vector&lt;int&gt;&gt;, std::vector&lt;int&gt;, DSU&gt; EXkruskal(std::vector&lt;std::array&lt;int, 3&gt;&gt; edgs, int n) {
+//           kruskal重构树（不需要边权）        节点值       连通性
+std::tuple&lt;std::vector&lt;std::vector&lt;int&gt;&gt;, std::vector&lt;int&gt;, DSU&gt; 
+EXkruskal(std::vector&lt;std::array&lt;int, 3&gt;&gt; edgs, int n) {
+    //最小生成树求的是路径中最小值的最大值
+    //最大生成树求的是路径中最大值的最小值
     std::sort(edgs.begin(), edgs.end());
     DSU dsu(2 * n);
     int cnt = n;
@@ -3862,7 +4022,7 @@ for(ll i=1;i&lt;(1&lt;&lt;cnt);i++){//
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
           <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">int M = 1e9 &#43; 7;
@@ -3874,7 +4034,8 @@ struct Matrix {//
         n = n_;
     }
     Matrix(const Matrix&amp; B) {
-        *this = B;
+        A = B.A;
+        n = B.n;
     }
     std::vector&lt;i64&gt;&amp; operator[](const int&amp; i) {
         return A[i];
@@ -3965,6 +4126,62 @@ struct Matrix {//
         }
         ans = (M &#43; w * ans) % M;
         return ans;
+    }
+    Matrix INV() {// [可选] 矩阵求逆 O(n^3)
+        //std::cout &lt;&lt; *this &lt;&lt; &#34;====\n&#34;;
+        Matrix tmp = *this, I(n);
+        for (int i = 0; i &lt; n; i&#43;&#43;) {
+            I[i][i] = 1;
+        }
+
+        for (int i = 0; i &lt; n; i&#43;&#43;) {
+            if (tmp[i][i] == 0) {
+                bool ok = 0;
+                for (int j = i &#43; 1; j &lt; n; j&#43;&#43;) {
+                    if (tmp[j][i]) {
+                        std::swap(tmp[i], tmp[j]);
+                        std::swap(I[i], I[j]);
+                        ok = 1;
+                        break;
+                    }
+                }
+                if (!ok) return Matrix(0);//不可逆则返回空矩阵
+            }
+
+            int v = inv(tmp[i][i]);
+            for (int j = 0; j &lt; n; j&#43;&#43;) {
+                (tmp[i][j] *= v) %= M;
+                (I[i][j] *= v) %= M;
+            }
+
+            for (int j = i &#43; 1; j &lt; n; j&#43;&#43;) {
+                if (tmp[j][i]) {
+                    int v = tmp[j][i];
+                    for (int k = 0; k &lt; n; k&#43;&#43;) {
+                        (tmp[j][k] &#43;= (M - tmp[i][k] * v % M) % M) %= M;
+                        (I[j][k] &#43;= (M - I[i][k] * v % M) % M) %= M;
+                    }
+                }
+            }
+
+            //std::cout &lt;&lt; i &lt;&lt; &#34;: \n&#34; &lt;&lt; tmp &lt;&lt; &#34;&#43;&#43;&#43;&#43;\n&#34; &lt;&lt; I &lt;&lt; &#34;----\n&#34;;
+        }
+
+        for (int i = n - 1; i &gt;= 1; i--) {
+            for (int j = i - 1; j &gt;= 0; j--) {
+                if (tmp[j][i]) {
+                    int v = tmp[j][i];
+                    for (int k = 0; k &lt; n; k&#43;&#43;) {
+                        (tmp[j][k] &#43;= (M - tmp[i][k] * v % M) % M) %= M;
+                        (I[j][k] &#43;= (M - I[i][k] * v % M) % M) %= M;
+                    }
+                }
+            }
+        }
+
+        //std::cout &lt;&lt; tmp &lt;&lt; &#34;====\n&#34;;
+        //std::cout &lt;&lt; I &lt;&lt; &#34;====\n&#34;;
+        return I;
     }
     friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; COUT, Matrix B) {// [可选] 
         int n = B.n;
@@ -4214,6 +4431,31 @@ __gcd(x,y);
     </tbody>
   </table>
 </details></p>
+<h3 id="组合数学">组合数学</h3>
+<p>$(n,m)=(n,n-m)$</p>
+<p>$(n,m)=(n-1,m)+(n-1,m-1)$</p>
+<p>$k(n,k)=n(n-1,k-1)$</p>
+<p>$k^{\underline{i}}(n,k)=n^{\underline{i}}(n-i,k-i)$</p>
+<p>$(n,m)(m,k)=(n,k)(n-k,m-k)$</p>
+<p>$\sum_{k=0}^n (m1,k)(m2,n-k)=(m1+m2,n)$</p>
+<p>$\sum_{k=0}^n(k,m1)(n-k,m2)=(n+1,m1+m2+1)$</p>
+<p>$\sum_{\sum B_i=M}  \Pi _{i=1}^n (Bi,Ai) =(M+n-1,\sum Ai+n-1)$</p>
+<p>$\sum_{i=0}^n (n,i)(i,j)=(n,j)*2^{n-j}$</p>
+<p>$\sum_{i=0}^n(n,i)^2=(2n,n)$</p>
+<p>$\sum_{i=0}^ni(n,i)=n2^{n-1}$</p>
+<p>$\sum_{i=0}^ni^2(n,i)=n*(n+1)2^{n-2}$</p>
+<p>$\sum_{i=0}^ni(n,i)^2=n*(2n-1,n-1)$</p>
+<p>$\sum_{i=0}^k(i,k)=(n+1,k+1)$</p>
+<p>$\sum_{i=0}^n(m+i,i)=(n+m+1,n)$</p>
+<p>$\sum_{i=0}^n (m+i,s+i)=(n+m+1,n+s)$</p>
+<p>$f_{n+1}= \sum_{i=0}^n(n-i,i) 其中f为斐波那契数列$</p>
+<p>$\sum_{i=0}^n(n,i)x^{i}=(x+1)^n$</p>
+<p>$\sum_{i=0}^n(n,i)a^{i}b^{n-i}=(a+b)^n$</p>
+<p>$\ \sum_{i=0}^\infty (\alpha,i)x^{\alpha -i}y^i=(x+y)^{\alpha}$</p>
+<p>$（\alpha,i）=\alpha^{\underline{i}} \setminus i!$</p>
+<p>$\sum_{i=0}^m(-1)^i(n,i)=(-1)^m(n-1,m)$</p>
+<p>允重组合：从n种数中，可重复地选m个数的方案总数：
+$H_n^m=C_{n - 1 + m}^{n - 1}$</p>
 <h3 id="catalan数">Catalan数</h3>
 <p>$Catalan$ 数经常出现在组合计数的问题中，本质上和栈操作有关</p>
 <p>下面直接放出 $Catalan$ 数的4个公式：</p>
