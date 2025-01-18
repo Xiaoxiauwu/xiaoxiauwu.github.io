@@ -518,6 +518,41 @@ std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt; s(cmp);
 <p>对于 $abs(a)$ 远大于模数的情况的取模，可以这样取：</p>
 <pre><code class="language-cpp">(std::abs(a) / M * M + M + a) % M
 </code></pre>
+<h3 id="tip-手写cpp23特性-this-auto">[TIP] 手写CPP23特性 this auto</h3>
+<p>对于高版本 cpp，lambda函数递归可以这样写：</p>
+<pre><code class="language-cpp">auto f = [&amp;](this auto self, int x) -&gt; void {
+    if (x &gt; 0) return;
+    self(x - 1);
+};
+</code></pre>
+<p>但是若版本没那么高，就用不了，但我们可以手动实现这种特性：</p>
+<pre><code class="language-cpp">// https://www.open-std.org/jtc1/sc22/wg21/docs/papers/2016/p0200r0.html
+namespace std {
+    template&lt;class Fun&gt;
+    class y_combinator_result {
+        Fun fun_;
+    public:
+        template&lt;class T&gt;
+        explicit y_combinator_result(T &amp;&amp;fun): fun_(std::forward&lt;T&gt;(fun)) {}
+
+        template&lt;class ...Args&gt;
+        decltype(auto) operator()(Args &amp;&amp;...args) {
+            return fun_(std::ref(*this), std::forward&lt;Args&gt;(args)...);
+        }
+    };
+
+    template&lt;class Fun&gt;
+    decltype(auto) y_combinator(Fun &amp;&amp;fun) {
+        return y_combinator_result&lt;std::decay_t&lt;Fun&gt;&gt;(std::forward&lt;Fun&gt;(fun));
+    }
+}
+
+auto F = std::y_combinator([&amp;](auto self, int x) -&gt; void {
+    if (x &gt; 0) return;
+    self(x - 1);
+});
+</code></pre>
+<p><em>虽然但是，我觉得还不如直接self(self, x)算了，也就多几个字符</em></p>
               
 
 
@@ -622,7 +657,7 @@ std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt; s(cmp);
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2024 XiaoXia. All Rights Reserved
+    &copy; 2025 XiaoXia. All Rights Reserved
   </span>
 
 
