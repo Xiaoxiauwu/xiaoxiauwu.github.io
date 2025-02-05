@@ -3038,6 +3038,244 @@ bool floyd(std::vector&lt;std::vector&lt;int&gt;&gt; &amp;d) {
     </tbody>
   </table>
 </details>
+<h3 id="连通性">连通性</h3>
+<p>
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">SCC</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">//O(n &#43; m)
+class SCC {
+    const std::vector&lt;std::vector&lt;int&gt;&gt; &amp;adj;
+    std::vector&lt;int&gt; q; // stack
+    int r = 0, cur = 0;
+
+    void dfs(int x) {
+        dfn[x] = low[x] = cur&#43;&#43;;
+        q[&#43;&#43;r] = x;
+
+        for (int y : adj[x]) {
+            if (dfn[y] == -1) {
+                dfs(y);
+                low[x] = std::min(low[x], low[y]);
+            } else if (bel[y] == -1) {
+                low[x] = std::min(low[x], dfn[y]);
+            }
+        }
+
+        if (dfn[x] == low[x]) {
+            int y;
+            do {
+                y = q[r--];
+                bel[y] = cntBlock;
+            } while (y != x);
+            cntBlock &#43;= 1;
+        }
+    }
+
+public:
+    // original graph
+    std::vector&lt;int&gt; dfn, low, bel;
+
+    // shrinking graph
+    std::vector&lt;std::vector&lt;int&gt;&gt; g;
+    int cntBlock = 0;
+
+    SCC(const std::vector&lt;std::vector&lt;int&gt;&gt; &amp;adj)
+        : adj(adj), dfn(adj.size(), -1), low(adj.size()), bel(adj.size(), -1) {
+        int n = adj.size();
+        q.assign(n &#43; 1, 0);
+
+        for (int i = 0; i &lt; n; i&#43;&#43;) {
+            if (dfn[i] == -1) {
+                dfs(i);
+            }
+        }
+
+        g.resize(cntBlock);
+        for (int x = 0; x &lt; n; x&#43;&#43;) {
+            for (int y : adj[x]) {
+                if (bel[x] == bel[y])
+                    continue;
+                g[bel[x]].push_back(bel[y]);
+            }
+        }
+
+        // for (int x = 0; x &lt; cntBlock; x&#43;&#43;) {
+        //     std::sort(begin(g[x]), end(g[x]));
+        //     g[x].erase(std::unique(begin(g[x]), end(g[x])), end(g[x]));
+        // }
+    }
+};</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">点双</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">/*
+一些结论：
+判定一个图里是否有（点不重复）偶环：看其所有点双，若存在点数为偶数的或边数多于点数
+的点双，则存在偶环。
+（无自环时）点双的边不交，边双的点不交。点双内的总点数O(n)，总边数为m，边双内的总
+点数为n，总边数不超过m。
+构造函数传入邻接表和边数，其中pair的second是边的标号。
+所有标号从0开始。
+不能处理有自环的情况，因为此时点双内的总边数不是线性的。
+bcc_node：每个点双包含的点（已验证）；bcc_edge：每个点双包含的边；bcc_n：新图点数；
+ct：是否割点（已验证）；blk：边所属点双标号。
+*/
+struct node_bcc {
+    int n, id, tp, bcc_n;
+    std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; e;
+    std::vector&lt;std::vector&lt;int&gt;&gt; bcc_node, bcc_edge;
+    std::vector&lt;int&gt; dfn, low, st, ed, blk, ct;
+    node_bcc(const std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; &amp;e, int m) :
+        n(e.size()), id(0), tp(0), bcc_n(0), e(e), dfn(n, -1), low(n, -1), st(m), ed(m), blk(m), ct(n)
+    {
+        for (int i = 0; i &lt; n; i&#43;&#43;) 
+            if (dfn[i] == -1) dfs(i, 1);
+        bcc_node.resize(bcc_n);
+        for (int i = 0;i &lt; n;i&#43;&#43;) 
+            for (auto [v, w] : e[i]) 
+                bcc_node[blk[w]].push_back(i);
+        std::vector&lt;int&gt; flg(n);
+        for (auto &amp;v : bcc_node) {
+            std::vector&lt;int&gt; t;
+            for (int x : v) if (!std::exchange(flg[x], 1)) t.push_back(x);
+            std::swap(t, v);
+            for (int x : v) flg[x] = 0;
+        }
+        for (int i = 0;i &lt; n;i&#43;&#43;) if (e[i].size() == 0) {
+            bcc_node.push_back({i});
+            bcc_edge.push_back({ });
+            &#43;&#43;bcc_n;
+        }
+    }
+    void dfs(int u, bool rt) {
+        dfn[u] = low[u] = id&#43;&#43;;
+        int cnt = 0;
+        for (auto [v, w] : e[u]) if (!ed[w]) {
+            st[tp&#43;&#43;] = w;
+            ed[w] = 1;
+            if (dfn[v] == -1) {
+                dfs(v, 0);
+                &#43;&#43;cnt;
+                low[u] = std::min(low[u], low[v]);
+                if (dfn[u] &lt;= low[v]) {
+                    ct[u] = cnt &gt; rt;
+                    bcc_edge.push_back({ });//cpp11&#43;
+                    do {
+                        bcc_edge[bcc_n].push_back(st[--tp]);
+                        blk[st[tp]] = bcc_n;
+                    } while (st[tp] != w);
+                    &#43;&#43;bcc_n;
+                }
+            }
+            else low[u] = std::min(low[u], dfn[v]);
+        }
+    }
+};</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">边双</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">
+struct edge_bcc {
+    int n, id, tp, bcc_n;
+    std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; e, cur_e;
+    std::vector&lt;std::vector&lt;int&gt;&gt; bcc_node, bcc_edge;
+    std::vector&lt;int&gt; dfn, low, st, blk, ct;
+    edge_bcc(const std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; &amp;e, int m) :
+        n(e.size()), id(0), tp(0), bcc_n(0), e(e), dfn(n, -1), low(n, -1), st(n), blk(n), ct(m)
+    {
+        for (int i = 0; i &lt; n; i&#43;&#43;) 
+            if (dfn[i] == -1) dfs(i, -1);
+        cur_e.resize(bcc_n);
+        for (int i = 0; i &lt; n; i&#43;&#43;) 
+            for (auto &amp;[v, w] : e[i]) 
+                if (ct[w]) cur_e[blk[i]].push_back({blk[v], w});
+                else bcc_edge[blk[i]].push_back(w);
+        for (auto &amp;v : bcc_edge) 
+            std::sort(v.begin(), v.end()), 
+            v.resize(std::unique(v.begin(), v.end()) - v.begin());
+    }
+    void dfs(int u, int fw) {
+        dfn[u] = low[u] = id&#43;&#43;;
+        st[tp&#43;&#43;] = u;
+        for (auto [v, w] : e[u]) if (w != fw) {
+            if (dfn[v] == -1) {
+                dfs(v, w);
+                low[u] = std::min(low[u], low[v]);
+                ct[w] = (dfn[u] &lt; low[v]);
+            }
+            else low[u] = std::min(low[u], dfn[v]);
+        }
+        if (dfn[u] == low[u]) {
+            bcc_node.push_back({ });
+            bcc_edge.push_back({ });
+            do {
+                bcc_node[bcc_n].push_back(st[--tp]);
+                blk[st[tp]] = bcc_n;
+            } while (st[tp] != u);
+            &#43;&#43;bcc_n;
+        }
+    }
+};</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details></p>
 <h3 id="最大流最小割">最大流最小割</h3>
 
   
