@@ -7563,14 +7563,75 @@ void solve() {
 <p>图表中不能有循环或多边</p>
 <p>图的顶点从一开始编号</p>
 <h4 id="参考思路-106">参考思路</h4>
-<p>暂时不会</p>
+<p>考虑先想办法构造一个合法度数序列，不难发现一定有解，比如说由 $n$ 个完全图取并集，但是题目要求点数最少，所以不能直接这样构造。</p>
+<p>手玩样例后我们不难发现，最少的点数似乎就是最大数字加一。考虑下面这种构造方式：</p>
+<p>将度数序列从大到小排序后，设三个指针，一个（$i$）指向原度数集数组的头元素，一个（$j$）指向尾元素，再设一个初始值均为 $0$ 的，长为 $\max a_i + 1$ 的度数数组，用一个指针（$k$）指向数组的头元素。</p>
+<p>当左指针指向 $x$，右指针指向 $y$ 时，将度数数组中，$[k, k + y - 1]$ 区间的元素均加上 $x$，将 $[k + y, k + x]$ 区间的元素均加上 $y$，然后 $i$ 指针右移一位，$j$ 指针左移一位，$k$ 指针右移 $y$ 位，知道 $i &gt; j$ 时停止构造。</p>
+<p>此时构造出来的度数序列就是一个合法的，点数最小的度数序列。接着再利用这个度数序列直接暴力 $O(n^2\log n)$ 构造相应的图即可。</p>
+<p>时间复杂度：$O(n^2\log n)$</p>
+<h4 id="参考代码-99">参考代码</h4>
+<pre><code class="language-cpp">using Z = std::pair&lt;int, int&gt;;
+
+void solve() {
+    int n;
+    std::cin &gt;&gt; n;
+    std::vector&lt;int&gt; a(n);
+    for (auto &amp;i : a) std::cin &gt;&gt; i;
+    
+    std::sort(a.rbegin(), a.rend());
+    
+    std::vector&lt;int&gt; d(a[0] + 1);
+    int i = 0, j = n - 1, k = 0;
+    while (i &lt;= j) {
+        while (a[j]) {
+            for (int l = k + 1; l &lt;= k + a[i]; l++) d[l]++;
+            for (int l = i + 1; l &lt;= j; l++) a[l]--;
+            d[k++] += a[i];
+            a[i]--;
+        }
+        a[i] = 0;
+        while (i &lt; n &amp;&amp; !a[i]) i++;
+        while (j &gt;= 0 &amp;&amp; !a[j]) j--;
+        
+        //for (auto &amp;i : d) std::cout &lt;&lt; i &lt;&lt; ' '; std::cout &lt;&lt; '\n';
+    }
+    
+    //for (auto &amp;i : d) std::cout &lt;&lt; i &lt;&lt; ' ';
+    
+    n = d.size();// F 题代码照搬即可
+    std::priority_queue&lt;Z&gt; q;
+
+    std::cout &lt;&lt; n &lt;&lt; ' ' &lt;&lt; std::accumulate(d.begin(), d.end(), 0ll) / 2 &lt;&lt; &quot;\n&quot;;
+
+    for (int i = 0; i &lt; n; i++) {
+        if (d[i]) q.push({d[i], i + 1});
+    }
+
+    while (q.size()) {
+        auto [d_, now] = q.top(); q.pop();
+        std::vector&lt;Z&gt; res;
+
+        while (d_--) {
+            auto [d__, nxt] = q.top(); q.pop();
+            
+            std::cout &lt;&lt; now &lt;&lt; &quot; &quot; &lt;&lt; nxt &lt;&lt; &quot;\n&quot;;
+
+            if (--d__) {
+                res.push_back({d__, nxt});
+            }
+        }
+
+        for (auto &amp;p : res) q.push(p);
+    }
+}
+</code></pre>
 <h2 id="step-2-6">Step 2</h2>
 <h3 id="a-number-of-verticeshttpscodeforcescomeducourse2lesson82practicecontest290940problema"><a href="https://codeforces.com/edu/course/2/lesson/8/2/practice/contest/290940/problem/A">A. Number of Vertices</a></h3>
 <h4 id="题意-107">题意</h4>
 <p>您将获得一个非负整数 $m$ 。打印无向图中具有精确 $m$ 边的最小顶点数。</p>
 <h4 id="参考思路-107">参考思路</h4>
 <p>定义题，用完全图贪心二分即可。</p>
-<h4 id="参考代码-99">参考代码</h4>
+<h4 id="参考代码-100">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n;
     std::cin &gt;&gt; n;
@@ -7593,7 +7654,7 @@ void solve() {
 <p>如果均满足以上条件，那么一定存在 $k$-正则图。</p>
 <p>当 $k = 1$ 时，直接构造 $n$ 元环并输出即可。</p>
 <p>当 $k \ne 1$ 时，分奇偶两类构造即可。当 $k$ 为偶数时，考虑类似 $n$ 元环的构造，每隔 $0$ 个节点连一次边，每隔 $1$ 个节点连一次边，&hellip;，每隔 $\frac{k}{2} - 1$ 个节点连一次边，即可保证最终每个点的度数均为 $k$；当 $k$ 为 奇数时，$n$ 必为偶数，在上述构造方法中，添加一种 每隔 $\frac{n}{2} - 1$ 个节点连一次边（对位连边）的连边方式即可。</p>
-<h4 id="参考代码-100">参考代码</h4>
+<h4 id="参考代码-101">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, k;
     std::cin &gt;&gt; n &gt;&gt; k;
@@ -7653,7 +7714,7 @@ void solve() {
 <h4 id="参考思路-109">参考思路</h4>
 <p>非常抽象的定义题，在此题中，空图的定义为，不包含任何边的图，所以只给一个点集也是空图。</p>
 <p>因此，我们只需要判断原图中联通块大小不为 1 的数量是否小于等于 1，等于 1 时，通过那个联通块中的边数和点数，判断是否是一个完全图即可。</p>
-<h4 id="参考代码-101">参考代码</h4>
+<h4 id="参考代码-102">参考代码</h4>
 <pre><code class="language-cpp">struct DSU {
     std::vector&lt;int&gt; F, siz, val;
     int cnt;
@@ -7720,7 +7781,7 @@ void solve() {
 <p>给出一个由 $n$ 个顶点和 $m$ 个边组成的无向图。给定图的每个连接元件 (图论) 都是一个完整的子图。在给定的图中查找连接组件的数目。</p>
 <h4 id="参考思路-110">参考思路</h4>
 <p>并查集直接做即可。</p>
-<h4 id="参考代码-102">参考代码</h4>
+<h4 id="参考代码-103">参考代码</h4>
 <pre><code class="language-cpp">struct DSU {
     std::vector&lt;int&gt; F;
     DSU(int n) : F(n + 1) {
@@ -7760,7 +7821,7 @@ void solve() {
 <p>计算给定图的源和汇的数目。</p>
 <h4 id="参考思路-111">参考思路</h4>
 <p>按照题意统计出度和入度，统计出度为 0 的点以及入度为 0 的点数即可。</p>
-<h4 id="参考代码-103">参考代码</h4>
+<h4 id="参考代码-104">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, m;
     std::cin &gt;&gt; n &gt;&gt; m;
@@ -7787,7 +7848,7 @@ void solve() {
 <p>找出从给定的图中得到一个函数图所需的最小移动次数。</p>
 <h4 id="参考思路-112">参考思路</h4>
 <p>按照题意记录点出度，贪心删边即可。</p>
-<h4 id="参考代码-104">参考代码</h4>
+<h4 id="参考代码-105">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, m;
     std::cin &gt;&gt; n &gt;&gt; m;
@@ -7810,7 +7871,7 @@ void solve() {
 <p>给定两个整数 $d_1$ 和 $d_2$ 。根据弧的个数，构造一个最小的非空有向图，使得每个顶点的传出度为 $d_1$ ，传入度为 $d_2$ 。</p>
 <h4 id="参考思路-113">参考思路</h4>
 <p>直接贪心构造一个邻接矩阵全 1 的有向图即可。</p>
-<h4 id="参考代码-105">参考代码</h4>
+<h4 id="参考代码-106">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int a, b;
     std::cin &gt;&gt; a &gt;&gt; b;
@@ -7833,7 +7894,7 @@ void solve() {
 <p>通过弧列表给出一个有向图。对于每个顶点 $v$ 按升序输出与至少一个与 $v$ 相邻的顶点相邻的所有顶点。</p>
 <h4 id="参考思路-114">参考思路</h4>
 <p>复杂度够，直接按题意模拟即可。</p>
-<h4 id="参考代码-106">参考代码</h4>
+<h4 id="参考代码-107">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, m;
     std::cin &gt;&gt; n &gt;&gt; m;
@@ -7866,7 +7927,7 @@ void solve() {
 <p>你通过一个无向图的边列表得到一个无向图，构造给定图的邻接矩阵。</p>
 <h4 id="参考思路-115">参考思路</h4>
 <p>直接按题意模拟即可。</p>
-<h4 id="参考代码-107">参考代码</h4>
+<h4 id="参考代码-108">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, m;
     std::cin &gt;&gt; n &gt;&gt; m;
@@ -7892,7 +7953,7 @@ void solve() {
 <p>您将得到一个数字 $n$ 和一个大小为 $n \times n$ 的二进制 (由零和一组成) 矩阵。检查给定的矩阵是否是某个无向图的邻接矩阵，如果是，输出这个图的顶点度数。</p>
 <h4 id="参考思路-116">参考思路</h4>
 <p>判断矩阵是否对称，且主对角线均为 0 即可。输出度数时，输出矩阵每行的和即可。</p>
-<h4 id="参考代码-108">参考代码</h4>
+<h4 id="参考代码-109">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n;
     std::cin &gt;&gt; n;
@@ -7926,7 +7987,7 @@ void solve() {
 <p>给你一个无向图的邻接矩阵，根据给定的矩阵建立邻接列表。</p>
 <h4 id="参考思路-117">参考思路</h4>
 <p>按照题意模拟即可。</p>
-<h4 id="参考代码-109">参考代码</h4>
+<h4 id="参考代码-110">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n;
     std::cin &gt;&gt; n;
@@ -7953,7 +8014,7 @@ void solve() {
 <h4 id="参考思路-118">参考思路</h4>
 <p>考虑每个点，如果不限制与其相邻的两点间是否有连边，那么以每个点为中心，共有 $ans = \sum \frac{d_i(d_i - 1)}{2}$ 种方案。不难发现需要剔除的不合法方案是三元环，所以只需再跑一遍无向图三元环计数，算出三元环数量 $cnt$ 后，$ans - 3cnt$ 即为所求答案。</p>
 <p>时间复杂度：$O(m\sqrt m)$</p>
-<h4 id="参考代码-110">参考代码</h4>
+<h4 id="参考代码-111">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, m;
     std::cin &gt;&gt; n &gt;&gt; m;
@@ -8020,7 +8081,7 @@ void solve() {
 <h4 id="参考思路-119">参考思路</h4>
 <p>直接无向图三元环计数，在找到三元环后，通过 bitset 暴力统计与当前三个点间均有连边的点数即可。</p>
 <p>时间复杂度：$O(\frac{nm\sqrt m}{64})$</p>
-<h4 id="参考代码-111">参考代码</h4>
+<h4 id="参考代码-112">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, m;
     std::cin &gt;&gt; n &gt;&gt; m;
@@ -8090,7 +8151,7 @@ void solve() {
 <p>给你两个数组，按非递减顺序排序。将它们合并成一个排序的数组。</p>
 <h4 id="参考思路-120">参考思路</h4>
 <p>双指针，当两边指针均未到达数组尾部时，对比两个指针所指向的数的大小，选择输出最小的数即可。</p>
-<h4 id="参考代码-112">参考代码</h4>
+<h4 id="参考代码-113">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, m;
     std::cin &gt;&gt; n &gt;&gt; m;
@@ -8117,7 +8178,7 @@ void solve() {
 <p>给您两个数组，按非递减顺序排序。对于第二个数组中的每个元素，找到第一个数组中严格小于它的元素数。</p>
 <h4 id="参考思路-121">参考思路</h4>
 <p>双指针维护，对于第二个数组中的每个元素，找到第一个大于等于其的数的下标，输出即可。</p>
-<h4 id="参考代码-113">参考代码</h4>
+<h4 id="参考代码-114">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, m;
     std::cin &gt;&gt; n &gt;&gt; m;
@@ -8139,7 +8200,7 @@ void solve() {
 <p>给您两个数组 $a$ 和 $b$ ，按非递减顺序排序。查找其中 $a_i = b_j$ 的对 $(i, j)$ 的数目。</p>
 <h4 id="参考思路-122">参考思路</h4>
 <p>双指针维护统计，具体实现细节看代码吧。</p>
-<h4 id="参考代码-114">参考代码</h4>
+<h4 id="参考代码-115">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, m;
     std::cin &gt;&gt; n &gt;&gt; m;
@@ -8176,7 +8237,7 @@ void solve() {
 <p>给定一个由 $n$ 个整数 $a_i$ 组成的数组。如果数组中 $a[l..r]$ ( $1\le l\le r\le n$ )段的元素之和最多为 $s$ ，那么这段数组就是好数组。你的任务是找出最长的良好线段。</p>
 <h4 id="参考思路-123">参考思路</h4>
 <p>直接双指针滑动窗口，维护区间和小于 $s$ 的最长段即可。</p>
-<h4 id="参考代码-115">参考代码</h4>
+<h4 id="参考代码-116">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     i64 n, s;
     std::cin &gt;&gt; n &gt;&gt; s;
@@ -8199,7 +8260,7 @@ void solve() {
 <p>给定一个由 $n$ 个整数 $a_i$ 组成的数组。假设该数组的 $a[l..r]$ 段（ $1\le l\le r\le n$ ）中的元素之和至少为 $s$ ，那么该段就是好数组。( $1\le l\le r\le n$ )，如果这段上的元素之和至少为 $s$ ，那么这段就是好的。你的任务是找出最短的良好线段。</p>
 <h4 id="参考思路-124">参考思路</h4>
 <p>和上题类似，双指针滑动窗口，维护区间和大于等于 $s$ 的最小段长度即可。</p>
-<h4 id="参考代码-116">参考代码</h4>
+<h4 id="参考代码-117">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     i64 n, s;
     std::cin &gt;&gt; n &gt;&gt; s;
@@ -8224,7 +8285,7 @@ void solve() {
 <p>给定一个由 $n$ 个整数 $a_i$ 组成的数组。假设数组 $a[l..r]$ ( $1\le l\le r\le n$ )中的元素之和最多为 $s$ ，那么这个数组中的 $a[l..r]$ ( $1\le l\le r\le n$ )就是好数组。你的任务是找出好线段的数量。</p>
 <h4 id="参考思路-125">参考思路</h4>
 <p>和上题类似，双指针滑动窗口，维护区间和小于等于 $s$，每新增一个元素，维护完左端点后，直接在答案中增加区间长度即可（可以理解为，以当前元素为右端点，向左共有 $r - l + 1$ 个区间，均满足要求）</p>
-<h4 id="参考代码-117">参考代码</h4>
+<h4 id="参考代码-118">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     i64 n, s;
     std::cin &gt;&gt; n &gt;&gt; s;
@@ -8251,7 +8312,7 @@ void solve() {
 <p>给定一个由 $n$ 个整数 $a_i$ 组成的数组。假设数组 $a[l..r]$ ( $1\le l\le r\le n$ )的元素之和至少为 $s$ ，那么这个数组的 $a[l..r]$ ( $1\le l\le r\le n$ ) 段就是好数段。你的任务是找出好线段的数量。</p>
 <h4 id="参考思路-126">参考思路</h4>
 <p>和上题类似，只不过统计答案时，修改的贡献变成 左端点的下标（即，以当前位置为右端点，区间左端点以前的任何点作为右端点均可行）。</p>
-<h4 id="参考代码-118">参考代码</h4>
+<h4 id="参考代码-119">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     i64 n, s;
     std::cin &gt;&gt; n &gt;&gt; s;
@@ -8278,7 +8339,7 @@ void solve() {
 <p>给定一个由 $n$ 个整数 $a_i$ 组成的数组。我们假设，如果数组 $a[l..r]$ ( $1\le l\le r\le n$ ) 的某一段上的唯一元素不超过 $k$ ，那么这段就是好数组。你的任务是找出不同的好线段的数量。</p>
 <h4 id="参考思路-127">参考思路</h4>
 <p>双指针滑动窗口，开个map维护统计区间本质不同数的数量即可。</p>
-<h4 id="参考代码-119">参考代码</h4>
+<h4 id="参考代码-120">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, k;
     std::cin &gt;&gt; n &gt;&gt; k;
@@ -8306,7 +8367,7 @@ void solve() {
 <p>给定一个由 $n$ 个整数 $a_i$ 组成的数组。假设数组 $a[l..r]$ 中的一段（ $1\le l\le r\le n$ ）是好的。( $1\le l\le r\le n$ )，如果这段数组中最大元素和最小元素的差最多为 $k$ ，那么这段数组就是好数组。你的任务是找出不同良好线段的数量。</p>
 <h4 id="参考思路-128">参考思路</h4>
 <p>和上题类似，用map维护区间极差小于等于 $k$ 即可。</p>
-<h4 id="参考代码-120">参考代码</h4>
+<h4 id="参考代码-121">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     i64 n, k;
     std::cin &gt;&gt; n &gt;&gt; k;
@@ -8333,7 +8394,7 @@ void solve() {
 <p>给定一个由 $n$ 个整数 $a_i$ 组成的数组。如果数组 $a[l..r]$ ( $1\le l\le r\le n$ )中所有数字的 GCD 都是 $1$ ，那么这个数组中的一段 $a[l..r]$ ( $1\le l\le r\le n$ ) 就是好数组。你的任务是找出最短的良好数段。</p>
 <h4 id="参考思路-129">参考思路</h4>
 <p>和上题类似，用ST表维护区间gcd即可。</p>
-<h4 id="参考代码-121">参考代码</h4>
+<h4 id="参考代码-122">参考代码</h4>
 <pre><code class="language-cpp">struct ST {//静态RMQ
     int n;
     std::vector&lt;std::vector&lt;i64&gt;&gt; f;
@@ -8386,7 +8447,7 @@ void solve() {
 <p>如果米沙听完歌曲后心情至少增加了 $p$ ，他就会感到开心。他希望听的歌曲越少越好。帮助他选择要开始听的歌和要听的歌曲数量，让他感到快乐。</p>
 <h4 id="参考思路-130">参考思路</h4>
 <p>考虑到可能存在，即使全部听完，也不可能达到 $p$ 的情况，即答案可能需要经过多次循环播放，我们需要预处理权值总和，判断至少需要循环几次。然后再将权值数组复制一份，拼接到原数组后面求一遍前缀和，最后跑一遍 $n^2$ 的双指针暴力统计最短的剩余所需区间长度，更新答案即可。</p>
-<h4 id="参考代码-122">参考代码</h4>
+<h4 id="参考代码-123">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     i64 n, s;
     std::cin &gt;&gt; n &gt;&gt; s;
@@ -8437,7 +8498,7 @@ void solve() {
 <p>给定一个由 $n$ 个整数 $a_i$ 组成的数组。如果数组 $a[l..r]$ ( $1\le l\le r\le n$ )中的元素之和最多为 $s$ ，那么这个数组的 $a[l..r]$ ( $1\le l\le r\le n$ )段就是好数段。你的任务是找出所有好线段的长度之和。</p>
 <h4 id="参考思路-131">参考思路</h4>
 <p>和前面某题类似，不过要求长度和，所以我们只需在双指针滑动窗口的维护过程中，将答案更新方式改成，加上 $\frac{(r - l + 1)(r - l)}{2}$ 即可。</p>
-<h4 id="参考代码-123">参考代码</h4>
+<h4 id="参考代码-124">参考代码</h4>
 <pre><code class="language-cpp">i64 calc(int x) {
     return 1ll * x * (x + 1) / 2;
 }
@@ -8471,7 +8532,7 @@ void solve() {
 <p>车城的女孩玛莎喜欢学校里的两个男孩，她无法在他们之间做出选择。为了做出最后的决定，她决定同时和两个男孩约会。玛莎想在步行街上选择两个纪念碑，男孩们会在附近等她。同时，她还想选择这样的纪念碑，这样男孩子们就不会看到彼此了。玛莎知道，由于有雾，男孩们只有在距离不超过 $r$ 米的地方才能看到对方。玛莎感兴趣的是，有多少种方法可以选择两个不同的纪念碑来组织约会。</p>
 <h4 id="参考思路-132">参考思路</h4>
 <p>考虑双指针滑动窗口维护所有 “能够互相看到对方” 的方案数 $cnt$，答案即为 $\frac{n(n - 1)}{2} - cnt$。</p>
-<h4 id="参考代码-124">参考代码</h4>
+<h4 id="参考代码-125">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     i64 n, s;
     std::cin &gt;&gt; n &gt;&gt; s;
@@ -8496,7 +8557,7 @@ void solve() {
 <p>有 $n_1$ 顶帽子、 $n_2$ 件衬衫、 $n_3$ 条裤子和 $n_4$ 双鞋子($1 \le n_i \le 100,000$)。每个衣服元素都有自己的颜色(从 $1$ 到 $100, 000$ 的整数)。一组衣服包括一顶帽子、一件衬衫、一条裤子和一双靴子。每套衣服的特征是任意两个元素之间的最大差异。请帮助格列布选择最时尚的套装，即色差最小的套装。</p>
 <h4 id="参考思路-133">参考思路</h4>
 <p>将四种数据均输入，排序后，四指针动态维护答案即可。具体实现细节看代码吧。</p>
-<h4 id="参考代码-125">参考代码</h4>
+<h4 id="参考代码-126">参考代码</h4>
 <pre><code class="language-cpp">using Z = std::array&lt;int, 3&gt;;
 
 void solve() {
@@ -8553,7 +8614,7 @@ void solve() {
 <p>给定一个由 $n$ 项组成的数组，每个项的权重为 $w_i$ ，成本为 $c_i$ 。您需要选择此数组的 <strong>一连续段</strong> ，该数组的总权重不大于 $s$ ，并且总成本为最大值。</p>
 <h4 id="参考思路-134">参考思路</h4>
 <p>考虑双指针滑动窗口，维护区间对权重求和小于等于 $s$，同时动态更新成本和的最大值即可。</p>
-<h4 id="参考代码-126">参考代码</h4>
+<h4 id="参考代码-127">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     i64 n, s;
     std::cin &gt;&gt; n &gt;&gt; s;
@@ -8583,7 +8644,7 @@ void solve() {
 <p>例如，如果 $s = $ “aaab”，并且有三张卡片上有字母 “a”、“a” 和 “b”，那么您可以创建三个子字符串 “a”、子字符串 “b”、两个子字符串 “aa”、子字符串 “ab” 和 “aab”。您不能使子字符串为 “aaa” 和 “aaab”，因为只有两张卡片带有字母 “a”。</p>
 <h4 id="参考思路-135">参考思路</h4>
 <p>双指针维护区间各种元素数量和不超指定限制即可。</p>
-<h4 id="参考代码-127">参考代码</h4>
+<h4 id="参考代码-128">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, m;
     std::cin &gt;&gt; n &gt;&gt; m;
@@ -8612,7 +8673,7 @@ void solve() {
 <p>您的任务是查找最大长度的子字符串 $s_l s_{l + 1} \dots s_r$ ，其粗鲁程度不超过 $c$ 。</p>
 <h4 id="参考思路-136">参考思路</h4>
 <p>根据题目定义，双指针维护区间子串的 rude 不超 $c$ 时更新答案即可。具体实现细节看代码吧。</p>
-<h4 id="参考代码-128">参考代码</h4>
+<h4 id="参考代码-129">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     i64 n, c;
     std::cin &gt;&gt; n &gt;&gt; c;
@@ -8652,7 +8713,7 @@ void solve() {
 <p>这些物品装满了一个背包，该背包可承受的重量不超过 $s$ 。求背包中物品的最大总成本。</p>
 <h4 id="参考思路-137">参考思路</h4>
 <p>一看是背包问题，但实际上权值是固定的，我们先把重量大的物品装满背包，然后一个个取出物品时，双指针添加另一个重量较小，权值较大的物品，动态更新答案即可。</p>
-<h4 id="参考代码-129">参考代码</h4>
+<h4 id="参考代码-130">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, m;
     i64 s, A, B;
@@ -8701,7 +8762,7 @@ void solve() {
 <h4 id="参考思路-138">参考思路</h4>
 <p>考虑 dp，设 dp[i][j] 表示 到 i 位置为止，使得能够选一些数，让 sum 为 j，的最近的最大下标。</p>
 <p><em>这跟双指针有关嘛？</em></p>
-<h4 id="参考代码-130">参考代码</h4>
+<h4 id="参考代码-131">参考代码</h4>
 <pre><code class="language-cpp">void solve() {
     int n, s;
     std::cin &gt;&gt; n &gt;&gt; s;
