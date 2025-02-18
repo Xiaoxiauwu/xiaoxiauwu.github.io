@@ -2915,35 +2915,80 @@ EXkruskal(std::vector&lt;std::array&lt;int, 3&gt;&gt; edgs, int n) {
     <tbody>
       <div style="display: flex;">
         <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
-          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre>
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre>
         </div>
         <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
-          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">void dijkstra(std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; &amp;graph, int source, std::vector&lt;int&gt; &amp;dist) {
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">constexpr i64 inf = 2e18;
+template&lt;typename T&gt;
+std::vector&lt;T&gt; dijkstra(const std::vector&lt;std::vector&lt;std::pair&lt;int, T&gt;&gt;&gt; &amp;g, int s) {
     //    原始图，源，到源的距离
-    int n = graph.size();
-    std::vector&lt;bool&gt; vis(n);
-    dist.resize(n);
-    std::fill(dist.begin(), dist.end(), 1e9);
+    int n = g.size();
+    std::vector&lt;T&gt; dis(n, inf);
     
-    dist[source] = 0;
-    std::priority_queue&lt;std::pair&lt;int, int&gt;, std::vector&lt;std::pair&lt;int, int&gt;&gt;, std::greater&lt;std::pair&lt;int, int&gt;&gt;&gt; pq;
-    pq.push({0, source});
-    while (!pq.empty()){
-        int node = pq.top().second;
-        int cost = pq.top().first;
-        pq.pop();
-        if (vis[node]) continue;
-        vis[node] = 1;
-        //if (cost &gt; dist[node])continue;
-        for (auto &amp;edge : graph[node]) {
-            int to = edge.first;
-            int weight = edge.second;
-            if (weight &#43; dist[node] &lt; dist[to]) {
-                dist[to] = weight &#43; dist[node];
-                if (!vis[to]) pq.push({dist[to], to});
+    using Z = std::pair&lt;T, int&gt;;
+    std::priority_queue&lt;Z, std::vector&lt;Z&gt;, std::greater&lt;Z&gt;&gt; q;
+    q.push({0, s});
+    dis[s] = 0;
+
+    while (!q.empty()) {
+        auto [d, now] = q.top(); q.pop();
+
+        if (d &gt; dis[now]) continue;
+        for (auto [nxt, w] : g[now]) {
+            if (dis[nxt] &gt; w &#43; dis[now]) {
+                dis[nxt] = w &#43; dis[now];
+                q.push({dis[nxt], nxt});
             }
         }
     }
+    return dis;
+}</code></pre>
+        </div>
+      </div>
+    </tbody>
+  </table>
+</details>
+<h3 id="01bfs">01BFS</h3>
+
+  
+    
+  
+  
+  
+  
+
+
+
+<details class="custom-block details" style="display: block; position: relative; border-radius: 10px; margin: 0.0em 0px; padding: 0.6em; background-color: rgb(238, 238, 238); color: rgb(44, 62, 80); font-family: -apple-system, BlinkMacSystemFont, &quot;Segoe UI&quot;, Roboto, Oxygen, Ubuntu, Cantarell, &quot;Fira Sans&quot;, &quot;Droid Sans&quot;, &quot;Helvetica Neue&quot;, sans-serif; font-size: 16px; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: 400; letter-spacing: normal; orphans: 2; text-align: start; text-indent: 0px; text-transform: none; white-space: normal; widows: 2; word-spacing: 0px; -webkit-text-stroke-width: 0px; text-decoration-thickness: initial; text-decoration-style: initial; text-decoration-color: initial;"><summary style="outline: none; cursor: pointer;">BFS01</summary>
+  <table>
+    <tbody>
+      <div style="display: flex;">
+        <div class="gutter" style="flex-grow: 1; line-height: 1.45;font-size: 1.4rem;">
+          <pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre>
+        </div>
+        <div class="code" style="flex-shrink: 1; line-height: 1.45;font-size: 1.44rem;">
+          <pre class="code-highlight language- "><code class=" codeblock hljs cpcode" style="border-radius: 5px; width : 700px;">
+std::vector&lt;int&gt; BFS01(std::vector&lt;std::vector&lt;std::pair&lt;int, int&gt;&gt;&gt; &amp;g, int s) {
+    //    原始图，源，到源的距离
+    int n = g.size();
+    std::vector&lt;int&gt; dis(n, 1e9);
+    
+    std::deque&lt;std::pair&lt;i64, int&gt;&gt; q;
+    q.push_back({0, s});
+    dis[s] = 0;
+    while (!q.empty()) {
+        auto [d, now] = q.front(); q.pop_front();
+
+        if (d &gt; dis[now]) continue;
+        for (auto [nxt, w] : g[now]) {
+            if (dis[nxt] &gt; w &#43; dis[now]) {
+                dis[nxt] = w &#43; dis[now];
+                if (w) q.push_back({dis[nxt], nxt});
+                else q.push_front({dis[nxt], nxt});
+            }
+        }
+    }
+    return dis;
 }</code></pre>
         </div>
       </div>
