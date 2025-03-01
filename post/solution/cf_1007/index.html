@@ -17,7 +17,7 @@
   },
   "name":"夏のBLOG",
   "description":"",
-  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/nk_zs_61\/",
+  "url":"https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_1007\/",
   "keywords":"[tech, C\u002b\u002b, python, study]"
 }
 
@@ -33,20 +33,20 @@
 
 <meta property="og:description" content="">
 <meta property="og:type" content="article">
-<meta property="og:title" content="牛客周赛 Round 61">
-<meta name="twitter:title" content="牛客周赛 Round 61">
-<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/nk_zs_61/">
-<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/nk_zs_61/">
+<meta property="og:title" content="Codeforces Round 1007 (Div. 2)">
+<meta name="twitter:title" content="Codeforces Round 1007 (Div. 2)">
+<meta property="og:url" content="https://xiaoxiauwu.github.io/post/solution/cf_1007/">
+<meta property="twitter:url" content="https://xiaoxiauwu.github.io/post/solution/cf_1007/">
 <meta property="og:site_name" content="夏のBLOG">
 <meta property="og:description" content="">
 <meta name="twitter:description" content="">
 <meta property="og:locale" content="en-us">
 
   
-    <meta property="article:published_time" content="2024-09-23T05:21:28">
+    <meta property="article:published_time" content="2024-09-23T04:26:22">
   
   
-    <meta property="article:modified_time" content="2024-09-23T05:21:28">
+    <meta property="article:modified_time" content="2024-09-23T04:26:22">
   
   
   
@@ -60,7 +60,7 @@
     
       <meta property="article:tag" content="题解">
     
-      <meta property="article:tag" content="牛客">
+      <meta property="article:tag" content="CF">
     
   
 
@@ -79,22 +79,22 @@
 
 
 
-  <meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
-  <meta property="twitter:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
 
 
-  <meta property="og:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
-  <meta property="twitter:image" content="https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg">
+  <meta property="og:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
+  <meta property="twitter:image" content="https://xiaoxiauwu.github.io/images/cover.jpg">
 
 
-    <title>牛客周赛 Round 61</title>
+    <title>Codeforces Round 1007 (Div. 2)</title>
 
     <link rel="icon" href="https://xiaoxiauwu.github.io/favicon.png">
     
 
     
 
-    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_61/">
+    <link rel="canonical" href="https://xiaoxiauwu.github.io/post/solution/cf_1007/">
 
     
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -265,19 +265,19 @@
   <div class="post-header-cover
               text-center
               post-header-cover--full"
-       style="background-image:url('https://img.paulzzh.com/touhou/konachan/jpeg/d5c5063097ef781baff2465d23a9b6c5.jpg')"
+       style="background-image:url('/images/cover.jpg')"
        data-behavior="5">
     
       <div class="post-header main-content-wrap text-center">
   
     <h1 class="post-title">
-      牛客周赛 Round 61
+      Codeforces Round 1007 (Div. 2)
     </h1>
   
   
   <div class="postShorten-meta post-meta">
     
-      <time datetime="2024-09-23T05:21:28&#43;08:00">
+      <time datetime="2024-09-23T04:26:22&#43;08:00">
         
   September 23, 2024
 
@@ -307,204 +307,311 @@
                hasCoverCaption">
         <article class="post" id="top">
           
-            <span class="post-header-cover-caption caption">逆天SPJ，硬控我一小时，还以为我D题错了</span>
+            <span class="post-header-cover-caption caption">唉唉，不会D题递归</span>
           
           
           <div class="post-content markdown">
             <div class="main-content-wrap">
               <!-- raw HTML omitted -->
-<h1 id="a-letter-song--致十年后的我们">A. Letter Song ~ 致十年后的我们</h1>
+<h1 id="a-the-play-never-ends">A. The Play Never Ends</h1>
 <h2 id="题意">题意</h2>
-<p>已知你在 Y 年 M 月 D 日向十年后的自己发送了一条消息；请你精确的计算出，哪一天的自己会收到这条消息。</p>
-<h2 id="大概思路">大概思路</h2>
-<p>不难，直接字符串截取前四个，转int后加10，直接输出，并顺便输出后半部分。</p>
+<p>让我们来介绍一个双人游戏&ndash;乒乓球，在这个游戏中，胜负已定，不可能出现平局。</p>
+<p>索赛、福福和浩海三个人想一辈子打乒乓球。他们决定以下面的方式永远打下去：</p>
+<ul>
+<li>在每场比赛中，两名选手比赛，第三名选手旁观。</li>
+<li>为了保证公平，任何选手都不能连续打三次。在下一场比赛中，连续下两次棋的棋手必须作为观众退场，由另外两名棋手下棋。否则，获胜者和旁观者将参加下一场比赛，而失败者将旁观。</li>
+</ul>
+<p>现在，玩家们完全沉浸在这无限循环的比赛中，委托你们解决以下问题：</p>
+<p>给定一个整数 $k$ ，判断第一场比赛的观众能否成为 $k$ /第三场比赛的观众。</p>
+<h2 id="思路">思路</h2>
+<p>手玩样例，会发现，若前两个玩家比赛，后一个玩家观战，那么初始排列为ABC的三人，确定第二局比赛的排列后（不妨设为 BCA），他们只能重复进行固定的比赛组合，ABC，BCA，CAB，ABC，&hellip;。</p>
+<p>所以，验 $n mod 3 == 1$ 即可。</p>
 <h2 id="参考代码">参考代码</h2>
 <pre><code class="language-cpp">void solve() {
-	std::string s;
-    std::cin &gt;&gt; s;
-    
-    int y = std::stoi(s.substr(0, 4));
-    std::cout &lt;&lt; y + 10 &lt;&lt; s.substr(4);
-}
-</code></pre>
-<h1 id="b-简单图形问题---0123">B. 简单图形问题 - 0123</h1>
-<h2 id="题意-1">题意</h2>
-<p>对于给定的未知多边形的面积，请你判断这是一个以整数为边长的正方形、或是以整数为边长的等边三角形、或是两者均是、或是两者均不是。</p>
-<h2 id="大概思路-1">大概思路</h2>
-<p>简单数学题，易知等边三角形面积一定会挂个无理数 $\sqrt 3$，所以只需要判断输入是否为平方数即可。</p>
-<h2 id="参考代码-1">参考代码</h2>
-<pre><code class="language-cpp">void solve() {
-	int n;
+    int n;
     std::cin &gt;&gt; n;
-    
-    int n_ = std::sqrt(n);
-    if (n_ * n_ == n) {
-        std::cout &lt;&lt; 0 &lt;&lt; &quot;\n&quot;;
-    } else {
-        std::cout &lt;&lt; 3 &lt;&lt; &quot;\n&quot;;
-    }
+    std::cout &lt;&lt; (n % 3 == 1 ? &quot;YES\n&quot; : &quot;NO\n&quot;);
 }
 </code></pre>
-<h1 id="c-小红的机器人构造---">C. 小红的机器人构造 - Ⅰ+Ⅱ+Ⅲ</h1>
-<h2 id="题意-2">题意</h2>
-<p>在无限大的网格平面上，我们使用 $(x,y)$ 表示网格中第 $x$ 行第 $y$ 列的单元格。
-小红有一只笨笨机器人初始位于 $(0,0)$ 单元格，她会向机器人下达 $n$ 个指令，机器人跟随指令上下左右移动。指令字符串由 $U,D,L,R$ 四个字符混合构成，以 $1$ 作为初始下标，形式化写作 $s1​s2​⋯sn$​ 。具体的，假设 $t$ 时刻机器人位于 $(i,j)$ 单元格，若指令字符串的第 $t+1$ 个字符存在：</p>
+<h1 id="b-perfecto">B. Perfecto</h1>
+<h2 id="题意-1">题意</h2>
+<p>长度为 $n$ $^{\text{∗}}$ 的置换 $p$ 如果在每个索引 $i$ ( $1 \le i \le n$ ) 中都满足以下条件，那么这个置换 $p$ 就是完美的：</p>
 <ul>
-<li>若 $s_{t+1}​=U$ ，则第 $t+1$ 时刻机器人位于 $(i+1,j)$ ；</li>
-<li>若 $s_{t+1}​=D$ ，则第 $t+1$ 时刻机器人位于 $(i−1,j)$ ；</li>
-<li>若 $s_{t+1}​=L$ ，则第 $t+1$ 时刻机器人位于 $(i,j−1)$ ；</li>
-<li>若 $s_{t+1}​=R$ ，则第 $t+1$ 时刻机器人位于 $(i,j+1)$ ；</li>
+<li>前 $i$ 个元素 $p_1 + p_2 + \ldots + p_i$ 的和<strong>不是</strong>个完全平方 $^{\text{†}}$ 。</li>
 </ul>
-<p>给出指令字符串，询问，能否删除部分指令（保持其余指令的相对位置不变），使得机器人最终位于 $(x,y)$ 。如果可以，计算有多少种不同的删除方案（删除不同下标视为不同方案），并输出其中任意一种。</p>
-<h2 id="大概思路-2">大概思路</h2>
-<p><em>什么OI制三合一？</em></p>
-<p>对于task1，我们直接统计每种字符的数量，然后判断x，y方向对应的字符是否都分别大于等于 $|x|$ 和 $|y|$。</p>
-<p>对于task2，我们可以在根据 $x$ 和 $y$ 的值，设定每种字符只能输出多少个，然后遍历字符串模拟即可。</p>
-<p>对于task3，我们考虑基于最少输出字符的情况，一对一对的加上相反方向的字符，对最终位置不影响。然后枚举可以加多少对，用组合数算贡献即可。显然这个枚举是 $O(n)$ 的。</p>
-<h2 id="参考代码-2">参考代码</h2>
-<pre><code class="language-cpp">constexpr int M = 1e9 + 7;
-constexpr int N = 1e5 + 5;
-i64 powp(i64 a, i64 n) {
-    i64 ans = 1;
-    while (n) {
-        if (n &amp; 1) (ans *= a) %= M;
-        (a *= a) %= M;
-        n &gt;&gt;= 1;
-    }
-    return ans;
+<p>你希望事情是完美的。给定正整数 $n$ ，找出长度为 $n$ 的完美排列，如果不存在，则打印 $-1$ 。</p>
+<p>$^{\text{∗}}$ 长度为 $n$ 的排列是由 $n$ 个不同的整数组成的数组，这些整数从 $1$ 到 $n$ 按任意顺序排列。例如， $[2,3,1,5,4]$ 是一个排列，但 $[1,2,2]$ 不是一个排列（ $2$ 在数组中出现了两次）， $[1,3,4]$ 也不是一个排列（ $n=3$ ，但数组中有 $4$ ）。</p>
+<p>$^{\text{†}}$ 完全平方是一个整数的平方，例如 $9=3^2$ 是一个完全平方，但 $8$ 和 $14$ 不是。</p>
+<h2 id="思路-1">思路</h2>
+<p>首先，特判 $\frac{n(n + 1)}{2}$ 是否是完全平方数，然后再随便构造即可。我使用的构造方法是，先从大到小填充数组（为什么倒序，因为正序的话，$1$ 就被放到最前面了），然后顺着遍历一遍数组，判断前缀和是否为完全平方数。如果是，就和下一位 swap 一下。</p>
+<h2 id="参考代码-1">参考代码</h2>
+<pre><code class="language-cpp">bool ck(i64 x) {
+    return i64(std::sqrt(x)) * i64(std::sqrt(x)) == x;
 }
-
-i64 inv(i64 x) {
-    return powp(x, M - 2);
-}
-
-i64 fac[N], invfac[N];
- 
-void pre() {
-    fac[0] = invfac[0] = 1;
-    for (int i = 1; i &lt; N; i++) fac[i] = fac[i-1] * i % M;
-    invfac[N - 1] = inv(fac[N - 1]);
-    for (int i = N - 2; i &gt;= 1; i--) invfac[i] = invfac[i + 1] * (i + 1) % M;
-}
- 
-i64 C(i64 n,i64 m) {
-    if (m &gt; n) return 0;
-    return fac[n] * invfac[n - m] % M * invfac[m] % M;
-}
-
 
 void solve() {
-	int n, x, y;
-    std::cin &gt;&gt; n &gt;&gt; y &gt;&gt; x;
-    std::string s;
-    std::cin &gt;&gt; s;
-    std::map&lt;char, int&gt; cnt;
-    for (auto &amp;c : s) cnt[c]++;
-    
-    //task1
-    bool ck = ((x &gt; 0 ? (cnt['R'] &gt;= x) : (cnt['L'] &gt;= -x)) &amp; (y &gt; 0 ? (cnt['U'] &gt;= y) : (cnt['D'] &gt;= -y)));
-    
-    if (ck) {
-        std::cout &lt;&lt; &quot;YES &quot;;
-        //task2
-        auto cnt_ = cnt;
-        if (x &gt; 0) {
-            cnt_['L'] = 0;
-            cnt_['R'] = x;
-        } else {
-            cnt_['R'] = 0;
-            cnt_['L'] = -x;
-        }
-        if (y &gt; 0) {
-            cnt_['D'] = 0;
-            cnt_['U'] = y;
-        } else {
-            cnt_['U'] = 0;
-            cnt_['D'] = -y;
-        }
-        auto cnt__ = cnt_;
-        for (auto &amp;c : s) {
-            if (cnt_[c]) {
-                std::cout &lt;&lt; c;
-                cnt_[c]--;
-            }
-        }
-        std::cout &lt;&lt; &quot; &quot;;
-        //task3
-        i64 ans = 1;
-        if (x &gt;= 0) {
-            i64 tmp = 0;
-            for (int i = 0; i &lt;= std::min(cnt['L'], cnt['R'] - cnt__['R']); i++) {
-                (tmp += C(cnt['R'], cnt__['R'] + i) * C(cnt['L'], i) % M) %= M;
-            }
-            (ans *= tmp) %= M;
-        } else {
-            i64 tmp = 0;
-            for (int i = 0; i &lt;= std::min(cnt['R'], cnt['L'] - cnt__['L']); i++) {
-                (tmp += C(cnt['L'], cnt__['L'] + i) * C(cnt['R'], i) % M) %= M;
-            }
-            (ans *= tmp) %= M;
-        }       
-        if (y &gt;= 0) {
-            i64 tmp = 0;
-            for (int i = 0; i &lt;= std::min(cnt['D'], cnt['U'] - cnt__['U']); i++) {
-                (tmp += C(cnt['U'], cnt__['U'] + i) * C(cnt['D'], i) % M) %= M;
-            }
-            (ans *= tmp) %= M;
-        } else {
-            i64 tmp = 0;
-            for (int i = 0; i &lt;= std::min(cnt['U'], cnt['D'] - cnt__['D']); i++) {
-                (tmp += C(cnt['D'], cnt__['D'] + i) * C(cnt['U'], i) % M) %= M;
-            }
-            (ans *= tmp) %= M;
-        }
-        std::cout &lt;&lt; ans;
-        
-        std::cout &lt;&lt; &quot;\n&quot;;
-    } else {
-        std::cout &lt;&lt; &quot;NO\n&quot;;
+    i64 n;
+    std::cin &gt;&gt; n;
+
+    i64 sum = n * (n + 1) / 2;
+    if (ck(sum)) {
+        std::cout &lt;&lt; -1 &lt;&lt; &quot;\n&quot;;
+        return;
     }
-}
-</code></pre>
-<h1 id="d-小红的差值构造---easyhardextreme">D. 小红的差值构造 - easy+hard+extreme</h1>
-<h2 id="题意-3">题意</h2>
-<p>小红有一个长度为 $n$ 的数组 $\{1,2,…,n\}$ 和一个整数 $l$ ，她想找到这样两个整数 $x$ 和 $y$ ，满足 $y−x=l$，记 $f_i=\min⁡{∣a_i−x∣,∣a_i−y∣}$，使得 $f_1​+f_2​+⋯+f_n$​ 最小。</p>
-<p>你需要输出满足条件的 $x$ 和 $y$ ，以及这个最小值。</p>
-<h2 id="大概思路-3">大概思路</h2>
-<p>分类讨论，当 $l &gt; n$ 时，显然我们无法将 $x$ 和 $y$ 同时置于数组的值域中，因此我们可以选择将其中一个端点居中放置到数组中，容易证明，这样的贡献算出来一定是最小的。设该贡献为 $calc(n)$，表示对长为 $n$ 的区间，当 $l &gt; n$ 时的最优答案，我们可以直接用两个等差数列求和搞定该值的计算。</p>
-<p><img src="https://s21.ax1x.com/2024/09/23/pAMX2Ue.png" alt=""></p>
-<p>当 $l &lt;= n$ 时，我们也要尽可能“居中”地放 $x$ 和 $y$。手画样例可知，答案可以划分成两个 “$l &gt; n$” 的情况，分别长为 $l$ 和 $n - l$。此时答案即为 $calc(l) + calc(n - l)$</p>
-<p><img src="https://s21.ax1x.com/2024/09/23/pAMXR4H.png" alt=""></p>
-<h2 id="参考代码-3">参考代码</h2>
-<pre><code class="language-cpp">void solve() {
-	i64 n, l;
-    std::cin &gt;&gt; n &gt;&gt; l;
-    
-    auto calc = [](i64 n) {
-    	i64 n_ = n / 2;
-    	return 1ll * (1ll + n_) * n_ - (n % 2 == 0 ? n_ : 0);
-    };
-    
-    if (l &lt;= n) {
-        i64 l_ = (l + 1) / 2;
-        i64 r = n / 2 + l_ + (l % 2 == 0);
-        std::cout &lt;&lt; r - l &lt;&lt; &quot; &quot; &lt;&lt; r &lt;&lt; &quot; &quot;;
-        
-        std::cout &lt;&lt; calc(n - l) + calc(l);
-    } else {
-    	i64 l_ = (n + 1) / 2;
-    	std::cout &lt;&lt; l_ - l &lt;&lt; &quot; &quot; &lt;&lt; l_ &lt;&lt; &quot; &quot;;
-    	
-    	std::cout &lt;&lt; calc(n);
+
+    std::vector&lt;int&gt; a(n);
+    std::iota(rall(a), 1);
+
+    i64 res = 0;
+    for (int i = 0; i &lt; n; i++) {
+        res += a[i];
+        //assert(!ck(res));
+        if (ck(res)) {
+            res -= a[i];
+            std::swap(a[i], a[i + 1]);
+            res += a[i];
+            assert(!ck(res));
+        }
     }
+
+    for (auto i : a) std::cout &lt;&lt; i &lt;&lt; &quot; &quot;;
     std::cout &lt;&lt; &quot;\n&quot;;
 }
 </code></pre>
-<h1 id="吐槽">吐槽</h1>
-<p>这个D题，我真的是无语si了，怎么交都是错的，然后快结束的时候，你跟我说数据有问题，会重测？
-<img src="https://s21.ax1x.com/2024/09/23/pAMX7b8.jpg" alt="">
-<img src="https://s21.ax1x.com/2024/09/23/pAMXbVS.png" alt="">
-重测后赛时跟我说赛时第一发就是AC（忽略那个TLE，我忘删vector<!-- raw HTML omitted -->a(n)了）？那我整整一个1小时在对空气debug是吗？</p>
+<h1 id="c-trapmigiano-reggiano">C. Trapmigiano Reggiano</h1>
+<h2 id="题意-2">题意</h2>
+<p>在意大利的一个村庄里，一只饥饿的老鼠从一棵有 $n$ 个顶点的树 $^{\text{∗}}$ 上的顶点 $\textrm{st}$ 开始。</p>
+<p>给定长度为 $n$ $^{\text{†}}$ 的排列 $p$ ，共有 $n$ 步。对于第 $i$ 步来说</p>
+<ul>
+<li>一块诱人的帕尔马干酪出现在顶点 $p_i$ 。如果老鼠当前位于顶点 $p_i$ ，它将停留在那里享受这一刻。否则，它会沿着简单路径移动到顶点 $p_i$ 。<strong>移动一条边</strong>。</li>
+</ul>
+<p>你的任务是找到这样一种排列方式，使小老鼠在走完所有 $n$ 步之后，不可避免地到达顶点 $\textrm{en}$ ，那里有一个陷阱在等着它。</p>
+<p>请注意，小鼠必须在经过所有 $n$ 步之后到达 $\textrm{en}$ 处，尽管在此过程中它可能会提前经过 $\textrm{en}$ 。</p>
+<p>$^{\text{∗}}$ 树是一个没有循环的连通图。</p>
+<p>$^{\text{†}}$ 长度为 $n$ 的排列是由 $n$ 个不同的整数组成的数组，这些整数从 $1$ 到 $n$ ，顺序任意。例如， $[2,3,1,5,4]$ 是一个排列，但 $[1,2,2]$ 不是一个排列（ $2$ 在数组中出现了两次）， $[1,3,4]$ 也不是一个排列（ $n=3$ ，但数组中有 $4$ ）。</p>
+<h2 id="思路-2">思路</h2>
+<p>考虑一直选非终点，度数为 1 的叶子节点，将其选择，然后删去。这样可以保证老鼠始终和终点处于同一连通块中。</p>
+<p>稍微思索一下就会发现，这其实也相当于直接输出，以终点为根的后序遍历。</p>
+<h2 id="参考代码-2">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    int n, s, t;
+    std::cin &gt;&gt; n &gt;&gt; s &gt;&gt; t;
+    s--; t--;
+
+    std::vector&lt;int&gt; d(n);
+    std::vector edg(n, std::vector&lt;int&gt;());
+    for (int i = 1; i &lt; n; i++) {
+        int x, y;
+        std::cin &gt;&gt; x &gt;&gt; y;
+        x--; y--;
+        edg[x].push_back(y);
+        edg[y].push_back(x);
+        d[x]++; d[y]++;
+    }
+
+    std::vector&lt;int&gt; ans;
+    std::vector&lt;int&gt; vis(n);
+
+    std::queue&lt;int&gt; q;
+    for (int i = 0; i &lt; n; i++) {
+        if (d[i] == 1 &amp;&amp; i != t) {
+            vis[i] = 1;
+            q.push(i);
+        }
+    }
+
+    while (q.size()) {
+        auto now = q.front(); q.pop();
+        ans.push_back(now);
+
+        for (auto nxt : edg[now]) {
+            if (vis[nxt]) continue;
+
+            if (--d[nxt] == 1) {
+                if (nxt == t) continue;
+                vis[nxt] = 1;
+                q.push(nxt);   
+            }
+        }
+    }
+
+    ans.push_back(t);
+    for (auto i : ans) std::cout &lt;&lt; i + 1 &lt;&lt; &quot; &quot;;
+    std::cout &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h1 id="d1-infinite-sequence-easy-version">D1. Infinite Sequence (Easy Version)</h1>
+<h2 id="题意-3">题意</h2>
+<p><strong>这是问题的简单版本。不同版本的区别在于，在这个版本中， $l=r$ .只有解决了所有版本的问题，您才能破解</strong>。</p>
+<p>给你一个正整数 $n$ 和一个无限二进制数列 $a$ 的前 $n$ 项，其定义如下：</p>
+<ul>
+<li>对于 $m &gt; n$ , $a_m = a_1 \oplus a_2 \oplus \ldots \oplus a_{\lfloor \frac{m}{2} \rfloor}$ $^{\text{∗}}$ .</li>
+</ul>
+<p>你的任务是计算给定范围 $[l, r]$ ： $a_l + a_{l + 1} + \ldots + a_r$ .</p>
+<p>$^{\text{∗}}$ $\oplus$ 表示位操作 XOR。</p>
+<h2 id="思路-3">思路</h2>
+<p>稍微手玩一下样例，试着往后推几位，我们会发现，除了题目给定数组，后面拼接上的生成元素，一般都是两两一对的。</p>
+<p>因此，存在一些位置，在求前缀异或和时恰好将所有新生成的元素，全部两两抵消掉了。</p>
+<p>可以考虑递归 $l$：</p>
+<ul>
+<li>当 $x \le n$ 时，返回 $a[x]$；</li>
+<li>当 $\lfloor x / 2 \rfloor \le n$ 时，返回 $a[1] \oplus a[2] \oplus \dots \oplus a[\lfloor x / 2 \rfloor]$；</li>
+<li>当 $\lfloor x / 2 \rfloor$ 为奇数时，返回 $a[1] \oplus a[2] \oplus \dots \oplus a[n]$；</li>
+<li>当 $x$ 为奇数时，返回 $dfs(\lfloor x / 2 \rfloor) \oplus a[1] \oplus a[2] \oplus \dots \oplus a[n]$.</li>
+</ul>
+<p>最后要注意先把数组凑到奇数再跑 $dfs$，不然就没法用两两抵消的性质了。</p>
+<h2 id="参考代码-3">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    i64 n, l, r;
+    std::cin &gt;&gt; n &gt;&gt; l &gt;&gt; r;
+
+    std::vector&lt;int&gt; a(n + 1);
+    for (int i = 1; i &lt;= n; i++) {
+        std::cin &gt;&gt; a[i];
+        a[i] ^= a[i - 1];
+    }
+
+    if (n % 2 == 0) {
+        a.push_back(a.back());
+        n++;
+        a[n] ^= a[n / 2];
+    }
+
+    auto dfs = [&amp;](auto&amp;&amp; self, i64 now) -&gt; int {
+        if (now &lt;= n) return a[now] ^ a[now - 1];
+        if ((now / 2) &lt;= n) return a[now / 2];
+        if ((now / 2) &amp; 1) return a.back();
+        return self(self, now / 2) ^ a.back();
+    };
+
+    std::cout &lt;&lt; dfs(dfs, l) &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
+<h1 id="d2-infinite-sequence-hard-version">D2. Infinite Sequence (Hard Version)</h1>
+<h2 id="题意-4">题意</h2>
+<p><strong>这是问题的困难版本。不同版本的区别在于，在这个版本中， $l\le r$ .只有解决了所有版本的问题，您才能进行 Hack 提交</strong>。</p>
+<p>给定一个正整数 $n$ 和无限二进制序列 $a$ 的第一个 $n$ 项，其定义如下：</p>
+<ul>
+<li>对于 $m &lt; n$ ， $a_m = a_1 \oplus a_2 \oplus \ldots \oplus a_{\lfloor \frac{m}{2} \rfloor}$ $^{\text{∗}}$ 。</li>
+</ul>
+<p>您的任务是计算给定范围 $[l, r]$ : $a_l + a_{l + 1} + \ldots + a_r$ 中的元素之和。</p>
+<p>$^{\text{∗}}$ $\oplus$ 表示按位异或操作。</p>
+<h2 id="思路-4">思路</h2>
+<p>这里提供一个，个人认为挺直观的方法。</p>
+<p>在上一题的“<em>后面拼接上的生成元素，一般都是两两一对的</em>”的基础上，我们继续多玩一点样例出来。</p>
+<p>容易发现，当初始数组补成奇数之后，后面进行的操作，可以划分为若干个组，每组都经由上一组的元素所确定。</p>
+<p><img src="https://s21.ax1x.com/2025/03/01/pE80qkd.png" alt="pE80qkd.png"></p>
+<p>我们继续手玩样例，研究一下这些组之间的转移关系，看看是否有什么方法能快速处理出前缀和：</p>
+<p>当原数组补齐为奇数长度后，有偶数个 $1$ 时，可以得到如下图：</p>
+<p><img src="https://s21.ax1x.com/2025/03/01/pE80jpt.png" alt="pE80jpt.png"></p>
+<p>当原数组补齐为奇数长度后，有奇数个 $1$ 时，可以得到如下图：</p>
+<p><img src="https://s21.ax1x.com/2025/03/01/pE80x6f.png" alt="pE80x6f.png"></p>
+<p>容易发现，当补齐数组的元素和为偶数时，每轮完整操作后，产生的 $1$ 的个数是固定的，而且位置也很好确定；但是当其为奇数时，每轮完整操作后所产生的 $0$ 和 $1$ 的分布似乎不是很直观。</p>
+<p>因此我们可以对奇数和情况进行分类讨论。</p>
+<p>考虑如何对奇数情况进行贡献统计：</p>
+<p>从奇数情况的图中，我们可以总结出一个规律：从第一轮开始，若将每两个连续相同元素视为同一个元素，则，每个 “1” 元素会生成一个 “0” 元素和 一个 “1” 元素，而每个 “0” 元素会生成两个 “1” 元素。</p>
+<p>由于这个转移图的高度是 $\log r$ 的，所以我们可以设 $dp[0][j]$ 表示，从 “0” 号元素开始，向后传递了 $j$ 次贡献后，第 $j$ 层所包含 1 的个数；$dp[1][j]$ 表示，从 “1” 号元素开始，向后传递了 $j$ 次贡献后，第 $j$ 层所包含 1 的个数。</p>
+<p>初始状态：$dp[0][0] = 0$，$dp[1][0] = 2$。</p>
+<p>转态转移：$dp[0][i] = 2dp[1][i - 1]$，$dp[1][i] = dp[0][i - 1] + dp[1][i - 1]$</p>
+<p>dp 数组 的处理是 $O(n\log r)$ 的。</p>
+<p>随后我们倍增（应该叫倍增）模拟出最大轮数并记录后，就可以用一种很像分治的方法，结合 $dp$ 数组，对最后一层不完整的轮数，求出其一共含有多少 1。</p>
+<p>至于每个完整的轮次钟有多少 1，可以在模拟轮数的过程中，用 $dp$ 数组 $O(1)$ 收集。</p>
+<p>偶数情况的话，比奇数情况好写很多，这里不再展开了，建议直接看参考代码理解。</p>
+<h2 id="参考代码-4">参考代码</h2>
+<pre><code class="language-cpp">void solve() {
+    i64 n, l, r;
+    std::cin &gt;&gt; n &gt;&gt; l &gt;&gt; r;
+
+    std::vector&lt;int&gt; pre_xor(n + 1);
+    for (int i = 1; i &lt;= n; i++) {
+        std::cin &gt;&gt; pre_xor[i];
+        pre_xor[i] ^= pre_xor[i - 1];
+    }
+
+    if (n % 2 == 0) {//将长度补至奇数
+        n++;
+        pre_xor.push_back(pre_xor.back());
+        pre_xor.back() ^= pre_xor[n / 2];
+    }
+
+    // 进行第一轮周期预处理
+    for (int i = n + 1; i &lt;= 2 * n + 1; i++) {
+        pre_xor.push_back(pre_xor.back());
+        pre_xor.back() ^= pre_xor[i / 2];
+    }
+
+    std::vector&lt;int&gt; pre_sum((2 * n + 1) + 1);
+    for (int i = 1; i &lt;= 2 * n + 1; i++) {
+        pre_sum[i] = pre_sum[i - 1] + (pre_xor[i] ^ pre_xor[i - 1]);
+    }
+
+    std::vector repeat(2, std::vector&lt;i64&gt;(std::__lg(r) + 2));
+
+    repeat[0][0] = 0;
+    repeat[1][0] = 2;
+    for (int i = 1; i &lt;= std::__lg(r); i++) {
+        repeat[0][i] = 2 * repeat[1][i - 1];
+        repeat[1][i] = repeat[0][i - 1] + repeat[1][i - 1];
+    }
+    
+    auto conquer = [&amp;](auto&amp;&amp; self, int dep, i64 pos, int r) -&gt; i64 {
+        if (dep == 0) return pos * r;
+        
+        if (pos &lt;= (1ll &lt;&lt; dep)) return self(self, dep - 1, pos, 1 ^ r);
+        return repeat[1 ^ r][dep - 1] + self(self, dep - 1, pos - (1ll &lt;&lt; dep), 1);
+    };
+
+    // 初始周期串中 1 的数量
+    i64 cnt = pre_sum[2 * n + 1] - pre_sum[n];
+
+    auto calc = [&amp;](i64 x) -&gt; i64 {
+        if (x &lt;= 2 * n + 1) return pre_sum[x];
+        
+        int res = pre_xor[n];
+        i64 ans = pre_sum[n];
+
+        x -= n;
+        
+        i64 time = 0;
+        i64 T = n + 1;
+        i64 w = 0;
+        i64 unit = 2;
+        while (x &gt; time + T) {
+            if (res) ans += cnt * repeat[1][w] / 2 + (n + 1 - cnt) * repeat[0][w] / 2;
+            else ans += cnt;
+
+            time += T;
+            T &lt;&lt;= 1;
+            w++;
+            unit &lt;&lt;= 1;
+        }
+
+        x -= time;
+
+        if (res) {
+            for (int i = 1; i &lt;= x / unit; i++) {
+                ans += repeat[pre_sum[n + 2 * i] - pre_sum[n + 2 * i - 1]][w];
+            }
+            if (2 * (x / unit) + 2 &lt;= n + 1 &amp;&amp; x % unit != 0) {
+                ans += conquer(conquer, w, x % unit, pre_sum[n + 2 * (x / unit) + 2] - pre_sum[n + 2 * (x / unit) + 1]);
+            }
+        } else {
+            for (int i = 1; i &lt;= x / unit; i++) {
+                ans += 2 * (pre_sum[n + 2 * i] - pre_sum[n + 2 * i - 1]);
+            }
+            if (2 * (x / unit) + 2 &lt;= n + 1 &amp;&amp; 
+                pre_sum[n + 2 * (x / unit) + 2] - pre_sum[n + 2 * (x / unit) + 1] == 1
+            ) {
+                ans += std::min(2ll, x % unit);
+            }
+        }
+
+        return ans;
+    };
+
+    std::cout &lt;&lt; calc(r) - calc(l - 1) &lt;&lt; &quot;\n&quot;;
+}
+</code></pre>
               
 
 
@@ -520,7 +627,7 @@ void solve() {
                     
   <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E9%A2%98%E8%A7%A3/">题解</a>
 
-  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/%E7%89%9B%E5%AE%A2/">牛客</a>
+  <a class="tag tag--primary tag--small" href="https://xiaoxiauwu.github.io/tags/cf/">CF</a>
 
                   </div>
                 
@@ -533,7 +640,7 @@ void solve() {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_1007/" data-tooltip="Codeforces Round 1007 (Div. 2)" aria-label="PREVIOUS: Codeforces Round 1007 (Div. 2)">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_974/" data-tooltip="Codeforces Round 974 (Div. 3)" aria-label="PREVIOUS: Codeforces Round 974 (Div. 3)">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -541,7 +648,7 @@ void solve() {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/map_link/" data-tooltip="一种基于std::map的模拟链表实现方式" aria-label="NEXT: 一种基于std::map的模拟链表实现方式">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_61/" data-tooltip="牛客周赛 Round 61" aria-label="NEXT: 牛客周赛 Round 61">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
@@ -584,9 +691,9 @@ void solve() {
     </div>
     <script type="text/javascript">
       var disqus_config = function() {
-        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/nk_zs_61\/';
+        this.page.url = 'https:\/\/xiaoxiauwu.github.io\/post\/solution\/cf_1007\/';
         
-          this.page.identifier = '\/post\/solution\/nk_zs_61\/'
+          this.page.identifier = '\/post\/solution\/cf_1007\/'
         
       };
       (function() {
@@ -630,7 +737,7 @@ void solve() {
       
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_1007/" data-tooltip="Codeforces Round 1007 (Div. 2)" aria-label="PREVIOUS: Codeforces Round 1007 (Div. 2)">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/cf_974/" data-tooltip="Codeforces Round 974 (Div. 3)" aria-label="PREVIOUS: Codeforces Round 974 (Div. 3)">
           
               <i class="fa fa-angle-left"></i>
               <span class="hide-xs hide-sm text-small icon-ml">PREVIOUS</span>
@@ -638,7 +745,7 @@ void solve() {
         </li>
         <li class="post-action">
           
-            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/algorithm/map_link/" data-tooltip="一种基于std::map的模拟链表实现方式" aria-label="NEXT: 一种基于std::map的模拟链表实现方式">
+            <a class="post-action-btn btn btn--default tooltip--top" href="https://xiaoxiauwu.github.io/post/solution/nk_zs_61/" data-tooltip="牛客周赛 Round 61" aria-label="NEXT: 牛客周赛 Round 61">
           
               <span class="hide-xs hide-sm text-small icon-mr">NEXT</span>
               <i class="fa fa-angle-right"></i>
