@@ -7559,16 +7559,15 @@ void solve() {
 </code></pre>
 <h3 id="g-graph-by-set-of-degreeshttpscodeforcescomeducourse2lesson81practicecontest290939problemglocaleen"><a href="https://codeforces.com/edu/course/2/lesson/8/1/practice/contest/290939/problem/G?locale=en">G. Graph by Set of Degrees</a></h3>
 <h4 id="题意-106">题意</h4>
-<p>给出了一个无向图的度集。从给定的集合构造一个顶点数最少的无向图。</p>
-<p>图表中不能有循环或多边</p>
-<p>图的顶点从一开始编号</p>
+<p>给定一个无向图的度数集合 $a$。构造一个顶点数最少的无向图，使得每个点的度数只能出现在 $a$ 中，并且集合中每种度数至少出现一次。</p>
+<p>图中不能有自环或重边，顶点从一开始编号。度数集合大小 $n \le 100$，其元素值域范围 $a_i \le 100$。</p>
 <h4 id="参考思路-106">参考思路</h4>
 <p>考虑先想办法构造一个合法度数序列，不难发现一定有解，比如说由 $n$ 个完全图取并集，但是题目要求点数最少，所以不能直接这样构造。</p>
 <p>手玩样例后我们不难发现，最少的点数似乎就是最大数字加一。考虑下面这种构造方式：</p>
 <p>将度数序列从大到小排序后，设三个指针，一个（$i$）指向原度数集数组的头元素，一个（$j$）指向尾元素，再设一个初始值均为 $0$ 的，长为 $\max a_i + 1$ 的度数数组，用一个指针（$k$）指向数组的头元素。</p>
-<p>当左指针指向 $x$，右指针指向 $y$ 时，将度数数组中，$[k, k + y - 1]$ 区间的元素均加上 $x$，将 $[k + y, k + x]$ 区间的元素均加上 $y$，然后 $i$ 指针右移一位，$j$ 指针左移一位，$k$ 指针右移 $y$ 位，知道 $i &gt; j$ 时停止构造。</p>
-<p>此时构造出来的度数序列就是一个合法的，点数最小的度数序列。接着再利用这个度数序列直接暴力 $O(n^2\log n)$ 构造相应的图即可。</p>
-<p>时间复杂度：$O(n^2\log n)$</p>
+<p>当左指针指向 $x$，右指针指向 $y$ 时，将度数数组中，$[k, k + y - 1]$ 区间的元素均加上 $x$，将 $[k + y, k + x]$ 区间的元素均加上 $y$，然后 $i$ 指针右移一位，$j$ 指针左移一位，$k$ 指针右移 $y$ 位，直到 $i &gt; j$ 时停止构造。复杂度 $O(n^2)$。</p>
+<p>此时构造出来的度数序列就是一个合法的，点数最小的度数序列。接着再利用这个度数序列直接暴力 $O(n^2)$ 构造相应的图即可。</p>
+<p>时间复杂度：$O(n^2)$</p>
 <h4 id="参考代码-99">参考代码</h4>
 <pre><code class="language-cpp">using Z = std::pair&lt;int, int&gt;;
 
@@ -8899,7 +8898,7 @@ void solve() {
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2025 XiaoXia. All Rights Reserved
+    &copy; 2026 XiaoXia. All Rights Reserved
   </span>
 
 

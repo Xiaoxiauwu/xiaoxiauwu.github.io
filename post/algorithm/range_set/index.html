@@ -311,7 +311,7 @@
               <!-- raw HTML omitted -->
 <h1 id="disjoint-interval-union并查区间">Disjoint Interval Union（并查区间）</h1>
 <p>这是一个码量特别小的，基于 std::set 的 STL 科技，能够维护不相交区间，同时还具有链表的性质。时间复杂度参考正常的 std::set。</p>
-<p><em>注：该STL并非本人发明，发现该科技的人也没给它取名，DIU是我随便取的名字</em></p>
+<p><em>注：该STL并非本人发明，发现该科技的人也没给它取名，DIU是我随便取的名字，为什么叫并查区间，自己意会吧））</em></p>
 <h2 id="如何声明">如何声明</h2>
 <p>其代码量十分之小，仅有短短几行：</p>
 <pre><code class="language-cpp">auto cmp = [](const auto&amp; a, const auto&amp; b) -&gt; bool {
@@ -1100,6 +1100,171 @@ void solve() {
     }
 }
 </code></pre>
+<h3 id="qoj1412p7752-g-the-only-way-to-the-destination">QOJ1412P7752 G. The Only Way to the Destination</h3>
+<p><a href="https://qoj.ac/contest/1412/problem/7752">G. The Only Way to the Destination</a></p>
+<h4 id="题意-11">题意</h4>
+<p>给你一个 $n, m \le 10^9$ 大小的网格，在网格图上有 $k \le 10^5$ 堵互不相交的垂直墙。</p>
+<p>让你判断该网格图的任意两点之间是否仅存在一条唯一的路径。</p>
+<h4 id="diu-维护做法">DIU 维护做法</h4>
+<p>考虑到 $k$ 很小，这限制了 $m$ 的大小，如果 $m$ 太大，预处理的过程就能判断出来，直接输出 NO 即可。</p>
+<p>现在来考虑 $m$ 比较小，$m \le 2k+1$ 的情况怎么求。</p>
+<p>显然我们可以发现，一个网格图路径不唯一，要么网格图里面有 2x2 空白子矩阵，要么路径形成一个环。</p>
+<p>考虑到 $k$ 不是很大，所以对于所有列每列的空白连续段数量之和是 $O(k)$ 级别的。所以我们可以对每个段，暴力向它左右相邻的空白段连边建图，然后暴力跑 dfs 判环即可。如果有环说明网格图路径不唯一。</p>
+<p>至于 2x2 子矩阵，我们可以发现一个显然的性质：如果一个网格图至少含有一个 2x2 空白子矩阵，那么这个网格图一定在某两个相邻段的端点存在一个 2x2 空白子矩阵。所以我们可以在连边的时候就能判断出来。</p>
+<p>至于实现具体怎么连边，可以考虑每列开一个 DIU。然后靠插入墙来暴力分割每列的 DIU，DIU 中剩下的区间就是所有的空白段。</p>
+<p>接着扫一遍所有的 DIU，为每个 DIU 中的区间标号。最后枚举每个 DIU 中的每个区间，利用区间的上下端点，向相邻的左右 DIU 分别查询是否存在相邻段，然后连边即可。连边之前可以把两个区间的范围提取出来，用 std::clamp 判一下区间交是否大于等于 2 来判 2x2 空白子矩阵的存在。</p>
+<p>最后还要注意 n = 1、 m = 1 的特判。</p>
+<p>时间复杂度 $O(n\log n)$</p>
+<h4 id="参考代码">参考代码</h4>
+<pre><code class="language-cpp">#include &lt;bits/stdc++.h&gt;
+
+signed main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0);
+    cout.tie(0);
+    int n, m, k;
+    std::cin &gt;&gt; n &gt;&gt; m &gt;&gt; k;
+
+    std::vector&lt;std::array&lt;int, 3&gt;&gt; a(k + 1);
+    int mi = 1e18, mx = 0;
+    for (int i = 1; i &lt;= k; i++) {
+        std::cin &gt;&gt; a[i][0] &gt;&gt; a[i][1] &gt;&gt; a[i][2];
+        mx = max(mx, a[i][2]);
+        mi = min(mi, a[i][2]);
+    }
+    std::sort(a.begin() + 1, a.end(), [&amp;](array&lt;int, 3&gt; &amp;x, array&lt;int, 3&gt; &amp;y) {
+        if (x[2] == y[2]) return x[0] &lt; y[0];
+        return x[2] &lt; y[2]; 
+    });
+    if (n == 1 || m == 1) {
+        std::cout &lt;&lt; &quot;YES&quot; &lt;&lt; '\n';
+        return 0;
+    }
+    if (mi &gt;= 3 || mx &lt;= m - 2) {
+        std::cout &lt;&lt; &quot;NO&quot; &lt;&lt; '\n';
+        return 0;
+    }
+    for (int i = 2; i &lt;= k; i++) {
+        if (a[i][2] - a[i - 1][2] &gt; 2) {
+            std::cout &lt;&lt; &quot;NO&quot; &lt;&lt; '\n';
+            return 0;
+        }
+    }
+
+    auto cmp = [](auto a, auto b) -&gt; auto {
+        return a[1] &lt; b[0];
+    };
+    std::vector&lt;std::set&lt;std::array&lt;int, 3&gt;, decltype(cmp)&gt;&gt; col(m + 1,
+                std::set&lt;std::array&lt;int, 3&gt;, decltype(cmp)&gt;(cmp));
+    for (int i = 1; i &lt;= m; i++) {
+        col[i].insert({1, n, 0});
+    }
+    auto insert = [](auto &amp;s, int l, int r) {
+        if (l &gt; r) return;
+        s.insert({l, r, 0});
+    };
+    for (int i = 1; i &lt;= k; i++) {
+        auto [xx1, xx2, y] = a[i];
+
+        auto it = col[y].find({xx1, xx2, 0});
+        assert(it != col[y].end());
+        auto [l, r, _] = *it;
+        col[y].erase(it);
+
+        insert(col[y], l, xx1 - 1);
+        insert(col[y], xx2 + 1, r);
+    }
+
+    int idx = 0;
+    for (int i = 1; i &lt;= m; i++) {
+        std::vector&lt;std::array&lt;int, 3&gt;&gt; res;
+        for (auto [l, r, _] : col[i]) {
+            res.push_back({l, r, ++idx});
+        }
+        col[i].clear();
+        for (auto p : res) col[i].insert(p);
+    }
+
+    auto ck = [&amp;](int l, int r, int ll, int rr) -&gt; bool {
+        l = std::clamp(l, ll, rr);
+        r = std::clamp(r, ll, rr);
+        return r - l + 1 == 1;
+    };
+
+    std::vector&lt;std::set&lt;int&gt;&gt; adj(idx + 1);
+    auto add = [&amp;](int x, int y) {
+        adj[x].insert(y);
+        adj[y].insert(x);
+    };
+
+    for (int i = 1; i &lt;= m; i++) {
+        for (auto [l, r, id] : col[i]) {
+            if (i &gt; 1) {
+                auto L = col[i - 1].find({r, r, 0});
+                if (L != col[i - 1].end()) {
+                    auto [ll, rr, _id] = *L;
+                    if (!ck(l, r, ll, rr)) {
+                        std::cout &lt;&lt; &quot;NO\n&quot;;
+                        return 0;
+                    } else {
+                        add(id, _id);
+                    }
+                }
+                L = col[i - 1].find({l, l, 0});
+                if (L != col[i - 1].end()) {
+                    auto [ll, rr, _id] = *L;
+                    if (!ck(l, r, ll, rr)) {
+                        std::cout &lt;&lt; &quot;NO\n&quot;;
+                        return 0;
+                    } else {
+                        add(id, _id);
+                    }
+                }
+            }
+            if (i &lt; m) {
+                auto L = col[i + 1].find({r, r, 0});
+                if (L != col[i + 1].end()) {
+                    auto [ll, rr, _id] = *L;
+                    if (!ck(l, r, ll, rr)) {
+                        std::cout &lt;&lt; &quot;NO\n&quot;;
+                        return 0;
+                    } else {
+                        add(id, _id);
+                    }
+                }
+                L = col[i + 1].find({l, l, 0});
+                if (L != col[i + 1].end()) {
+                    auto [ll, rr, _id] = *L;
+                    if (!ck(l, r, ll, rr)) {
+                        std::cout &lt;&lt; &quot;NO\n&quot;;
+                        return 0;
+                    } else {
+                        add(id, _id);
+                    }
+                }
+            }
+        }
+    }
+
+    std::vector&lt;int&gt; v(idx + 1);
+    bool flag = 1;
+    auto dfs = [&amp;](auto self, int x, int fa) -&gt; void {
+        v[x] = 1;
+        for (auto j : adj[x]) {
+            if (j == fa) continue;
+            if (v[j]) {
+                flag = 0;
+                return;
+            } else self(self, j, x);
+            if (!flag) return;
+        }
+    };
+    dfs(dfs, 1, 0);
+    std::cout &lt;&lt; (flag ? &quot;YES&quot; : &quot;NO&quot;);
+
+    return 0;
+}
+</code></pre>
 <h2 id="练习用例题">练习用例题</h2>
 <p>仅作为 DIU 练手用，有些题目用 DIU 可能反而麻烦了：</p>
 <p><a href="https://atcoder.jp/contests/abc001/tasks/abc001_4">ABC001D - 感雨時刻の整理</a></p>
@@ -1135,6 +1300,18 @@ std::vector&lt;std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt;&gt;
     seg(24, std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt;(cmp));
 </code></pre>
 <p>也就动手复制粘贴的事情，花不了多少时间，就当是为了使用它那美丽性质的代价吧。</p>
+<h2 id="神秘报错">神秘报错</h2>
+<p>当你在使用 lambda 方式创建 cmp 函数时，如果用其作为容器的比较函数，那么每个对象都会被视为不同类型的容器，自然没法使用 std::swap 来快速交换两个std::set&lt;T, decltype(cmp)&gt;s(cmp)的内容。解决方法是，采用 struct 的方式创建元素。</p>
+<p>目前如果要用 std::swap() 操作多个这种  std::set&lt;&gt;，最稳的方法是开 struct ：</p>
+<pre><code class="language-cpp">struct SEG {
+    ld l, r;
+    SEG(ld l = 0, ld r = 0) : l(l), r(r) {}
+    bool operator&lt;(const SEG&amp; b) const {
+        return r &lt; b.l;
+    }
+};
+</code></pre>
+<p>然后注意一下不能用 {} 快速 insert 就行了，如果只是日常用 DIU，那么 lambda 完全够用了。</p>
 <h2 id="后记">后记</h2>
 <p>多次实践中发现，这其实就是散装珂朵莉树吧。很多珂朵莉树能过的题，它都能过。</p>
               
@@ -1241,7 +1418,7 @@ std::vector&lt;std::set&lt;std::pair&lt;int, int&gt;, decltype(cmp)&gt;&gt;
         </article>
         <footer id="footer" class="main-content-wrap">
   <span class="copyrights">
-    &copy; 2025 XiaoXia. All Rights Reserved
+    &copy; 2026 XiaoXia. All Rights Reserved
   </span>
 
 
